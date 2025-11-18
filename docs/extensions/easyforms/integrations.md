@@ -96,7 +96,7 @@ Integrations can:
 
 ---
 
-[← Back to Overview](/docs/extensions/easyforms) · [Email Notifications](./emails)
+[← Back to Overview](/easyforms/overview) · [Email Notifications](./emails)
 
 > **Audience:** Site owners who want form data to flow into other systems automatically.
 

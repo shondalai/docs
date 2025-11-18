@@ -4,7 +4,7 @@ This guide describes how form activity can be tracked in external analytics tool
 
 > **Audience:** Users already familiar with Google Analytics or similar platforms.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Analytics and Reporting](./form-analytics)
+[← Back to Overview](/easyforms/overview) · [Analytics and Reporting](./form-analytics)
 
 ---
 

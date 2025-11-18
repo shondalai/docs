@@ -4,7 +4,7 @@ This guide covers advanced fields and special form types like surveys and quizze
 
 > **Audience:** Users who are already comfortable with the basic form builder.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Form Builder Basics](./form-builder)
+[← Back to Overview](/easyforms/overview) · [Form Builder Basics](./form-builder)
 
 ---
 

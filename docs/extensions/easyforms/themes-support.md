@@ -4,7 +4,7 @@ This guide explains how to make your forms look professional and consistent with
 
 > **Audience:** Users who care about design but don’t want to write much CSS.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Form Builder Basics](./form-builder)
+[← Back to Overview](/easyforms/overview) · [Form Builder Basics](./form-builder)
 
 ---
 

@@ -4,7 +4,7 @@ This guide explains how to split long forms into multiple pages and allow users 
 
 > **Audience:** Users building longer forms, surveys, or applications.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Form Builder Basics](./form-builder)
+[← Back to Overview](/easyforms/overview) · [Form Builder Basics](./form-builder)
 
 ---
 

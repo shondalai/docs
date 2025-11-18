@@ -4,7 +4,7 @@ This guide covers how to work with form submissions in EasyForms.
 
 > **Audience:** Users who review or process incoming data.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Publishing Forms on Your Site](./publishing-forms)
+[← Back to Overview](/easyforms/overview) · [Publishing Forms on Your Site](./publishing-forms)
 
 ---
 

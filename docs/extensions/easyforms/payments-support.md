@@ -4,7 +4,7 @@ This guide explains how to collect payments, donations, or fees through EasyForm
 
 > **Audience:** Site owners who need to accept payments via forms.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Integrations](./integrations)
+[← Back to Overview](/easyforms/overview) · [Integrations](./integrations)
 
 ---
 

@@ -4,7 +4,7 @@ This guide explains how to set up email notifications for admins and automatic c
 
 > **Audience:** Users who need to be notified of new submissions or send confirmations.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Viewing Submissions](./form-submissions)
+[← Back to Overview](/easyforms/overview) · [Viewing Submissions](./form-submissions)
 
 ---
 

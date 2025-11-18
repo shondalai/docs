@@ -4,7 +4,7 @@ This guide shows how to display EasyForms on your Joomla site using menu items, 
 
 > **Audience:** Site owners and editors who publish content.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Form Builder Basics](./form-builder)
+[← Back to Overview](/easyforms/overview) · [Form Builder Basics](./form-builder)
 
 ---
 

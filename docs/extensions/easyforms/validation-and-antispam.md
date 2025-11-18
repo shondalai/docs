@@ -4,7 +4,7 @@ This guide explains how to ensure clean, valid data and protect your forms from 
 
 > **Audience:** Users responsible for data quality and security.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Form Builder Basics](./form-builder)
+[← Back to Overview](/easyforms/overview) · [Form Builder Basics](./form-builder)
 
 ---
 

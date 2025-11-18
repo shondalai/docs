@@ -4,7 +4,7 @@ This guide is for advanced users who collaborate with developers or want to exte
 
 > **Audience:** Technical site owners and power users.
 
-[← Back to Overview](/docs/extensions/easyforms)
+[← Back to Overview](/easyforms/overview)
 
 ---
 

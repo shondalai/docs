@@ -4,7 +4,7 @@ This guide explains how to offer forms in multiple languages and use AI translat
 
 > **Audience:** Site owners of multilingual websites.
 
-[← Back to Overview](/docs/extensions/easyforms)
+[← Back to Overview](/easyforms/overview)
 
 ---
 

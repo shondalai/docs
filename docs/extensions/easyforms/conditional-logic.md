@@ -95,7 +95,7 @@ Conditional logic lets you define rules like:
 
 ---
 
-[← Back to Overview](/docs/extensions/easyforms) · [Form Builder Basics](./form-builder)
+[← Back to Overview](/easyforms/overview) · [Form Builder Basics](./form-builder)
 
 > **Audience:** Users who want shorter, smarter forms.
 

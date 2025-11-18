@@ -4,7 +4,7 @@ The AI Form Builder Assistant helps you create forms quickly by turning natural 
 
 > **Audience:** Non-technical admins and editors who want to build forms faster.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Form Builder Basics](./form-builder)
+[← Back to Overview](/easyforms/overview) · [Form Builder Basics](./form-builder)
 
 ---
 

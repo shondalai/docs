@@ -69,7 +69,7 @@ Frontend form management allows specific user groups to:
 
 ---
 
-[← Back to Overview](/docs/extensions/easyforms) · [Publishing Forms on Your Site](./publishing-forms)
+[← Back to Overview](/easyforms/overview) · [Publishing Forms on Your Site](./publishing-forms)
 
 > **Audience:** Site owners who delegate form management without giving full admin access.
 

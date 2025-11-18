@@ -4,7 +4,7 @@ This guide helps you diagnose and resolve common issues with EasyForms.
 
 > **Audience:** Site owners and administrators.
 
-[← Back to Overview](/docs/extensions/easyforms)
+[← Back to Overview](/easyforms/overview)
 
 ---
 

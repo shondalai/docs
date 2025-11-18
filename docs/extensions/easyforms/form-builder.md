@@ -4,7 +4,7 @@ This guide shows you how to create and manage forms with the EasyForms visual bu
 
 > **Audience:** Joomla site owners, editors, and marketers.
 
-[← Back to Overview](/docs/extensions/easyforms)
+[← Back to Overview](/easyforms/overview)
 
 ---
 

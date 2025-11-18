@@ -4,7 +4,7 @@ This guide explains how access to EasyForms is controlled and how to keep submis
 
 > **Audience:** Site owners and administrators.
 
-[← Back to Overview](/docs/extensions/easyforms) · [Viewing Submissions](./form-submissions)
+[← Back to Overview](/easyforms/overview) · [Viewing Submissions](./form-submissions)
 
 ---
 
