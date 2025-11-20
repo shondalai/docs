@@ -155,6 +155,43 @@ const config: Config = {
         sidebarPath: './sidebars-general.ts',
       },
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          // Redirect old underscore URLs to new hyphen URLs
+          // This handles both category names (community_surveys -> community-surveys)
+          // AND document slugs (community_surveys_changelog -> community-surveys-changelog)
+
+          if (existingPath.includes('/community-surveys')) {
+            // Replace category and convert all hyphens to underscores in the path
+            const oldPath = existingPath.replace('/community-surveys', '/community_surveys').replace(/-/g, '_');
+            return [oldPath];
+          }
+          if (existingPath.includes('/community-polls')) {
+            const oldPath = existingPath.replace('/community-polls', '/community_polls').replace(/-/g, '_');
+            return [oldPath];
+          }
+          if (existingPath.includes('/community-quiz')) {
+            const oldPath = existingPath.replace('/community-quiz', '/community_quiz').replace(/-/g, '_');
+            return [oldPath];
+          }
+          if (existingPath.includes('/community-answers')) {
+            const oldPath = existingPath.replace('/community-answers', '/community_answers').replace(/-/g, '_');
+            return [oldPath];
+          }
+          if (existingPath.includes('/community-quotes')) {
+            const oldPath = existingPath.replace('/community-quotes', '/community_quotes').replace(/-/g, '_');
+            return [oldPath];
+          }
+          if (existingPath.includes('/gps-tools')) {
+            const oldPath = existingPath.replace('/gps-tools', '/gps_tools').replace(/-/g, '_');
+            return [oldPath];
+          }
+          return undefined; // Return undefined when no redirect is needed
+        },
+      },
+    ],
   ],
 
 
