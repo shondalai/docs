@@ -51,6 +51,7 @@ const sidebars: SidebarsConfig = {
         'integrations',
         'payments-support',
         'multilingual-support',
+        'private-forms-access-tokens',
         'security-and-permissions',
         'troubleshooting-guide',
         'power-users-and-developers',

@@ -1,6 +1,6 @@
-# EasyForms Documentation Portal
+# Shondalai Extensions Documentation Portal
 
-This is the user documentation portal for EasyForms, built with [Docusaurus](https://docusaurus.io/).
+This is the user documentation portal for Shondalai Extensions Documentation, built with [Docusaurus](https://docusaurus.io/).
 
 ## 📦 What's Included
 
