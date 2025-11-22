@@ -158,6 +158,45 @@ const config: Config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        redirects: [
+          // Redirect extension root paths to overview pages
+          {
+            from: '/community_surveys',
+            to: '/community-surveys/overview',
+          },
+          {
+            from: '/community_polls',
+            to: '/community-polls/overview',
+          },
+          {
+            from: '/community_quiz',
+            to: '/community-quiz/overview',
+          },
+          {
+            from: '/community_answers',
+            to: '/community-answers/overview',
+          },
+          {
+            from: '/community_quotes',
+            to: '/community-quotes/overview',
+          },
+          {
+            from: '/gps_tools',
+            to: '/gps-tools/overview',
+          },
+          {
+            from: '/cjforum',
+            to: '/cjforum/overview',
+          },
+          {
+            from: '/sociable',
+            to: '/sociable/overview',
+          },
+          {
+            from: '/rewardify',
+            to: '/rewardify/overview',
+          },
+        ],
         createRedirects(existingPath) {
           // Redirect old underscore URLs to new hyphen URLs
           // This handles both category names (community_surveys -> community-surveys)
