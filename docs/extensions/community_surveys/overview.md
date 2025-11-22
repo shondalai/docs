@@ -13,7 +13,7 @@ Community Surveys is a powerful Joomla extension that allows you to create, publ
 - User Management - Control who can take surveys
 - Results Export - Export survey data for analysis
 ## Getting Started
-Start by following the [Installation](installation) guide to set up Community Surveys on your Joomla site.
+Start by following the [Installation](./installing-and-configuring-community-surveys.md) guide to set up Community Surveys on your Joomla site.
 ## Documentation Sections
 - Installation - Install and configure the extension
 - Creating Surveys - Build your first survey

@@ -1215,7 +1215,7 @@ Pie chart showing:
 - Fields with 90-100% response rate (Excellent)
 - Fields with 70-89% response rate (Good)
 - Fields with 50-69% response rate (Fair)
-- Fields with <50% response rate (Poor)
+- Fields with < 50% response rate (Poor)
 
 **Insights:**
 - Overall form engagement health

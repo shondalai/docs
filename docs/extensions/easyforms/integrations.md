@@ -406,7 +406,7 @@ Send form submission notifications to Slack channels.
 3. **Message Settings Tab:**
    - **Message Template:**
      - Use placeholders like `{field_name}` for dynamic content
-     - Example: "New submission from {name}: {email}"
+     - Example: `"New submission from {name}: {email}"`
    - **Formatting:**
      - Enable Slack markdown formatting
      - Add emojis for visual appeal

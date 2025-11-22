@@ -930,7 +930,7 @@ EasyForms includes a professional, responsive email template for access token in
 3. **Edit Template:**
 
    **Subject Line:**
-   - Default: "You're invited to access: {form_title}"
+   - Default: `"You're invited to access: {form_title}"`
    - Customize with variables
    - Keep under 50 characters for mobile
 
@@ -1561,7 +1561,7 @@ If you continue to experience issues:
 
 - [Email Templates](./emails) - Customize invitation emails
 - [Form Builder Guide](./form-builder) - Create and design forms
-- [Analytics](./analytics) - Track form performance
+- [Analytics](./form-analytics) - Track form performance
 - [Integrations](./integrations) - Connect to external services
 
 ---
