@@ -14,16 +14,10 @@
 }
 
 .heroBanner .container {
-  max-width: 1140px !important;
+  max-width: 100% !important;
   margin: 0 auto !important;
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-}
-
-@media (min-width: 1440px) {
-  .heroBanner .container {
-    max-width: 1320px !important;
-  }
+  padding-left: 4rem !important;
+  padding-right: 4rem !important;
 }
 
 .heroBanner::before {
@@ -91,13 +85,13 @@
 .buttons .button--primary {
   background-color: var(--color-accent);
   color: white !important;
-  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.15);
+  box-shadow: var(--shadow-md);
 }
 
 .buttons .button--primary:hover {
   background-color: var(--color-accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 12px rgba(52, 152, 219, 0.25);
+  box-shadow: var(--shadow-lg);
   color: white !important;
 }
 
@@ -110,7 +104,7 @@
 .buttons .button--secondary:hover {
   border-color: var(--color-accent);
   color: var(--color-accent) !important;
-  background-color: rgba(52, 152, 219, 0.05);
+  background-color: var(--color-background-secondary);
 }
 
 @media (max-width: 996px) {

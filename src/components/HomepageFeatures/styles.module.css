@@ -6,16 +6,10 @@
 }
 
 .features .container {
-  max-width: 1140px !important;
+  max-width: 100% !important;
   margin: 0 auto !important;
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-}
-
-@media (min-width: 1440px) {
-  .features .container {
-    max-width: 1320px !important;
-  }
+  padding-left: 4rem !important;
+  padding-right: 4rem !important;
 }
 
 .featureIcon {
@@ -67,4 +61,3 @@
     padding-right: 1rem;
   }
 }
-
