@@ -5,6 +5,10 @@ sidebar_label: Configure CjForum personal messaging (PM) system
 sidebar_position: 20
 ---
 
+:::warning Deprecated Feature
+The personal messaging (PM) system has been removed starting from CjForum version 6. This documentation is only applicable to CjForum versions 5.x and earlier.
+:::
+
 CjForum includes a built-in personal messaging system designed to facilitate private conversations among forum members. Unlike an email server or a comprehensive messaging platform, the Personal Messaging (PM) system is specifically tailored for one-to-one communication within the forum community.
 
 ### Enabling the PM System

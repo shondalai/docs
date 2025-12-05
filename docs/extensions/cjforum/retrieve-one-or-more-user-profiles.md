@@ -2,10 +2,21 @@
 id: retrieve-one-or-more-user-profiles
 title: Retrieve one or more user profiles
 sidebar_label: Retrieve one or more user profiles
-sidebar_position: 5
+sidebar_position: 2
 ---
 
-## Prerequisites:
+:::danger DEPRECATED - Legacy API
+This documentation describes the **legacy API (CjForum 5.x and earlier)** which is deprecated and will be removed in a future version.
+
+**Please use the new modern SDK for CjForum 6.0+:**
+- [CjForum SDK Overview](sdk-overview)
+- [Profile System SDK Quick Start](sdk-profile-quick-start)
+- [Complete SDK Integration Guide](sdk-integration-guide)
+
+The new SDK provides better performance, type safety, and follows modern Joomla best practices.
+:::
+
+This guide shows you how to retrieve user profile information from CjForum in your custom Joomla extensions.
 
 Add the required CjForum API library:
 

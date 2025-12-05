@@ -5,6 +5,10 @@ sidebar_label: CjForum Joomla! articles integration
 sidebar_position: 21
 ---
 
+:::warning Deprecated Feature
+The Joomla! articles integration feature has been removed starting from CjForum version 6. This documentation is only applicable to CjForum versions 5.x and earlier.
+:::
+
 CjForum topics can be shown in Joomla! articles using the content plugin bundled with the CjForum package.
 
 ## Enabling Content Plugin

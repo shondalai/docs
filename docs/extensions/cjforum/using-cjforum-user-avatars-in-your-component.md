@@ -2,10 +2,21 @@
 id: using-cjforum-user-avatars-in-your-component
 title: Using CjForum user avatars in your component
 sidebar_label: Using CjForum user avatars in your component
-sidebar_position: 1
+sidebar_position: 3
 ---
 
-## Prerequisites:
+:::danger DEPRECATED - Legacy API
+This documentation describes the **legacy API (CjForum 5.x and earlier)** which is deprecated and will be removed in a future version.
+
+**Please use the new modern SDK for CjForum 6.0+:**
+- [CjForum SDK Overview](sdk-overview)
+- [Profile System SDK Quick Start](sdk-profile-quick-start)
+- [Complete SDK Integration Guide](sdk-integration-guide)
+
+The new SDK provides better performance, type safety, and follows modern Joomla best practices.
+:::
+
+If you would like to display CjForum user avatars in your custom Joomla component, you can easily do so using the CjForum Profile API.
 
 Add the required CjForum API library:
 

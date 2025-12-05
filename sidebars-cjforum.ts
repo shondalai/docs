@@ -16,6 +16,18 @@ const sidebars: SidebarsConfig = {
 
     {
       type: 'category',
+      label: 'SDK Documentation (v6.0+)',
+      collapsed: false,
+      items: [
+        'sdk-overview',
+        'sdk-profile-quick-start',
+        'sdk-points-stream-quick-start',
+        'sdk-migration-guide',
+      ],
+    },
+
+    {
+      type: 'category',
       label: 'User Management',
       items: [
         'configuring-user-ranks',
@@ -28,19 +40,8 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Features',
       items: [
-        'configure-cjforum-personal-messaging-pm-system',
         'reportingflagging-posts-in-cjforum',
         'moderating-posts-in-cjforum',
-        'cjforum-joomla-articles-integration',
-        'using-cjforum-activity-stream',
-      ],
-    },
-
-    {
-      type: 'category',
-      label: 'Gamification',
-      items: [
-        'award-points-to-users-using-cjforum-points-system',
         'setting-up-user-points-for-various-activities',
       ],
     },
@@ -58,12 +59,24 @@ const sidebars: SidebarsConfig = {
 
     {
       type: 'category',
-      label: 'Integration & API',
+      label: 'Advanced',
+      items: [
+        'extending-cjforum-using-plugin-events',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Legacy API (Deprecated)',
+      collapsed: true,
       items: [
         'retrieve-one-or-more-user-profiles',
         'link-user-names-to-cjforum-user-profile-in-your-component',
         'using-cjforum-user-avatars-in-your-component',
-        'extending-cjforum-using-plugin-events',
+        'award-points-to-users-using-cjforum-points-system',
+        'using-cjforum-activity-stream',
+        'configure-cjforum-personal-messaging-pm-system',
+        'cjforum-joomla-articles-integration',
       ],
     },
 

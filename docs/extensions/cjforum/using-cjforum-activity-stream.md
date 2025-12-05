@@ -5,6 +5,17 @@ sidebar_label: Using CjForum activity stream
 sidebar_position: 2
 ---
 
+:::danger DEPRECATED - Legacy API
+This documentation describes the **legacy API (CjForum 5.x and earlier)** which is deprecated and will be removed in a future version.
+
+**Please use the new modern SDK for CjForum 6.0+:**
+- [CjForum SDK Overview](sdk-overview)
+- [Activity Stream SDK Quick Start](sdk-stream-quick-start)
+- [Complete SDK Integration Guide](sdk-integration-guide)
+
+The new SDK provides better performance, type safety, and follows modern Joomla best practices.
+:::
+
 ## Prerequisites:
 
 Add the required CjForum API library:

@@ -2,10 +2,21 @@
 id: link-user-names-to-cjforum-user-profile-in-your-component
 title: Link user names to CjForum user profile in your component
 sidebar_label: Link user names to CjForum user profile in your component
-sidebar_position: 11
+sidebar_position: 1
 ---
 
-## Prerequisites:
+:::danger DEPRECATED - Legacy API
+This documentation describes the **legacy API (CjForum 5.x and earlier)** which is deprecated and will be removed in a future version.
+
+**Please use the new modern SDK for CjForum 6.0+:**
+- [CjForum SDK Overview](sdk-overview)
+- [Profile System SDK Quick Start](sdk-profile-quick-start)
+- [Complete SDK Integration Guide](sdk-integration-guide)
+
+The new SDK provides better performance, type safety, and follows modern Joomla best practices.
+:::
+
+If you want to enhance your Joomla component with user profile links to CjForum profiles, you can do so easily by using the CjForum Profile API.
 
 Add the required CjForum API library:
 
