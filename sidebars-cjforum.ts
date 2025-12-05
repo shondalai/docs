@@ -21,7 +21,9 @@ const sidebars: SidebarsConfig = {
       items: [
         'sdk-overview',
         'sdk-profile-quick-start',
-        'sdk-points-stream-quick-start',
+        'sdk-points-quick-start',
+        'sdk-stream-quick-start',
+        'sdk-integration-guide',
         'sdk-migration-guide',
       ],
     },

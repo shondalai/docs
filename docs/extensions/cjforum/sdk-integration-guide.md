@@ -713,7 +713,8 @@ if (CjForum::isAvailable()) {
 
 - **[SDK Overview](sdk-overview)** - Introduction to the SDK
 - **[Profile Quick Start](sdk-profile-quick-start)** - Profile API guide
-- **[Points & Stream Quick Start](sdk-points-stream-quick-start)** - Points & Stream guide
+- **[Points Quick Start](sdk-points-quick-start)** - Points System guide
+- **[Stream Quick Start](sdk-stream-quick-start)** - Activity Stream guide
 - **[Migration Guide](sdk-migration-guide)** - Migrate from legacy API
 
 ## Support
