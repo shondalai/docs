@@ -14,20 +14,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [6.0.0] - 2025-12-06
 
+### Added
+- Modern React-based interface with enhanced UX and performance
+- Complete forum management system with topic and post management tools
+- Advanced user permissions and moderation tools
+- Support for 25+ built-in themes
+- Four forum modules: Recent Posts, Topic Form, Categories, Top Users
+- 11 plugin integrations for extended functionality
+- Automatic update system with integrity checks
+- Native Joomla 5 and 6 compatibility
+
 ### Changed
-- - Modern React-based admin interface
-- - Complete forum management system
-- - Support for 25+ themes
-- - Four forum modules
-- - 11 plugin integrations
-- - Automatic updates
-- Changed:
-- - Account menu replaces subscriptions interface
-- - Private messaging (use Joomla PM or alternatives)
-- - Leaderboard page
-- - Recent topics menu
-- - Forum rules menu
-- - Users listing menu
+- Account menu replaces previous subscriptions interface for better UX
+
+### Removed
+- Private messaging (use Joomla's built-in PM or third-party alternatives)
+- Leaderboard page (was not widely used)
+- Recent topics menu item (functionality merged into main listing)
+- Forum rules menu (create custom menu items instead)
+- Users listing menu (use Joomla's user management)
 
 ## [5.1.0] - 2025-10-05
 
