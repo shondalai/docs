@@ -369,7 +369,6 @@ This release includes:
 
 Thank you for choosing EasyForms! We're committed to making form building easy, powerful, and enjoyable for Joomla users.
 
-**Support:** support@shondalai.com  
 **Website:** https://shondalai.com/products/easyforms/  
 **Documentation:** https://docs.shondalai.com/easyforms/overview
 
