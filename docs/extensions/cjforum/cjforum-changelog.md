@@ -5,192 +5,308 @@ sidebar_label: CjForum Changelog
 sidebar_position: 22
 ---
 
-**5.1.0/1 (05-Oct-2025)**
+# CjForum Changelog
 
-+ Joomla 6 Compatibility Update
-^ Removed legacy references
-^ Update copyright headers
+All notable changes to CjForum will be documented in this file.
 
-**5.0.14 (12-Dec-2024)**
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-* No emails sent when reply posted
+## [6.0.0] - 2025-12-06
 
-**5.0.13 (23-Nov-2024)**
+### Added
+- Added API SDK
+- + Adding theming support with 37 themes
+- * Adding missing language strings
 
-* Language tag is not retained after saving topic
-* Fixed issue with showing incorrect text after like/dislike question
+### Changed
+- Themes implementation is completed
+- Themes implementation is completed
+- Migrate CjForum to React 19
+- + Upgrade modules and plugins for Joomla 6 compatibility
+- * False positives in database errors checker
+- CjForum v6.0.0 Beta 2 Release
+- CjForum v6.0.0 Beta 2 Release
+- * Removed deprecated APIs
+- CjForum v6 Beta 1 Release
+- Update build files for v6
+- CjForum Rewrite v6
+- CjForum v5.1.1 Release
 
-**5.0.12 (27-Sep-2024)**
+### Fixed
+- Fix bugs
+- Fixed issues
+- Fixed bugs
+- Fixed content plugin
+- * Fixed issue with Joomla 6 installation
 
-* Sync topics fails to sync topics
-* Forum rules page shows error
+## [6.0.0] - 2024-12-06
 
-**5.0.11 (24-May-2024)**
+### Added
+- Modern React-based admin interface
+- Complete forum management system
+- Topic and post management
+- User permissions and moderation tools
+- Multiple modules for forum display
+- Various plugin integrations
+- Auto-update system
 
-+ Added button to sync topic reply counts
-* Fixed issue with migration script
+## [5.1.0] - 2025-10-05
 
-**5.0.10 (12-May-2024)**
+### Added
+- Joomla 6 Compatibility Update
 
-+ Added .htaccess file to restrict direct access to attachments
-* Topics do not display if mysql strict dates enabled
-* Fixed issue with selecting admin user group in the Topics plugin
-* Fixed issue with expanding filters on the admin list pages
+### Changed
+- Removed legacy references
+- Update copyright headers
 
-**5.0.9 (23-Feb-2024)**
+## [5.0.14] - 2024-12-12
 
-* Fixed Google structured data markup for discussion forum posting
+### Fixed
+- No emails sent when reply posted
 
-**5.0.8 (14-Feb-2024)**
+## [5.0.13] - 2024-11-23
 
-* Fixed issue with topics search
-* Fixed issue with deprecated message on form page
+### Fixed
+- Language tag is not retained after saving topic
+- Fixed issue with showing incorrect text after like/dislike question
 
-**5.0.7 (06-Feb-2024)**
+## [5.0.12] - 2024-09-27
 
-+ Added validation to restrict posting duplicate topics
-* Fixed issue with smart search plugin
+### Fixed
+- Sync topics fails to sync topics
+- Forum rules page shows error
 
-**5.0.6 (14-Jan-2024)**
+## [5.0.11] - 2024-05-24
 
-+ Added support for Rewardify User Points
+### Added
+- Added button to sync topic reply counts
 
-**5.0.5 (22-Dec-2023)**
+### Fixed
+- Fixed issue with migration script
 
-* Fixed issue with topics not loading after upgrade
-* Categories without menu item are not accessible
+## [5.0.10] - 2024-05-12
 
-**5.0.4 (21-Dec-2023)**
+### Added
+- Added .htaccess file to restrict direct access to attachments
 
-+ Added Joomla Privacy plugin for CjForum
-+ Show message when users do not have access to view replies
-* Report button is not working with bootstrap5
-* Replies are not showing when mysql null dates are not allowed
-* Empty list is shown when the database option to allow null dates is disabled
-* Topics ordering selected in the menu item is not applied
-* Unable to edit topic in bootstrap3 layout
+### Fixed
+- Topics do not display if mysql strict dates enabled
+- Fixed issue with selecting admin user group in the Topics plugin
+- Fixed issue with expanding filters on the admin list pages
 
-**5.0.3 (02-Dec-2023)**
+## [5.0.9] - 2024-02-23
 
-+ Added support for migrating questions from Community Answers component to CjForum
+### Fixed
+- Fixed Google structured data markup for discussion forum posting
 
-**5.0.2 (11-Nov-2023)**
+## [5.0.8] - 2024-02-14
 
-* Fixed the margin of batch button on admin toolbar
-* New topic emails sent to blocked users
+### Fixed
+- Fixed issue with topics search
+- Fixed issue with deprecated message on form page
 
-**5.0.1 (26-Sep-2023)**
+## [5.0.7] - 2024-02-06
 
-* Fixed version information
+### Added
+- Added validation to restrict posting duplicate topics
 
-**5.0.0 (24-Sep-2023)**
+### Fixed
+- Fixed issue with smart search plugin
 
-+ Breaking Change: Added support for Joomla 5
-^ Breaking Change: Removed legacy layer for Joomla 3
+## [5.0.6] - 2024-01-14
 
-**4.2.2 (12-Aug-2023)**
+### Added
+- Added support for Rewardify User Points
 
-+ Updated Save button label to Post Topic
-* Replacing legacy API references
-^ Replaced JFile/JFolder deprecated wrappers with respective file system functions
-* Fixed issue with bootstrap library not loading in older Joomla versions
-* Fixed issue with showing social icons on profile details page
+## [5.0.5] - 2023-12-22
 
-**4.2.1 (26-Mar-2023)**
+### Fixed
+- Fixed issue with topics not loading after upgrade
+- Categories without menu item are not accessible
 
-^ Changed edit icon to fa-edit on topic page
-^ Changed icon of the edit button for FA6 compatibility
-* Removed deprecated function calls
-* Do not send email notifications to globally blocked users
+## [5.0.4] - 2023-12-21
 
-**4.2.0 (05-Feb-2023)**
+### Added
+- Added Joomla Privacy plugin for CjForum
+- Show message when users do not have access to view replies
 
-+ Show recently discussed topics on category page
-+ New option to disable login/registration form
-* Show create topic button on the toolbar only if user has create permissions
-* Logged in user cannot see their unpublished topics from My Topics view
-* Fixed PHP warning messages
-* Tabs on backend dashboard page are not working
-* Topic pagination on the listing page are not aligned properly on bootstrap5 layout
-* Quoting a deleted user's reply throws error
-* CjForum apps form quizzes & answers do not show correct layout
-* Fixed bootstrap5 UX on the advanced search form
-* Removed unsued language strings
+### Fixed
+- Report button is not working with bootstrap5
+- Replies are not showing when mysql null dates are not allowed
+- Empty list is shown when the database option to allow null dates is disabled
+- Topics ordering selected in the menu item is not applied
+- Unable to edit topic in bootstrap3 layout
 
-**4.1.6 (07-Nov-2022)**
+## [5.0.3] - 2023-12-02
 
-+ Adding PHP 8.1 support and fixing deprecation notices
-* Unable to send private message from messages dashboard page
-* Show Topics Count option is not working for category view in Bootstrap5 layout
-* Fixed issue with removed JString invocations
-* Fixed issues in syncing users data when mysql strict mode is enabled
-* Fixed issues with Kunena migration script
+### Added
+- Added support for migrating questions from Community Answers component to CjForum
 
-**4.1.5 (04-Sep-2022)**
+## [5.0.2] - 2023-11-11
 
-* Disabling Show Footer block show empty border item at the bottom
-* Fixed issues with Kunena migration on Joomla 4
+### Fixed
+- Fixed the margin of batch button on admin toolbar
+- New topic emails sent to blocked users
 
-**4.1.4 (30-Jul-2022)**
+## [5.0.1] - 2023-09-26
 
-^ Do not load chosen library in the list layouts when using Joomla 4
-* Tags are not saving in Joomla 3.10 or later versions
+### Fixed
+- Fixed version information
 
-**4.1.3 (26-Jul-2022)**
+## [5.0.0] - 2023-09-24
 
-* Fixed issue with topic/reply rating not working
-* Fixed PHP notice messages shown when editing a reply
-* CjForum content plugin causing error with webservice calls
-* Fixed issue with content plugin conflict with webservices plugin
+### Added
+- Breaking Change: Added support for Joomla 5
 
-**4.1.2 (13-May-2022)**
+### Changed
+- Breaking Change: Removed legacy layer for Joomla 3
 
-+ New category option to set a category as parent group (readonly) or regular forum
+## [4.2.2] - 2023-08-12
 
-**4.1.1 (14-Mar-2022)**
+### Added
+- Updated Save button label to Post Topic
 
-* Mobile menu on toolbar does not work when using bootstrap5 layout
-* Fixed issue with the finder plugin
-* Fixed issue with modal selection in topic modal dialogs
+### Changed
+- Replaced JFile/JFolder deprecated wrappers with respective file system functions
+- Replacing legacy API references
 
-**4.1.0 (07-Feb-2022)**
+### Fixed
+- Fixed issue with bootstrap library not loading in older Joomla versions
+- Fixed issue with showing social icons on profile details page
 
-^ Leaderboard list rows is wrapped down on bootstrap 5 layout
-^ Updated default avatar size in the topic view to 256px
-* Search bar takes full width on bootstrap 5 layout
-* Social sharing buttons are not loading on Joomla 4
-* Fixed issue with indexing topics using smart search
-* Fixed issue with loading forum rules page
-* Fixed issue with download my data button failed on bootstrap5 layout
-* Fixed issue with downloading attachments
-* Fixed issue with topic selection modal on single topic menu item
-* Subscription links are not shown on the topic page (bootstrap5)
-* Subscription Tools option does not work on the cateogories list
-* Privacy consent checkbox is not visible on profile form
-* Fixed issue with the errors shown when a profile/user was deleted
+## [4.2.1] - 2023-03-26
 
-**4.0.3 (23-Aug-2021)**
+### Changed
+- Changed edit icon to fa-edit on topic page
+- Changed icon of the edit button for FA6 compatibility
+- Removed deprecated function calls
 
-^ Change automatic update references to shondalai.com
+### Fixed
+- Do not send email notifications to globally blocked users
 
-**4.0.2 (16-Aug-2021)**
+## [4.2.0] - 2023-02-05
 
-* Toolbar dropdown enhancements for bootstrap 5 layout
-* Fixed issue with incompatible method in the content plugin
+### Added
+- Show recently discussed topics on category page
+- New option to disable login/registration form
 
-**4.0.1 (18-Jul-2021)**
+### Fixed
+- Show create topic button on the toolbar only if user has create permissions
+- Logged in user cannot see their unpublished topics from My Topics view
+- Fixed PHP warning messages
+- Tabs on backend dashboard page are not working
+- Topic pagination on the listing page are not aligned properly on bootstrap5 layout
+- Quoting a deleted user's reply throws error
+- CjForum apps form quizzes & answers do not show correct layout
+- Fixed bootstrap5 UX on the advanced search form
+- Removed unused language strings
 
-+ Joomla 4 RC 4 support added
-^ Adding missing language string in the backend menu
-* Fixed warning message shown when using PHP 8
-* Unable to submit reply to the personal messages
+## [4.1.6] - 2022-11-07
 
-**4.0.0 (03-Jun-2021)**
+### Added
+- Adding PHP 8.1 support and fixing deprecation notices
 
-+ Joomla 4 support added
-+ New layout (for all pages) based on Bootstrap 5 CSS library
-^ Tuning sql queries and performance improvements with user tables
-* Selecting "All Categories" in advanced search produces no results when "Show Unauthorised Links" option is disabled
+### Fixed
+- Unable to send private message from messages dashboard page
+- Show Topics Count option is not working for category view in Bootstrap5 layout
+- Fixed issue with removed JString invocations
+- Fixed issues in syncing users data when mysql strict mode is enabled
+- Fixed issues with Kunena migration script
+
+## [4.1.5] - 2022-09-04
+
+### Fixed
+- Disabling Show Footer block show empty border item at the bottom
+- Fixed issues with Kunena migration on Joomla 4
+
+## [4.1.4] - 2022-07-30
+
+### Changed
+- Do not load chosen library in the list layouts when using Joomla 4
+
+### Fixed
+- Tags are not saving in Joomla 3.10 or later versions
+
+## [4.1.3] - 2022-07-26
+
+### Fixed
+- Fixed issue with topic/reply rating not working
+- Fixed PHP notice messages shown when editing a reply
+- CjForum content plugin causing error with webservice calls
+- Fixed issue with content plugin conflict with webservices plugin
+
+## [4.1.2] - 2022-05-13
+
+### Added
+- New category option to set a category as parent group (readonly) or regular forum
+
+## [4.1.1] - 2022-03-14
+
+### Fixed
+- Mobile menu on toolbar does not work when using bootstrap5 layout
+- Fixed issue with the finder plugin
+- Fixed issue with modal selection in topic modal dialogs
+
+## [4.1.0] - 2022-02-07
+
+### Changed
+- Leaderboard list rows is wrapped down on bootstrap 5 layout
+- Updated default avatar size in the topic view to 256px
+
+### Fixed
+- Search bar takes full width on bootstrap 5 layout
+- Social sharing buttons are not loading on Joomla 4
+- Fixed issue with indexing topics using smart search
+- Fixed issue with loading forum rules page
+- Fixed issue with download my data button failed on bootstrap5 layout
+- Fixed issue with downloading attachments
+- Fixed issue with topic selection modal on single topic menu item
+- Subscription links are not shown on the topic page (bootstrap5)
+- Subscription Tools option does not work on the categories list
+- Privacy consent checkbox is not visible on profile form
+- Fixed issue with the errors shown when a profile/user was deleted
+
+## [4.0.3] - 2021-08-23
+
+### Changed
+- Change automatic update references to shondalai.com
+
+## [4.0.2] - 2021-08-16
+
+### Fixed
+- Toolbar dropdown enhancements for bootstrap 5 layout
+- Fixed issue with incompatible method in the content plugin
+
+## [4.0.1] - 2021-07-18
+
+### Added
+- Joomla 4 RC 4 support added
+
+### Changed
+- Adding missing language string in the backend menu
+
+### Fixed
+- Fixed warning message shown when using PHP 8
+- Unable to submit reply to the personal messages
+
+## [4.0.0] - 2021-06-03
+
+### Added
+- Joomla 4 support added
+- New layout (for all pages) based on Bootstrap 5 CSS library
+
+### Changed
+- Tuning sql queries and performance improvements with user tables
+
+### Fixed
+- Selecting "All Categories" in advanced search produces no results when "Show Unauthorised Links" option is disabled
+
+---
+
+## Archived Versions (3.x and earlier)
+
+The following versions are archived and retained in their original format for historical reference.
 
 **3.4.3 (25-Mar-2021)**
 
