@@ -57,6 +57,14 @@ const sidebars: SidebarsConfig = {
         'power-users-and-developers',
       ],
     },
+    {
+      type: 'category',
+      label: 'Reference',
+      collapsed: false,
+      items: [
+        'easyforms-changelog',
+      ],
+    },
   ],
 };
 
