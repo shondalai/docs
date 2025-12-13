@@ -40,7 +40,7 @@ All notable changes to EasyForms will be documented in this file.
 
 ---
 
-## [1.0.0] - December 6, 2025
+## [1.0.0] - November 18, 2025
 
 🎉 **Initial Release** - Welcome to EasyForms for Joomla!
 
