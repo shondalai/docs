@@ -3,15 +3,41 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
     'overview',
-    'gps-tools-quick-stater-guide',
-    'using-gps-tools-content-plugin-to-display-track-in-articles',
-    'custom-module-positions-in-gps-tools',
 
     {
       type: 'category',
-      label: 'Advanced',
+      label: 'Getting Started',
+      collapsed: false,
       items: [
-        'extending-gps-tools-using-plugin-events',
+        'installation',
+        'quick-start-guide',
+        'configuration',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'User Guide',
+      items: [
+        'track-management',
+        'maps-and-charts',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Extensions',
+      items: [
+        'modules',
+        'content-plugin',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Developer Guide',
+      items: [
+        'plugin-events',
       ],
     },
 
@@ -19,6 +45,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Help & Support',
       items: [
+        'troubleshooting',
         'gps-tools-changelog',
       ],
     },
