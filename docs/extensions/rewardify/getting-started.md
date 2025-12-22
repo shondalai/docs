@@ -164,8 +164,8 @@ Now that you have Rewardify installed and configured:
 If you need assistance:
 
 - 📖 Read the [complete documentation](overview.md)
-- 💬 Visit the [support forum](https://shondalai.com/support)
-- 📧 Contact support at https://shondalai.com/get-support/
+- 💬 Visit the [support forum](https://shondalai.com/forums/)
+- 📧 Contact us on [Get Support](https://shondalai.com/get-support/)
 
 ## Troubleshooting
 
