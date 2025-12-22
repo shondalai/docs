@@ -6,6 +6,27 @@ const sidebars: SidebarsConfig = {
 
     {
       type: 'category',
+      label: 'Getting Started',
+      collapsed: false,
+      items: [
+        'getting-started',
+        'point-rules',
+        'managing-points',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Configuration',
+      collapsed: false,
+      items: [
+        'leaderboard',
+        'plugins',
+      ],
+    },
+
+    {
+      type: 'category',
       label: 'API Reference',
       items: [
         'rewardify-points-system-api',
@@ -16,6 +37,8 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Help & Support',
       items: [
+        'troubleshooting',
+        'faq',
         'rewardify-changelog',
       ],
     },
