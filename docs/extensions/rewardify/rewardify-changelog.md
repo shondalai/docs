@@ -16,24 +16,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [1.2.2] - 2025-12-22
 
 ### Added
-- + New rule - 7 day login streak
-- + Add rate limiting the points award
-- + Add rate limiting the points award
-- + Adding Community Builder support
-- + New HikaShop payment plugin to use rewardify points for purchasing products
-- + New leaderboard module
-- + New HikaShop plugin to purchase points
+- New rule - 7 day login streak
+- Add rate limiting the points award
+- Add rate limiting the points award
+- Adding Community Builder support
+- New HikaShop payment plugin to use rewardify points for purchasing products
+- New leaderboard module
+- New HikaShop plugin to purchase points
 
 ### Changed
-- * Unable to sort backend users
-- + Joomla 6 Compatibility Update
-- update
-- * Unable to delete trashed point rules
-- ^ Update copyright headers
+- Unable to sort backend users
+- Joomla 6 Compatibility Update
+- Unable to delete trashed point rules
+- Update copyright headers
 
 ### Fixed
 - Fixed issues with content and user plugins
-- Fixed issues
+
+## [1.2.1] - 2025-10-05
+
+### Fixed
+- Hotfix for Joomla 6 compatibility
 
 ## [1.2.0] - 2025-10-05
 
