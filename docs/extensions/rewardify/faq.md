@@ -501,9 +501,9 @@ Refund policy varies by purchase agreement. Contact support.
 
 **Can't find your answer?**
 
-- 📖 [Read the complete documentation](overview.md)
-- 💬 [Visit the support forum](https://shondalai.com/forums/)
-- 📧 Contact us on [Get Support](https://shondalai.com/get-support/)
+- 📖 **Documentation:** [Complete Rewardify docs](overview.md)
+- 💬 **Forum:** https://shondalai.com/forums/
+- 📧 **Email:** https://shondalai.com/get-support/
 
 **Found a bug?**
 Please report it with detailed steps to reproduce.
