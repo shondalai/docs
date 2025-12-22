@@ -73,6 +73,28 @@ v1.0.0 &#8211; 07-Jan-2024
 - Fixed issues
 - * Fixed issue with PHP 7.4 * Fixed PHP deprecated messages * Show message when user profile not found * Fixed issue with awarding points with Joomla articles
 
+## [1.2.2] - 2025-12-22
+
+### Added
+- + New rule - 7 day login streak
+- + Add rate limiting the points award
+- + Add rate limiting the points award
+- + Adding Community Builder support
+- + New HikaShop payment plugin to use rewardify points for purchasing products
+- + New leaderboard module
+- + New HikaShop plugin to purchase points
+
+### Changed
+- * Unable to sort backend users
+- + Joomla 6 Compatibility Update
+- update
+- * Unable to delete trashed point rules
+- ^ Update copyright headers
+
+### Fixed
+- Fixed issues
+- * Fixed issue with PHP 7.4 * Fixed PHP deprecated messages * Show message when user profile not found * Fixed issue with awarding points with Joomla articles
+
 ## [1.2.3] - 2025-12-22
 
 ### Added
