@@ -9,6 +9,7 @@ const sidebars: SidebarsConfig = {
       label: 'Getting Started',
       collapsed: false,
       items: [
+        'getting-started-with-community-quiz',
         'installing-and-configuring-community-quiz',
       ],
     },
