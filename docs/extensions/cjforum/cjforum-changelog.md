@@ -25,6 +25,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed issue with upgrading old versions
 
+## [6.0.1] - 2025-12-28
+
+### Added
+- Fixed issue with new user's avatar
+- Add activity stream and badge integrations
+
+### Changed
+- Final build created
+- [ignore] Update build files
+
+### Fixed
+- Fixed issue with upgrading old versions
+
 ## [6.0.0] - 2025-12-06
 
 ### Added
