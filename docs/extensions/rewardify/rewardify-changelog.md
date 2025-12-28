@@ -15,9 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [1.2.3] - 2025-12-28
 
-### Fixed
-- [ignore] fixed build
-- [ignore] fixed build
+### Changed
+- Enhancing 7-day streak user message
 
 ## [1.2.2] - 2025-12-22
 
