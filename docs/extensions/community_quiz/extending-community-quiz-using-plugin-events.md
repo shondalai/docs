@@ -1,229 +1,155 @@
 ---
 id: extending-community-quiz-using-plugin-events
-title: Extending Community Quiz using plugin events
-sidebar_label: Extending Community Quiz using plugin events
+title: Extending Community Quiz with Plugin Events
+sidebar_label: Plugin Events
 sidebar_position: 5
 ---
 
-Community Quiz is not just full featured but also extendable. There are many plugin events the component triggers which you can use to extend the functionality provided by the component. Plugin events are supported in CQ v4 and above only.
+Community Quiz is highly extensible through the Joomla! plugin system. By listening to specific events triggered by the component, you can modify behavior, integrate with third-party extensions, or automate tasks based on quiz activity.
 
-## Creating a plugin
+> [!NOTE]
+> Plugin events are supported in Community Quiz v4 and above. This guide follows modern Joomla 4/5 standards using namespaces and the `SubscriberInterface`.
 
-Please read the following documentation to know about creating a Joomla! plugin. The process is same for any plugin.
-[https://docs.joomla.org/J2.5:Creating_a_Plugin_for_Joomla](https://docs.joomla.org/J2.5:Creating_a_Plugin_for_Joomla)
+---
 
-The best way to get started on creating the plugin is to refer to the default &#8220;Community Quiz &#8211; Quizzes&#8221; plugin provided with the Community Quiz package. It is the full featured implementation of most of the plugin events.
+## Getting Started
 
-Following is the sample class without any plugin events declared. The plugin name is Quiz, and the class name is prefixed with PlgCommunityquiz.
+To create a plugin for Community Quiz, you should create a plugin in the `communityquiz` group.
+
+### Modern Plugin Structure (Joomla 4/5)
+
+Your plugin should follow the modern Joomla structure. Below is a sample implementation using the `SubscriberInterface`.
+
+**File:** `plugins/communityquiz/myplugin/src/Extension/MyPlugin.php`
 
 ```php
 <?php
-```php
-/**
- * @package     corejoomla.administrator
- * @subpackage  com_communityquiz
- *
- * @copyright   Copyright (C) 2009 - 2015 corejoomla.com. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
+
+namespace Joomla\Plugin\Communityquiz\MyPlugin\Extension;
+
 defined('_JEXEC') or die;
-```
- 
-```
 
-require_once JPATH_ROOT.'/components/com_cjlib/framework/api.php';
-require_once JPATH_ROOT.'/components/com_communityquiz/router.php';
-require_once JPATH_ROOT.'/components/com_communityquiz/helpers/route.php';
- 
-```php
-class PlgCommunityquizQuiz extends JPlugin
+use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\Event\Event;
+use Joomla\Event\SubscriberInterface;
+
+class MyPlugin extends CMSPlugin implements SubscriberInterface
 {
-	public function __construct(& $subject, $config)
-	{
-		parent::__construct($subject, $config);
-		$this->loadLanguage();
-		$this->loadLanguage('com_communityquiz', JPATH_ROOT);
-	}
+    /**
+     * Returns an array of events this subscriber will listen to.
+     */
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'onQuizAfterPassed' => 'onQuizAfterPassed',
+            'onQuizAfterFailed' => 'onQuizAfterFailed',
+            'onResponseAfterSave' => 'onResponseAfterSave',
+        ];
+    }
+
+    /**
+     * Event triggered when a user passes a quiz.
+     */
+    public function onQuizAfterPassed(Event $event): void
+    {
+        [$context, $quiz, $isNew] = array_values($event->getArguments());
+        
+        // Access the response ID
+        $responseId = $quiz->response_id;
+        
+        // Custom logic here
+    }
 }
 ```
 
-## Plugin Events
+---
 
-Community Quiz defines a set of plugin events which you can listen to extend the functionality. The following are the plugin events:
+## Available Plugin Events
 
-### onQuizBeforeSave
+### Quiz Management Events
 
-This event will be triggered before saving the quiz to database. Return false from this event will stops saving the quiz.
+| Event | Description | Parameters |
+|-------|-------------|------------|
+| `onQuizBeforeSave` | Triggered before saving a quiz. Returning `false` cancels the save. | `$context`, `$quiz`, `$isNew` |
+| `onQuizAfterSave` | Triggered after a quiz is successfully saved. | `$context`, `$quiz`, `$isNew` |
+| `onQuizBeforeDelete`| Triggered before a quiz is deleted. | `$context`, `$quiz` |
+| `onQuizAfterDelete` | Triggered after a quiz is deleted. | `$context`, `$quiz` |
+| `onQuizChangeState` | Triggered when a quiz state changes (publish, trash, etc). | `$context`, `$pks` (IDs), `$value` (new state) |
+
+### Student/Response Events
+
+#### `onQuizAfterPassed`
+
+Triggered when a user completes a quiz and their score is above or equal to the cutoff.
+
+- **Parameters:** `$context`, `$quiz`, `$isNew`
+- **Key Data:** `$quiz->response_id` contains the unique ID for this attempt.
+
+#### `onQuizAfterFailed`
+
+Triggered when a user completes a quiz but falls below the cutoff.
+
+- **Parameters:** `$context`, `$quiz`, `$isNew`
+
+#### `onResponseBeforeSave`
+
+Triggered before a student's response is saved.
+
+- **Parameters:** `$context`, `$response`, `$isNew`
+
+#### `onResponseAfterSave`
+
+Triggered after a student's response is successfully saved.
+
+- **Parameters:** `$context`, `$response`, `$isNew`
+
+#### `onResponseBeforeDelete`
+
+Triggered before one or more responses are deleted.
+
+- **Parameters:** `$context`, `$data`
+
+---
+
+## Advanced Integration Example
+
+You can use these events to send quiz data to an external API or CRM.
 
 ```php
-public function onQuizBeforeSave($context, $quiz, $isNew)
+public function onResponseAfterSave(Event $event): void
 {
-   // do your stuff
-   return true;
+    [$context, $response, $isNew] = array_values($event->getArguments());
+
+    if ($isNew && $response->completed) {
+        // Only run when a new response is completed
+        $userId = $response->created_by;
+        $score  = $response->score;
+        
+        // Send data to external CRM...
+    }
 }
 ```
 
-### onQuizBeforeDelete
+---
 
-This event will be fired before deleting a quiz.
+## Plugin Manifest (xml)
 
-```php
-public function onQuizBeforeDelete($context, $quiz)
-{
-   // do your stuff
-   return true;
-}
-```
+**File:** `plugins/communityquiz/myplugin/myplugin.xml`
 
-### onQuizChangeState
-
-This event will be triggered before any change of the state of a quiz(s) such as unpublishing, trashing or deleting.
-
-```php
-public function onQuizChangeState($context, $pks, $value)
-{
-   // do your stuff
-   return true;
-}
-```
-
-### onQuizAfterPublished
-
-This event will be fired when the quiz is published, i.e. add questions are added and quiz is made online to public.
-
-```php
-public function onQuizChangeState($context, $quiz, $isPublished) { 
-   // do your stuff return true; 
-}
-```
-
-### onQuizAfterSave
-
-This event will be fired after saving the quiz to database.
-
-```php
-public function onQuizAfterSave($context, $quiz, $isNew)
-{
-  // do your stuff
-}
-```
-
-### onQuizAfterDelete
-
-This event will be fired after deleting one or more quizzes.
-
-```php
-public function onQuizAfterDelete($context, $quiz)
-{
-  // do your stuff
-}
-```
-
-### onQuizAfterPassed
-
-This event will be fired after user completed response and result is pass. Response ID can be accessed with the variable $quiz->response_id.
-
-```php
-public function onQuizAfterPassed($context, $quiz, $isNew)
-{
-  // do your stuff
-}
-```
-
-### onQuizAfterFailed
-
-This event will be fired after user completed response and result is fail. Response ID can be accessed with the variable $quiz->response_id.
-
-```php
-public function onQuizAfterFailed($context, $quiz, $isNew)
-{
-  // do your stuff
-}
-```
-
-### onResponseBeforeSave
-
-This event will be triggered before saving the quiz response to database. Return false from this event will stops saving the response.
-
-```php
-public function onResponseBeforeSave($context, $response, $isNew)
-{
-   // do your stuff
-   return true;
-}
-```
-
-### onResponseBeforeDelete
-
-This event will be fired before deleting a quiz response.
-
-```php
-public function onResponseBeforeDelete($context, $data)
-{
-   // do your stuff
-   return true;
-}
-```
-
-### onResponseChangeState
-
-This event will be triggered before any change of the state of a response(s) such as unpublishing, trashing or deleting.
-
-```php
-public function onResponseChangeState($context, $pks, $value)
-{
-   // do your stuff
-   return true;
-}
-```
-
-### onResponseAfterSave
-
-This event will be fired after saving the response to database.
-
-```php
-public function onResponseAfterSave($context, $data, $isNew)
-{
-  // do your stuff
-}
-```
-
-### onResponseAfterDelete
-
-This event will be fired after deleting one or more responses.
-
-```php
-public function onResponseAfterDelete($context, $data)
-{
-  // do your stuff
-}
-```
-
-## Plugin installer
-
-Finally you need to have your plugin installer xml file as shown below.
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="2.5" type="plugin" group="communityquiz" method="upgrade">
-    <name>Community Quiz - YourPlugin</name>
-    <creationDate>15-10-2015</creationDate/>/
+<extension version="4.0" type="plugin" group="communityquiz" method="upgrade">
+    <name>plg_communityquiz_myplugin</name>
     <author>Your Name</author>
-    <authorEmail>Your email</authorEmail>
-    <authorUrl>Your email</authorUrl>
-    <copyright>All rights reserved by your company 2003-15.</copyright>
-    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
     <version>1.0.0</version>
-    <description>Some description</description>
+    <description>Extends Community Quiz functionality</description>
+    <namespace path="src">Joomla\Plugin\Communityquiz\MyPlugin</namespace>
     <files>
-        <filename>pluginname.xml</filename>
-        <filename plugin="pluginname">pluginname.php</filename>
+        <folder>src</folder>
+        <filename plugin="myplugin">myplugin.php</filename>
     </files>
- 
-    <config>
-        <fields name="params">
-            <fieldset name="basic">
-            </fieldset>
-        </fields>
-    </config>
 </extension>
 ```
+
+> [!TIP]
+> Always check the `com_communityquiz` models for more details on the properties available in the `$quiz` and `$response` objects during these events.
