@@ -14,31 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [7.4.7] - 2025-12-28
 
-### Added
-- [Ignore] Migrate to new build structure
-- + Adding filter responses by passed/failed status
-- + Adding scheduled report to generate and download quiz response PDF files + Adding scheduled report to generate and download certificate PDF files
-
-### Changed
-- Community Quiz v7.4.5 Release
-- Community Quiz v7.4.4 Release
-- Community Quiz v7.4.4 Release
-- + Upgrade modules and plugins for Joomla 6 compatibility
-- Community Quiz v7.4.3 Release
-- Community Quiz v7.4.2 Release
-- Community Quiz v7.4.1 release
-- + Generated custom scheduled reports
-- Community Quiz 7.4.0 Release
-- + Joomla 6 Compatibility Update
-- + Show question number on the results page
-
 ### Fixed
 - Fixed issue with question banks quiz response shows wrong status Fixed messages about deprecated notices
-- Fixed issues
-- * Fixed issue with unauthorised json download
-- * Fix task plugin
-- * Fixing download report function
-- * Fixing download report function
+- Fixed issue with unauthorised json download
+
+## [7.4.6] - 2025-12-17
+
+### Fixed
+- Hotfix
 
 ## [7.4.5] - 2025-12-17
 
