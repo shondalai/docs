@@ -12,6 +12,11 @@ All notable changes to Community Quiz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.4.8] - 2025-12-29
+
+### Fixed
+- Fixed issue with saving response for a question banks quiz
+
 ## [7.4.7] - 2025-12-28
 
 ### Fixed
