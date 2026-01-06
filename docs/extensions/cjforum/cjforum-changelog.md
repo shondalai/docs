@@ -18,18 +18,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new theme - Deep Ocean Gradient
 - Added recent topics listing menu item
 
-### Changed
-- Release version 6.0.2
-
-### Fixed
-- Build issues fixed
-
-## [6.0.2] - 2026-01-05
-
-### Added
-- Added new theme - Deep Ocean Gradient
-- Added recent topics listing menu item
-
 ### Fixed
 - Build issues fixed
 
