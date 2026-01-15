@@ -12,6 +12,15 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.4] - 2026-01-15
+
+### Added
+- Adding Embed topic support in Joomla articles
+
+### Fixed
+- Fixed issue with layout manager language strings
+- Fixed issue with topic sorting and filtering not applying across all replies
+
 ## [6.0.3] - 2026-01-08
 
 ### Added
