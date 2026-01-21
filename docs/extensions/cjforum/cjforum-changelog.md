@@ -12,6 +12,12 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.6] - 2026-01-21
+
+### Changed
+- Profile page shows real name instead of user handle
+- Updated with UX improvements
+
 ## [6.0.5] - 2026-01-15
 
 ### Fixed
