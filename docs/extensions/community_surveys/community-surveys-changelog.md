@@ -1698,3 +1698,30 @@ v1.0.01 (11-Oct-2010)
 v1.0.0
 
 + Initial release
+## [6.6.0] - 2026-01-21
+
+### Added
+- Add support for duplicate page with questions
+- Fix issue with translations not reflected for newly created questions
+- + Add an option to allow multiple same selections in Match the Following question
+- + Add an option to allow multiple same selections in Match the Following question
+
+### Changed
+- Community Surveys v6.5.6 Release
+- Community Surveys v6.5.6 Release
+- Community Surveys v6.5.5 Release
+- * Do not include unpublished responses in the CSV download
+- Community Surveys v6.5.4 Release
+- Community Surveys v6.5.4 Release
+- + Upgrade modules and plugins for Joomla 6 compatibility
+- * Create survey page shows error when compat plugin is disabled
+- * Unable to delete the trashed responses
+- Community Surveys v6.5.3 Release
+- Community Surveys v6.5.2 Release
+- * Unable filter response status in CSV download
+
+### Fixed
+- Fixed database errors (false positives)
+- * Fixed issue with the content plugin
+- * Fixed issue with unauthorised json download
+- * Fix for allowing same selections in matching question type
