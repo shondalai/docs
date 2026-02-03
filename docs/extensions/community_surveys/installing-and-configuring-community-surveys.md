@@ -45,13 +45,11 @@ Before installing, ensure your server meets these requirements:
 
 3. Drag and drop the package file, or click **Upload Package File**
 
-   ![Upload Package](../../../static/img/surveys/install-upload.png)
 
 4. Wait for the installation to complete
 
 5. You'll see a success message confirming installation
 
-   ![Installation Success](../../../static/img/surveys/install-success.png)
 
 ### Step 3: Verify Installation
 
@@ -77,7 +75,6 @@ After installation, verify all components are installed:
 1. Navigate to **Components → Community Surveys**
 2. Click **Options** in the toolbar
 
-   ![Options Button](../../../static/img/surveys/options-button.png)
 
 ### General Settings
 

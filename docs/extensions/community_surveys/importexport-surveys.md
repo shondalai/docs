@@ -36,7 +36,6 @@ The export includes the complete survey structure: all questions, answer options
 
 4. Select **Export Survey** from the options
 
-   ![Export Survey Option](../../../static/img/surveys/export-survey-button.png)
 
 5. The survey downloads as a **JSON file**
 
@@ -90,11 +89,9 @@ The export creates a JSON file structured like:
 
 2. Click **Import** in the toolbar
 
-   ![Import Button](../../../static/img/surveys/import-button.png)
 
 3. Click **Choose File** and select your exported JSON file
 
-   ![Import Dialog](../../../static/img/surveys/import-dialog.png)
 
 4. Configure import options:
 
