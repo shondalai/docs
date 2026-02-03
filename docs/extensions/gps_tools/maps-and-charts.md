@@ -168,6 +168,21 @@ When using Google Maps, choose from built-in styles:
 | **Shadow** | Yes | Drop shadow effect |
 | **Start/End Markers** | Yes | Show route endpoints |
 | **Marker Size** | 8px | Endpoint marker size |
+| **Line Cap** | Round | Track line end style |
+| **Line Join** | Round | Track corner style |
+
+### Distance Markers
+
+Display distance markers along the track at regular intervals:
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| **Show Distance Markers** | Yes | Enable/disable markers |
+| **Distance Unit** | km | Kilometers or miles |
+| **Interval** | 1 | Every N km/mi |
+| **Marker Color** | #3B82F6 | Marker background color |
+| **Marker Size** | 24px | Marker diameter |
+| **Show Label** | Yes | Display distance text |
 
 ### Color Modes
 

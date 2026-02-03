@@ -13,9 +13,10 @@ Get GPS Tools up and running in 10 minutes.
 
 Before you begin, ensure you have:
 
-- ✅ Joomla 5.0 or later installed
+- ✅ Joomla 6.0 or later installed
 - ✅ PHP 8.1 or later
-- ✅ A GPS track file (GPX, KML, or TCX)
+- ✅ Modern browser (Chrome/Edge 90+, Firefox 88+, Safari 15+)
+- ✅ A GPS track file (GPX, KML, or TCX) or be ready to draw a track
 
 ## Step 1: Install GPS Tools
 
@@ -28,9 +29,11 @@ Before you begin, ensure you have:
 
 1. Go to **System → Plugins**
 2. Search for "gpstools"
-3. Enable both plugins:
+3. Enable the plugins:
    - **Content - GPS Tools** (for shortcodes)
-   - **Finder - GPS Tools** (for search)
+   - **Finder - GPS Tools** (for search integration)
+   - **System - GPS Tools** (for enhanced processing)
+   - **GPS Tools - Tracks** (for track event handling)
 
 ## Step 3: Create Your First Category
 
@@ -42,8 +45,9 @@ Before you begin, ensure you have:
 ## Step 4: Upload Your First Track
 
 1. Go to **Components → GPS Tools → Tracks**
-2. Click **New**
-3. Fill in the details:
+2. The React admin panel will load
+3. Click **New Track** button
+4. Fill in the details:
 
 | Field | Value |
 |-------|-------|
@@ -52,12 +56,18 @@ Before you begin, ensure you have:
 | **Activity Type** | Hiking |
 | **Difficulty** | Easy |
 
-4. Click **Upload GPX/KML/TCX** and select your file
-5. Wait for parsing to complete
-6. Click **Save & Close**
+5. Choose your input method:
+   - **Upload GPX/KML/TCX**: Select a file from your GPS device or app
+   - **Draw on Map**: Click points on the interactive map to create a route
+6. Wait for parsing to complete
+7. Click **Save**
 
-:::tip
-The system automatically extracts coordinates, elevation, distance, and other statistics from your file.
+:::tip File Upload
+The system automatically extracts coordinates, elevation, distance, and statistics from GPX, KML, and TCX files.
+:::
+
+:::tip Drawing Tracks
+When drawing tracks, the map will auto-calculate distance. Elevation data can be enriched after saving using external APIs.
 :::
 
 ## Step 5: Create a Menu Item
@@ -75,9 +85,11 @@ The system automatically extracts coordinates, elevation, distance, and other st
 3. You should see your track listing!
 
 Click on a track to view:
-- Interactive map
-- Elevation chart
-- Track statistics
+- Interactive map with multiple tile providers
+- Elevation profile chart
+- Track statistics (distance, elevation gain/loss, speed)
+- Photo gallery
+- Comments and ratings
 
 ## What's Next?
 
@@ -86,16 +98,18 @@ Click on a track to view:
 Go to **Components → GPS Tools → Options** to configure:
 
 - Map provider (OpenStreetMap or Google Maps)
+- Map tile providers (15+ options)
 - Unit system (Metric or Imperial)
 - Chart display options
-- Upload limits
+- Upload limits and access permissions
 
 ### Add More Tracks
 
-Upload more GPX, KML, or TCX files:
-- From GPS devices (Garmin, Suunto, etc.)
-- From apps (Strava, Komoot, AllTrails)
-- From online sources
+Upload GPX, KML, or TCX files from:
+- GPS devices (Garmin, Suunto, Coros, etc.)
+- Fitness apps (Strava, Komoot, AllTrails)
+- Online sources
+- Or draw tracks directly on the map!
 
 ### Customize Display
 
@@ -106,9 +120,18 @@ Upload more GPX, KML, or TCX files:
 ### Engage Your Community
 
 Enable community features:
-- Comments on tracks
-- Star ratings
+- Comments on tracks (nested replies)
+- Like/dislike ratings
+- Email notifications for subscribers
 - Social sharing
+
+### Admin Dashboard
+
+The React-powered admin panel provides:
+- Track statistics overview
+- Recent activity monitoring
+- Quick access to all management features
+- Bulk operations
 
 ## Quick Reference
 

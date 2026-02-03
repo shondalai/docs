@@ -28,12 +28,13 @@ The following PHP extensions are required:
 
 | Extension | Purpose |
 |-----------|---------|
-| `json` | JSON parsing |
-| `xml` | GPX/KML file parsing |
+| `json` | JSON parsing for API responses |
+| `xml` | GPX/KML/TCX file parsing |
 | `simplexml` | XML handling |
 | `mbstring` | Character encoding |
-| `gd` or `imagick` | Image processing (optional, for thumbnails) |
+| `gd` or `imagick` | Image processing (thumbnails, gallery) |
 | `zip` | File compression |
+| `curl` | External API calls (elevation data, static maps) |
 
 ### Browser Support
 
@@ -43,6 +44,10 @@ The following PHP extensions are required:
 | Firefox | 88+ |
 | Safari | 14+ |
 | Edge | 90+ |
+
+:::info Modern Frontend
+GPS Tools uses React 19 with modern JavaScript. Older browsers may not be fully supported.
+:::
 
 ## Installation
 
@@ -57,11 +62,14 @@ The following PHP extensions are required:
    - Click **Upload & Install**
 
 3. **What Gets Installed:**
-   - `com_gpstools` - Main GPS Tools component
+   - `com_gpstools` - Main GPS Tools component with React 19 SPA
    - `mod_gpstools_map` - Interactive map module
-   - `mod_gpstools_tracks` - Tracks listing module
+   - `mod_gpstools_tracks` - Tracks listing module  
+   - `mod_gpstools_categories` - Categories module
    - `plg_finder_gpstools` - Smart Search plugin
    - `plg_content_gpstools` - Content shortcode plugin
+   - `plg_system_gpstools` - System plugin for global features
+   - `plg_gpstools_tracks` - Tracks event plugin
 
 ### Method 2: Install Individual Extensions
 
@@ -108,6 +116,7 @@ After installation, enable the plugins for full functionality:
 |--------|---------|
 | **Content - GPS Tools** | Enables shortcodes in articles |
 | **Finder - GPS Tools** | Enables Smart Search for tracks |
+| **System - GPS Tools** | Global features and assets |
 
 ### Step 2: Configure Component Settings
 
@@ -119,11 +128,18 @@ After installation, enable the plugins for full functionality:
 - **Default Map Provider** - Choose OpenStreetMap (free) or Google Maps
 - **Google Maps API Key** - Required if using Google Maps
 - **Default Zoom Level** - Initial zoom (1-20)
+- **Track Color & Width** - Customize track appearance
 
 **Display Settings:**
 - **Unit System** - Metric (km, m) or Imperial (mi, ft)
 - **Show Charts** - Enable/disable chart display
 - **Show Comments** - Enable/disable commenting
+- **Description Position** - Above map, below map, or sidebar
+
+**Chart Settings:**
+- **Show Elevation Chart** - Enable elevation profile
+- **Show Speed Chart** - Enable speed visualization
+- **Show Heart Rate Chart** - Enable heart rate display
 
 **Upload Settings:**
 - **Allowed Extensions** - gpx, kml, tcx
@@ -145,6 +161,9 @@ Configure who can do what:
 | Edit | Edit any track |
 | Edit Own | Edit own tracks only |
 | Edit State | Publish/unpublish tracks |
+| Rate | Rate tracks (like/dislike) |
+| Download | Download track files |
+| Moderate | Moderate comments and content |
 
 **Recommended Settings:**
 

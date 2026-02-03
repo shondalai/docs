@@ -38,6 +38,7 @@ const sidebars: SidebarsConfig = {
       label: 'Developer Guide',
       items: [
         'plugin-events',
+        'api-reference',
       ],
     },
 

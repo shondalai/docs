@@ -149,6 +149,92 @@ Solutions for common issues with GPS Tools.
 
 ---
 
+## React Application Issues
+
+GPS Tools 7.x uses a React 19 frontend. Here are common React-related issues.
+
+### React App Not Loading
+
+**Symptoms:** Page shows loading spinner indefinitely or blank area.
+
+**Solutions:**
+
+1. **Check JavaScript console:**
+   - Press F12 → Console tab
+   - Look for React or JavaScript errors
+
+2. **Verify assets loaded:**
+   - Check Network tab for 404 errors
+   - Look for `/media/com_gpstools/js/` files
+
+3. **Clear all caches:**
+   - Joomla cache: System → Clear Cache
+   - Browser cache: Ctrl+Shift+Delete
+   - CDN/proxy cache if applicable
+
+4. **Check browser compatibility:**
+   - React 19 requires modern browsers
+   - Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+
+5. **Check template conflicts:**
+   - Disable template scripts temporarily
+   - Check for duplicate React versions
+
+### Admin Panel Not Working
+
+**Symptoms:** Admin interface doesn't load or shows errors.
+
+**Solutions:**
+
+1. **Check Joomla API access:**
+   - Verify user has admin permissions
+   - Check component ACL settings
+
+2. **Verify CSRF token:**
+   - May need to re-login
+   - Check for session timeout
+
+3. **Check browser console:**
+   - Look for API response errors
+   - Check for CORS issues
+
+### Data Not Refreshing
+
+**Symptoms:** Changes don't appear until page reload.
+
+**Solutions:**
+
+1. **Use keyboard shortcut:**
+   - Ctrl+F5 for hard refresh
+
+2. **Check React Query cache:**
+   - The app caches API responses
+   - Wait a few seconds or refresh
+
+3. **Check API response:**
+   - Network tab → check API calls
+   - Verify data is returned correctly
+
+### Styling Issues
+
+**Symptoms:** Components look broken or unstyled.
+
+**Solutions:**
+
+1. **Check CSS loaded:**
+   - Network tab → look for `/media/com_gpstools/css/`
+   - Should see gpstools styles
+
+2. **Check class conflicts:**
+   - GPS Tools uses `.gpstools-app` scope
+   - Template CSS may override
+
+3. **Check Tailwind conflicts:**
+   - GPS Tools includes Tailwind
+   - May conflict with template Tailwind
+
+---
+
 ## Chart Issues
 
 ### Charts Not Displaying

@@ -7,7 +7,7 @@ sidebar_position: 6
 
 # GPS Tools Modules
 
-GPS Tools includes two frontend modules for displaying tracks and maps in any module position.
+GPS Tools includes three frontend modules for displaying tracks and maps in any module position.
 
 ## Overview
 
@@ -15,6 +15,7 @@ GPS Tools includes two frontend modules for displaying tracks and maps in any mo
 |--------|-------------|
 | **mod_gpstools_map** | Interactive map showing track locations |
 | **mod_gpstools_tracks** | Track listing with multiple layouts |
+| **mod_gpstools_categories** | Category listing with track counts |
 
 ## mod_gpstools_map - Interactive Map Module
 
@@ -383,7 +384,52 @@ Add custom CSS:
 
 ## Using Both Modules Together
 
-Create a rich GPS experience by combining both modules:
+Create a rich GPS experience by combining all modules:
+
+### mod_gpstools_categories - Category Listing
+
+Displays a list of track categories for navigation.
+
+### Features
+
+- Hierarchical category display
+- Track counts per category
+- Customizable layout
+- Link to category tracks
+
+### Creating the Module
+
+1. Go to **Content → Site Modules → New**
+2. Select **GPS Tools - Categories**
+3. Configure settings and position
+4. Save and publish
+
+### Configuration Options
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| **Parent Category** | Category | Root | Start from this category |
+| **Show Track Count** | Yes/No | Yes | Show number of tracks |
+| **Show Empty Categories** | Yes/No | No | Show categories with no tracks |
+| **Maximum Depth** | Number | 0 | Subcategory depth (0=all) |
+| **Layout** | Select | List | Display style |
+
+### Example Configuration
+
+```
+Position: sidebar-left
+Parent Category: Root
+Show Track Count: Yes
+Show Empty: No
+Maximum Depth: 2
+Layout: List
+```
+
+---
+
+## Using All Modules Together
+
+Create a rich GPS experience by combining all modules:
 
 ### Example: Adventure Page Layout
 

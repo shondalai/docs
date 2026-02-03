@@ -292,12 +292,43 @@ Configure general display options.
 | Setting | Default | Options | Description |
 |---------|---------|---------|-------------|
 | **Unit System** | Metric | Metric, Imperial | Distance and elevation units |
-| **Date Format** | Y-m-d | PHP date format | How dates are displayed |
-| **Time Format** | H:i | PHP time format | How times are displayed |
+| **Description Position** | Below Map | See below | Where to show track description |
 | **Show Track Stats** | Yes | Yes/No | Display statistics panel |
 | **Show Waypoints** | Yes | Yes/No | Display waypoint markers |
 | **Show Comments** | Yes | Yes/No | Enable comment system |
 | **Show Ratings** | Yes | Yes/No | Enable rating system |
+| **Tracks Per Page** | 20 | 5-100 | Pagination limit |
+
+### Description Position Options
+
+| Position | Description |
+|----------|-------------|
+| Above Map | Show description before the map |
+| Below Map | Show description after the map |
+| Below Charts | Show description after all charts |
+| Sidebar | Show description in sidebar (if layout supports) |
+
+### Visibility Access Settings
+
+Control who can see specific features. Each setting accepts:
+
+| Access Level | Who Can See |
+|--------------|-------------|
+| **All** | Everyone including guests |
+| **Registered** | Only logged-in users |
+| **None** | Hidden from everyone |
+
+**Configurable Visibility:**
+
+| Feature | Setting | Description |
+|---------|---------|-------------|
+| **Downloads** | Downloads Visibility | GPX/KML/TCX download buttons |
+| **Download in List** | Download in List Visibility | Download button on track cards |
+| **Copy URL** | Copy URL Visibility | Copy track URL button |
+| **Share** | Share Visibility | Social sharing buttons |
+| **Print** | Print Visibility | Print track button |
+| **Navigation** | Navigation Visibility | Navigate to Start button |
+| **Embed Code** | Embed Visibility | Get embed code button |
 | **Tracks Per Page** | 20 | 5-100 | Pagination limit |
 
 ### Unit System Details
@@ -394,8 +425,13 @@ Configure access control for different user groups.
 | **Edit** | Edit any track | Editors, Administrators |
 | **Edit Own** | Edit own tracks only | Authors |
 | **Edit State** | Publish/unpublish tracks | Publishers, Administrators |
-| **Comment** | Post comments on tracks | Registered users |
-| **Rate** | Rate tracks | Registered users |
+| **Edit State Own** | Publish own tracks only | Authors (optional) |
+| **View** | View published tracks | All users |
+| **Rate** | Rate tracks (like/dislike) | Registered users |
+| **Vote** | Vote on content | Registered users |
+| **Download** | Download track files | Configurable per access level |
+| **Report** | Report inappropriate content | Registered users |
+| **Moderate** | Moderate comments and tracks | Moderators, Administrators |
 
 ### Recommended Permission Matrix
 

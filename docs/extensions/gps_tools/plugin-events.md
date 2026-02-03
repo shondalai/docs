@@ -476,6 +476,98 @@ public function onAfterTrackView(AfterTrackViewEvent $event): void
 
 ---
 
+#### AfterTrackStateChange
+
+Fired when a track's publishing state changes (publish/unpublish).
+
+| Property | Type | Description |
+|----------|------|-------------|
+| Event Name | `com_gpstools.track.afterStateChange` | |
+| Event Class | `AfterTrackStateChangeEvent` | |
+| Cancellable | ❌ No | |
+
+**Methods:**
+
+| Method | Return | Description |
+|--------|--------|-------------|
+| `getTrackId()` | `int` | Get the track ID |
+| `getTrack()` | `object` | Get the track object |
+| `getNewState()` | `int` | Get new state value |
+| `getOldState()` | `int` | Get previous state value |
+| `wasPublished()` | `bool` | True if track became published |
+| `wasUnpublished()` | `bool` | True if track became unpublished |
+
+**Example - External Sync:**
+
+```php
+public function onAfterTrackStateChange(AfterTrackStateChangeEvent $event): void
+{
+    $track = $event->getTrack();
+    
+    if ($event->wasPublished()) {
+        // Sync to external service when published
+        $this->externalService->createTrack([
+            'id' => $event->getTrackId(),
+            'title' => $track->title,
+            'coordinates' => $this->getTrackCoordinates($track),
+        ]);
+    } elseif ($event->wasUnpublished()) {
+        // Remove from external service when unpublished
+        $this->externalService->deleteTrack($event->getTrackId());
+    }
+}
+```
+
+---
+
+### Rating Events
+
+#### AfterTrackRate
+
+Fired when a user rates (likes/dislikes) a track.
+
+| Property | Type | Description |
+|----------|------|-------------|
+| Event Name | `com_gpstools.rating.afterRate` | |
+| Event Class | `AfterTrackRateEvent` | |
+| Cancellable | ❌ No | |
+
+**Methods:**
+
+| Method | Return | Description |
+|--------|--------|-------------|
+| `getTrackId()` | `int` | Get the track ID |
+| `getUserId()` | `int` | Get the user ID who rated |
+| `getRating()` | `string` | Get rating type ('like' or 'dislike') |
+| `isLike()` | `bool` | True if this is a like |
+| `isDislike()` | `bool` | True if this is a dislike |
+| `getTotalLikes()` | `int` | Get total likes after rating |
+| `getTotalDislikes()` | `int` | Get total dislikes after rating |
+
+**Example - Gamification:**
+
+```php
+public function onAfterTrackRate(AfterTrackRateEvent $event): void
+{
+    // Award points to track owner when they get a like
+    if ($event->isLike()) {
+        $track = $this->trackService->getTrack($event->getTrackId());
+        if ($track && $track->created_by != $event->getUserId()) {
+            $this->pointsService->award($track->created_by, 5, 'track_liked');
+            
+            // Check for badge thresholds
+            if ($event->getTotalLikes() === 10) {
+                $this->badgeService->award($track->created_by, 'popular_track');
+            } elseif ($event->getTotalLikes() === 100) {
+                $this->badgeService->award($track->created_by, 'viral_track');
+            }
+        }
+    }
+}
+```
+
+---
+
 ### Comment Events
 
 #### BeforeCommentCreate

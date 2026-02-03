@@ -14,15 +14,29 @@ Learn how to upload, organize, and manage GPS tracks in GPS Tools.
 Navigate to track management via:
 - **Components → GPS Tools → Tracks**
 
+The React-powered admin interface provides a modern dashboard with real-time filtering, sorting, and batch operations.
+
+## Creating Tracks
+
+GPS Tools supports two methods for creating tracks:
+
+### Method 1: Upload GPS File
+
+Upload GPX, KML, or TCX files from GPS devices or apps.
+
+### Method 2: Draw on Map
+
+Create routes by drawing directly on the interactive map.
+
 ## Uploading Tracks
 
 ### Supported File Formats
 
 | Format | Extension | Best For |
 |--------|-----------|----------|
-| **GPX** | .gpx | Most GPS devices and apps |
+| **GPX** | .gpx | Most GPS devices and apps, full sensor data |
 | **KML** | .kml | Google Earth exports |
-| **TCX** | .tcx | Garmin devices, fitness apps |
+| **TCX** | .tcx | Garmin devices, fitness apps with workout data |
 
 ### Upload Process
 
@@ -37,9 +51,8 @@ Navigate to track management via:
 - **Status** - Published, Unpublished, Archived, or Trashed
 
 **Track File:**
-- Click **Upload GPX/KML/TCX**
-- Select your file
-- File is automatically parsed
+- Drag and drop your GPX/KML/TCX file, or click to browse
+- File is automatically parsed with live preview
 
 4. Click **Save** or **Save & Close**
 
@@ -47,11 +60,25 @@ Navigate to track management via:
 
 When you upload a track file, GPS Tools automatically:
 
-1. **Parses coordinates** - Extracts all GPS points
-2. **Calculates statistics** - Distance, elevation, duration
-3. **Identifies bounds** - Geographic boundaries
+1. **Parses coordinates** - Extracts all GPS points with elevation
+2. **Calculates statistics** - Distance, elevation gain/loss, duration, speed
+3. **Identifies bounds** - Geographic boundaries for map centering
 4. **Extracts waypoints** - Points of interest from the file
-5. **Generates thumbnail** - Map preview image (if enabled)
+5. **Maps waypoint symbols** - Converts GPX/KML symbols to waypoint types
+6. **Generates thumbnail** - Static map preview (if configured)
+7. **Detects file hash** - For duplicate detection
+
+## Drawing Tracks on the Map
+
+Create routes without uploading files:
+
+1. Click **New** to create a new track
+2. Select the **Draw Route** tab
+3. Click on the map to add points
+4. Double-click to finish the route
+5. Fill in track details and save
+
+The system calculates statistics based on the drawn route and optional elevation data.
 
 ## Track Details
 
@@ -128,13 +155,43 @@ GPS Tools calculates these statistics automatically:
 | **Moving Average** | Average while moving |
 | **Max Speed** | Peak speed recorded |
 
-### Fitness (if available)
+### Fitness (if available in file)
 
 | Statistic | Description |
 |-----------|-------------|
-| **Average Heart Rate** | Mean heart rate |
-| **Max Heart Rate** | Peak heart rate |
+| **Average Heart Rate** | Mean heart rate during activity |
+| **Max Heart Rate** | Peak heart rate recorded |
 | **Calories** | Estimated energy burned |
+| **Cadence** | Steps/revolutions per minute |
+| **Power** | Watts output (cycling) |
+
+## Track Images & Gallery
+
+Add photos to your tracks for a richer experience.
+
+### Uploading Images
+
+1. Edit the track
+2. Go to the **Gallery** tab
+3. Drag and drop images or click to browse
+4. Add titles and descriptions (optional)
+5. Reorder by dragging
+
+### Image Features
+
+| Feature | Description |
+|---------|-------------|
+| **Automatic Thumbnails** | Generated on upload |
+| **Geotagging** | Location from EXIF data (optional) |
+| **Lightbox Viewer** | Full-size viewing on frontend |
+| **S3 Storage** | Optional cloud storage support |
+| **Ordering** | Drag to reorder in gallery |
+
+### Supported Image Formats
+
+- JPEG (.jpg, .jpeg)
+- PNG (.png)
+- WebP (.webp)
 
 ## Managing Waypoints
 
@@ -159,16 +216,44 @@ Waypoints are points of interest along your track.
 
 ### Waypoint Types
 
-| Type | Icon | Usage |
-|------|------|-------|
-| Summit | ⛰️ | Mountain peaks |
-| Viewpoint | 👁️ | Scenic overlooks |
-| Rest Area | 🪑 | Benches, shelters |
-| Parking | 🅿️ | Trailhead parking |
-| Water | 💧 | Water sources |
-| Campsite | ⛺ | Camping locations |
-| Warning | ⚠️ | Hazards |
-| Info | ℹ️ | Information points |
+GPS Tools includes a waypoint type system with customizable types managed in the admin panel.
+
+**Default Waypoint Types:**
+
+| Type | Icon | Color | Usage |
+|------|------|-------|-------|
+| Summit | Mountain | Red | Mountain peaks, high points |
+| Viewpoint | Eye | Blue | Scenic overlooks |
+| Rest Area | Bench | Gray | Benches, shelters, rest stops |
+| Parking | Car | Blue | Trailhead parking |
+| Water | Droplet | Cyan | Water sources, streams, lakes |
+| Campground | Tent | Green | Camping locations |
+| Warning | Alert | Orange | Hazards, dangerous areas |
+| Information | Info | Blue | Information points, signs |
+| Food | Utensils | Green | Restaurants, cafes, snack points |
+| Photo | Camera | Purple | Great photo opportunities |
+| Trailhead | Flag | Green | Trail starting points |
+
+### Managing Waypoint Types
+
+1. Go to **Components → GPS Tools → Waypoint Types**
+2. Create, edit, or reorder waypoint types
+3. Customize icon, color, and description
+
+### Automatic Symbol Mapping
+
+GPS Tools automatically maps GPX/KML symbols to waypoint types:
+
+| GPX Symbol | Maps To |
+|------------|---------|
+| `summit`, `peak`, `mountain` | Summit |
+| `viewpoint`, `overlook`, `scenic area` | Viewpoint |
+| `parking`, `parking area`, `car` | Parking |
+| `water`, `drinking water`, `stream`, `lake` | Water |
+| `campground`, `camp`, `camping` | Campground |
+| `danger`, `caution`, `danger area` | Warning |
+| `food`, `restaurant`, `fast food` | Food |
+| `photo`, `camera` | Photo |
 
 ### Adding Manual Waypoints
 
@@ -265,14 +350,26 @@ Cycling Routes/
 | **Approve** | Make comment visible |
 | **Unpublish** | Hide comment |
 | **Delete** | Remove permanently |
-| **Reply** | Add admin response |
+| **Mark as Spam** | Flag as spam content |
+| **Ban User** | Prevent future comments |
+
+### Banning System
+
+GPS Tools includes a comprehensive ban system:
+
+1. Go to **Components → GPS Tools → Comments**
+2. Select a comment from a user to ban
+3. Ban options:
+   - Ban by User ID (registered users)
+   - Ban by Email (guests)
+   - Ban by IP Address
+   - Set expiration (temporary or permanent)
 
 ### Rating System
 
-- Users can rate tracks 1-5 stars
-- Average rating displays on track
-- Rating count shows engagement
-- Ratings visible in track list
+- Users can like/dislike tracks
+- Like and dislike counts display on tracks
+- Ratings visible in track list and detail views
 
 ## Publishing Workflow
 
@@ -318,20 +415,70 @@ For very large track files (10MB+):
 
 ## Exporting Tracks
 
-### Download Original File
+### Download Track Files
 
-If "Store Original File" is enabled:
+Users can download tracks in multiple formats:
 
-1. Edit the track
-2. Click **Download Original**
-3. Original GPX/KML/TCX is downloaded
+| Format | Description |
+|--------|-------------|
+| **GPX** | Standard GPS Exchange Format |
+| **KML** | Google Earth format |
+| **TCX** | Garmin Training Center format |
+
+Download permissions can be configured per access level in component settings.
 
 ### Export Track Data
 
-Track statistics can be exported via:
+Track data can be accessed via:
 
-- **API** - JSON format
-- **Print** - Print-friendly view
+- **REST API** - JSON format for integrations
+- **Print View** - Print-friendly layout
+- **Embed Code** - Embed in external sites
+
+## Email Notifications
+
+GPS Tools includes an email notification system with customizable templates.
+
+### Managing Email Templates
+
+1. Go to **Components → GPS Tools → Email Templates**
+2. Edit templates for different events:
+
+| Template | Trigger |
+|----------|---------|
+| **Track Created** | When a new track is published |
+| **Comment Created** | When someone comments on a track |
+| **Track Approval Required** | When a track needs moderation |
+| **Comment Approval Required** | When a comment needs moderation |
+| **Track Liked** | When someone likes a track |
+| **Comment Liked** | When someone likes a comment |
+
+### Template Placeholders
+
+Templates support dynamic placeholders:
+
+```
+{site_name}, {track_title}, {track_url}, {author_name}, 
+{comment_content}, {approval_url}, {created_date}
+```
+
+## Static Map Thumbnails
+
+GPS Tools can generate static map thumbnails for track previews.
+
+### Configuration
+
+Enable in **Options → Static Maps**:
+
+- **Provider** - OpenStreetMap or Mapbox
+- **Width/Height** - Thumbnail dimensions
+- **Auto-generate** - Create on track save
+
+### Regenerating Thumbnails
+
+1. Go to Tracks list
+2. Select tracks
+3. Use **Regenerate Thumbnails** batch action
 
 ## Best Practices
 

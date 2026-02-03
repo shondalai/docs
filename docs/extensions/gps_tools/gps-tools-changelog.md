@@ -98,6 +98,19 @@ GPS Tools 7.0 is a ground-up rebuild of the extension with a modern React 19 arc
   - Filtering by category, difficulty, activity type
   - Sort by date, popularity, distance
   - Responsive grid layouts
+- **GPS Tools Categories Module** (`mod_gpstools_categories`)
+  - Display track categories as grid or list
+  - Customizable layouts (grid/list/compact)
+  - Track count badges per category
+  - Category image and description support
+
+#### 🚀 Track Creation
+
+- **Drawn Tracks** - Create tracks directly on the map by clicking points
+- **Multi-format Import** - Support for GPX 1.0/1.1, KML, and TCX file formats
+- **Photo Gallery** - Upload multiple images with lightbox viewing
+- **Email Notifications** - Customizable email templates for track events
+- **Visibility Settings** - Control access: all users, registered users, or none
 
 #### 🚀 Integrations
 - **Smart Search Integration** - Enhanced finder plugin with track metadata indexing
