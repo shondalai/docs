@@ -13,47 +13,134 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
-
 ## [7.0.0] - 2026-02-03
 
-### Added
-- - New **Integrations Framework**: Comprehensive system to connect surveys with third-party services. - **Google Sheets Integration**: Automatically sync survey responses to Google Spreadsheets with automatic header creation and OAuth 2.0 security. - **Webhook Integration**: Real-time data streaming to custom endpoints via HTTP POST/GET. - **Advanced Reports**: Redesigned reporting dashboard featuring interactive charts and real-time analytics. - **Detailed Response View**: New administrative interface for inspecting individual survey submissions. - **Enhanced Downloads**: Support for detailed response reports and PDF exports. - **Joomla 6 Native**: Fully optimized for Joomla 6 architecture, removing the dependency on the Backward Compatibility (BC) plugin. - **Frontend Redesign**: Completely overhauled the survey form with a "Swiss-inspired" minimalist, responsive design optimized for both desktop and mobile. - **Invitations Workflow**: Redesigned the invite page for a more intuitive and streamlined user experience. - **Admin UI**: Updated administrative screens with a premium, compact layout using Bootstrap 5 and custom refined CSS. - Improved API reliability for OAuth callbacks using dual-channel (postMessage/Storage) communication. - Resolved issues with data mapping between survey questions and third-party integration fields.
+**Major Release: Complete Rewrite for Joomla 5/6**
 
-### Changed
-- Release version 8.0.0
-- Redesigned form builder interface with compact and modern layout
-- Improved advanced search with more options
+This is a complete architectural rewrite of Community Surveys, modernizing the codebase for Joomla 5 and 6 compatibility with native APIs and eliminating the need for backward compatibility plugins.
 
-### Fixed
-- Fixed conditional rules
+### 🎉 Breaking Changes
+- **Joomla 5/6 Native**: Complete rewrite using Joomla 5/6 APIs - no backward compatibility plugin required
+- **Minimum Requirements**: Joomla 5.0+ or Joomla 6.0+
+- **Modern Architecture**: PSR-4 autoloading, namespaced classes, dependency injection, and MVC Factory pattern
+- **React Frontend**: Survey forms and admin interface rebuilt with React 18 and modern JavaScript (ES6+)
 
-## [8.0.0] - 2026-02-03
+### ✨ Added
 
-### Added
-- - New **Integrations Framework**: Comprehensive system to connect surveys with third-party services. - **Google Sheets Integration**: Automatically sync survey responses to Google Spreadsheets with automatic header creation and OAuth 2.0 security. - **Webhook Integration**: Real-time data streaming to custom endpoints via HTTP POST/GET. - **Advanced Reports**: Redesigned reporting dashboard featuring interactive charts and real-time analytics. - **Detailed Response View**: New administrative interface for inspecting individual survey submissions. - **Enhanced Downloads**: Support for detailed response reports and PDF exports. - **Joomla 6 Native**: Fully optimized for Joomla 6 architecture, removing the dependency on the Backward Compatibility (BC) plugin. - **Frontend Redesign**: Completely overhauled the survey form with a "Swiss-inspired" minimalist, responsive design optimized for both desktop and mobile. - **Invitations Workflow**: Redesigned the invite page for a more intuitive and streamlined user experience. - **Admin UI**: Updated administrative screens with a premium, compact layout using Bootstrap 5 and custom refined CSS. - Improved API reliability for OAuth callbacks using dual-channel (postMessage/Storage) communication. - Resolved issues with data mapping between survey questions and third-party integration fields.
-- Add support for duplicate page with questions
-- Fix issue with translations not reflected for newly created questions
+#### Core Features
+- **AI-Powered Translations**: Integrated AWS Bedrock AI for automatic survey translation into 40+ languages
+- **Enhanced Conditional Rules**:
+    - Show/hide questions on the same page based on answers
+    - Skip to specific pages dynamically
+    - End survey with custom messages based on responses
+    - Conditional rules now properly filter response reports
+- **Advanced Question Types**: Full support for all question types including grids, sliders, ratings, and file uploads
+- **Answer Presets**: Reusable answer sets with one-click application to questions
+- **Question Library**: Save and reuse questions across multiple surveys
 
-### Changed
-- Redesigned form builder interface with compact and modern layout
-- Improved advanced search with more options
-- Release version 6.6.0
-- Community Surveys v6.5.6 Release
-- Community Surveys v6.5.6 Release
-- Community Surveys v6.5.5 Release
-- * Do not include unpublished responses in the CSV download
-- Community Surveys v6.5.4 Release
-- Community Surveys v6.5.4 Release
-- + Upgrade modules and plugins for Joomla 6 compatibility
-- * Create survey page shows error when compat plugin is disabled
-- * Unable to delete the trashed responses
+#### Integrations
+- **Integrations Framework**: Comprehensive system to connect surveys with third-party services
+- **Google Sheets Integration**: Automatically sync survey responses to Google Spreadsheets with OAuth 2.0 security
+- **Webhook Integration**: Real-time data streaming to custom endpoints via HTTP POST/GET
+- **AcyMailing Plugin**: Joomla 6 compatible plugin with tag support and shortcode updates
 
-### Fixed
-- Fixed conditional rules
-- Fixed database errors (false positives)
-- * Fixed issue with the content plugin
-- * Fixed issue with unauthorised json download
-- * Fix for allowing same selections in matching question type
+#### Reporting & Analytics
+- **Advanced Reports Dashboard**: Interactive charts with Chart.js and real-time analytics
+- **Detailed Response View**: Administrative interface for inspecting individual survey submissions
+- **Enhanced CSV Export**: Configurable column selection and filtering options
+- **PDF Reports**: Generate professional PDF reports with custom styling
+- **Report Filtering**: Filter by date range, completion status, and custom fields
+
+#### User Experience
+- **Frontend Redesign**: "Swiss-inspired" minimalist design with premium look and feel
+    - Responsive design optimized for desktop, tablet, and mobile
+    - Smooth animations and transitions
+    - Progress indicators for multi-page surveys
+    - Dark mode support
+- **Invitations Workflow**: Redesigned invite system with bulk email capabilities
+- **My Responses**: User dashboard to view and manage their survey submissions
+- **Continue Later**: Save progress and resume surveys with unique secure keys
+
+#### Admin Interface
+- **Modern Admin UI**: Compact, premium layout using Bootstrap 5 and custom CSS
+- **React-Based Form Builder**: Drag-and-drop question management with live preview
+- **Inline Editing**: Edit questions, answers, and pages without page reloads
+- **Bulk Operations**: Manage multiple items efficiently with batch actions
+- **Advanced Search**: Enhanced filtering with multiple criteria and saved searches
+
+#### Developer Features
+- **Service Layer Architecture**: Dedicated services for Email, PDF, Storage, and AI operations
+- **API-First Design**: RESTful API endpoints for all operations
+- **Shared UI Library**: `@shondalai/ui-commons` with 25+ reusable React components
+- **Build System**: Modern npm-based build with `@shondalai/build-tools`
+- **Type Safety**: JSDoc annotations for better IDE support
+
+### 🔄 Changed
+- **Database Schema**: Optimized tables with proper indexes and foreign keys
+- **File Structure**: Reorganized following Joomla 5/6 standards with proper namespacing
+- **Form Builder Interface**: Complete redesign with compact and modern layout
+- **Response Storage**: Improved data structure for better query performance
+- **Language System**: Enhanced multilingual support with AI translation integration
+- **Email Templates**: Redesigned email templates with responsive HTML layout
+- **Media Management**: Centralized media handling with the Storage service
+
+### 🐛 Fixed
+- **Conditional Rules**:
+    - Questions not appearing in conditional rule dropdowns
+    - Answer presets showing "[object Object]" instead of text
+    - Rules not refreshing after adding/removing answers
+    - Questions not appearing after creation until page refresh
+    - Finalize rules showing questions on subsequent pages in reports
+    - Skip-to-page rules not properly hiding skipped pages
+    - Conditionally hidden questions appearing when they shouldn't
+- **Response Reports**: Now correctly respect conditional rules and display only relevant questions
+- **Question Form**: Fixed multiple issues with question editing and validation
+- **File Uploads**: Improved reliability and error handling for file attachments
+- **Date Handling**: Fixed MySQL null date issues across the board
+- **Grid Questions**: Resolved display issues with radio and checkbox grids
+- **Slider Questions**: Fixed value submission and display in reports
+- **Translation Sync**: Questions now immediately reflect translated content
+- **OAuth Callbacks**: Improved reliability with dual-channel communication (postMessage/Storage)
+- **CSV Export**: Headers now appear at the top (not bottom) with proper encoding
+- **Search Functionality**: Frontend search now correctly filters by survey title
+- **Authorization Checks**: Enhanced security with proper permission validation
+
+### 🔒 Security
+- **CSRF Protection**: Enhanced token validation across all forms
+- **Input Sanitization**: Comprehensive XSS protection with proper escaping
+- **SQL Injection Prevention**: Prepared statements throughout the codebase
+- **Access Control**: Granular permission checks for all operations
+- **OAuth Security**: Secure token storage and refresh mechanisms
+
+### 📚 Documentation
+- Comprehensive API documentation for developers
+- Updated user guides with screenshots for all features
+- Migration guide from v6.x to v7.0.0
+- Integration setup guides for Google Sheets and Webhooks
+
+### 🎯 Performance
+- Optimized database queries with proper indexing
+- Lazy loading for improved page load times
+- Reduced JavaScript bundle sizes with code splitting
+- Caching strategies for frequently accessed data
+- Efficient React component rendering
+
+### ⚠️ Deprecations
+- Legacy v6.x JavaScript libraries removed
+- Old BC plugin compatibility layer removed
+- Deprecated helper methods removed
+- Legacy database queries replaced with Joomla 5/6 QueryInterface
+
+### 📦 Dependencies
+- Joomla 5.0+ or Joomla 6.0+
+- PHP 8.1+
+- MySQL 5.7+ or MariaDB 10.3+
+- Node.js 18+ (for development)
+
+### 🙏 Credits
+- Complete rewrite and modernization by Shondalai Technologies
+- UI/UX design inspired by premium Swiss aesthetics
+- Community feedback incorporated throughout development
 
 ## [6.5.6] - January 15, 2026
 
