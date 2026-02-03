@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
-### 7.0.0 (16-Dec-2025)
+### 7.0.0 (02-Feb-2026)
 
 **🎉 MAJOR RELEASE - Complete Rewrite**
 

@@ -1,43 +1,170 @@
 ---
 id: integrating-survey-with-google-sheets
-title: Integrating survey with Google Sheets
-sidebar_label: Integrating survey with Google Sheets
-sidebar_position: 2
+title: Google Sheets Integration Setup
+sidebar_label: Google Sheets Setup
+sidebar_position: 20
 ---
 
-Community Surveys v5.7 & later versions support Google Sheets integration. When a survey is integrated with Google Sheets, the user responses are automatically synced in real-time with the selected Google Sheet. You can export the Google Sheet to an Excel file or create visualizations. So here is the process to integrate your surveys with Google Sheets.
+Community Surveys supports Google Sheets integration, allowing survey responses to automatically sync to a Google Sheets spreadsheet in real-time. This guide covers the initial setup of Google API credentials required for the integration.
 
-## Step 1: Create Google Credentials App
+:::tip New Integrations Dashboard
+Community Surveys 7.0+ includes a comprehensive [Integrations Dashboard](./survey-integrations) that provides a unified interface for managing Google Sheets, Webhooks, and other integrations. See the [complete integrations documentation](./survey-integrations) for details on configuring and managing all integration types.
+:::
 
-The first step is to create an integration app with Google Cloud Console. If you have not done it already, get yourself an **OAuth 2.0** Credentials app created at [https://console.developers.google.com/apis/credentials](https://console.developers.google.com/apis/credentials). You need to enter a callback URI when you are creating the OAuth credentials. The callback URI is based on your survey URL. `e.g. https://yoursite/surveys-menu?task=sheets.integrate`
+## Prerequisites
 
-Here&#8217;s a simpler version of the steps to set up your Google app credentials on your website:
+Before setting up Google Sheets integration, you need:
 
-- **First, sign in to your Google account** by going to this page: [Google APIs Credentials page](https://console.developers.google.com/apis/credentials)
+1. A Google account
+2. Access to [Google Cloud Console](https://console.developers.google.com/)
+3. Administrator access to your Joomla site
 
-- **Next, you&#8217;ll need to make a new app.** Look for a button that says &#8220;Create Credentials&#8221; and click on it.
+## Step 1: Create Google OAuth Credentials
 
-- **Fill out some details about your app.** You’ll add the name of your application and tell Google where it can send information after someone uses your app. This might look something like `https://yoursitename/surveys-menu?task=sheets.integrate` – but it will depend on your survey listing menu alias. In the above URL, &#8220;surveys-menu&#8221; is the alias name of the &#8220;Surveys Listing&#8221; menu item.
+First, create an OAuth 2.0 application in Google Cloud Console:
 
-- **Finally, get your app&#8217;s secret details.** After you&#8217;ve made the app, click on its name in the list to see a page with various pieces of information. You&#8217;ll want to find and keep a copy of the credentials – they&#8217;re like a secret code that lets your website talk to Google.
+### 1.1 Access Google Cloud Console
 
-[![](/img/extensions/community_surveys/2021-11-google-app-step-create-credentials-1024x329.jpg)](https://docs.shondalai.com/wp-content/uploads/2021/11/google-app-step-create-credentials.jpg)
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Sign in with your Google account
+3. Create a new project or select an existing one
 
-[![](/img/extensions/community_surveys/2021-11-google-app-step-oauth-client.jpg)](https://docs.shondalai.com/wp-content/uploads/2021/11/google-app-step-oauth-client.jpg)
+### 1.2 Enable Required APIs
 
-[![](/img/extensions/community_surveys/2021-11-google-app-step-auth-urls.jpg)](https://docs.shondalai.com/wp-content/uploads/2021/11/google-app-step-auth-urls.jpg)
-Steps to create Google credentials
+1. Navigate to **APIs & Services → Library**
+2. Search for and enable:
+   - **Google Sheets API**
+   - **Google Drive API**
 
-## Step 2: Update Google credentials in the Community Surveys options
+### 1.3 Configure OAuth Consent Screen
 
-Now the next step is to copy and add your OAuth Client ID and Client Secret values in the Community Surveys options. Go to **Components** -> **Community Surveys** -> Click on the **Options** button on the toolbar -> Click on the **Integrations** tab -> **Enable the Google Sheets** Integration option and add your OAuth details here.
+1. Go to **APIs & Services → OAuth consent screen**
+2. Select **External** user type (or Internal for Google Workspace)
+3. Fill in the required fields:
+   - App name: "Community Surveys Integration"
+   - User support email: Your email
+   - Developer contact email: Your email
+4. Add scopes:
+   - `https://www.googleapis.com/auth/spreadsheets`
+   - `https://www.googleapis.com/auth/drive.file`
+5. Add your email as a test user (for External apps)
 
-Your site is enabled for Google Sheets integration and you can authorize Google Sheets with your surveys.
+### 1.4 Create OAuth Credentials
 
-## Step 3: Connect your survey with a Google Sheet
+1. Go to **APIs & Services → Credentials**
+2. Click **Create Credentials → OAuth client ID**
+3. Select **Web application**
+4. Configure the application:
+   - **Name**: Community Surveys
+   - **Authorized redirect URIs**: Add your callback URL
 
-Go to the **Edit Questions** page of your survey and click on the **Sheets** button. This will take you to your Google login page, authenticate with your GMail ID and you are good to go. If you are already logged in, it will automatically enable the integration when you click on this button. 
+### Determining Your Callback URL
 
-A new sheet is created at your Google Sheets page [https://sheets.google.com](https://sheets.google.com/)/. When a user responds to your survey, a new row is added to the sheet.
+The callback URL format is:
+```
+https://yoursite.com/your-surveys-menu?task=integration.oauth
+```
 
-That&#8217;s all, your survey is connected to Google Sheets.
+Where `your-surveys-menu` is the alias of your **Surveys Listing** menu item.
+
+**Examples:**
+- `https://example.com/surveys?task=integration.oauth`
+- `https://example.com/feedback/surveys?task=integration.oauth`
+
+:::warning Important
+The callback URL must exactly match what you enter in Google Cloud Console, including the protocol (https) and any subdirectories.
+:::
+
+5. Click **Create** and note your **Client ID** and **Client Secret**
+
+[![Create credentials button](/img/extensions/community_surveys/2021-11-google-app-step-create-credentials-1024x329.jpg)](https://docs.shondalai.com/wp-content/uploads/2021/11/google-app-step-create-credentials.jpg)
+
+[![OAuth client type selection](/img/extensions/community_surveys/2021-11-google-app-step-oauth-client.jpg)](https://docs.shondalai.com/wp-content/uploads/2021/11/google-app-step-oauth-client.jpg)
+
+[![Authorized redirect URIs](/img/extensions/community_surveys/2021-11-google-app-step-auth-urls.jpg)](https://docs.shondalai.com/wp-content/uploads/2021/11/google-app-step-auth-urls.jpg)
+
+## Step 2: Configure Community Surveys
+
+Add your Google OAuth credentials to Community Surveys:
+
+1. Go to **Components → Community Surveys**
+2. Click **Options** in the toolbar
+3. Navigate to the **Integrations** tab
+4. Enable **Google Sheets Integration**
+5. Enter your **OAuth Client ID**
+6. Enter your **OAuth Client Secret**
+7. Click **Save & Close**
+
+Your site is now configured for Google Sheets integration.
+
+## Step 3: Connect a Survey to Google Sheets
+
+With credentials configured, you can now connect individual surveys:
+
+### Using the Integrations Dashboard (Recommended)
+
+1. Go to **Components → Community Surveys → Surveys**
+2. Click on a survey to edit
+3. Click the **Integrations** button in the toolbar
+4. Click **Add Integration**
+5. Select **Google Sheets** from the catalog
+6. Click **Connect** to authorize with Google
+7. Enter your **Spreadsheet ID** (or create a new spreadsheet)
+8. Configure additional options as needed
+9. Click **Save**
+
+For detailed configuration options, see the [Integrations Documentation](./survey-integrations#configuring-google-sheets-integration).
+
+### Finding Your Spreadsheet ID
+
+From your Google Sheets URL:
+```
+https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+```
+
+The Spreadsheet ID is: `1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms`
+
+## How It Works
+
+Once connected:
+
+1. When a user submits a survey response, the integration is triggered
+2. Response data is formatted and sent to Google Sheets API
+3. A new row is appended to your spreadsheet with the response data
+4. Headers are automatically created on first sync
+5. Sync status is logged for monitoring
+
+## Configuration Options
+
+| Option | Description | Required |
+|--------|-------------|----------|
+| **Spreadsheet ID** | The ID from your Google Sheets URL | Yes |
+| **Sheet Name** | The specific sheet tab to use (default: "Survey Responses") | No |
+| **Include Metadata** | Add columns for response ID, timestamp, IP, location, browser | No |
+
+## Troubleshooting
+
+### "Access Denied" or "Invalid Client"
+
+- Verify Client ID and Secret are copied correctly
+- Ensure the redirect URI matches exactly
+- Check that required APIs are enabled
+
+### "Token Expired"
+
+- Re-authorize by clicking Connect in the integration settings
+- Tokens are automatically refreshed but may expire after long periods
+
+### "Spreadsheet Not Found"
+
+- Verify the Spreadsheet ID is correct
+- Ensure the spreadsheet exists and hasn't been deleted
+- Check that you're using the same Google account
+
+For more troubleshooting tips, see the [Integrations Troubleshooting Guide](./survey-integrations#troubleshooting).
+
+## Next Steps
+
+- [Complete Integrations Documentation](./survey-integrations) - Full guide to all integration features
+- [Webhook Integration](./survey-integrations#configuring-webhook-integration) - Connect to Zapier, Make, and custom backends
+- [Field Mapping](./survey-integrations#field-mapping) - Customize how data is mapped
