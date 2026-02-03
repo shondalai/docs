@@ -14,28 +14,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [7.0.0] - 2026-02-03
+## [8.0.0] - 2026-02-03
 
 ### Added
 - - New **Integrations Framework**: Comprehensive system to connect surveys with third-party services. - **Google Sheets Integration**: Automatically sync survey responses to Google Spreadsheets with automatic header creation and OAuth 2.0 security. - **Webhook Integration**: Real-time data streaming to custom endpoints via HTTP POST/GET. - **Advanced Reports**: Redesigned reporting dashboard featuring interactive charts and real-time analytics. - **Detailed Response View**: New administrative interface for inspecting individual survey submissions. - **Enhanced Downloads**: Support for detailed response reports and PDF exports. - **Joomla 6 Native**: Fully optimized for Joomla 6 architecture, removing the dependency on the Backward Compatibility (BC) plugin. - **Frontend Redesign**: Completely overhauled the survey form with a "Swiss-inspired" minimalist, responsive design optimized for both desktop and mobile. - **Invitations Workflow**: Redesigned the invite page for a more intuitive and streamlined user experience. - **Admin UI**: Updated administrative screens with a premium, compact layout using Bootstrap 5 and custom refined CSS. - Improved API reliability for OAuth callbacks using dual-channel (postMessage/Storage) communication. - Resolved issues with data mapping between survey questions and third-party integration fields.
+- Add support for duplicate page with questions
+- Fix issue with translations not reflected for newly created questions
 
 ### Changed
 - Redesigned form builder interface with compact and modern layout
 - Improved advanced search with more options
+- Release version 6.6.0
+- Community Surveys v6.5.6 Release
+- Community Surveys v6.5.6 Release
+- Community Surveys v6.5.5 Release
+- * Do not include unpublished responses in the CSV download
+- Community Surveys v6.5.4 Release
+- Community Surveys v6.5.4 Release
+- + Upgrade modules and plugins for Joomla 6 compatibility
+- * Create survey page shows error when compat plugin is disabled
+- * Unable to delete the trashed responses
 
 ### Fixed
 - Fixed conditional rules
-
-## [6.6.0] - January 21, 2026
-
-### ✨ Added
-- Add support for duplicate page with questions
-
-### 🐛 Fixed
-- Fixed issue with translations not reflected for newly created questions
 - Fixed database errors (false positives)
-
----
+- * Fixed issue with the content plugin
+- * Fixed issue with unauthorised json download
+- * Fix for allowing same selections in matching question type
 
 ## [6.5.6] - January 15, 2026
 
