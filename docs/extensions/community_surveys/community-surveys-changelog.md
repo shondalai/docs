@@ -14,6 +14,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [7.0.0] - 2026-02-03
+
+### Added
+- - New **Integrations Framework**: Comprehensive system to connect surveys with third-party services. - **Google Sheets Integration**: Automatically sync survey responses to Google Spreadsheets with automatic header creation and OAuth 2.0 security. - **Webhook Integration**: Real-time data streaming to custom endpoints via HTTP POST/GET. - **Advanced Reports**: Redesigned reporting dashboard featuring interactive charts and real-time analytics. - **Detailed Response View**: New administrative interface for inspecting individual survey submissions. - **Enhanced Downloads**: Support for detailed response reports and PDF exports. - **Joomla 6 Native**: Fully optimized for Joomla 6 architecture, removing the dependency on the Backward Compatibility (BC) plugin. - **Frontend Redesign**: Completely overhauled the survey form with a "Swiss-inspired" minimalist, responsive design optimized for both desktop and mobile. - **Invitations Workflow**: Redesigned the invite page for a more intuitive and streamlined user experience. - **Admin UI**: Updated administrative screens with a premium, compact layout using Bootstrap 5 and custom refined CSS. - Improved API reliability for OAuth callbacks using dual-channel (postMessage/Storage) communication. - Resolved issues with data mapping between survey questions and third-party integration fields.
+
+### Changed
+- Release version 8.0.0
+- Redesigned form builder interface with compact and modern layout
+- Improved advanced search with more options
+
+### Fixed
+- Fixed conditional rules
+
 ## [8.0.0] - 2026-02-03
 
 ### Added
