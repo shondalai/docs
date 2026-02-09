@@ -990,6 +990,21 @@ GPS Tools 7.0 is a ground-up rebuild of the extension with a modern React 19 arc
 | 2.x | 1.5/1.6/1.7 | 5.2+ |
 | 1.x | 1.5 | 5.2+ |
 
+## [7.0.1] - 2026-02-09
+
+### Added
+- Adding author name field to admin pages
+- Added author name display on the tracks page
+
+### Fixed
+- Fixed issue with track description stripping html tags
+- Fixed issue with categories page do not show pagination
+- Fixed mobile view issue with the admin menu
+- Fixed issue with site loaded on subdirectory
+- Fixed issue with pagination do not show on category page
+- Fixed translation issues with frontend pages
+- Fixed issue with sef urls in pagination
+
 ## [7.0.2] - 2026-02-09
 
 ### Added
