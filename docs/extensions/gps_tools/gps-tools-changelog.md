@@ -989,3 +989,8 @@ GPS Tools 7.0 is a ground-up rebuild of the extension with a modern React 19 arc
 | 3.x | 2.5/3.x | 5.4+ |
 | 2.x | 1.5/1.6/1.7 | 5.2+ |
 | 1.x | 1.5 | 5.2+ |
+
+## [7.0.1] - 2026-02-09
+
+### Changed
+- Minor updates and improvements
