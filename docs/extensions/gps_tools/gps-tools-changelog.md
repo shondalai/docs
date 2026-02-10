@@ -18,6 +18,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.2] - 2026-02-10
+
+### Added
+- Adding new track button on category and tracks pages
+- Adding edit track support on frontend
+
+### Changed
+- Updated copyright year in the source files
+
+### Fixed
+- Fixed description not showing html formatting
+- Fixed download button urls to use sef urls
+- Fixed issue with splits table do not show the speed
+- Fixed issue with technical panel not showing track points count
+- Fixed issue with creating comment replies
+- Fixed issue with tracks list limit value
+
 ## [7.0.1] - 2026-02-09
 
 **🐛 Bug Fix Release**
