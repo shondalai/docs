@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 - Minor updates and improvements
+- Fixed issue with saving Google Maps API key in the configuration options
 
 ## [7.0.2] - 2026-02-10
 
