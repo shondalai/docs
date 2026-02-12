@@ -18,6 +18,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.5] - 2026-02-12
+
+### 🚀 Added
+- Improved speed smoothing to avoid errors in charts
+- Exported tracks have incorrect speeds with kmph instead of mps units
+- Adding support for batch processing of static thumbnails generation
+
+### 🐛 Fixed
+- Wrong speed units shown on splits table
+- Category image is not showing on the category page
+
 ## [7.0.4] - 2026-02-12
 
 ### 🚀 Added
