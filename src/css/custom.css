@@ -195,6 +195,22 @@ body {
   background: none;
 }
 
+@media (max-width: 996px) {
+  .extensions-desktop {
+    display: none !important;
+  }
+
+  .navbar-sidebar .extensions-mobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 997px) {
+  .extensions-mobile {
+    display: none !important;
+  }
+}
+
 /* ============================================
    SIDEBAR - Clean & Tighter
    ============================================ */

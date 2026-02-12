@@ -251,6 +251,7 @@ const config: Config = {
         {
           type: 'dropdown',
           label: 'Extensions',
+          className: 'extensions-desktop',
           position: 'left',
           items: [
             {
@@ -319,6 +320,72 @@ const config: Config = {
               label: 'General Documentation',
             },
           ],
+        },
+        {
+          label: 'EasyForms',
+          to: '/easyforms/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'Community Surveys',
+          to: '/community-surveys/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'Community Polls',
+          to: '/community-polls/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'Community Quiz',
+          to: '/community-quiz/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'Community Answers',
+          to: '/community-answers/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'CjForum',
+          to: '/cjforum/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'Sociable',
+          to: '/sociable/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'GPS Tools',
+          to: '/gps-tools/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'Community Quotes',
+          to: '/community-quotes/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'Rewardify',
+          to: '/rewardify/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'General Documentation',
+          to: '/general/frequently-asked-questions',
+          position: 'left',
+          className: 'extensions-mobile',
         },
         {
           type: 'search',
