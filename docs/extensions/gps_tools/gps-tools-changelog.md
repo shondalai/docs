@@ -18,6 +18,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.4] - 2026-02-12
+
+### 🚀 Added
+- Fix: Added missing language strings to language files
+- Adding options to show/hide track statistics
+
+### 🐛 Fixed
+- Fix: Regenerate button shows error
+- Fix: Uploaded original track file is not saved to filesystem
+- Fix: Category name shows twice on breadcrumbs
+- Fixed track splits table unit system (kmph -> mph)
+
 ## [7.0.3] - 2026-02-11
 
 ### Changed
