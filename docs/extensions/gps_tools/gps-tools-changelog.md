@@ -22,10 +22,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### 🚀 Added
 - Improved speed smoothing to avoid errors in charts
-- Exported tracks have incorrect speeds with kmph instead of mps units
 - Adding support for batch processing of static thumbnails generation
 
 ### 🐛 Fixed
+- Exported tracks have incorrect speeds with kmph instead of mps units
 - Wrong speed units shown on splits table
 - Category image is not showing on the category page
 
