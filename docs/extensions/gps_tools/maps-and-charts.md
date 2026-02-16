@@ -76,6 +76,7 @@ Enable these APIs for your project:
 
 1. **Maps JavaScript API** - Required for map display
 2. **Geocoding API** - Optional, for location search
+3. **Static Maps API** - Optional, for static map images
 
 ### Step 3: Create API Key
 
