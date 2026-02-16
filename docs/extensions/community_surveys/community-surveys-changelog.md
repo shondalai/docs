@@ -15,6 +15,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 ## [7.0.3] - 2026-02-16
 
+### 🚀 Added
+- Addressed survey response form pushing sidebar down
+- Fixed reports not loading on some servers
+- Resolved error in latest surveys module
+- Introduced integrations framework, Google Sheets sync, webhooks, advanced reports, and UI updates
+- Added support for duplicating pages with questions
+- Fixed translations not reflected for new questions
+
+### 🔧 Changed
+- Redesigned form builder interface with compact modern layout
+- Enhanced advanced search with additional options
+- Released Community Surveys v6.5.6
+
+### 🐛 Fixed
+- Fixed survey response failure with enabled rules
+- Added missing language strings
+- Fixed survey loading issue after upgrade
+- Fixed conditional rules
+- Fixed false positive database errors
+
+## [7.0.3] - 2026-02-16
+
 ### 🚀 Fixed
 - Addressed survey response form pushing sidebar down
 - Resolved reports not loading on some servers
