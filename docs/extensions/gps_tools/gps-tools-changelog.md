@@ -18,6 +18,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.7] - 2026-02-18
+
+### 🚀 Added
+- Supported list and grid views on categories page
+- Introduced user tracks page with statistics
+- Added leaderboard page
+
+### 🐛 Fixed
+- Ensured Tracks List module displays thumbnails
+- Normalized marker rendering and improved color fallback for Leaflet/Google maps
+- Preferred resolved waypoint type and symbol, passed color and icon to frontend
+- Updated site models to read activity and difficulty from DB columns first
+- Matched waypoint type with normalized alias/title/symbol and enriched payload metadata
+- Saved upload difficulty at creation so new tracks retained difficulty value
+
 ## [7.0.6] - 2026-02-18
 
 ### 🚀 Added
