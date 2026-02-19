@@ -16,11 +16,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0] - 2026-02-19
 
-### 🔧 Changed
-- Minor updates and improvements
-
-## [3.0.0] - 2026-02-19
-
 **Major Release: Complete Rewrite for Joomla 5/6**
 
 This is a complete architectural rewrite of Sociable, modernizing the codebase for Joomla 5 and 6 compatibility with native APIs.
@@ -39,12 +34,15 @@ This is a complete architectural rewrite of Sociable, modernizing the codebase f
 - Modern database schema with JSON columns
 - Activity feed with reactions (like, love, haha, wow, sad, angry) and comments
 - User profiles with customizable fields
+- Multiprofile support with auto assignment rules and invite system
 - Groups with public, private, and secret visibility
 - Connections system (friends, followers, blocks)
 - Real-time notifications
 - Badge/achievement system with rule engine
+- Content reporting system with moderation queue
 - Points and gamification system
 - Push notification support
+- Referral system with rewards
 
 #### Developer Features
 - RESTful API with full documentation

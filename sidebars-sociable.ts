@@ -18,6 +18,7 @@ const sidebars: SidebarsConfig = {
       label: 'Configuration',
       items: [
         'configuring-multiple-profiles-in-sociable',
+        'profile-assignment-rules',
         'setting-up-groups-in-sociable',
         'setting-up-activity-streams-system-for-sociable',
         'setting-up-the-points-system-for-sociable',
