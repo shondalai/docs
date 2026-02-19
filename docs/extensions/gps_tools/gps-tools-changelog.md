@@ -18,6 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.8] - 2026-02-19
+
+### 🐛 Fixed
+- Fixed issue preventing track saving from backend
+
 ## [7.0.7] - 2026-02-18
 
 ### 🚀 Added
