@@ -193,6 +193,34 @@ const config: Config = {
             to: '/sociable/overview',
           },
           {
+            from: '/sociable/creating-sociable-profile-app',
+            to: '/sociable/sociable-sdk-developer-guide',
+          },
+          {
+            from: '/sociable/overriding-sociable-layouts',
+            to: '/sociable/sociable-sdk-developer-guide',
+          },
+          {
+            from: '/sociable/sociable-activity-stream-api',
+            to: '/sociable/sociable-sdk-developer-guide',
+          },
+          {
+            from: '/sociable/sociable-avatars-api',
+            to: '/sociable/sociable-sdk-developer-guide',
+          },
+          {
+            from: '/sociable/sociable-badges-api',
+            to: '/sociable/sociable-sdk-developer-guide',
+          },
+          {
+            from: '/sociable/sociable-points-system-api',
+            to: '/sociable/sociable-sdk-developer-guide',
+          },
+          {
+            from: '/sociable/sociable-profile-api',
+            to: '/sociable/sociable-sdk-developer-guide',
+          },
+          {
             from: '/rewardify',
             to: '/rewardify/overview',
           },

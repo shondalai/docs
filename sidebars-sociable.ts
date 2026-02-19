@@ -31,8 +31,6 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Customization',
       items: [
-        'creating-sociable-profile-app',
-        'overriding-sociable-layouts',
         'sociable-modules-and-plugins',
       ],
     },
@@ -41,11 +39,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'API Reference',
       items: [
-        'sociable-profile-api',
-        'sociable-points-system-api',
-        'sociable-badges-api',
-        'sociable-avatars-api',
-        'sociable-activity-stream-api',
+        'sociable-sdk-developer-guide',
       ],
     },
 

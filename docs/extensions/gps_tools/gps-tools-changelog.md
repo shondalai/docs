@@ -23,6 +23,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### 🐛 Fixed
 - Fixed issue preventing track saving from backend
 
+### 🚀 Added
+- Added batch generate button to regenerate data from legacy tracks
+
 ## [7.0.7] - 2026-02-18
 
 ### 🚀 Added

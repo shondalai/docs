@@ -6,6 +6,48 @@
 
 # Redirects and rewrites
 [[redirects]]
+  from = "/sociable/creating-sociable-profile-app"
+  to = "/sociable/sociable-sdk-developer-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sociable/overriding-sociable-layouts"
+  to = "/sociable/sociable-sdk-developer-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sociable/sociable-activity-stream-api"
+  to = "/sociable/sociable-sdk-developer-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sociable/sociable-avatars-api"
+  to = "/sociable/sociable-sdk-developer-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sociable/sociable-badges-api"
+  to = "/sociable/sociable-sdk-developer-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sociable/sociable-points-system-api"
+  to = "/sociable/sociable-sdk-developer-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sociable/sociable-profile-api"
+  to = "/sociable/sociable-sdk-developer-guide"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

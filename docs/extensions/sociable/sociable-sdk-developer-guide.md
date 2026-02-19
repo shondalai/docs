@@ -1,3 +1,10 @@
+---
+id: sociable-sdk-developer-guide
+title: SDK Developer Guide
+sidebar_label: SDK Developer Guide
+sidebar_position: 10
+---
+
 # Sociable SDK - Developer Documentation
 
 The Sociable SDK provides a modern, developer-friendly API for integrating with Sociable's social networking features. This guide covers all available APIs, usage examples, and best practices.

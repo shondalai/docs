@@ -1,133 +1,264 @@
 ---
 id: getting-started-guide-for-sociable
-title: Getting started guide for Sociable
-sidebar_label: Getting started guide for Sociable
-sidebar_position: 14
+title: Getting Started Guide
+sidebar_label: Getting Started
+sidebar_position: 1
 ---
 
-## Introduction and setup
+## Introduction
 
-This guide allows you to set up a Sociable extension on your website. Before starting, make sure you have the necessary packages, such as the Sociable package and CjLib package, downloaded from the shondalai.com website. To learn more about how to install an extension, please read the following guide:
+This guide walks you through installing and configuring Sociable on your Joomla website. Sociable transforms your site into a fully-featured social networking platform with user profiles, activity feeds, groups, messaging, and gamification features.
 
-[https://docs.joomla.org/Installing_an_extension](https://docs.joomla.org/Installing_an_extension)
+## Prerequisites
 
-Once you install the CjLib package, make sure to update your MaxMind API key in the CjLib component options.
-Read more at the following documentation.
+Before installing Sociable, ensure you have:
 
-> [Update GeoIP Database](https://docs.shondalai.com/general/update_geoip_database/)
+- Joomla 5.0 or later
+- PHP 8.1 or later
+- MySQL 8.0+ or MariaDB 10.4+
+- The latest CjLib package installed (download from shondalai.com)
 
-Sometimes, Joomla does not enable all plugins by default during the installation process. To make sure all Sociable plugins are enabled, go to **Extensions -> Plugins -> Search for Sociable on this page.**. Please enable all required plugins. (make sure to enable Sociable System and User plugins)
-Make sure to enable all core plugins. There are many integration plugins that are shipped with the package, you need not enable them if you do not have such a third-party extension installed on your site. For example, all Shondalai extension integration plugins can be found on the plugins page. Enable them only if you have respective extensions installed.
+## Installation
+
+1. Download the Sociable package from shondalai.com
+2. Go to **System → Install → Extensions** in Joomla administrator
+3. Upload and install the package file
+4. The installer will deploy all components, plugins, and modules
+
+For detailed Joomla extension installation instructions, see the [official Joomla documentation](https://docs.joomla.org/Installing_an_extension).
+
+## Post-Installation Setup
+
+### Enable Required Plugins
+
+After installation, ensure all essential plugins are enabled:
+
+1. Go to **System → Manage → Plugins**
+2. Search for "Sociable"
+3. Enable the following plugins:
+   - **System - Sociable** (required for authentication overrides and AJAX handling)
+   - **User - Sociable** (required for automatic profile creation)
+   - **Content - Sociable** (optional, for activity stream integration)
+   - **Privacy - Sociable** (optional, for GDPR compliance)
+   - **Authentication - Sociable** (optional, for social login)
+
+### Access the Admin Dashboard
+
+Navigate to **Components → Sociable** to access the administrator dashboard. The dashboard provides:
+
+- User statistics and growth metrics
+- Activity overview
+- Quick access to configuration
+- Recent activity monitoring
 
 ## Configuration
 
-Sociable comes with many configuration options to customize the look and feel, features support, and so on. After installing the extension, go to Components -> Sociable and click on the Options button in the toolbar. Now you will be shown a list of configurable options. Each option is documented on its label for easy reference. Make sure to review all the options and customize them according to your needs.
+Sociable provides comprehensive settings organized into logical sections. Access settings through **Components → Sociable → Settings**.
 
-- **Profile:** These options allow you to customize how the profile page looks and allow you to enable/disable the Sociable core features of profiles.
+### General Settings
 
-- **List Layouts:** These settings apply to the list layouts such as group topics listing etc.
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Community Name | Name displayed across your social network | My Social Network |
+| Description | Brief description of your community | - |
+| Default Timezone | Timezone for date/time display | UTC |
+| Date Format | How dates are formatted | Y-m-d |
+| Items Per Page | Number of items in paginated lists | 20 |
 
-- **Media settings:** These settings allow you to customize the behavior of user uploads and how the photos/videos are displayed on the wall etc.
+### Profile Settings
 
-- **Shared options:** These are the common settings that apply to the component.
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Allow Registration | Allow new users to register | Yes |
+| Require Approval | New registrations require admin approval | No |
+| Default Visibility | Default profile visibility (public/friends/private) | Public |
+| Allow Custom Handle | Let users set custom profile handles | Yes |
+| Minimum Handle Length | Minimum characters for handles | 3 |
+| Max Bio Length | Maximum characters for bio | 500 |
 
-- **Integration:** Using these settings, you can integrate the extension with third-party extensions, customize the default layout according to your template&#8217;s Bootstrap version, customize the color theme, etc.
+### Activity Settings
 
-- **Permissions:** These are permissions that you can configure to allow your users to authorize the functions available in the component.
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Require Post Approval | Posts require approval before publishing | No |
+| Allow Media Uploads | Allow media attachments on posts | Yes |
+| Max Media Size (MB) | Maximum upload size | 10 |
+| Max Media Per Post | Maximum attachments per post | 10 |
+| Enable Reactions | Allow reactions on posts | Yes |
+| Enable Comments | Allow comments on posts | Yes |
+| Enable Sharing | Allow sharing posts | Yes |
 
-## Permissions
+### Group Settings
 
-On the options page, you can customize the component permissions in the Permissions tab. Every user group has certain permissions that you can allow. For example which user group can create posts etc. Configure the permissions according to your needs.
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Allow Group Creation | Let users create groups | Yes |
+| Require Group Approval | New groups require admin approval | No |
+| Default Max Members | Default member limit per group | 1000 |
 
-## Menu items setup
+### Event Settings
 
-Once you set up the options and permissions, the next step is configuring the menu items. Apart from allowing your user access to the component, menu items define your component URLs. So they are very important in setting up search engine-friendly URLs and easy access to your extension pages. Sociable provides the menu item for each supported feature. You need not show all menu items on your front-end site. Simply add a new Menus, let&#8217;s say Sociable Menu, and add all available menu items of Sociable to these Menus. You can create a Menu Alias type menu item to link to one of these Menus in your Main Menu. This way, your users will be shown only one Menu item which is needed to access the site and other menu items are used to render the URLs. You can set up one of the Sociable menu items as your home page menu item if you would like to use Sociable as a default home page.
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Enable Events | Show and allow access to event pages | Yes |
+| Allow Event Creation | Allow users to create events | Yes |
+| Enable RSVP | Allow RSVP functionality | Yes |
+| Enable Invites | Allow event invitations | Yes |
+| Show Past Events | Display past events sections | Yes |
 
-To learn more about Joomla menu creation, please read the following documentation.
-[https://docs.joomla.org/Menu](https://docs.joomla.org/Menu)
-[https://docs.joomla.org/Adding_a_new_menu_item](https://docs.joomla.org/Adding_a_new_menu_item)
+### Connection Settings
 
-## Multi-profile setup
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Enable Following | Allow one-way follow relationships | Yes |
+| Enable Friendships | Allow bidirectional friend connections | Yes |
+| Enable Blocking | Allow users to block each other | Yes |
+| Require Friend Approval | Friend requests need approval | Yes |
 
-Sociable allows you to configure multiple profiles according to your user groups. You will need to set up at least one profile that will act as a default/favorite profile and apply it to the user automatically when the user registers on your site. Any other profiles that you create can be assigned manually to the users (a feature available from v1.0.2). To learn more about how to set up multiple profiles, read the following documentation.
+### Messages Settings
 
-> [Configuring multiple profiles in Sociable](https://docs.shondalai.com/sociable/configuring_multiple_profiles_in_sociable/)
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Enable Messages Page | Enable private messaging | Yes |
+| Allow Attachments | Allow file attachments in messages | Yes |
+| Max Attachment Size (MB) | Maximum attachment size | 10 |
+| Max Message Length | Maximum characters per message | 5000 |
+| Enable Read Receipts | Show message read status | Yes |
+| Enable Typing Indicators | Show typing status | Yes |
 
-Please note that you must select Sociable as the profile/avatar system in the component options in order to use the built-in profile system. If you wish to use any supported third-party profile/avatars system you can do so by setting up the respective option in the component options. Go to Components -> Sociable click on the Options button the toolbar and click on the Integration tab to configure the integration settings.
+### Gamification Settings
 
-If you are a developer and you would like to integrate Sociable profile and avatar systems into your custom extension, please read the following documentation.
-https://docs.shondalai.com/sociable/sociable_profile_api/
-[https://docs.shondalai.com/sociable/sociable_avatars_api/](https://docs.shondalai.com/sociable/sociable_avatars_api/)
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Enable Points | Award points for activities | Yes |
+| Enable Badges | Award achievement badges | Yes |
+| Badge Tiers | Comma-separated tier names | Bronze,Silver,Gold,Platinum,Diamond |
+| Enable Leaderboard | Show public leaderboard | Yes |
+| Leaderboard Size | Number of users shown | 100 |
 
-## Initial user sync
+### Notification Settings
 
-When Sociable is installed for the first time, it will not have any information about your users. It needs to be synced up with your existing users in order to allow them to integrate with the Sociable profile system. To do this, go to Components -> Sociable -> Users and click on the Sync button on the toolbar. The process will show the progress and may take a while depending on the number of users existing on your site. Once the sync is completed, your user profiles are created and assigned default profiles according to the profiles that you created.
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Enable Email | Send email notifications | Yes |
+| Enable Push | Send push notifications | Yes |
+| Enable In-App | Show in-app notifications | Yes |
+| Digest Frequency | Email digest frequency | Weekly |
 
-After the initial user sync, any new users created on your site will be automatically synced to the Sociable user system. Make sure you have enabled **&#8220;User &#8211; Sociable&#8221;** plugin in Extensions -> Plugins.
+### Moderation Settings
 
-## Setting up the Points system
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Enable Reporting | Allow users to report content | Yes |
+| Auto-hide Threshold | Auto-hide after X reports | 5 |
+| Enable Spam Filter | Enable spam detection | Yes |
 
-Sociable has a built-in points system that allows you to award points for the actions done on your site. To learn more about how to set up the points system, read the following documentation.
+### Authentication Settings
 
-> [Setting up the points system for Sociable](https://docs.shondalai.com/sociable/setting_up_points_system_for_sociable/)
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Override Joomla Login | Redirect Joomla login to Sociable | Yes |
+| Override Joomla Registration | Redirect registration to Sociable | Yes |
+| Login Redirect URL | Post-login redirect destination | / |
+| Registration Redirect URL | Post-registration redirect | /welcome |
 
-If you are a developer and you would like to extend the Sociable points system to your custom extensions, please read the following documentation.
-[https://docs.shondalai.com/sociable/sociable_points_system_api/](https://docs.shondalai.com/sociable/sociable_points_system_api/)
+#### Social Login (OAuth)
 
-## Setting up the Badge system
+Configure social login providers:
 
-Sociable has a built-in badge system that allows users to get rewarded for active participation on your site and get involved. You can reward multiple different badges according to activity, for example when the user posts 10 photos, 20 photos, 50 photos, and so on. This way, your users will get the motivation to be involved in their interested pages.
+**Google OAuth:**
+- Enable Google Login
+- Google Client ID
+- Google Client Secret
 
-To learn more about how to set up the badge system, please read the following documentation.
+**Facebook OAuth:**
+- Enable Facebook Login
+- Facebook App ID
+- Facebook Client Secret
 
-> [Setting up the badge system for Sociable](https://docs.shondalai.com/sociable/setting_up_badge_system_for_sociable/)
+**Apple OAuth:**
+- Enable Apple Login
+- Apple Client ID
+- Apple Team ID
+- Apple Key ID
+- Apple Client Secret
 
-If you are a developer and would like to integrate your extension with Sociable badge system, read the following API documentation.
-[https://docs.shondalai.com/sociable/sociable_badges_api/](https://docs.shondalai.com/sociable/sociable_badges_api/)
+### Storage Settings
 
-## Setting up the Activity Streams
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Storage Type | Local filesystem or S3 | Local |
+| Local Path | Path for local uploads | media/com_sociable/uploads |
+| S3 Bucket | Amazon S3 bucket name | - |
+| S3 Region | AWS region | us-east-1 |
 
-Sociable has a built-in activity stream system that allows your users to post content directly on their wall and also allows you to integrate the content from supported third-party extensions. User privacy can be maintained using the scopes, i.e. the users can only see the content which they are allowed to see. They can set up the scope for each activity that they post on the wall. For example, the &#8220;Friends&#8221; scope can allow the posts visible to only the friends of the user and hidden from other users.
+## Menu Setup
 
-To learn more about how to set up the activity stream system, please read the following documentation.
+Create menu items to provide access to Sociable pages:
 
-> [Setting up activity streams system for Sociable](https://docs.shondalai.com/sociable/setting_up_activity_streams_system_for_sociable/)
+1. Go to **Menus → [Your Menu] → Add New Menu Item**
+2. Select **Sociable** from the menu item type list
+3. Available menu item types:
+   - **Feed** - Main activity feed page
+   - **Profile** - User profile page
+   - **Groups** - Groups listing
+   - **Events** - Events listing
+   - **Messages** - Private messaging
+   - **Notifications** - Notification center
+   - **Search** - User search
+   - **Settings** - User settings
 
-If you are a developer and would like to integrate your extension with Sociable activity stream, please read the following API documentation.
-[https://docs.shondalai.com/sociable/sociable_activity_stream_api/](https://docs.shondalai.com/sociable/sociable_activity_stream_api/)
+**Tip:** Create a dedicated hidden menu for Sociable SEF URLs, then create a menu alias to one item in your main navigation.
 
-## Setting up the Referrals system
+## Initial User Sync
 
-Referrals are a great tool to invite like-minded people and grow the user network. By providing incentives such as awarding points, you can encourage your users to invite their friends to your site and grow their network. Sociable has built-in support for implementing the referral system and awards points and badges to the users who refer their friends to your site.
+When Sociable is installed for the first time, existing Joomla users need to be synced:
 
-To learn more about setting up the referral system, please read the following documentation.
+1. Go to **Components → Sociable → Users**
+2. Click the **Sync Users** button in the toolbar
+3. Wait for the sync process to complete
 
-> [Enable referrals in Sociable](https://docs.shondalai.com/sociable/enable_referrals_in_sociable/)
+The User - Sociable plugin automatically creates profiles for new users after the initial sync.
 
-## Setting up the Groups
+## Theme Customization
 
-User discussion groups in Sociable are the best tool to create private discussion forums on your site. Like-minded people can join the groups and discuss their topics of choice. Groups can be private groups or public groups.
+Customize the appearance of your social network:
 
-To learn more about user groups, please read the following documentation.
+1. Go to **Components → Sociable → Theme Settings**
+2. Select a color theme
+3. Choose display mode (light/dark/system)
+4. Customize style options:
+   - Navigation position (left sidebar or top toolbar)
+   - Card styles (corners, shadows, borders)
+   - Avatar shape (circle, rounded, square)
+   - Button styles
+   - Content spacing
+   - Action bar appearance
 
-> [Setting up groups in Sociable](https://docs.shondalai.com/sociable/setting_up_groups_in_sociable/)
+Changes are applied immediately across all Sociable pages.
 
-## Posting comments
+## Email Templates
 
-Comments can be posted on activities and photos. When posting comments, you can use basic HTML tags even though there is no HTML editor shown for posting comments. The HTML tags are repaired or corrected using a PHP tidy extension. Make sure your PHP installation has tidy installed and the module is enabled in your Apache configuration. If you do not have it installed, you can install it using the following method.
+Customize notification emails:
 
-Or the commands
+1. Go to **Components → Sociable → Email Templates**
+2. Browse templates by category:
+   - Engagement (likes, comments, shares)
+   - Connections (follows, friend requests)
+   - Groups (invites, approvals)
+   - Gamification (badges, points)
+   - System (welcome, verification)
+3. Click a template to edit
+4. Customize the subject and body
+5. Use placeholders for dynamic content
 
-For Ubuntu:
+## Next Steps
 
-sudo apt install libtidy-dev libtidy5 php-tidy
+After completing basic setup:
 
-For Redhat/CentOS:
-
-sudo yum install libtidy libtidy-devel
-
-## Sociable modules and plugins
-
-Sociable comes bundled with several add-ons such as required plugins, apps, etc. You can find more details about them in the following documentation:
-
-> [Sociable modules and plugins](https://docs.shondalai.com/sociable/sociable_modules_and_plugins/)
+- [Configure multiple profiles](configuring-multiple-profiles-in-sociable) for different user types
+- [Set up groups](setting-up-groups-in-sociable) for community discussions
+- [Configure points system](setting-up-the-points-system-for-sociable) for gamification
+- [Set up badges](setting-up-the-badge-system-for-sociable) for achievements
+- [Configure social login](setting-up-social-login-in-sociable) for easy authentication
+- [Enable referrals](enable-referrals-in-sociable) to grow your community
