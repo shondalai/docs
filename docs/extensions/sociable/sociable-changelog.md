@@ -14,17 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.0.0] - 2026-02-19
+## [3.0.0] - 2026-02-19
 
 ### 🔧 Changed
-- Released Sociable v3 first build
-- Released Sociable v3 first build
-- Updated for Joomla 6 compatibility
+- Minor updates and improvements
 
-### 🐛 Fixed
-- Resolved issue with Joomla 6 installation
-
-## [3.0.0] - 2026-02-17
+## [3.0.0] - 2026-02-19
 
 **Major Release: Complete Rewrite for Joomla 5/6**
 
