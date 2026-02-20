@@ -18,6 +18,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.9] - 2026-02-20
+
+### 🐛 Fixed
+- Fixed user menu item not working
+- Fixed pagination not working in user tracks page
+- Fixed custom waypoint icons not showing
+- Updated default behavior of embed code
+- Fixed plugin events not executed
+
 ## [7.0.8] - 2026-02-19
 
 ### 🐛 Fixed
