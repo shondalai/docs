@@ -25,10 +25,12 @@ The event system allows you to:
 - **Log** and audit user activities
 - **Integrate** with third-party services
 
-All events use the `com_gpstools.` prefix followed by the entity and action:
+All events expose a typed `EVENT_NAME` constant in each event class.
+
+The constants follow the `onGpsTools{Entity}{Action}` naming pattern:
 
 ```
-com_gpstools.{entity}.{action}
+onGpsTools{Entity}{Action}
 ```
 
 ## Quick Start
@@ -124,8 +126,8 @@ class MyPlugin extends CMSPlugin implements SubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            'com_gpstools.track.beforeCreate' => 'onBeforeTrackCreate',
-            'com_gpstools.track.afterCreate'  => 'onAfterTrackCreate',
+            BeforeTrackCreateEvent::EVENT_NAME => 'onBeforeTrackCreate',
+            AfterTrackCreateEvent::EVENT_NAME  => 'onAfterTrackCreate',
         ];
     }
 
@@ -170,7 +172,7 @@ Fired before a new track is created. **Cancellable.**
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.track.beforeCreate` | |
+| Event Name | `onGpsToolsBeforeTrackCreate` | |
 | Event Class | `BeforeTrackCreateEvent` | |
 | Cancellable | ✅ Yes | |
 
@@ -213,7 +215,7 @@ Fired after a track is successfully created.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.track.afterCreate` | |
+| Event Name | `onGpsToolsAfterTrackCreate` | |
 | Event Class | `AfterTrackCreateEvent` | |
 | Cancellable | ❌ No | |
 
@@ -254,7 +256,7 @@ Fired before a track is updated. **Cancellable.**
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.track.beforeUpdate` | |
+| Event Name | `onGpsToolsBeforeTrackUpdate` | |
 | Event Class | `BeforeTrackUpdateEvent` | |
 | Cancellable | ✅ Yes | |
 
@@ -299,7 +301,7 @@ Fired after a track is successfully updated.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.track.afterUpdate` | |
+| Event Name | `onGpsToolsAfterTrackUpdate` | |
 | Event Class | `AfterTrackUpdateEvent` | |
 | Cancellable | ❌ No | |
 
@@ -357,7 +359,7 @@ Fired before a track is deleted. **Cancellable.**
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.track.beforeDelete` | |
+| Event Name | `onGpsToolsBeforeTrackDelete` | |
 | Event Class | `BeforeTrackDeleteEvent` | |
 | Cancellable | ✅ Yes | |
 
@@ -397,7 +399,7 @@ Fired after a track is successfully deleted.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.track.afterDelete` | |
+| Event Name | `onGpsToolsAfterTrackDelete` | |
 | Event Class | `AfterTrackDeleteEvent` | |
 | Cancellable | ❌ No | |
 
@@ -443,7 +445,7 @@ Fired when a track is viewed on the frontend.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.track.afterView` | |
+| Event Name | `onGpsToolsAfterTrackView` | |
 | Event Class | `AfterTrackViewEvent` | |
 | Cancellable | ❌ No | |
 
@@ -482,7 +484,7 @@ Fired when a track's publishing state changes (publish/unpublish).
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.track.afterStateChange` | |
+| Event Name | `onGpsToolsAfterTrackStateChange` | |
 | Event Class | `AfterTrackStateChangeEvent` | |
 | Cancellable | ❌ No | |
 
@@ -528,7 +530,7 @@ Fired when a user rates (likes/dislikes) a track.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.rating.afterRate` | |
+| Event Name | `onGpsToolsAfterRate` | |
 | Event Class | `AfterTrackRateEvent` | |
 | Cancellable | ❌ No | |
 
@@ -576,7 +578,7 @@ Fired before a comment is created. **Cancellable.**
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.comment.beforeCreate` | |
+| Event Name | `onGpsToolsBeforeCommentCreate` | |
 | Event Class | `BeforeCommentCreateEvent` | |
 | Cancellable | ✅ Yes | |
 
@@ -623,7 +625,7 @@ Fired after a comment is successfully created.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.comment.afterCreate` | |
+| Event Name | `onGpsToolsAfterCommentCreate` | |
 | Event Class | `AfterCommentCreateEvent` | |
 | Cancellable | ❌ No | |
 
@@ -695,7 +697,7 @@ Fired after waypoints are created (batch operation).
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.waypoint.afterCreate` | |
+| Event Name | `onGpsToolsAfterWaypointsCreate` | |
 | Event Class | `AfterWaypointsCreateEvent` | |
 | Cancellable | ❌ No | |
 
@@ -744,7 +746,7 @@ Fired after a track or comment is rated (like/dislike).
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.rating.afterRate` | |
+| Event Name | `onGpsToolsAfterRate` | |
 | Event Class | `AfterTrackRateEvent` | |
 | Cancellable | ❌ No | |
 
@@ -799,7 +801,7 @@ Fired before a GPS file is parsed. **Cancellable.**
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.upload.beforeParse` | |
+| Event Name | `onGpsToolsBeforeFileParse` | |
 | Event Class | `BeforeFileParseEvent` | |
 | Cancellable | ✅ Yes | |
 
@@ -841,7 +843,7 @@ Fired after a GPS file is successfully parsed.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| Event Name | `com_gpstools.upload.afterParse` | |
+| Event Name | `onGpsToolsAfterFileParse` | |
 | Event Class | `AfterFileParseEvent` | |
 | Cancellable | ❌ No | |
 
@@ -895,21 +897,22 @@ public function onAfterFileParse(AfterFileParseEvent $event): void
 
 | Event Name | Cancellable | Entity | When Fired |
 |------------|:-----------:|--------|------------|
-| `com_gpstools.track.beforeCreate` | ✅ | Track | Before creating a new track |
-| `com_gpstools.track.afterCreate` | ❌ | Track | After track is created |
-| `com_gpstools.track.beforeUpdate` | ✅ | Track | Before updating a track |
-| `com_gpstools.track.afterUpdate` | ❌ | Track | After track is updated |
-| `com_gpstools.track.beforeDelete` | ✅ | Track | Before deleting a track |
-| `com_gpstools.track.afterDelete` | ❌ | Track | After track is deleted |
-| `com_gpstools.track.afterView` | ❌ | Track | When track is viewed |
-| `com_gpstools.comment.beforeCreate` | ✅ | Comment | Before creating a comment |
-| `com_gpstools.comment.afterCreate` | ❌ | Comment | After comment is created |
-| `com_gpstools.comment.beforeDelete` | ✅ | Comment | Before deleting a comment |
-| `com_gpstools.comment.afterDelete` | ❌ | Comment | After comment is deleted |
-| `com_gpstools.waypoint.afterCreate` | ❌ | Waypoint | After waypoints are created |
-| `com_gpstools.rating.afterRate` | ❌ | Rating | After a like/dislike |
-| `com_gpstools.upload.beforeParse` | ✅ | Upload | Before parsing GPS file |
-| `com_gpstools.upload.afterParse` | ❌ | Upload | After parsing GPS file |
+| `onGpsToolsBeforeTrackCreate` | ✅ | Track | Before creating a new track |
+| `onGpsToolsAfterTrackCreate` | ❌ | Track | After track is created |
+| `onGpsToolsBeforeTrackUpdate` | ✅ | Track | Before updating a track |
+| `onGpsToolsAfterTrackUpdate` | ❌ | Track | After track is updated |
+| `onGpsToolsBeforeTrackDelete` | ✅ | Track | Before deleting a track |
+| `onGpsToolsAfterTrackDelete` | ❌ | Track | After track is deleted |
+| `onGpsToolsAfterTrackView` | ❌ | Track | When track is viewed |
+| `onGpsToolsAfterTrackStateChange` | ❌ | Track | After track state changes |
+| `onGpsToolsBeforeCommentCreate` | ✅ | Comment | Before creating a comment |
+| `onGpsToolsAfterCommentCreate` | ❌ | Comment | After comment is created |
+| `onGpsToolsBeforeCommentDelete` | ✅ | Comment | Before deleting a comment |
+| `onGpsToolsAfterCommentDelete` | ❌ | Comment | After comment is deleted |
+| `onGpsToolsAfterWaypointsCreate` | ❌ | Waypoint | After waypoints are created |
+| `onGpsToolsAfterRate` | ❌ | Rating | After a like/dislike |
+| `onGpsToolsBeforeFileParse` | ✅ | Upload | Before parsing GPS file |
+| `onGpsToolsAfterFileParse` | ❌ | Upload | After parsing GPS file |
 
 ---
 
@@ -1013,7 +1016,7 @@ public function onAfterTrackRateEvent(AfterTrackRateEvent $event): void
 use Joomla\CMS\Factory;
 
 $dispatcher = Factory::getApplication()->getDispatcher();
-$listeners = $dispatcher->getListeners('com_gpstools.track.afterCreate');
+$listeners = $dispatcher->getListeners(AfterTrackCreateEvent::EVENT_NAME);
 
 foreach ($listeners as $listener) {
     echo get_class($listener[0]) . '::' . $listener[1] . "\n";
@@ -1057,8 +1060,8 @@ public function onContentAfterSave($context, $article, $isNew)
 public static function getSubscribedEvents(): array
 {
     return [
-        'com_gpstools.track.afterCreate' => 'onAfterTrackCreate',
-        'com_gpstools.track.afterUpdate' => 'onAfterTrackUpdate',
+        AfterTrackCreateEvent::EVENT_NAME => 'onAfterTrackCreate',
+        AfterTrackUpdateEvent::EVENT_NAME => 'onAfterTrackUpdate',
     ];
 }
 

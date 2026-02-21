@@ -21,7 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [7.0.10] - 2026-02-21
 
 ### 🔧 Changed
-- Minor updates and improvements
+- Fixed issue showing custom waypoint images
+- Fixed issue with triggering plugin events on track view page
 
 ## [7.0.9] - 2026-02-20
 
