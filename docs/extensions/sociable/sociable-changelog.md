@@ -14,6 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.0.1] - 2026-02-22
+
+### 🐛 Fixed
+- Resolved installer error on new sites
+- Enabled plugin events to trigger correctly
+- Corrected styles display issue in backend
+- Restored icon display in backend
+
 ## [3.0.0] - 2026-02-19
 
 **Major Release: Complete Rewrite for Joomla 5/6**
