@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🐛 Fixed
 - Updated notifications module to show bell icon with notifications dropdown
-- Improved members module to show correct UX
+- Updated members module to show correct UX
 - Updated groups module to display groups with card layout and correct links
 - Updated feed module to display activity feed with correct links
 
