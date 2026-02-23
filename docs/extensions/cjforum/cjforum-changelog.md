@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [6.0.15] - 2026-02-23
 
 ### 🔧 Changed
+- Enhanced pages for mobile responsive behavior
 - Minor updates and improvements
 
 ## [6.0.14] - 2026-02-18
