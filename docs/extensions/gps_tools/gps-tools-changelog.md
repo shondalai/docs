@@ -18,6 +18,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.11] - 2026-02-23
+
+### 🚀 Added
+- Provided options to show or hide photo gallery
+- Provided options to show or hide splits table
+
+### 🐛 Fixed
+- Prevented splits table from appearing in shortcode generator
+
 ## [7.0.10] - 2026-02-21
 
 ### 🔧 Changed
