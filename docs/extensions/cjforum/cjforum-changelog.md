@@ -16,10 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🚀 Added
 - Displayed user avatar in topics list compact view mode
-- Persisted topics and categories view mode in browser session
+- Saved topics/categories view mode in browser session
 
 ### 🐛 Fixed
-- Removed theme toggle button since browser handles theme switching
+- Removed theme toggle button since browser manages theme
 - Made topic actions dropdown buttons visible
 
 ## [6.0.15] - 2026-02-22
