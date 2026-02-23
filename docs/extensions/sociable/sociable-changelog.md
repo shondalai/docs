@@ -17,9 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🚀 Added
 - Made admin email templates menu responsive
-- Made left icon on top toolbar clickable
+- Enabled left icon on top toolbar to be clickable
 
 ### 🐛 Fixed
+- Enabled edit profile button to work on profile page
+- Enabled create group button to work
 - Corrected stats percentages in admin dashboard page
 - Made settings page menu responsive
 - Corrected percentages on dashboard page
