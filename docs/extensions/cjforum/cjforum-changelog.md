@@ -12,7 +12,17 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [6.0.15] - 2026-02-23
+## [6.0.16] - 2026-02-23
+
+### 🚀 Added
+- Displayed user avatar in topics list compact view mode
+- Persisted topics and categories view mode in browser session
+
+### 🐛 Fixed
+- Removed theme toggle button since browser handles theme switching
+- Made topic actions dropdown buttons visible
+
+## [6.0.15] - 2026-02-22
 
 ### 🔧 Changed
 - Enhanced pages for mobile responsive behavior
