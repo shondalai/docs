@@ -13,6 +13,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.0.4] - 2026-03-05
+
+### 🚀 Added
+- Enabled complete email variable mapping for group join/request templates with legacy aliases
+- Enabled activation-aware registration response fields for frontend handling
+- Enabled frontend/public config wiring for new embed/autolink toggles
+- Enabled admin-configurable feature toggles for auto-link URLs and rich embeds
+- Integrated reusable URL embed rendering flow into activity/rich-text rendering
+- Enabled rich link embeds in activity content with internal preview cards and external link support
+
+### 🐛 Fixed
+- Enabled report button functionality
+- Enabled Add User button on backend Users page
+- Prevented moderators from managing other moderators or admins
+- Corrected notification profile navigation for friend/user notifications
+- Enforced visibility checks on single-item loads to prevent privacy bypass
+- Prevented friends-only posts from appearing publicly in feed/group contexts
+- Prevented unintended auto-login for accounts requiring activation
+- Ensured registration respects Joomla user activation mode with blocked-until-activation flow
+- Prevented mentions API backend crash by handling undefined response helper
+- Enabled Edit profile button on profile page
+- Enabled Create group button functionality
+
 ## [3.0.3] - 2026-02-23
 
 ### 🚀 Added
