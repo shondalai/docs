@@ -13,6 +13,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.0.5] - 2026-03-05
+
+### 🚀 Added
+- Added button to view all text responses on the reports page
+
+### 🐛 Fixed
+- Removed duplicate cancel button on View Response page
+- Enabled cancel button functionality on View Response page
+- Resolved error for single survey menu item when intro is disabled
+- Removed PHP notice and warning messages on the survey page
+
 ## [7.0.4] - 2026-02-17
 
 ### 🐛 Fixed
