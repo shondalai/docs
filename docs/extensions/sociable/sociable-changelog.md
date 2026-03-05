@@ -23,6 +23,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Integrated reusable URL embed rendering flow into activity/rich-text rendering
 - Enabled rich link embeds in activity content with internal preview cards and external link support
 
+### 🔧 Changed
+- Only admins should be allowed to unban users
+- Notification and email links now resolve to valid, navigable destinations consistently.
+- Auth and activation flows now align with Joomla account policy settings.
+- Guests are restricted to public-only visibility where applicable.
+- Privacy enforcement is now server-side for feed and direct activity retrieval (public/friends/group/private rules).
+
 ### 🐛 Fixed
 - Enabled report button functionality
 - Enabled Add User button on backend Users page
