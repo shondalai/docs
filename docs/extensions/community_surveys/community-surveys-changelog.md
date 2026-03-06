@@ -16,6 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [7.0.7] - 2026-03-06
 
 ### 🐛 Fixed
+- Fixed issue preventing survey editing after previous update
+
+## [7.0.7] - 2026-03-06
+
+### 🐛 Fixed
 - Resolved issue preventing survey editing after previous update
 
 ## [7.0.7] - 2026-03-06
