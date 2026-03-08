@@ -13,6 +13,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.0.6] - 2026-03-08
+
+### 🚀 Added
+- Added show all comments link when many comments were present on activity
+- Showed first two comments by default when loading feed or group activities
+- Sent notification to target user when someone mentioned them in posts
+- Allowed moderation of reported content from group admin page
+
+### 🐛 Fixed
+- Displayed comment added to activity when more comments were present
+- Enabled deletion of posts or status from backend
+- Allowed editing of comments
+
 ## [3.0.5] - 2026-03-06
 
 ### 🐛 Fixed
