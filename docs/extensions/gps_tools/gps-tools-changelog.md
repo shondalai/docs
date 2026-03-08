@@ -18,6 +18,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.12] - 2026-03-08
+
+### 🚀 Added
+- Added an option to select the default color scheme (light, dark, auto)
+- Added more waypoint types
+
+### 🐛 Fixed
+- Showed only changed options on shortcode generator
+- List limit respected config option
+- Waypoint symbols defined in the GPX file showed correctly
+
 ## [7.0.11] - 2026-02-23
 
 ### 🚀 Added
