@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.0.7] - 2026-03-10
+
+### 🚀 Added
+- Added option to customize activity card border thickness
+- Added support for customizing theme colors
+- Enabled Open Graph meta previews of external URLs
+- Showed extension version on admin dashboard
+- Allowed selecting publishing status during field creation
+
+### 🐛 Fixed
+- Enabled viewing second page of activities on group page
+- Resolved issues with email notifications
+- Displayed user avatar in email notifications
+- Enabled deletion of profile field
+
 ## [3.0.6] - 2026-03-08
 
 ### 🚀 Added
