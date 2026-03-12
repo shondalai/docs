@@ -22,14 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Resolved issue preventing topic attachments
 - Fixed issue in authentication plugin
 
-## [6.1.0] - 2026-03-12
-### 🚀 Added
-- Introduced modern email notification system
-
-### 🐛 Fixed
-- Resolved issue preventing attachments to the topic
-- Fixed issue with authentication plugin
-
 ## [6.0.16] - 2026-02-23
 
 ### 🚀 Added
