@@ -13,6 +13,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.0.8] - 2026-03-13
+
+### 🚀 Added
+- Enabled lightbox display when users clicked feed images or gallery images
+
+### 🐛 Fixed
+- Added missing language strings
+
 ## [3.0.7] - 2026-03-10
 
 ### 🚀 Added
