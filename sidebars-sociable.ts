@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
         'profile-assignment-rules',
         'setting-up-groups-in-sociable',
         'setting-up-activity-streams-system-for-sociable',
+        'media-handling',
         'setting-up-the-points-system-for-sociable',
         'setting-up-the-badge-system-for-sociable',
         'setting-up-social-login-in-sociable',
