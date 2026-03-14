@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.1.0] - 2026-03-14
+
+### 🚀 Added
+- Enabled preview of activity from admin interface
+- Allowed editing groups from admin groups page
+- Introduced new feature for group categories
+- Added config option to restrict Sociable to logged-in users
+- Implemented advanced media handling with protected URLs
+- Applied frontend validations to media uploads
+- Provided new activity configuration options for media uploads
+
+### 🐛 Fixed
+- Included missing site language strings
+- Removed duplicate language strings
+
 ## [3.0.8] - 2026-03-13
 
 ### 🚀 Added
