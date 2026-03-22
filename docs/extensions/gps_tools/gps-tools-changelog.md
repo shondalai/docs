@@ -18,6 +18,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.13] - 2026-03-22
+
+### 🚀 Added
+- Provided enhanced options to customize elevation smoothing and noise filters
+- Improved tracks sorting filter
+- Made exported GPX files compatible with Garmin Basecamp
+
+### 🐛 Fixed
+- Resolved issue with elevation gain and loss calculation on mountain tracks
+- Corrected issue with sorting tracks by distance
+- Added missing language strings
+- Enabled user name to be clickable during pagination in tracks listing
+- Displayed waypoint type icons when editing waypoint type
+- Allowed editing of the email template
+- Enabled GPS tracks downloaded from GPS Tools (.gpx) to import into Garmin Basecamp
+- Ensured categories list page items use SEF URLs with pagination
+
 ## [7.0.12] - 2026-03-08
 
 ### 🚀 Added
