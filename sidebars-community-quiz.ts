@@ -28,6 +28,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Configuration',
       items: [
+        'configuring-pdf-renderers-for-community-quiz',
         'customizing-emails-sent-from-community-quiz',
         'shortcodes-supported-by-community-quiz-certificates',
         'community-quiz-built-in-module-positions',

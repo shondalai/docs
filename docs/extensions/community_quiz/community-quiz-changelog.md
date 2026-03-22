@@ -15,8 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [7.5.0] - 2026-03-22
 
 ### 🚀 Added
-- Enhanced PDF report rendering using ChromPDF and mPDF
+- Enhanced PDF report rendering using ChromPDF and DomPDF
 - Improved user experience on the response details page
+
+### 🔄 Changed
+- Removed legacy TCPDF support
 
 ## [7.4.10] - 2026-02-12
 

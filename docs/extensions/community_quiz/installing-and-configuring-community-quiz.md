@@ -153,9 +153,14 @@ Access global settings via **Components → Community Quiz → Options**.
 | Allow Retry | Permit retaking after completion | Yes |
 | Max Retries | Maximum retry attempts | 3 |
 | Attach PDF Report | Email PDF results to users | No |
+| PDF Engine | Auto Detect, Chrome / Browsershot, or DomPDF | Auto Detect |
+| PDF Font Name | Default font used in generated PDFs | DejaVu Sans |
+| PDF Date Format | Date format used in PDF output | `F j, Y, g:i a` |
 | Show Progress Bar | Display completion progress | Yes |
 | Show Answers | Display correct answers after completion | Yes |
 | Show Answers Early | Show answers immediately after each question | No |
+
+For a complete renderer setup guide, see [Configuring PDF Renderers](./configuring-pdf-renderers-for-community-quiz).
 
 ### Results Display
 
@@ -167,6 +172,15 @@ Access global settings via **Components → Community Quiz → Options**.
 | Scorewise Messages | Custom messages based on score ranges |
 | Show Chart Labels | Display data labels on charts |
 | Allow Export | Let users export their responses |
+
+### PDF Output Controls
+
+| Setting | Description |
+|---------|-------------|
+| PDF Response Header | Show or hide the header in response PDFs |
+| PDF Response Footer | Show or hide the footer in response PDFs |
+| PDF Certificate Header | Show or hide the header in certificate PDFs |
+| PDF Certificate Footer | Show or hide the footer in certificate PDFs |
 
 ### Category Settings
 
