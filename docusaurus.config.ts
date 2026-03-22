@@ -27,11 +27,13 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'ignore',
 
   markdown: {
     mermaid: false,
     format: 'mdx',
+    hooks: {
+      onBrokenMarkdownLinks: 'ignore',
+    },
     mdx1Compat: {
       comments: true,
       admonitions: true,
