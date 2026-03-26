@@ -13,6 +13,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.0.13] - 2026-03-26
+
+### 🐛 Fixed
+- Removed hardcoded language strings
+- Resolved issue with starting survey when intro was enabled
+- Enabled creation of private survey from frontend
+
 ## [7.0.12] - 2026-03-12
 
 ### 🐛 Fixed
