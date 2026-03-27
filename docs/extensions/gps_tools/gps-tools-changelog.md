@@ -18,6 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.15] - 2026-03-27
+
+### 🐛 Fixed
+- Published track automatically even when moderation was enabled
+
 ## [7.0.14] - 2026-03-22
 
 ### 🐛 Fixed
