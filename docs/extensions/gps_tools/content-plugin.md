@@ -67,19 +67,28 @@ Control what sections appear in the embed:
 
 | Option | Shortcode Attribute | Default | Description |
 |--------|---------------------|---------|-------------|
-| Link to Track | `link="1"` or `linktotrack="1"` | `0` (off) | Make title clickable and show "View details" link |
-| Map | `map="1"` or `showmap="1"` | `1` (on) | Interactive Leaflet map with track route |
-| Statistics | `stats="1"` or `showstats="1"` | `1` (on) | Distance, elevation, duration, speed stats |
-| Elevation Chart | `elevation="1"` or `showelevation="1"` | `0` (off) | Elevation profile chart |
-| Speed Chart | `speed="1"` or `showspeed="1"` | `0` (off) | Speed over distance/time chart |
-| Heart Rate Chart | `heartrate="1"` or `showheartrate="1"` | `0` (off) | Heart rate chart (if data available) |
-| Waypoints | `waypoints="1"` or `showwaypoints="1"` | `0` (off) | Waypoints timeline table |
-| Splits | `splits="1"` or `showsplits="1"` | `0` (off) | Kilometer/mile splits table |
-| Photo Gallery | `gallery="1"` or `showgallery="1"` | `0` (off) | Track photo gallery |
+| Title | `title="1"` | `1` (on) | Show track title in the embed header |
+| Link to Track | `link="1"` | `1` (on) | Make title clickable and show "View details" link |
+| Navigation | `navigation="1"` | `1` (on) | Show previous/next track navigation links |
+| Downloads | `downloads="1"` | `1` (on) | Show track file download buttons |
+| Map | `map="1"` | `1` (on) | Interactive Leaflet map with track route |
+| Statistics | `stats="1"` | `1` (on) | Distance, elevation, duration, speed stats |
+| Elevation Chart | `elevation="1"` | `1` (on) | Elevation profile chart |
+| Speed Chart | `speed="1"` | `1` (on) | Speed over distance/time chart |
+| Heart Rate Chart | `heartrate="1"` | `1` (on) | Heart rate chart (if data available) |
+| Waypoints | `waypoints="1"` | `0` (off) | Waypoints timeline table |
+| Splits | `splits="1"` | Global | Kilometer/mile splits table (follows component setting) |
+| Photo Gallery | `gallery="1"` | Global | Track photo gallery (follows component setting) |
 
 **Boolean Values:**
 - Enable: `1`, `true`, `yes`, `on`
 - Disable: `0`, `false`, `no`, `off`
+
+:::info Component-Level Overrides
+Some options are subject to component-level settings:
+- **Link**, **Navigation**, and **Downloads** respect the visibility access settings configured in the component options. If an access level restricts these features, the shortcode attribute cannot override it.
+- **Statistics**, **Elevation Chart**, **Speed Chart**, and **Heart Rate Chart** respect the global show/hide settings in the component options. If a chart is globally disabled, the shortcode cannot enable it.
+:::
 
 ### Complete Reference
 
@@ -88,19 +97,22 @@ Control what sections appear in the embed:
   id="123"              # Required: Track ID
   layout="full"         # Layout: full, compact, mini
   height="320"          # Map height in pixels
-  link="0"              # Link title to main track page
+  title="1"             # Show/hide track title
+  link="1"              # Link title to main track page
+  navigation="1"        # Show/hide prev/next navigation
+  downloads="1"         # Show/hide download buttons
   map="1"               # Show/hide map
   stats="1"             # Show/hide statistics
-  elevation="0"         # Show/hide elevation chart
-  speed="0"             # Show/hide speed chart
-  heartrate="0"         # Show/hide heart rate chart
+  elevation="1"         # Show/hide elevation chart
+  speed="1"             # Show/hide speed chart
+  heartrate="1"         # Show/hide heart rate chart
   waypoints="0"         # Show/hide waypoints table
-  splits="0"            # Show/hide splits table
-  gallery="0"           # Show/hide photo gallery
+  splits="1"            # Show/hide splits table
+  gallery="1"           # Show/hide photo gallery
 }
 ```
 
-> **Note:** Shortcode attributes are case-insensitive. Both `showMap` and `showmap` work.
+> **Note:** Shortcode attributes are case-insensitive.
 
 ---
 
@@ -117,10 +129,11 @@ Display a grid of multiple tracks:
 | Option | Description | Default |
 |--------|-------------|---------|
 | `category` | Filter by category ID | All categories |
-| `limit` | Number of tracks to display | 12 |
+| `limit` | Number of tracks to display (max 50) | 10 |
+| `layout` | Grid layout type | `grid` |
 | `columns` | Grid columns (1-6) | 3 |
 | `orderby` | Sort field: `created`, `title`, `hits`, `distance` | `created` |
-| `order` | Sort direction: `asc`, `desc` | `desc` |
+| `orderdir` | Sort direction: `asc`, `desc` | `desc` |
 | `featured` | Show only featured tracks: `1` or `0` | Show all |
 
 ### Examples
@@ -128,7 +141,7 @@ Display a grid of multiple tracks:
 ```
 {gpstracks category="5" limit="6" columns="3"}
 {gpstracks featured="1" limit="4" columns="2"}
-{gpstracks orderby="hits" order="desc" limit="10"}
+{gpstracks orderby="hits" orderdir="desc" limit="10"}
 ```
 
 ---
