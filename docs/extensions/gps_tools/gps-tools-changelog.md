@@ -18,6 +18,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.0.16] - 2026-03-30
+
+### 🚀 Added
+- Added option to hide title in the embed shortcode
+
+### 🐛 Fixed
+- Forced color scheme selected in options on frontend
+- Published track automatically when moderation was disabled
+- Sent correct email notification content for comments
+- Sent email notification for likes
+- Applied elevation smoothing when uploading the file
+
 ## [7.0.15] - 2026-03-27
 
 ### 🐛 Fixed
