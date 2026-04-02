@@ -23,32 +23,6 @@ All notable changes to EasyForms will be documented in this file.
 - Corrected data shown on submission PDF export
 - Eliminated errors shown on browser console
 
-## [1.1.0] - 2026-04-02
-
-### 🚀 Added
-- Added AI translation support for email templates
-- Enhanced email templates page with multilingual support
-- Used Shondalai Core Library email service for advanced features such as email queue
-- Used Shondalai Core Library for storage service with AWS S3 support
-
-### 🐛 Fixed
-- Resolved issues with loading reports
-- Corrected the data shown on submission PDF export
-- Removed errors shown on browser console
-
-## [1.1.0] - 2026-04-02
-
-### 🚀 Added
-- Introduced AI translation support for email templates
-- Improved email templates page with multilingual support
-- Integrated Shondalai Core Library email service for advanced features like email queue
-- Integrated Shondalai Core Library for storage service with AWS S3 support
-
-### 🐛 Fixed
-- Resolved issues with loading reports
-- Corrected data displayed on submission PDF export
-- Removed errors shown on browser console
-
 ## [1.0.1] - December 6, 2025
 
 ### ✨ Added
