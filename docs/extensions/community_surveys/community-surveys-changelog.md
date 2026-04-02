@@ -13,6 +13,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.0.15] - 2026-04-02
+
+### 🚀 Added
+- Added a button to bulk assign contacts to a group
+
+### 🐛 Fixed
+- Fixed contact groups menu showing 0 contact groups in left navigation
+- Fixed selected contact group not assigned when editing a contact
+- Fixed contacts list showing empty group name
+- Fixed conditional rule showing id instead of answer title
+- Fixed contact id not saved with response when inviting contact groups
+
 ## [7.0.14] - 2026-03-30
 
 ### 🐛 Fixed
