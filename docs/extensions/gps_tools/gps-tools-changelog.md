@@ -18,6 +18,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.1.0] - 2026-04-03
+
+### 🚀 Added
+- Enabled selection of default view mode (grid or list) for tracks listing
+- Added grouped settings page with AI and road book configuration
+- Introduced story book feature guiding users through GPS track with narrative
+- Allowed editing waypoints with icon and description for roadbook creation
+
 ## [7.0.16] - 2026-03-30
 
 ### 🚀 Added
