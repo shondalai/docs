@@ -18,6 +18,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.1.1] - 2026-04-05
+
+### 🚀 Added
+- Used first gallery image as thumbnail before fallback to static map image
+- Displayed pending badge on unpublished tracks for admin view
+- Included approve button in comment approval emails
+- Sent comment approval notification emails
+
+### 🐛 Fixed
+- Added missing Road Book translations
+- Fixed error when publishing moderated comment
+- Added 4s delay before redirect for approval message
+
 ## [7.1.0] - 2026-04-03
 
 ### 🚀 Added
