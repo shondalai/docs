@@ -13,6 +13,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.0.16] - 2026-04-05
+
+### 🐛 Fixed
+- Resolved untranslated strings
+- Restored conditional rules after JSON import
+- Displayed answer text instead of IDs after page reload
+
 ## [7.0.15] - 2026-04-02
 
 ### 🚀 Added
