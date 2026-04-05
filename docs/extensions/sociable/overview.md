@@ -135,7 +135,7 @@ Sociable includes a comprehensive SDK for third-party developers to integrate wi
 $sociable = Sociable::getInstance();
 
 // Access profile data
-$profile = $sociable->profiles()->getById($userId);
+$profile = $sociable->profiles()->get($userId);
 
 // Award points
 $sociable->points()->award('com_myext.action', $userId);

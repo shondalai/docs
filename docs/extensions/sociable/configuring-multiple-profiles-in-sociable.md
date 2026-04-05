@@ -209,13 +209,13 @@ Developers can access profile data via the Sociable SDK:
 $sociable = Sociable::getInstance();
 
 // Get profile by user ID
-$profile = $sociable->profiles()->getById($userId);
+$profile = $sociable->profiles()->get($userId);
 
 // Get profile by handle
 $profile = $sociable->profiles()->getByHandle('johndoe');
 
 // Get avatar URL
-$avatarUrl = $sociable->avatars()->getUrl($userId, 64);
+$avatarUrl = $sociable->avatars()->url($userId, 'lg');
 
 // Search profiles
 $results = $sociable->profiles()->search([
