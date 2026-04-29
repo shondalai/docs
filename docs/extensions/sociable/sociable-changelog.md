@@ -13,6 +13,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.1.2] - 2026-04-29
+
+### 🚀 Added
+- New license management wizard
+- Show inline validation messages on registration form
+
+### 🐛 Fixed
+- Gate private SPA routes behind authentication
+- Standardise `currentProfile` as the auth-user key in Site views
+- Toolbar and sidebar treat viewed profile as the logged-in user
+- Surface specific reason when a direct message can't be sent
+- Messaging now treats “connections” correctly on the backend and shows clear inline modal
+- The header now shows pending friendship requests with a badge and links directly to the requests tab
+- The group modal now creates first, then uploads images using the proper image API
+- Backend group creation now honors publish intent
+- Fixed update sites URLs
+- Profile avatars are created with too low resolution
+- Few buttons do not follow theme colors
+
 ## [3.1.1] - 2026-04-05
 
 ### 🚀 Added
