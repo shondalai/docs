@@ -12,6 +12,21 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.1.7] - 2026-04-29
+
+### 🚀 Added
+- New easy license activation wizard
+- Show unread topics status on topics listing
+
+### 🐛 Fixed
+- Tighten security for the download folders with IIS hosts
+- Tighten security for the download folders with IIS hosts
+- Fixed update sites URLs
+- Unable to attach files in the replies
+- Incorrect values are showing on who's online block
+- Forum stats are not showing the correct numbers
+- Loader animation overlaps with another when loading topics
+
 ## [6.1.6] - 2026-04-16
 
 ### 🐛 Fixed
