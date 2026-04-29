@@ -13,6 +13,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.0.17] - 2026-04-29
+
+### 🚀 Added
+- New license management wizard
+
+### 🐛 Fixed
+- Fixed the file-attachment download link on the Result view going to the template's home page.
+- Fixed completion/thank-you emails never being sent for guest respondents.
+- Fixed file-upload answers showing only a filename on the result page.
+- Relaxed access checks on the consolidated report to honor the `core.results` ("View Results") permission
+- Fixed `mod_surveyresults` always reporting zero responses by populating `$data->responseCount` from the model.
+- Fixed `mod_surveyresults` template referencing the unimported `SurveyHelper` class and the wrong layout path
+- Fixed `mod_surveyresults` ("Community Surveys Consolidated Report") module producing a fatal error by adding the method to the site `ReportModel`
+- Tighten security for the download folders with IIS hosts
+- Fixed update sites URLs
+- Unable to delete survey invitations
+- Add missing language strings
+- Dark mode enhancements
+
 ## [7.0.16] - 2026-04-05
 
 ### 🐛 Fixed
