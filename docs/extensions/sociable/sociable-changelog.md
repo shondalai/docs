@@ -13,6 +13,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.1.3] - 2026-05-05
+
+### 🚀 Added
+- Add new activity rule to for user signup
+- Add new page to customize sociable activity rules
+- Bundling react code source in the package
+- New configuration options for notification settings
+- Standardizing the email templates architecture with customization options
+
+### 🐛 Fixed
+- Minor display issues
+- Fixed translations are not showing on frontend
+- Fixed mobile user menu issues
+- Handle error responses in private messaging
+- Error shown when viewing user reports
+- Unable to reindex data using smart search plugin
+- Surface actual error messages on frontend
+- Notifications are not sent when messages are posted
+- Unread_messages_count missing from main install schema
+- Resolve referral FK incompatibility on strict MySQL
+
 ## [3.1.2] - 2026-04-29
 
 ### 🚀 Added
