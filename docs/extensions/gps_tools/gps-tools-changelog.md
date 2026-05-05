@@ -36,6 +36,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The selected color scheme is not applied and always fallback to browser defaults
 - When a comment has been moderated, show the message to the user
 
+## [7.2.0] - 2026-05-05
+
+### 🚀 Added
+- Added new options to customize email templates without modifying html
+- Enhanced email templates architecture
+- Adds missing approval-confirmation email templates
+- Add timestamp to the track download files
+- New license management wizard
+- Admins with core.edit.state permission can now view unpublished tracks
+
+### 🐛 Fixed
+- Show message when a track needs moderation
+- Unable to show image uploaded on gallery as track image
+- Tighten security for the download folders with IIS hosts
+- Fixed update sites URLs
+- The selected color scheme is not applied and always fallback to browser defaults
+- When a comment has been moderated, show the message to the user
+
 ## [7.1.1] - 2026-04-05
 
 ### 🚀 Added
