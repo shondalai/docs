@@ -7,7 +7,13 @@ sidebar_position: 21
 
 # Rule Engine
 
-The Rule Engine evaluates points and badge conditions using JSON structures.
+The Rule Engine is the shared backbone for **points rules**, **badge
+rules**, and **activity rules**. It evaluates conditions defined as JSON,
+backs the `getPointsRule` / `getBadgeRules` lookups used by the SDK, and
+parses `sociable_rules.json` files at install time.
+
+For the `sociable_rules.json` file format and discovery paths see
+[Registering Custom Rules](sociable-sdk-custom-rules).
 
 ## Condition Format
 

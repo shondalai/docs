@@ -251,51 +251,80 @@ Display activities anywhere using **mod_sociable_feed**:
 
 ## SDK Integration
 
-Developers can create and manage activities via the SDK:
+Developers can create and manage activities via the SDK. See
+[Activity API](sociable-sdk-activity-api) for the complete reference.
 
 ```php
-$sociable = Sociable::getInstance();
+$sociable = \Joomla\Component\Sociable\Administrator\SDK\Sociable::getInstance();
 
-// Get user's feed
-$feed = $sociable->activities()->getFeed($userId, [
-    'limit' => 20,
-    'offset' => 0,
-]);
+// Push an activity. The first argument is an activity rule name — the rule
+// must exist in #__sociable_activity_types (see "Activity Rules" below).
+$activityId = $sociable->activities()->push(
+    'com_myext.article.create',
+    'New article published',
+    'Short description / preview text',
+    $userId,
+    ['item_id' => $articleId, 'visibility' => 'public']
+);
 
-// Create an activity
-$activityId = $sociable->activities()->create([
-    'user_id' => $userId,
-    'content' => 'Hello world!',
-    'visibility' => 'public',
-]);
+// Get the public feed.
+$feed = $sociable->activities()->getFeed(['limit' => 20, 'offset' => 0]);
 
-// Add reaction
-$sociable->activities()->addReaction($activityId, $userId, 'like');
+// Get activities for a single user.
+$personal = $sociable->activities()->getUserActivities($userId, ['limit' => 20]);
 
-// Add comment
-$sociable->activities()->addComment($activityId, $userId, 'Great post!');
+// Reactions & comments.
+$sociable->activities()->react($activityId, 'like', $userId);
+$sociable->activities()->addComment($activityId, 'Great post!', $userId);
 ```
 
 ## Third-Party Integration
 
-Sociable can display activities from integrated extensions:
+Sociable can display activities from integrated extensions. The whole
+system is driven by **activity rules** — entries in
+`#__sociable_activity_types` that declare which event names are allowed
+to appear in the stream and how to render them.
 
 ### Activity Rules
 
-Activity rules define how external content appears in the feed:
+Manage activity rules from **Components → Sociable → Badges → Activity
+Rules**:
 
-1. Go to **Components → Sociable → Activity Rules**
-2. Click **Scan Rules** to discover new integrations
-3. Enable/disable individual rules
-4. Configure visibility and formatting
+1. Click **Sync Rules** to discover and import every `sociable_rules.json`
+   shipped by installed extensions
+2. Toggle individual rules active/inactive (deactivated rules silently
+   drop new pushes)
+3. Edit the title, description, layout, asset name, and ordering
+4. Add an ad-hoc rule by hand with **Create Activity Rule**
+
+Sociable also runs the sync automatically on component install/update,
+so customers don't usually need to click Sync Rules manually.
 
 ### Creating Custom Rules
 
-For developers integrating custom extensions:
+For developers integrating custom extensions, the recommended path is to
+ship a `sociable_rules.json` file at one of the discovery paths. The full
+file format and discovery rules live in
+[Registering Custom Rules](sociable-sdk-custom-rules).
 
-1. Create a JSON rules file in your extension
-2. Define the activity template and triggers
-3. Sociable will discover and import the rules
+Minimal example:
+
+```json
+{
+  "version": "1.0",
+  "component": "com_myext",
+  "activityRules": [
+    {
+      "name": "com_myext.article.create",
+      "assetName": "com_myext",
+      "title": "New Article",
+      "description": "Activity emitted when a user publishes an article.",
+      "uiLayout": "activity.layouts.article",
+      "state": 1
+    }
+  ]
+}
+```
 
 ## Best Practices
 
