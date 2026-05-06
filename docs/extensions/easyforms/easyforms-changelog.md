@@ -10,6 +10,22 @@ All notable changes to EasyForms will be documented in this file.
 
 ---
 
+## [1.1.1] - 2026-05-06
+
+### 🚀 Added
+- Added support to automatically populate name and email address fields with logged in user details
+- Enhanced email templates architecture
+- Add support to override email subject with a field value
+- New license management wizard
+
+### 🐛 Fixed
+- Fixed issues with responsive behavior of fields
+- Field names are not showing on the Recipient Field in form email seetings
+- Fixed issue with sending emails
+- Tighten security for the download folders with IIS hosts
+- Fixed update sites URLs
+- Unable to download files attached to a submission
+
 ## [1.1.0] - 2026-04-02
 
 ### 🚀 Added
