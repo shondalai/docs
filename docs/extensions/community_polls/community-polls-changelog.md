@@ -22,6 +22,26 @@ Each release lists changes under one or more of the following sections:
 
 ## [7.0.0] - 2026-05-10
 
+### 🚀 Added
+- New unified admin shell: dashboard, polls list, results, audience view, settings, and email templates manager all share the same shell
+- New poll types: ranked-choice and grid (multi-question)
+- Bulk publish, feature, and delete from the polls list with keyboard shortcuts
+- Email templates manager: side-by-side HTML editor, variables panel, live preview at desktop and mobile widths, test send to any address
+- Content plugin: new {poll id=N mode=... layout=... link=...} shortcode with full attribute support
+- Smart Search plugin: indexes polls with author, category, poll type, and featured-status taxonomies
+- Color and textarea field types added to the settings schema for the new branding controls
+- Fixed issue with random poll module when a poll is unpublished * Added CSS classname votecount to the anywhere script
+- Added new permission to allow a user group to exclude from multiple vote restrictions
+- Added new permission to allow a user group to exclude from multiple vote restrictions
+
+### 🐛 Fixed
+- Update ChartJS library to latest version ^ Fixed UX related issues
+- fix
+- Show login modal if the guest user is not authorised to vote * Fixed issue with finder plugin
+- Fix issue with loading captcha
+
+## [7.0.0] - 2026-05-10
+
 ### Added
 
 - Complete admin rebuild as a React 19 single-page application.
