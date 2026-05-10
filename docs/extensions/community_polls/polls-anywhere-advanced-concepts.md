@@ -1,36 +1,30 @@
 ---
 id: polls-anywhere-advanced-concepts
-title: Polls Anywhere Advanced Concepts
-sidebar_label: Polls Anywhere Advanced Concepts
-sidebar_position: 3
+title: Polls Anywhere (removed in version 7)
+sidebar_label: Polls Anywhere (removed)
+sidebar_position: 9
 ---
 
-Community Polls now takes Joomla CMS to a new level by introducting Poll Sharing feature for the first time. It not only allow you to share the polls on your website but also let your users share the polls on your website on any website which need not be a Joomla website. So next time you see your poll on one of your user&#8217;s personal blog, don&#8217;t be surprised.
+# Polls Anywhere has been removed in version 7
 
-## Code to embed
+Polls Anywhere was the JavaScript-snippet feature in Community Polls 6 and earlier. It let you copy a small `<script>` block from a poll's detail page and paste it into any external site so the poll could load and accept votes from outside your Joomla install.
 
-The basic code for embedding a poll using Polls Anywhere is as follows:
-```javascript
-<script type="text/javascript" src="http://YOURWEBSITE/media/com_communitypolls/anywhere/anywhere.js"></script>
-<div class="cjpollsanywhere"><input type="hidden" /></div>
-<script type="text/javascript">PollsAnywhere({id:38, anywhere: true});</script>
-```
+The feature has been removed in **Community Polls 7**. The bundled `anywhere.js` file no longer ships, and the snippet panel on the poll detail page is gone. Existing snippets pasted on external sites will stop loading after you upgrade.
 
-## Explanation
+## Why we removed it
 
-As you can see in above code, the first line includes the PollsAnywhere script from your website. The second line is acts as a container for the poll to display. The class name of the container should be unique in a page so that only one instance of the poll is loaded.The last line of the above code will load the poll with id passed as parameter to the PollsAnywhere API.
+Polls Anywhere predated modern browser security defaults. Sites loading the script today typically have to deal with content-security-policy blocks, mixed-content warnings, third-party-cookie restrictions, and CORS edge cases that we could not paper over without compromising the security of the host Joomla site.
 
-You can override some settings of the poll by passing additional parameters in the last line of the code. The parameters should be passed as array of key-value parameters. Each parameter has a key and value. Below are the list of parameters that you can override. Please note that all of these parameters are optional and only id is required to show the poll.
+Rather than ship a feature most installs could no longer use cleanly, we have chosen to focus on first-party embedding paths that work reliably on Joomla 5 and 6.
 
-## Parameters
+## What to use instead
 
-- &#8220;anywhere&#8221;: A flag to indicate the poll is loading from an external site. i.e. the poll is being embedded on website other than where the community polls is installed.
-- &#8220;container&#8221; : You can override the container by passing the classname of any DIV element to this parameter. The poll will load in the element specified by this parameter. Default value is &#8220;cjpollsanywhere&#8221;
-- &#8220;template&#8221; The template should be used to display the poll. (TODO: Documentation on developing custom templates)
-- &#8220;chart&#8221;: You can override the chart type provided the chart type is enabled in component configuration. The available chart types are as follows
-- &#8220;bar&#8221;: Locally rendered bar chart
-- &#8220;pie&#8221; : Locally rendered pie chart along with bar chart legend
-- &#8220;gpie&#8221; : Interactive pie chart rendered by Google charts along with bar chart legend
-- &#8220;width&#8221;: Width of the chart
-- &#8220;height&#8221; : Height of the chart (applied only to pie chart)
-- &#8220;bgcolor&#8221; : Background color of the Google chart
+For embedding inside your own Joomla site, the modern equivalents cover most use cases:
+
+- **Inside articles** — use the `{poll id=N}` shortcode or the editor button. See [Display polls in Joomla articles](./display-polls-in-joomla-articles.md).
+- **Inside any module position** — use the Random Poll, Latest Polls, or Categories modules.
+- **As a dedicated page** — create a Community Polls menu item.
+
+For embedding on a different site (someone else's blog, a static landing page, etc.), the cleanest option today is an `<iframe>` pointing at the poll page on your Joomla site. Visitors vote on your site, results live on your site, and your CSP and cookie rules apply normally.
+
+If you have a use case that the embedding paths above do not cover, let us know through [shondalai.com/support](https://shondalai.com/support).

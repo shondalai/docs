@@ -9,8 +9,9 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Features',
       items: [
+        'email-templates',
+        'ai-helpers',
         'display-polls-in-joomla-articles',
-        'polls-anywhere-advanced-concepts',
         'custom-module-positions-in-community-polls',
       ],
     },
@@ -29,6 +30,15 @@ const sidebars: SidebarsConfig = {
       items: [
         'troubleshooting-tips-for-community-polls',
         'community-polls-changelog',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Removed in v7',
+      collapsed: true,
+      items: [
+        'polls-anywhere-advanced-concepts',
       ],
     },
   ],

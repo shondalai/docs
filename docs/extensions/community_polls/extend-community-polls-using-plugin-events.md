@@ -1,149 +1,224 @@
 ---
 id: extend-community-polls-using-plugin-events
-title: Extend Community Polls using plugin events
-sidebar_label: Extend Community Polls using plugin events
-sidebar_position: 4
+title: Extend Community Polls with plugin events
+sidebar_label: Plugin events
+sidebar_position: 7
 ---
 
-Community Polls triggers following events on different actions. You can use these events to do additional tasks by developing your own plugins. You need to have basic idea of creating Joomla plugins. Please see Joomla plugins developer documentation of Joomla docs website before proceeding further.
+# Extend Community Polls with plugin events
 
-## Creating a plugin
+Community Polls fires a set of plugin events around poll and vote lifecycle moments. You can write your own Joomla plugin that subscribes to those events and runs whatever logic your project needs — sending a Slack message when a moderation queue lights up, awarding loyalty points for voting, syncing votes to an analytics service, and so on.
 
-Please read the following documentation to know about creating a Joomla! plugin. The process is same for any plugin.
-[https://docs.joomla.org/J2.5:Creating_a_Plugin_for_Joomla](https://docs.joomla.org/J2.5:Creating_a_Plugin_for_Joomla)
+This page lists the events available in version 7, the data each event carries, and the shape of a minimal plugin that subscribes to them. It assumes you have built a Joomla 5 / 6 plugin before. If not, the official Joomla docs cover the plugin scaffolding here:
 
-## Plugin Events
+[Creating a plugin for Joomla](https://docs.joomla.org/Plugin)
 
-Community Polls defines a set of plugin events which you can listen to extend the functionality. The following are the plugin events:
+## Plugin group
 
-### onBeforeSavePoll
+Community Polls events live in the **`communitypolls`** plugin group. Your plugin's manifest needs `group="communitypolls"`:
 
-This event is triggered just before updating or creating the poll. The function takes two arguments, the poll object which has the details about the poll being saved and params object which has the options of the component.
-
-```php
-public function onBeforeSavePoll(&$poll, &$params)
-{
-    if($poll->isnew)
-    {
-        // do your stuff here if the poll is new one. Poll is not yet saved
-    }
-    else
-    {
-        // Poll already exists and is being updated
-    }
-}
+```xml
+<extension type="plugin" group="communitypolls" method="upgrade">
+    <name>plg_communitypolls_myhook</name>
+    ...
+</extension>
 ```
 
-### onAfterSavePoll
+Custom plugin groups are not auto-loaded by Joomla. The component takes care of importing the group before it dispatches an event, so your plugin will be picked up as soon as it is installed and enabled — there is no extra wiring on your side.
 
-This event is triggered after creating the poll. The function takes two arguments, the poll object which has the details about the poll being saved and params object which has the options of the component.
+## Events
 
-```php
-public function onBeforeSavePoll(&$poll, &$params)
-{
-    if($poll->isnew)
-    {
-        // do your stuff here if the poll is new one. Poll is already saved
-    }
-    else
-    {
-        // Poll already exists and is updated
-    }
-}
+| Event | When it fires | Arguments |
+| --- | --- | --- |
+| `onPollBeforeSave` | Just before a poll is saved (insert or update). | `data` (array, by reference), `isNew` (bool) |
+| `onPollAfterSave` | After a poll has been saved. | `poll` (object), `isNew` (bool) |
+| `onPollAfterDelete` | After a poll has been deleted. | `poll` (object — snapshot taken before the delete) |
+| `onPollChangeState` | After a poll's published state changes. | `pks` (array of int IDs), `value` (int new state) |
+| `onPollAfterApprove` | After a moderated poll is approved through the secret-token link. | `poll` (object) |
+| `onVoteBeforeSave` | Before a vote is recorded. | `pollId` (int), `optionIds` (array), `userId` (int or null), `ipAddress` (string or null) |
+| `onVoteAfterSave` | After a vote has been recorded. Fires once per cast, even when the voter selected several options. | `vote` (object), `poll` (object) |
+| `onVoteAfterDelete` | After a vote has been deleted. | `vote` (object), `poll` (object) |
+
+The `poll` argument is a snapshot of the row from `#__communitypolls_polls`: `id`, `title`, `alias`, `description`, `created_by`, `published`, `featured`, `catid`, `votes`, `voters`, `language`, and the rest of the columns on that table.
+
+The `vote` argument is the row from `#__communitypolls_votes`: `id`, `poll_id`, `voter_id`, `voted_on`, `option_id`, `column_id`, `custom_answer`, `ip_address`.
+
+## A minimal example
+
+This plugin logs every new poll to Joomla's `error.php` log so you have a paper trail of who created what and when.
+
+### File layout
+
+```
+plugins/communitypolls/myhook/
+├── myhook.xml
+├── services/
+│   └── provider.php
+└── src/
+    └── Extension/
+        └── MyHook.php
 ```
 
-### onAfterVote
-
-This event is triggered after user vote is registers. The function takes single argument $poll which contains data about the poll itself.
-
-```php
-public function onAfterVote ($poll)
-{
-    // do your stuff here
-}
-```
-
-## Plugin installer
-
-Finally you need to have your plugin installer xml file as shown below.
+### myhook.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="2.5" type="plugin" group="communitypolls" method="upgrade">
-    <name>CoreJoomla - YourPlugin</name>
-    <creationDate>14-01-2014</creationDate/>/
+<extension type="plugin" group="communitypolls" method="upgrade">
+    <name>plg_communitypolls_myhook</name>
     <author>Your Name</author>
-    <authorEmail>Your email</authorEmail>
-    <authorUrl>Your email</authorUrl>
-    <copyright>All rights reserved by your company 2003-14.</copyright>
-    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <creationDate>2026-05-10</creationDate>
+    <copyright>Copyright (C) 2026 Your Company</copyright>
+    <license>GNU General Public License version 2 or later</license>
     <version>1.0.0</version>
-    <description>Some description</description>
+    <description>Logs Community Polls events for auditing.</description>
+
+    <namespace path="src">YourVendor\Plugin\CommunityPolls\MyHook</namespace>
+
     <files>
-        <filename>pluginname.xml</filename>
-        <filename plugin="pluginname">pluginname.php</filename>
+        <folder plugin="myhook">services</folder>
+        <folder>src</folder>
     </files>
- 
-    <config>
-        <fields name="params">
-            <fieldset name="basic">
-            </fieldset>
-        </fields>
-    </config>
 </extension>
 ```
-## The Poll Object
 
-The $poll object will contain the following field structure (sample)
+The `plugin="myhook"` attribute on the services folder must match the install element name (the part after `plg_communitypolls_`).
 
-object(stdClass)
+### services/provider.php
+
 ```php
-  public 'error' => null
-  public 'id' => int 0
-  public 'title' => string 'The poll title' (length=9)
-  public 'alias' => string 'the-poll-title' (length=9)
-  public 'description' => string '' (length=0)
-  public 'type' => string 'radio' (length=5)
-  public 'catid' => int 3
-  public 'close_date' => string '' (length=0)
-  public 'results_up' => string '' (length=0)
-  public 'featured' => int 1
-  public 'custom_answer' => int 2
-  public 'anywhere' => int 1
-  public 'pallete' => string 'default' (length=7)
-  public 'chart_type' => string 'sbar' (length=4)
-  public 'anonymous' => int 1
-  public 'private' => int 0
-  public 'answers_order' => string 'order' (length=5)
-  public 'answers' => 
-    array (size=2)
-      0 => 
-        object(stdClass)
-          public 'id' => string '0' (length=1)
-          public 'title' => string 'Answer 1 Title' (length=7)
-          public 'order' => int 1
-          public 'images' => 
-            array (size=0)
-              ...
-          public 'resources' => 
-            array (size=0)
-              ...
-          public 'type' => string 'x' (length=1)
-      1 => &
-        object(stdClass)
-          public 'id' => string '0' (length=1)
-          public 'title' => string 'Answer 2 Title' (length=11)
-          public 'order' => int 2
-          public 'images' => 
-            array (size=0)
-              ...
-          public 'resources' => 
-            array (size=0)
-              ...
-          public 'type' => string 'x' (length=1)
-  public 'columns' => 
-    array (size=0)
-      empty
-  public 'isnew' => boolean true
-  public 'images' => boolean false
+<?php
+
+defined('_JEXEC') or die;
+
+use Joomla\CMS\Extension\PluginInterface;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\DI\Container;
+use Joomla\DI\ServiceProviderInterface;
+use Joomla\Event\DispatcherInterface;
+use YourVendor\Plugin\CommunityPolls\MyHook\Extension\MyHook;
+
+return new class () implements ServiceProviderInterface {
+    public function register(Container $container): void
+    {
+        $container->set(
+            PluginInterface::class,
+            function (Container $container) {
+                $plugin = new MyHook(
+                    $container->get(DispatcherInterface::class),
+                    (array) PluginHelper::getPlugin('communitypolls', 'myhook')
+                );
+                $plugin->setApplication(Factory::getApplication());
+
+                return $plugin;
+            }
+        );
+    }
+};
 ```
+
+### src/Extension/MyHook.php
+
+```php
+<?php
+
+namespace YourVendor\Plugin\CommunityPolls\MyHook\Extension;
+
+use Joomla\CMS\Log\Log;
+use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\Event\Event;
+use Joomla\Event\SubscriberInterface;
+
+\defined('_JEXEC') or die;
+
+final class MyHook extends CMSPlugin implements SubscriberInterface
+{
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'onPollAfterSave'    => 'onPollAfterSave',
+            'onPollAfterDelete'  => 'onPollAfterDelete',
+            'onVoteAfterSave'    => 'onVoteAfterSave',
+        ];
+    }
+
+    public function onPollAfterSave(Event $event): void
+    {
+        $poll  = $event->getArgument('poll');
+        $isNew = $event->getArgument('isNew', false);
+
+        if (!$poll || !$isNew) {
+            return;
+        }
+
+        Log::add(
+            sprintf('New poll %d created by user %d: %s', $poll->id, $poll->created_by, $poll->title),
+            Log::INFO,
+            'com_communitypolls'
+        );
+    }
+
+    public function onPollAfterDelete(Event $event): void
+    {
+        $poll = $event->getArgument('poll');
+        if (!$poll) {
+            return;
+        }
+
+        Log::add(
+            sprintf('Poll %d deleted: %s', $poll->id, $poll->title),
+            Log::INFO,
+            'com_communitypolls'
+        );
+    }
+
+    public function onVoteAfterSave(Event $event): void
+    {
+        $vote = $event->getArgument('vote');
+        $poll = $event->getArgument('poll');
+
+        if (!$vote || !$poll) {
+            return;
+        }
+
+        Log::add(
+            sprintf('Vote %d cast on poll %d by user %d', $vote->id, $poll->id, (int) ($vote->voter_id ?? 0)),
+            Log::INFO,
+            'com_communitypolls'
+        );
+    }
+}
+```
+
+Install the plugin like any other Joomla plugin (zip the folder, install through the extension manager, enable it in Plugin Manager). Trigger an action in Community Polls and the matching log line will appear in `administrator/logs/error.php` (or wherever your Joomla log handler is pointing).
+
+## Pre-save hooks
+
+`onPollBeforeSave` and `onVoteBeforeSave` fire before the database write. They are useful for:
+
+- **Validation** — throw an exception inside the handler to abort the save. The component will let the exception propagate to the controller.
+- **Last-mile data tweaks on saves** — `onPollBeforeSave` receives the `data` array by reference. Mutate it in place (for example, to enforce a category default) and the modified values are what get written to the database.
+
+## What the bundled events plugin does
+
+The `plg_communitypolls_polls` plugin that ships with the component is itself a subscriber to the same events. It uses them to:
+
+- Award and deduct points through the Shondalai Core integration
+- Push activity-stream entries
+- Send notification emails (new poll, new vote, moderate poll)
+- Trigger badge evaluations
+
+You can read its source under `plugins/plg_communitypolls_polls/` for a fully worked example of every event in use. If you want to disable any of its features rather than write your own plugin, the relevant toggles are in **Plugin Manager → Plugins → Community Polls - Polls**.
+
+## Migrating from version 6 events
+
+If you wrote a plugin against the v6 event names, here is the rename map. The handler signatures have changed too — version 7 uses Joomla's modern named-argument `Event` objects rather than positional arguments.
+
+| v6 event | v7 event |
+| --- | --- |
+| `onBeforeSavePoll($poll, $params)` | `onPollBeforeSave` (Event with `data`, `isNew`) |
+| `onAfterSavePoll($poll, $params)` | `onPollAfterSave` (Event with `poll`, `isNew`) |
+| `onBeforeDeletePoll` | `onPollAfterDelete` (fires after the delete; snapshot taken before) |
+| `onAfterVote($poll)` | `onVoteAfterSave` (Event with `vote`, `poll`) |
+
+A v6 plugin will not fire on v7 unmodified — the event names and dispatcher signature both changed. The example above is the template to migrate against.
