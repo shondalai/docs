@@ -20,6 +20,37 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.0.1] - 2026-05-17
+
+### 🐛 Fixed
+- Add user_voted to results payload
+- Random polls - filter private and publish window at SQL layer
+- Gate on visibility before accepting
+- Mod_communitypolls author mode, filter private/publish window
+- Mod_cpcategories visibility filter
+- Categories polls_count visibility filter
+- Approve/reject - idempotent state check, POST required, GET shows confirmation page
+- Replace literal control bytes in html.ts
+- Public stats exclude hidden-poll activity
+- Visibility checks on shortcode and module specific-poll paths
+- Strip state fields on create (public + admin)
+- Add access-level filter to public list helpers
+- Preserve option IDs across site edits
+- Send secret on private fetch and preserve option IDs
+- Harden HTML sanitizer + add server-side defense
+- Voting must enforce visibility
+- Block admin routes from site context
+- Fixed myPolls pagination offset
+- API auth/CSRF status codes - use http_response_code()
+- Enhanced validation in CSV file generation
+- Fixed duplicate approval row  and wrong task name in moderation URLs
+- Tightend SVG uploads validations
+- AI routes enforce poll edit rights
+- Strip state/admin fields from non-privileged owner update
+- Lock results & voters behind visibility rules
+- Enforce visibility/access on public poll detail, results, voters
+- Strip secret key from all public list/summary responses
+
 ## [7.0.0] - 2026-05-10
 
 ### Added
