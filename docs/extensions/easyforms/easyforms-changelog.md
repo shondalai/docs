@@ -10,6 +10,25 @@ All notable changes to EasyForms will be documented in this file.
 
 ---
 
+## [1.1.2] - 2026-05-18
+
+### 🐛 Fixed
+- Restrict ThemesController::getFormTheme to form scope
+- Force created_by for non-manager getForms callers
+- Tighten translation form-scoping (model + schema)
+- Align payment recomputation with frontend modes & fee logic
+- Fix single-use & multi-use token exhaustion logic
+- Forms permission mismatch, premature rollback
+- Whitelist ORDER BY in list endpoints
+- File upload limits & SVG handling
+- Hash-only token storage and CSV link safety
+- Theme endpoints should enforce permission boolean
+- Notification & translation form-scoped AC
+- Access-token controller form ownership/ACL checks
+- Stripe and PayPal webhook signature verification
+- Server-side payment amount calculation
+- Enforce access token / login on submitForm
+
 ## [1.1.1] - 2026-05-06
 
 ### 🚀 Added
