@@ -13,9 +13,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
-## [3.1.5] - 2026-05-14
+## [3.1.5] - 2026-05-18
 
 ### 🐛 Fixed
+- Enforce event feature flags and invite-only group semantics server-side
+- Harden OAuth (Apple signature, verified-email linking, same-origin redirect)
+- Add SSRF guard and response-size cap to URL preview endpoint
+- Make admin CSRF protection fail-closed and cover all mutating endpoints
+- Sanitize event descriptions and escape SPA data-config attributes
+- Block path traversal and unsafe upload extensions in media handling
 - Do not surface internal messages to the UI
 - User-menu dropdown layout broken
 - Sidebar "Friends" label cannot be translated
