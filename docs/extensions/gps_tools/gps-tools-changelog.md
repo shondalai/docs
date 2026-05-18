@@ -18,6 +18,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.2.1] - 2026-05-18
+
+### 🐛 Fixed
+- Bulk userRatings filters visible-only ids
+- Legacy TrackController visibility and share rate-limit
+- Filter list queries by viewable category ids
+- Filter list queries by viewable category ids
+- Filter list queries by viewable category ids
+- Road Book renders description via dangerouslySetInnerHTML and raw href
+- TracksApiController::get() doesn't uses getVisibleTrackOrFail
+- Read updateComment from JSON body
+- Don't deny-all the images directory
+- Pixel-dimension check before GD decode
+- Gate access/featured/publish_up/publish_down behind core.edit.state for owners
+- Add category core.view to validateTrackAccess
+- Validate target item exists/visible in rating endpoints
+- Add track visibility check to comments and images APIs
+- Escape waypoint description/name in leaflet+google popups
+- Sanitize template_file (basename + extension allowlist)
+- Bind storyId to trackId in updateStory
+
 ## [7.2.0] - 2026-05-05
 
 ### 🚀 Added
