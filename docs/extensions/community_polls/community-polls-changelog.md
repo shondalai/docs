@@ -27,13 +27,6 @@ Each release lists changes under one or more of the following sections:
 - Allow polls to be trashed before permanent delete
 - Fixed issue with cached entries showing in admin
 
-## [7.0.2] - 2026-05-21
-
-### 🐛 Fixed
-- Icons inside textboxes are overlapping text
-- Allow polls to be trashed before permanent delete
-- Fixed issue with cached entries showing in admin
-
 ## [7.0.1] - 2026-05-17
 
 ### 🐛 Fixed
