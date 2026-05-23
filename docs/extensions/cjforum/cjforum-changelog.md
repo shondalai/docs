@@ -15,7 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [6.1.12] - 2026-05-23
 
 ### 🔧 Changed
-- Minor updates and improvements
+- Fixed issue with links in the emails
+- Fixed issue with jump to page links
 
 ## [6.1.11] - 2026-05-22
 
