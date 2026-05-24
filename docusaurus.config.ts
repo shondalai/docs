@@ -151,6 +151,15 @@ const config: Config = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        id: 'easycommerce',
+        path: 'docs/extensions/easycommerce',
+        routeBasePath: 'easycommerce',
+        sidebarPath: './sidebars-easycommerce.ts',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
         id: 'general',
         path: 'docs/extensions/general',
         routeBasePath: 'general',
@@ -225,6 +234,10 @@ const config: Config = {
           {
             from: '/rewardify',
             to: '/rewardify/overview',
+          },
+          {
+            from: '/easycommerce',
+            to: '/easycommerce/overview',
           },
         ],
         createRedirects(existingPath) {
@@ -345,6 +358,12 @@ const config: Config = {
             },
             {
               type: 'doc',
+              docId: 'overview',
+              docsPluginId: 'easycommerce',
+              label: 'EasyCommerce',
+            },
+            {
+              type: 'doc',
               docId: 'frequently-asked-questions',
               docsPluginId: 'general',
               label: 'General Documentation',
@@ -408,6 +427,12 @@ const config: Config = {
         {
           label: 'Rewardify',
           to: '/rewardify/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'EasyCommerce',
+          to: '/easycommerce/overview',
           position: 'left',
           className: 'extensions-mobile',
         },
