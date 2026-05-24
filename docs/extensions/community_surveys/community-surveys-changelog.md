@@ -13,6 +13,255 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.0.0] - 2026-05-24
+
+### 🐛 Fixed
+- Final fixes
+- Fixed bugs
+- Security issues part 4
+- Security issues part 4
+- Security issues phase 3
+
+## [8.0.0] - 2026-05-23
+
+**Major Release: New Survey Builder, Smarter Rules, Friendlier Admin**
+
+Community Surveys 8 is a fresh build of the component, modules, and plugins. The survey builder, the admin pages, the public survey experience, and the rules engine have all been redesigned. Your existing surveys keep working after the upgrade and start picking up the new features as soon as you author them.
+
+### What's new at a glance
+
+- **AI-powered authoring.** Generate a complete survey from a short description, get answer suggestions for choice questions, fill in grid rows and columns, and translate a survey into any language with one click.
+- **Ten ready-made themes** plus a new **Design** tab in the builder. Pick a theme, then fine-tune the accent colour, font pairing, corner radius, density, and surface tone for that specific survey.
+- A new survey builder with two ways to author rules side by side: a **visual Flow graph** that shows where each answer leads, and a compact **Logic list** for editing rules quickly.
+- A much bigger rules toolbox. You can now pre-fill answers, carry options forward, randomise choices, cap an option to N respondents, jump to named sections, run A/B experiments, score and segment respondents, validate across fields, send Slack and webhook alerts, queue follow-up surveys, auto-close, tag responses, and more.
+- **Beautiful new emails** with a redesigned template system. Override any built-in email, edit subject and body, and your logo plus brand colours are wired in automatically.
+- A new **Thank-you page** customisation panel with three modes (message, answer recap, consolidated report) and full control over the copy, icons, and call-to-action chips respondents see after submitting.
+- A new **Integrations** screen with one-click setup for Webhook, Slack, Google Sheets, AcyMailing, and a new free-form Email Notification.
+- Built-in **anti-spam** (honeypot, IP throttle, minimum completion time) and **quality flagging** for speeders and straight-line responses.
+- A new **Demographics** question type that auto-captures respondent context (country, city, browser, OS, device, language, timezone, screen, referrer, UTM params) without asking the respondent anything. Surfaces as a breakdown panel on the Analytics overview and as `$demo.*` context fields in the rules engine.
+- A cleaner **Analytics** screen with a quick-jump button from the survey list, and a redesigned **Responses** screen that shows when a respondent was disqualified and why.
+
+### AI-powered authoring
+
+Every screen in the builder where you'd normally type from a blank slate now has an AI helper. The work is done by a hosted assistant that returns suggestions you can accept, edit, or discard.
+
+- **Build a survey from a description.** Tell the assistant what you want ("Onboarding feedback for a SaaS product, 12-15 questions, mix of NPS, multiple-choice, and free text") and you get back a fully-structured proposal: pages, questions, options, the lot. Review it in a diff-style modal, tick the items you want to keep, and they land on your canvas.
+- **Suggest answer options.** Stuck on a multiple-choice question? Click the sparkle button next to the options list and the assistant proposes a set based on the question title.
+- **Suggest grid rows and columns.** Same idea for matrix and grid questions. You type "Rate each product on these factors" and the assistant suggests both the rows (products) and the columns (factors).
+- **Translate a whole survey.** Pick a target language and the assistant rewrites every question, option, description, and validation message into that language, keeping the structure intact. Translations live alongside the original so the survey can serve both audiences at once.
+- **Translate answer presets.** Reusable preset lists (countries, satisfaction scales, etc.) translate the same way, so the work you do once flows through every survey that uses the preset.
+
+The AI assistant runs against the Shondalai service. You stay in control: every AI result is shown before it's saved, you decide what to keep, and nothing reaches a respondent until you publish.
+
+### Themes and design
+
+Surveys ship with **ten ready-made themes**, each designed for a different tone and audience:
+
+| Theme | Mood |
+|-------|------|
+| Swiss Sage (default) | Calm sage with a clean neutral surface |
+| Ink Slate | Editorial neutral with a deep slate-grey accent |
+| Terracotta | Warm ochre on a cream surface, softer for research |
+| Indigo Editorial | Bold indigo accent on a tight neutral surface |
+| Marigold Studio | Energetic amber for product feedback |
+| Coral Bloom | Soft coral on a warm surface, friendly and inviting |
+| Pacific Mist | Calm teal, suited to healthcare and wellness |
+| Carbon Pro | Sharp crimson on a tight neutral surface |
+| Midnight Plum | Premium violet for luxury and brand surveys |
+| Forest Lab | Emerald with generous radii, modern product feel |
+
+You can browse them on the **Theming** page, set one as the default, and create your own from scratch.
+
+#### The new Design tab in the builder
+
+Each survey has its own **Design** tab now. Pick a base theme, then customise it for that survey without touching the underlying theme:
+
+- **Accent colour** picker.
+- **Font pairing** picker (Inter Tight, Geist, Instrument Serif, Söhne, and others).
+- **Corner radius** slider for the overall feel (sharp to soft).
+- **Density** (compact, medium, airy) for how breathing-room is allocated.
+- **Surface** (neutral or warm) for the page background.
+- **Custom CSS** for the rare case where you need to override one rule.
+
+The live preview on the right of the Design tab updates as you tweak. When you save, the survey's public form picks up the changes immediately.
+
+### Email templates
+
+The email side of the component got a full refresh. Templates are now organised around a shared base wrapper with brand variables (logo, colours, footer) wired in automatically, plus a content fragment per email type. The output looks consistent across every email Community Surveys sends and renders well in Gmail, Outlook (including older Outlook with the VML fallback), Apple Mail, and the popular webmail providers.
+
+You'll find a dedicated **Email templates** screen in the admin that lists every email the component can send:
+
+- Invitation
+- Invitation reminder
+- Response thank-you
+- New response (to author)
+- New survey (to site admin)
+- Survey created (to author)
+- Survey published (broadcast template)
+- Survey closed (results summary)
+- **Follow-up survey invitation** (new in v8, used by the follow-up rule)
+
+For each template you can:
+
+- See the shipped default and the current effective output side by side.
+- Edit subject and HTML body, with the variable picker right above the editor so you don't have to remember every placeholder.
+- Use Handlebars-style conditionals (`{{#if recipient_name}}...{{/if}}`) for sections that should only show in some cases.
+- Preview with example data without sending a real message.
+- Revert to the default if your override doesn't work out.
+
+Brand variables (`{{site_name}}`, `{{primary_color}}`, `{{email_logo_html}}`, `{{footer_text}}`, etc.) are computed once per send so every template stays consistent with your settings.
+
+### Thank-you page customisation
+
+Right after a respondent submits, the **Thank-you** page is the last impression they take away. v8 gives that page its own builder tab with three modes and full control over the copy.
+
+#### Three modes
+
+- **Message.** A clean confirmation page with your headline, body copy, and a call-to-action. The simplest case.
+- **User answers.** A recap of every answer the respondent just gave, so they can review what they submitted. Useful for forms that double as agreements or applications.
+- **Consolidated report.** A live aggregate report showing how everyone's answers add up so far. Useful for polls and "live results" surveys. Access is gated by a one-shot key issued at submit time, so the URL can't be scraped.
+
+#### Customisation panel
+
+In the builder's **Thanks** tab you can author every part of the page:
+
+- **Eyebrow** (the small label above the headline) and **Headline** copy.
+- **Body** in auto mode (use the survey's thank-you message), custom mode (your own HTML), or none.
+- **What's next chips** with icons. Pick from a small set (check, calendar, mail, lock, share, sparkles, clock, users), write a short line of text per chip, and arrange them.
+- **Back-to-survey** and **Share** button labels.
+- Toggles for the badge, response stats, what's-next section, action buttons, share buttons, and trust footer.
+
+Every option is per-survey so different surveys can end with different post-submit experiences.
+
+### Authoring surveys
+
+#### Smarter question defaults
+- **Pre-fill from a URL, an earlier answer, or the logged-in user's profile.** Open a question's *Advanced* tab and add one or more sources. The first one that has a value populates the field. Respondents can still type over the value.
+- **Pipe answers into later questions.** Use `{{q3.label}}` to insert an earlier answer into a title, description, option label, or email. Supports a fallback like `{{first_name|there}}` so you never show an empty placeholder.
+
+#### Smarter option lists
+- **Carry options forward.** Show in question 6 only the options the respondent picked in question 4 (or hide them, for an "anything you missed?" variant).
+- **Randomise option order** per respondent. The order is stable across reloads and resume-from-email, so the same respondent always sees the same arrangement.
+- **Pin options to the end.** "Other" and "Prefer not to say" can be marked as *always last* even when the rest of the list is shuffled.
+- **Quota cap on an option.** Once N respondents have picked it, the option disappears for everyone else. If two people race for the last slot, the server picks a winner and asks the other to choose again.
+
+#### Smarter flow
+- **Named page sections.** Give a page a short name (like `thanks-qualified` or `power-user-deep-dive`) and point a *skip to section* rule at it. The rule keeps working when you reorder pages.
+- **A/B paths.** Half your respondents see flow A, half see flow B (or three-way with A/B/C). The split is stable per respondent, so resuming an email link lands on the same flow.
+- **End early with a reason.** When a screening rule disqualifies someone, the reason you wrote shows up on the response list, in the response details, and as a column in the CSV export.
+
+#### Scoring & segments
+- **Hidden score variables.** Build a points formula visually: pick a question, multiply it, add another question, divide by a literal, and so on. Author as many scores as you need; later scores can reference earlier ones.
+- **Segment buckets.** Turn a score into a named segment automatically. "0-6 → detractor", "7-8 → passive", "9-10 → promoter", and so on. Segments show up next to each respondent and become filters in Analytics.
+- **Make a question required only when needed.** A "please explain" field becomes mandatory only when an earlier answer triggers it.
+
+#### Validation
+- **Cross-field validation.** "End date must be after start date." "Allocations must add up to 100." Compose the rule visually from two operands and a comparison. The check runs as the respondent submits, and runs again on the server so it can't be skipped.
+
+### Sending alerts and queuing follow-up actions
+
+When a response comes in, you can have a rule do more than route the respondent:
+
+- **Send a notification** to a Webhook, Slack channel, AcyMailing list, or email address. Slack messages can use your own wording, and emails support pipe placeholders so the subject can read "VIP response from `{{q_5_email}}`".
+- **Tag the response** with labels like `churn-risk` or `vip` and filter on them in Analytics later.
+- **Queue a follow-up survey.** When a power user finishes a feedback survey, the next survey lands in their inbox automatically using a dedicated follow-up email template you can customise.
+- **Auto-close the survey** when a goal is reached. "Stop accepting responses once we hit 500" or "close after business hours".
+
+Side-effects always run on the server, so a respondent can't fiddle with the form to skip them.
+
+### Time, locale, and device
+
+Every rule's condition can also check the current context:
+
+- **Time of day, day of week, deadline date.** Show a "talk to sales" question only on weekday business hours, or close a survey at midnight on a specific date.
+- **Language and country.** Show a GDPR consent question only to EU locales, or swap option lists by language.
+- **Device.** Hide a file-upload question on mobile, or show a mobile-only variant.
+- **Response quality.** Reach for `$quality.speeder`, `$quality.straight_lining`, `$quality.honeypot`, `$quality.ip_throttle`, or `$quality.any` to flag, tag, or end the survey on suspicious submissions.
+
+### Integrations
+
+- **Webhook.** Post a JSON or form-encoded payload to any URL. Optional HMAC-SHA256 signing means receivers can verify the request really came from your site.
+- **Slack.** Connect with an incoming webhook URL or a bot token. Messages use Slack's Block Kit so they look good in the channel.
+- **Google Sheets.** Connect once via Google sign-in; new responses appear in the spreadsheet you choose. Field mapping lets you control which columns get which answers.
+- **AcyMailing.** Add respondents to a list when a rule fires. No HTTP layer, no extra setup beyond picking the list.
+- **Email Notification (new).** Send a free-form transactional email to any address (including `{{q_5_email}}` substitutions). Choose between an auto-generated answer summary or your own HTML.
+- **Activity log.** Every integration call is logged so you can see what fired, when, and whether it succeeded. Failed deliveries retry automatically with a back-off and surface in the Activity tab if they exhaust their retries.
+
+### Anti-spam and response quality
+
+- **Honeypot field** rendered invisibly on the survey. Bots that auto-fill fill it; humans never see it. Responses that trip the honeypot are flagged.
+- **Minimum completion time.** Set a per-survey "must take at least N seconds" guard. Responses faster than that are flagged as speeders.
+- **Straight-line detection** for matrix questions. When every row gets the same answer, the response is flagged.
+- **IP throttle.** When the same IP submits more than 10 responses to the same survey within an hour, the extras are flagged.
+
+Flags don't reject responses by default. You see them in Analytics and can write a rule like "When `$quality.any = 1`, tag response with `review-needed`" or "When `$quality.honeypot = 1`, end the survey".
+
+### Admin experience
+
+- **Survey list.** New layout with a sparkline, status badge, response counter, and a one-click chart button that jumps straight to that survey's Analytics.
+- **Responses screen.** Disqualified responses show a clear status badge and surface the reason inline. The CSV export carries a new `end_reason` column and a `disqualified` status value.
+- **Email templates.** A dedicated screen lets you override any built-in template (invitation, reminder, response thank-you, follow-up, survey closed, etc.). Brand variables like logo and primary colour are wired in automatically.
+- **Cold-load polish.** Opening the admin no longer flashes a black panel before the page paints. The mount area picks up your colour mode (light, dark, or auto) from the start.
+
+### Public survey experience
+
+- **Fluid width** layouts that scale across mobile and desktop without the cramped feel of the older responsive forms.
+- **Per-survey design tokens** (colours, fonts, density, corner radius) apply consistently to the public form.
+- **Three layouts** to pick from in the builder's *Design* tab: single page, multi page, or conversational.
+- **Three Thank-you modes**: a custom message, a recap of the respondent's own answers, or a live consolidated report (gated by a one-shot key so URLs can't be scraped).
+- **Save and resume** still works via a secure key, now with cleaner UX.
+
+### Changed
+
+- The component, modules, and plugins have all been rewritten. Some legacy modules and plugins that relied on old helpers are temporarily held back from the package until they're updated. Your surveys keep working without them.
+- The admin survey list shows the new row layout with the analytics quick-link.
+- The response detail panel now flips the status row to "Disqualified" and shows the reason in a callout when an end-rule fired.
+- The admin dashboard picks up your light/dark/auto colour mode immediately on load.
+
+### Fixed
+
+- **Add Bucket** in the score and segment editor no longer disappears after autosave. The server was silently dropping empty-tag buckets, so a fresh bucket would vanish the moment you added it.
+- The **admin dashboard flicker** between page load and the React mount is gone. The mount area paints the right colour from the start.
+- Rules pointing at deleted options now show a clear "stale" pill so you can spot them, instead of looking unset.
+- **Duplicating a survey** now carries the pages, page titles, and section slugs along with the questions and rules.
+- Half-authored rules no longer break a save. Anything that looks malformed is collapsed to a safe placeholder you can finish later.
+
+### Security
+
+- **Side-effects run on the server.** Tag, quota, auto-close, notify, and follow-up rules never trust the client. They re-evaluate at submit time using the actual submitted answers.
+- **Quota counts are race-safe.** Two people racing for the last slot can't both succeed. The server picks one winner and rejects the other with a friendly "this option just filled up" message.
+- **Cross-field validation runs twice.** Once in the browser for instant feedback, and once on the server so a tampered form can't slip past the check.
+- **Honeypot, IP throttle, and minimum completion time** all run on the server so they can't be bypassed by editing the page.
+- **Webhook signing** with HMAC-SHA256, using the same `sha256=` prefix convention GitHub and Stripe use, so your receivers can verify each payload.
+- **URL pre-fill values** are restricted to safe characters and a sensible length cap; the question's own validation still applies before the answer is saved.
+- **Follow-up rules** can't target the survey they're attached to, so a runaway invite loop is impossible.
+
+### Documentation
+
+Seven new docs cover the rules engine end to end:
+
+- [Rules engine overview](./conditional-rules-explained)
+- [Answer manipulation](./rules-answer-manipulation): prefill, pipe, carry-forward, randomize, quota
+- [Routing](./rules-routing): page sections, A/B paths, loop, disqualify
+- [Scoring & segments](./rules-scoring): formula composer, buckets, conditional required
+- [Validation & guards](./rules-validation): cross-field, sanity checks, anti-spam
+- [Side-effects](./rules-side-effects): notify, contact list, tag, follow-up, auto-close
+- [Context fields](./rules-context-fields): the full `$`-prefix reference
+
+### Requirements
+
+- Joomla 5.0+ or 6.0+ (unchanged from v7)
+- PHP 8.1+ (unchanged from v7)
+- MySQL 5.7+ or MariaDB 10.3+ (unchanged from v7)
+- Shondalai Core Library 1.0+ (a one-time install bundled with the package)
+
+### Upgrading from v7
+
+- Install over your current version. The database upgrade runs automatically the first time you open the component after install.
+- Your existing surveys, questions, rules, responses, contacts, invitations, and integrations are preserved. Legacy rules are translated to the new format on first read with no extra work.
+- A handful of legacy modules and plugins are intentionally held back from the v8 package until they migrate. Surveys themselves don't depend on them.
+
+---
 ## [7.0.18] - 2026-05-04
 
 ### 🐛 Fixed
