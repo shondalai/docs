@@ -11,6 +11,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'installing-and-configuring-community-surveys',
         'quick-get-started-guide-for-community-surveys',
+        'admin-tour',
         'community-surveys-end-user-documentation',
       ],
     },
@@ -19,10 +20,25 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Creating Surveys',
       items: [
+        'survey-builder',
+        'themes-and-customization',
         'survey-types-explained',
-        'conditional-rules-explained',
         'translating-surveys',
         'importexport-surveys',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Rules & Logic',
+      items: [
+        'conditional-rules-explained',
+        'rules-answer-manipulation',
+        'rules-routing',
+        'rules-scoring',
+        'rules-validation',
+        'rules-side-effects',
+        'rules-context-fields',
       ],
     },
 
@@ -40,12 +56,23 @@ const sidebars: SidebarsConfig = {
 
     {
       type: 'category',
-      label: 'Survey Distribution',
+      label: 'Distribution',
       items: [
         'display-surveys-in-joomla-articles',
         'inviting-users-to-take-the-survey',
-        'sending-survey-through-acymailing-newsletters',
+        'invitations-campaigns',
+        'contacts-and-groups',
         'restricting-users-from-taking-the-survey-multiple-times',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Email',
+      items: [
+        'email-templates',
+        'survey-email-notifications',
+        'sending-survey-through-acymailing-newsletters',
       ],
     },
 
@@ -53,9 +80,21 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Results & Reporting',
       items: [
+        'analytics-and-reports',
         'enabling-and-showing-consolidated-report',
         'showing-consolidated-report-to-users',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Integrations',
+      items: [
+        'integrations-overview',
+        'integration-webhook',
+        'integration-slack',
         'integrating-survey-with-google-sheets',
+        'integration-acymailing',
       ],
     },
 
@@ -63,7 +102,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Configuration',
       items: [
-        'survey-email-notifications',
+        'settings-reference',
         'custom-module-positions-in-community-surveys',
       ],
     },

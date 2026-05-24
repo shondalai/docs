@@ -5,166 +5,128 @@ sidebar_label: Display in Articles
 sidebar_position: 18
 ---
 
-Community Surveys includes a content plugin that allows you to embed surveys directly within any Joomla article. This is perfect for adding contextual surveys to blog posts, landing pages, or any content area.
+Community Surveys ships a content plugin that embeds a survey directly inside any Joomla article using a body-text shortcode. The embed mounts the same React experience visitors see on a standalone survey page — same theming, same rule engine, same submit flow — wherever you put the shortcode in your article.
 
 ## Prerequisites
 
-Before embedding surveys, ensure:
-
-1. The **Content - Surveys** plugin is published in **Extensions → Plugins**
-2. The survey you want to embed is **published** and has proper **access levels** set
-3. The user viewing the article has permission to view the survey
+1. The **Content - Surveys** plugin is enabled (Extensions → Plugins).
+2. The survey is **published**.
+3. The viewing user satisfies the survey's **view access level** (Public / Registered / Special). The plugin enforces this server-side — denied users see an inline "no permission" notice instead of an empty mount.
 
 ## Basic Syntax
 
-Use the following shortcode syntax in your article:
+Add a shortcode anywhere in the article body:
 
+```text
+{survey id="123"}
 ```
-{LOADSURVEY [id: 123]}
-```
 
-Replace `123` with your survey's ID.
+Replace `123` with the survey's id (visible in the **Surveys** list page).
 
-:::tip Finding the Survey ID
-You can find the survey ID in the **Surveys** list view in the administrator panel. The ID is displayed in the rightmost column.
+That's it. When the article is rendered the plugin:
+
+- Validates the survey is published and that the current user can view it.
+- Validates the publish window (`publish_up` / `publish_down`) — closed surveys show "this survey is closed".
+- Drops a `<div>` mount point and loads the Community Surveys SPA bundle once per page.
+- The React app finds the mount and renders the survey inline.
+
+:::tip Multiple surveys per article
+You can include several `{survey id="…"}` shortcodes in the same article. Each gets its own React root and its own theme — the page bundle is loaded only once.
 :::
 
-## Advanced Options
+## Optional Attributes
 
-The shortcode supports additional parameters for customization:
+| Attribute   | Description                                                                                                                                     | Default              |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| `id`        | **Required.** The survey id.                                                                                                                    | —                    |
+| `container` | DOM `id` of the mount element. Useful for targeting from custom CSS or anchor links. Letters, digits, hyphens and underscores only.            | Auto-generated id    |
 
-```
-{LOADSURVEY [id: 123, container: "my-survey", template: "compact"]}
-```
+Example with a custom container id:
 
-### Available Parameters
-
-| Parameter | Description | Default | Example |
-|-----------|-------------|---------|---------|
-| `id` | **Required.** The survey ID to embed | - | `id: 123` |
-| `container` | Custom CSS class for the wrapper div | Auto-generated | `container: "my-survey"` |
-| `template` | Layout template to use | `default` | `template: "compact"` |
-
-### Parameter Examples
-
-**Basic embed:**
-```
-{LOADSURVEY [id: 42]}
+```text
+{survey id="42" container="feedback-survey"}
 ```
 
-**With custom container class:**
-```
-{LOADSURVEY [id: 42, container: "feedback-survey"]}
+## Legacy Syntax
+
+Articles written for Community Surveys v6/v7 used a different shortcode:
+
+```text
+{LOADSURVEY ["id":42]}
+{LOADSURVEY ["id":42,"container":"feedback-survey"]}
 ```
 
-**With all options:**
+The plugin still recognises this form so your existing articles keep rendering without rewrites. New articles should prefer the cleaner `{survey id="…"}` syntax.
+
+## Access Control
+
+The plugin runs the same gating logic as the rest of the site:
+
+- **View access level** — Joomla's per-row access. Public surveys render for everyone; Registered/Special surveys only render for users in those groups.
+- **Private surveys** — guests are blocked; signed-in users only.
+- **Publish window** — surveys before `publish_up` or after `publish_down` are blocked with a user-friendly notice.
+
+If any gate fails the mount is **not** emitted — the article shows a polite inline message instead. The survey id never reaches the browser as a mountable element when the user can't access it.
+
+## Theming and Styling
+
+Each embedded survey reads its own theme from the **Design** tab in the survey builder (accent colour, surface palette, font pairing, density, custom CSS). Two embeds in the same article can use completely different themes — they don't bleed into each other.
+
+The mount renders as:
+
+```html
+<div id="cs-embed-42-a1b2c3" class="cs-site cs-survey-embed" data-survey-id="42" data-survey-title="…"></div>
 ```
-{LOADSURVEY [id: 42, container: "product-feedback", template: "default"]}
+
+If you need to target embeds from your template CSS:
+
+```css
+/* All embeds on the page */
+.cs-survey-embed {
+  margin: 2rem 0;
+}
+
+/* A specific survey by id */
+.cs-site[data-survey-id="42"] {
+  /* Your overrides */
+}
+
+/* A specific embed by container id */
+#feedback-survey {
+  max-width: 720px;
+  margin-inline: auto;
+}
 ```
+
+The component's own design tokens are scoped to `.cs-site`, so anything you add inside the mount inherits them. The host page's typography and chrome stay untouched.
 
 ## How It Works
 
-When the article is rendered:
+1. The plugin's `onContentPrepare` listener scans the article body for `{survey}` and `{LOADSURVEY}` shortcodes.
+2. For each match it does a lightweight survey lookup (no full graph fetch) and runs the access/window gates.
+3. Allowed surveys get a mount div; blocked surveys get an inline notice.
+4. Once per page, the plugin injects the site SPA's CSS + JS bundles and the script options the React app needs (CSRF token, API base, current user, theme, locale).
+5. The SPA boots, walks the DOM for `.cs-survey-embed[data-survey-id]` mounts, and renders a survey experience into each.
 
-1. The plugin scans the article content for `{LOADSURVEY}` tags
-2. For each tag found, it loads the survey data from the database
-3. The survey is rendered inline using the component's layout system
-4. Required CSS and JavaScript assets are automatically loaded
-
-### Access Control
-
-The plugin respects Joomla's access levels:
-
-- Only **published** surveys can be embedded
-- Users must have the appropriate **view access level** to see the survey
-- If a survey is not found or the user lacks permission, a warning message is displayed
-
-### Assets Loaded
-
-When a survey is embedded, the following assets are automatically loaded:
-
-- jQuery (if not already present)
-- Bootstrap tabs and collapse components
-- Font Awesome icons
-- Community Surveys frontend stylesheet
-- Captcha plugin (if enabled in component settings)
-
-## Styling the Embedded Survey
-
-The embedded survey is wrapped in a container with the following structure:
-
-```html
-<div id="cj-wrapper" class="survey-wrapper [your-container-class]">
-    <!-- Survey content -->
-</div>
-```
-
-You can target the survey with CSS using:
-
-```css
-/* Target all embedded surveys */
-.survey-wrapper {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-}
-
-/* Target a specific survey by container class */
-.my-custom-survey {
-    background: #f8f9fa;
-}
-```
-
-## Fallback Behavior
-
-If the full survey layout cannot be rendered (e.g., missing layout files), the plugin displays a fallback view with:
-
-- Survey title
-- Survey description (if available)
-- A button linking to the full survey page
+Submitting an embedded survey lands the visitor on the standard thank-you page — the same flow as a full-page survey.
 
 ## Troubleshooting
 
-### Survey Not Displaying
+**Survey doesn't appear**
+- Confirm **Content - Surveys** is enabled.
+- Check the survey id is correct and the survey is published.
+- View the page as the target audience (e.g. log out to test a Public survey).
 
-1. **Check plugin status:** Ensure "Content - Surveys" plugin is published
-2. **Verify survey ID:** Confirm the ID exists and the survey is published
-3. **Check access levels:** Ensure the survey's access level matches your viewing user
-4. **Clear cache:** Clear Joomla's cache after making changes
+**"You do not have permission to view this survey."**
+- The survey's access level is higher than the visitor's groups. Either lower the access level on the survey or grant the visitor's group access.
 
-### Styling Issues
+**"This survey is closed." / "This survey has not opened yet."**
+- The current time is outside the survey's publish window. Adjust `publish_up` / `publish_down` on the survey.
 
-- The survey inherits styles from your template
-- Add custom CSS to your template's stylesheet to override default styles
-- Use the `container` parameter to add specific classes for targeting
+**Embed appears but stays blank / shows a spinner forever**
+- Open the browser console. Errors loading `communitysurveys-site.js` usually mean Joomla's web-asset cache is stale — clear the asset cache and reload.
+- Confirm the article isn't running through a content filter that strips the mount div's `data-*` attributes.
 
-### JavaScript Conflicts
+## Alternatives
 
-If you experience JavaScript issues:
-
-1. Ensure jQuery is loading correctly
-2. Check browser console for errors
-3. Verify no conflicting scripts are loaded
-
-## Alternative: Module Embedding
-
-For more placement flexibility, you can also use the **Survey Form Module**:
-
-1. Create and configure the module in **Extensions → Modules**
-2. Assign it to a custom position (e.g., `my-survey-position`)
-3. Load it in your article using Joomla's module syntax:
-
-```
-{loadmodule mod_surveys,My Survey Module}
-```
-
-Or by position:
-
-```
-{loadposition my-survey-position}
-```
-
-:::note
-The content plugin method (`{LOADSURVEY}`) is recommended for most use cases as it provides better integration and doesn't require creating separate modules.
-:::
+For surveys you want to surface in a sidebar or any fixed template position, the **Survey Form** module (`mod_surveyform`) is a better fit than the content plugin. Use modules for layout, the content plugin for inline narrative placement.

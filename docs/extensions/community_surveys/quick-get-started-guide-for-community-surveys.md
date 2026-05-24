@@ -1,64 +1,106 @@
 ---
 id: quick-get-started-guide-for-community-surveys
-title: Quick get started guide for Community Surveys
-sidebar_label: Quick get started guide for Community Surveys
-sidebar_position: 12
+title: Quick Start Guide
+sidebar_label: Quick Start
+sidebar_position: 2
 ---
 
-## Quick Guide
+# Quick Start Guide
 
-- Download the main component file and install it just like any other Joomla extension. See the below documentation for installation instructions for a Joomla extension.
-http://docs.joomla.org/Installing_an_extension
+Build your first survey in 10 minutes. By the end you'll have a published survey collecting real responses.
 
-- Now go to Components -> Community Surveys on your administrator site
+This guide assumes Community Surveys is already installed. If not, do that first via [Installation & Configuration](./installing-and-configuring-community-surveys.md).
 
-- Click the Options button on the toolbar
+---
 
-- Check the **permission settings** for each user group. Allow &#8220;**Respond**&#8221; permission to required user groups so that your users can respond to the surveys (See in the next section below).
+## 1. Open the admin
 
-- Review all other options to suit your website requirements.
+In Joomla's admin sidebar, **Components → Community Surveys**. The first time you land, you'll see the dashboard with quick-start cards.
 
-Now create a menu item for Community Surveys menus. If you are new to this, please read the below documentation.
-[http://docs.joomla.org/Adding_a_new_menu_item](http://docs.joomla.org/Adding_a_new_menu_item)
-The menu items allow you to display the search engine-friendly URLs. If you would like to apply SEF URLs, create menu items for at least all top-level survey categories.
+The admin is a single-page app, so once it loads the page never reloads — you navigate between Dashboard, Surveys, Responses, Analytics, Contacts, Invitations, Email Templates, Themes, Integrations, Presets, and Settings using the left rail.
 
-- Once you create the menu items in menus, you can show them using the menu module. Alternatively, you can add the menu items to your main menu. 
+> Tip: press <kbd>⌘K</kbd> / <kbd>Ctrl+K</kbd> anywhere in the admin to open the command palette. Type a survey title, a setting name, or an action to jump straight there.
 
-- Now you can access the front end. If you have given the create survey permission for your user group, you can see create survey button. Click and follow the instructions to create your first survey.
+## 2. Create a survey
 
-- Once you create the survey, click the Finish button on the questions creation page, your survey is published and ready to accept the responses. You can invite users from the invite page or manually copy and send URLs using your favorite email client. For public surveys, users can directly access the survey from the survey menu.
+Click **Surveys** in the left rail, then **New survey** in the top-right.
 
-- You can find the quick links to edit the survey, invite, and reports pages just beside the survey link on the My Surveys tab on the front end or on the Surveys page on the back end.
+You'll be prompted for:
 
-#### Configuring Permission Settings
+- **Title** — what your respondents see at the top of the survey.
+- **Description** — optional preamble shown above the first question.
+- **Category** — pick a Joomla category for organisation (optional).
+- **Language** — defaults to your site's default content language.
 
-Permission Settings Configuration
+Click **Create**. The builder opens with an empty survey scaffold.
 
-#### Create Survey
+## 3. Add your first question
 
-Survey Creation Tutorial
+The builder has five tabs along the top: **Builder**, **Design**, **Logic**, **Translations**, **Results**.
 
-#### Viewing Survey Reports
+You're on Builder. The middle pane is your survey canvas; the right rail is the question-type palette. Drag any type onto the canvas, or click it to append.
 
-Accessing Survey Reports
+For a quick start:
 
-## Prerequisites before the survey available to the users
+1. Drag **Short answer** onto the canvas. Type the question title, e.g. *"What's your name?"*.
+2. Drag **NPS** below it. Title: *"How likely are you to recommend us?"*
+3. Drag **Long answer** below that. Title: *"Tell us why."*
 
-- The &#8220;Respond&#8221; permission is given to the user group.
+Each question has an Inspector panel (right side) where you can mark it required, add validation, change orientation, etc.
 
-- The access levels of the survey/category/menu are set as required. It is recommended to keep them public.
+> The canvas saves every change as you go — there's no Save button to click for question edits.
 
-- The private Survey option is set to &#8220;No&#8221; if you want the survey accessed directly from the listing page. If it is set to &#8220;Yes&#8221;, it can be accessed only via Unique Survey URLs generated on the Survey Invite page.
+## 4. Preview
 
-## What are the ways to display a survey?
+Click **Preview** in the builder's top bar. A new tab opens with the survey rendered exactly as a respondent will see it. Resize the window to check mobile.
 
-- **Show surveys listing on front-end:** Surveys Listing menu item by default lists the **public** surveys on the Surveys home page. Users can click and take the surveys right away. Make sure the survey type is selected as &#8220;Public survey&#8221; to show them on the listing page. Private surveys won&#8217;t show here.
+## 5. Style it
 
-- **Using provided menu item:** Create a Single Survey menu item to display the survey on a page. This menu shows only one public survey. If you have many public surveys, use Surveys Listing or Survey Category menu items.
+Click the **Design** tab. The left side picks a base theme; the right side lets you override the accent colour, fonts, and surface tones for *this* survey only. Themes ship in matched light + dark pairs — you can preview both with the toggle above the canvas.
 
-- **Using mod_surveyform module:** To display a survey in a module position. To display the survey in a Joomla article, use loadposition shortcode to load the module inside an article:
-http://docs.joomla.org/How_do_you_put_a_module_inside_an_article%3F
+If none of the themes feel right, you can create your own in **Themes** (left rail → Themes) and pick it here.
 
-- **Using unique URLs:** Invite users from the invite page or manually send Survey URL/Unique URLs and users can take the survey using those URLs. For search engine-friendly URLs, create Survey Category menu items for all top-level categories, although you need not show them on the frontend using the Menu module.
+## 6. Publish
 
-- **Using Joomla! articles:** You can use shortcode to display surveys in the articles. Please read [https://docs.corejoomla.com/Display_surveys_in_Joomla!_articles](https://docs.corejoomla.com/Display_surveys_in_Joomla!_articles)
+Click **Publish** in the top-right of the builder. The survey moves to the **Live** state and a public URL appears. Two ways to share it:
+
+- **Public link** — copy from the Publish dialog; open in any browser.
+- **Joomla menu item** — create a menu item of type *Community Surveys → Single Survey* and pick your survey.
+
+Both routes hit the same `index.php?option=com_communitysurveys&view=survey&id=X` URL.
+
+## 7. Collect responses
+
+Take the survey yourself (in a private browser window so you're not seen as the admin). Then return to the admin → **Analytics**.
+
+Pick your survey from the picker in the top-left. You'll see:
+
+- **Overview** — total responses, completion rate, NPS, median time, drop-off, plus a responses-over-time chart.
+- **By question** — per-question distribution charts; for free-text questions, the actual answers.
+- **Segments** — completion status / duration breakdowns.
+- **Cross-tab** — pick two questions, see how respondents combined them.
+- **Responses** — the raw table; view any response, download as PDF, or export the whole set as CSV.
+
+## 8. Invite people
+
+If you want to send invitations rather than just sharing a link, go to **Contacts** (left rail), import a CSV or add contacts manually, optionally group them, then go to **Invitations → New campaign**:
+
+1. Pick the survey.
+2. Pick the contact groups or individual contacts.
+3. Review the invitation email (the wizard shows a live preview; you can override the subject and body just for this campaign).
+4. **Send invitations** — the system queues + dispatches one tracked email per recipient.
+
+Each invited recipient gets a unique survey URL. From the campaign detail you can see who opened, started, completed, or bounced, and send reminders to people who haven't started yet.
+
+## What's next?
+
+You've built and shipped a survey. From here, branch into whichever feature matters most:
+
+- **Conditional logic** — show/hide questions or skip pages based on earlier answers. See [Conditional rules](./conditional-rules-explained.md).
+- **Translations** — translate your survey into any installed Joomla content language. See [Translating surveys](./translating-surveys.md).
+- **Branding** — customise themes site-wide. See [Themes & customisation](./themes-and-customization.md).
+- **Email templates** — rewrite invitation / reminder / receipt emails to match your voice. See [Email templates](./email-templates.md).
+- **Integrations** — pipe responses into Slack, Google Sheets, Webhooks, AcyMailing. See [Integrations overview](./integrations-overview.md).
+- **AI authoring** — let AI draft survey questions for you. See [AI features](./ai-features.md).
+
+If you get stuck, the [FAQs](./community-surveys-faqs.md) cover the common questions.

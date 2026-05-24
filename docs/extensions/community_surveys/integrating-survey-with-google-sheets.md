@@ -1,170 +1,254 @@
 ---
 id: integrating-survey-with-google-sheets
-title: Google Sheets Integration Setup
-sidebar_label: Google Sheets Setup
-sidebar_position: 20
+title: Google Sheets Integration
+sidebar_label: Google Sheets
+sidebar_position: 83
 ---
 
-Community Surveys supports Google Sheets integration, allowing survey responses to automatically sync to a Google Sheets spreadsheet in real-time. This guide covers the initial setup of Google API credentials required for the integration.
+# Google Sheets Integration
 
-:::tip New Integrations Dashboard
-Community Surveys 7.0+ includes a comprehensive [Integrations Dashboard](./survey-integrations) that provides a unified interface for managing Google Sheets, Webhooks, and other integrations. See the [complete integrations documentation](./survey-integrations) for details on configuring and managing all integration types.
-:::
+Append every survey response as a row in a Google Sheets worksheet. Two-stage setup:
 
-## Prerequisites
+1. **One-time per Joomla install** — register an OAuth client with Google Cloud (5-minute wizard).
+2. **Every integration after that** — one-click "Connect Google" → pick the sheet → save.
 
-Before setting up Google Sheets integration, you need:
+For framework concepts (events, retries, logs), see [Integrations Overview](./integrations-overview.md).
 
-1. A Google account
-2. Access to [Google Cloud Console](https://console.developers.google.com/)
-3. Administrator access to your Joomla site
+---
 
-## Step 1: Create Google OAuth Credentials
+## Why OAuth (not service-account JSON)
 
-First, create an OAuth 2.0 application in Google Cloud Console:
+Earlier versions of this integration used a Google Cloud service-account JSON key. We moved to OAuth in v8 because:
 
-### 1.1 Access Google Cloud Console
+- **One-time setup** vs per-integration JSON paste.
+- **Personal Google accounts** work — service accounts can't write to a personal Drive without explicit sharing.
+- **Per-account revocation** — disconnect a single integration without affecting others.
+- **Audit trail in Google's account.google.com** — users see which apps have access.
 
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Sign in with your Google account
-3. Create a new project or select an existing one
+The trade-off is the **one-time GCP setup**. After that, every integration is one click.
 
-### 1.2 Enable Required APIs
+---
 
-1. Navigate to **APIs & Services → Library**
-2. Search for and enable:
-   - **Google Sheets API**
-   - **Google Drive API**
+## One-time setup
 
-### 1.3 Configure OAuth Consent Screen
+Open **Settings → Integrations → Google** in the admin.
 
-1. Go to **APIs & Services → OAuth consent screen**
-2. Select **External** user type (or Internal for Google Workspace)
-3. Fill in the required fields:
-   - App name: "Community Surveys Integration"
-   - User support email: Your email
-   - Developer contact email: Your email
-4. Add scopes:
-   - `https://www.googleapis.com/auth/spreadsheets`
-   - `https://www.googleapis.com/auth/drive.file`
-5. Add your email as a test user (for External apps)
+You'll see a 5-step walkthrough with deep-links into Google Cloud Console.
 
-### 1.4 Create OAuth Credentials
+### Step 1 — Create a Google Cloud project
 
-1. Go to **APIs & Services → Credentials**
-2. Click **Create Credentials → OAuth client ID**
-3. Select **Web application**
-4. Configure the application:
-   - **Name**: Community Surveys
-   - **Authorized redirect URIs**: Add your callback URL
+Click the **Open Google Cloud Console** link.
 
-### Determining Your Callback URL
+- Project name — anything (e.g. "Community Surveys").
+- Billing — not required for the free tier of Sheets + Drive APIs.
 
-The callback URL format is:
-```
-https://yoursite.com/your-surveys-menu?task=integration.oauth
-```
+### Step 2 — Enable the Sheets + Drive APIs
 
-Where `your-surveys-menu` is the alias of your **Surveys Listing** menu item.
+The setup panel has direct links to each API page. For each:
 
-**Examples:**
-- `https://example.com/surveys?task=integration.oauth`
-- `https://example.com/feedback/surveys?task=integration.oauth`
+1. Click the link.
+2. **Enable**.
+3. Wait for the green checkmark.
 
-:::warning Important
-The callback URL must exactly match what you enter in Google Cloud Console, including the protocol (https) and any subdirectories.
-:::
+You need both:
 
-5. Click **Create** and note your **Client ID** and **Client Secret**
+- **Google Sheets API** — for reading + writing sheets.
+- **Google Drive API** — for listing the user's sheets in the picker.
 
-[![Create credentials button](/img/extensions/community_surveys/2021-11-google-app-step-create-credentials-1024x329.jpg)](https://docs.shondalai.com/wp-content/uploads/2021/11/google-app-step-create-credentials.jpg)
+### Step 3 — Configure the OAuth consent screen
 
-[![OAuth client type selection](/img/extensions/community_surveys/2021-11-google-app-step-oauth-client.jpg)](https://docs.shondalai.com/wp-content/uploads/2021/11/google-app-step-oauth-client.jpg)
+- User type — **External** (works for personal Google accounts) or **Internal** (workspaces only, requires Google Workspace).
+- App name — e.g. "Community Surveys on `<your-site.com>`".
+- User support email + developer contact — your email.
+- Scopes — Google will ask which scopes the app needs. **The Community Surveys admin asks for**:
+  - `auth/spreadsheets` (read + write Sheets)
+  - `auth/drive.readonly` (list user's sheets)
+  - `auth/userinfo.email` (display the connected account in the admin)
+- Test users — while the app is in "Testing" mode, only the email addresses you list here can connect. Add yourself.
 
-[![Authorized redirect URIs](/img/extensions/community_surveys/2021-11-google-app-step-auth-urls.jpg)](https://docs.shondalai.com/wp-content/uploads/2021/11/google-app-step-auth-urls.jpg)
+You can leave the app in **Testing** mode indefinitely — that's fine for a self-hosted site. Switch to **Production** if you want anyone to connect (requires Google's verification process for sensitive scopes, which Sheets + Drive are).
 
-## Step 2: Configure Community Surveys
+### Step 4 — Create OAuth credentials
 
-Add your Google OAuth credentials to Community Surveys:
+The setup panel deep-links to the Credentials page.
 
-1. Go to **Components → Community Surveys**
-2. Click **Options** in the toolbar
-3. Navigate to the **Integrations** tab
-4. Enable **Google Sheets Integration**
-5. Enter your **OAuth Client ID**
-6. Enter your **OAuth Client Secret**
-7. Click **Save & Close**
+1. **Create credentials** → OAuth client ID.
+2. Application type — **Web application**.
+3. Name — anything (e.g. "Community Surveys credentials").
+4. **Authorised redirect URIs** — paste the URL shown in the setup panel. This is the URL Google will redirect users back to after they grant access. Copy it from the panel's "Redirect URI" field; it looks like:
 
-Your site is now configured for Google Sheets integration.
+   ```
+   https://your-site.com/administrator/index.php?option=com_communitysurveys&task=api.googleOauthCallback
+   ```
 
-## Step 3: Connect a Survey to Google Sheets
+5. **Create**. Google shows your Client ID + Client Secret.
 
-With credentials configured, you can now connect individual surveys:
+### Step 5 — Paste credentials into Community Surveys
 
-### Using the Integrations Dashboard (Recommended)
+Back in the setup panel:
 
-1. Go to **Components → Community Surveys → Surveys**
-2. Click on a survey to edit
-3. Click the **Integrations** button in the toolbar
-4. Click **Add Integration**
-5. Select **Google Sheets** from the catalog
-6. Click **Connect** to authorize with Google
-7. Enter your **Spreadsheet ID** (or create a new spreadsheet)
-8. Configure additional options as needed
-9. Click **Save**
+- **Client ID** — paste from Google.
+- **Client Secret** — paste from Google.
 
-For detailed configuration options, see the [Integrations Documentation](./survey-integrations#configuring-google-sheets-integration).
+Click **Save changes** at the top of the Settings page. The setup panel's status badge flips from "Not configured" to **Configured**.
 
-### Finding Your Spreadsheet ID
+You're done with the one-time setup. Every Google Sheets integration after this point uses the credentials you just saved.
 
-From your Google Sheets URL:
-```
-https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-```
+---
 
-The Spreadsheet ID is: `1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms`
+## Creating a Google Sheets integration
 
-## How It Works
+After the one-time setup:
 
-Once connected:
+### 1. Prepare a sheet
 
-1. When a user submits a survey response, the integration is triggered
-2. Response data is formatted and sent to Google Sheets API
-3. A new row is appended to your spreadsheet with the response data
-4. Headers are automatically created on first sync
-5. Sync status is logged for monitoring
+In Google Sheets:
 
-## Configuration Options
+1. Create a new spreadsheet.
+2. Add column headers to the first row (e.g. "Response ID", "Completed at", "Status", then one column per question title). The adapter will write the header on first sync if the sheet is empty — but you can pre-author it for control.
+3. Don't share the sheet — OAuth means *you* are authorising the adapter to write on your behalf, so no special sharing is needed.
 
-| Option | Description | Required |
-|--------|-------------|----------|
-| **Spreadsheet ID** | The ID from your Google Sheets URL | Yes |
-| **Sheet Name** | The specific sheet tab to use (default: "Survey Responses") | No |
-| **Include Metadata** | Add columns for response ID, timestamp, IP, location, browser | No |
+Copy the spreadsheet's URL (or the long ID from the URL).
 
-## Troubleshooting
+### 2. New integration
 
-### "Access Denied" or "Invalid Client"
+In Community Surveys: **Integrations → Marketplace → Google Sheets**.
 
-- Verify Client ID and Secret are copied correctly
-- Ensure the redirect URI matches exactly
-- Check that required APIs are enabled
+### 3. Fill the wizard
 
-### "Token Expired"
+- **Survey** — which survey's responses to append.
+- **Internal name** — e.g. "CSAT → quarterly report sheet".
+- **Google account** — click **Connect Google**. A popup opens:
+  1. Sign in to the Google account that should own the writes.
+  2. Pick that account from the chooser.
+  3. Grant the requested scopes (Sheets, Drive readonly, userinfo).
+  4. The popup closes automatically; the wizard shows "Connected as alice@example.com".
+- **Spreadsheet** — paste the URL or pick from the dropdown (only populated after Connect Google succeeds; lists every sheet the connected account can access, most-recently-modified first).
+- **Worksheet name** — the tab name. Default: `Sheet1`.
+- **Include metadata columns** — when on, the first 4 columns are Response ID, Completed at, Status, Survey. Off if you only want question columns.
+- **Header row already written** — leave unchecked on first save; the adapter writes a header on the first sync. Tick it after the first row appears, otherwise every sync would rewrite the header.
 
-- Re-authorize by clicking Connect in the integration settings
-- Tokens are automatically refreshed but may expire after long periods
+### 4. Test connection
 
-### "Spreadsheet Not Found"
+Click **Test connection**. The adapter fetches the sheet's metadata via the Sheets API; success means everything is wired.
 
-- Verify the Spreadsheet ID is correct
-- Ensure the spreadsheet exists and hasn't been deleted
-- Check that you're using the same Google account
+### 5. Save
 
-For more troubleshooting tips, see the [Integrations Troubleshooting Guide](./survey-integrations#troubleshooting).
+Submit a test response to fire the first sync. The first row appears in your sheet within ~1 second (synchronous mode) or within a few minutes (async).
 
-## Next Steps
+---
 
-- [Complete Integrations Documentation](./survey-integrations) - Full guide to all integration features
-- [Webhook Integration](./survey-integrations#configuring-webhook-integration) - Connect to Zapier, Make, and custom backends
-- [Field Mapping](./survey-integrations#field-mapping) - Customize how data is mapped
+## Row format
+
+Each response becomes one row. The column order:
+
+1. **Response ID** (if `include_metadata` is on)
+2. **Completed at** (timestamp)
+3. **Status** (`complete` / `partial`)
+4. **Survey** (title)
+5. **One column per question** — in the survey's question order.
+
+For each question column:
+
+- **Choice questions** — picked label.
+- **Multi-choice (checkbox / rank)** — comma-separated labels.
+- **NPS / slider** — numeric value.
+- **Free-text** — the raw text.
+- **Grid questions** — `row → col` pairs joined with `; `.
+- **Date** — ISO date.
+- **Geolocation** — `"lat, lng"` plus the address if provided.
+- **Signature** — empty (can't fit a signature in a cell). The PDF export captures signatures.
+- **File upload** — filename.
+
+Cells use Sheets' `USER_ENTERED` input mode — Sheets parses dates and numbers automatically like a user typed them, so timestamps appear as Sheets-native dates rather than strings.
+
+---
+
+## Disconnecting
+
+Three ways:
+
+1. **In the integration configure pane** — click the "Connect Google" button to reconnect (replaces the existing connection without deleting the integration).
+2. **Delete the integration** — removes the integration row + its tokens.
+3. **In Google's account.google.com** — Security → Third-party access → revoke the "Community Surveys" app. The next sync will fail with `auth_invalid`; the admin sees the failure in the Activity tab and can reconnect.
+
+Disconnecting one integration doesn't affect others — each integration stores its own per-account tokens.
+
+---
+
+## How OAuth flows under the hood
+
+The reason it works:
+
+1. Wizard's "Connect Google" calls `api.googleOauthStart` → server generates a CSRF state token and returns Google's auth URL.
+2. Wizard opens a popup to that URL. User signs in + grants scopes on Google's own page.
+3. Google redirects to your Joomla's OAuth callback URL with `?code=...&state=...`.
+4. Server validates state, exchanges the code with Google for an access token + a long-lived **refresh token**, encrypts the bundle, and stores it tied to the state token.
+5. Callback HTML closes the popup and posts the state back to the wizard via `postMessage`.
+6. Wizard now holds an opaque OAuth handle. User finishes filling the wizard and clicks Save.
+7. On save, the server swaps the handle for the actual refresh token via single-use consumption and stores it encrypted on the integration.
+8. At every sync, the adapter exchanges the refresh token for a fresh 1-hour access token (cheap) and uses it to call Sheets.
+
+The refresh token lasts until you revoke it. The access token lasts an hour and is minted per-sync — no caching, no expiry headache.
+
+All tokens encrypted at rest via AES-256-GCM keyed off Joomla's site secret. See [Integrations overview → Credentials and security](./integrations-overview.md#credentials-and-security).
+
+---
+
+## Common issues
+
+### "Google OAuth is not configured for this site"
+
+Settings → Integrations → Google → finish the one-time setup. The wizard's Connect button is disabled until Client ID + Secret are saved.
+
+### "Google did not return a refresh token. Revoke prior access and try again."
+
+If you've previously connected the same Google account, Google's behaviour is to only mint a refresh token on the first consent. We force `prompt=consent` in the OAuth URL, but in rare cases Google still skips it.
+
+Fix: in `account.google.com/security` → Third-party access → revoke the app → reconnect.
+
+### "Connection successful" but rows don't appear
+
+- **Worksheet name typo** — the adapter looks for the exact tab name. Defaults to `Sheet1`; if your tab is named differently, update the config.
+- **Sheet permissions changed** — the OAuth grant covers everything the user can access. If you transferred sheet ownership or revoked the user's access, syncs fail.
+- **Async dispatch + no task scheduler** — the integration queued the sync but the **Drain Integration Retry Queue** task isn't running. See [Integrations overview → Retries](./integrations-overview.md#retries).
+
+### "HTTP 403 — The user does not have sufficient permissions"
+
+The connected Google account can't write to the sheet. Either:
+
+- Connect a different Google account that owns or has edit access on the sheet.
+- Share the sheet with the connected account.
+
+### "HTTP 429 — rate limit"
+
+Google Sheets has a per-project quota (300 read/write requests/min by default). The adapter automatically retries with backoff. If you're hitting limits, batch your surveys or request quota increase from Google.
+
+### "The OAuth client was not found"
+
+The Client ID in Settings → Google is wrong, or the OAuth client has been deleted in GCP. Re-paste from `console.cloud.google.com/apis/credentials`.
+
+---
+
+## Migrating from service account (legacy)
+
+If you used the old service-account flow in pre-v8 versions:
+
+1. Old integrations show as "Adapter google_sheets is no longer installed" because the credential format changed.
+2. **Best path** — delete the old integration row, create a new one through the OAuth wizard.
+3. The data already in your sheet stays — only the writing pipeline changes.
+
+If you have many legacy integrations to migrate, the configure pane's missing-adapter view shows the raw stored config so you can copy the sheet ID + worksheet name before deletion.
+
+---
+
+## Limits
+
+| | Limit | Notes |
+|---|---|---|
+| Sheets API quota | 300 requests/min per project | Google's default |
+| Drive API quota | 1000 requests / 100 sec | Used only for the sheet picker |
+| Sync timeout | 20 seconds per attempt | Hard limit |
+| Refresh token lifetime | Until revoked | OAuth tokens don't expire unless revoked or unused for 6 months |
+| Header row writes | Once per integration | Tick `header_row_written` after the first sync |
+| Cell content | Sheets' default (50K chars per cell) | Long answers truncate at this limit |

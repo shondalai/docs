@@ -15,15 +15,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 ## [8.0.0] - 2026-05-24
 
-### 🐛 Fixed
-- Final fixes
-- Fixed bugs
-- Security issues part 4
-- Security issues part 4
-- Security issues phase 3
-
-## [8.0.0] - 2026-05-23
-
 **Major Release: New Survey Builder, Smarter Rules, Friendlier Admin**
 
 Community Surveys 8 is a fresh build of the component, modules, and plugins. The survey builder, the admin pages, the public survey experience, and the rules engine have all been redesigned. Your existing surveys keep working after the upgrade and start picking up the new features as soon as you author them.

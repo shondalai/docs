@@ -1,304 +1,187 @@
 ---
 id: conditional-rules-explained
-title: Conditional Logic & Branching
-sidebar_label: Conditional Rules
+title: Conditional Logic & Rules Engine
+sidebar_label: Rules Engine Overview
 sidebar_position: 21
 ---
 
-Community Surveys includes powerful conditional logic that allows you to create dynamic, personalized survey experiences. Skip irrelevant questions, show follow-up questions based on answers, or end the survey early based on responses.
+Community Surveys ships with a structured rules engine that goes well beyond "skip to page". Every rule has the same shape: **WHEN** a condition is true, **THEN** an action fires. The catalogue of actions covers everything from prefilling answers to running A/B experiments, throttling bots, and emailing a Slack channel when an NPS detractor submits.
 
-## Overview
+This page is the index. Each rule category has its own deep-dive doc; bookmark the ones that match your survey style.
 
-Conditional rules enable you to:
+---
 
-- **Skip to specific pages** based on answers
-- **Show/hide questions** dynamically on the same page
-- **End the survey early** when certain conditions are met
-- **Create branching paths** for different respondent types
+## What you can do
 
-:::tip When to Use Conditional Logic
-- Screening questions that determine eligibility
-- Follow-up questions that only apply to certain answers
-- Different question paths for different user segments
-- Early exit for disqualified respondents
+A rule is `WHEN <condition> THEN <action>`. The catalogue:
+
+### Answer manipulation [(details)](./rules-answer-manipulation)
+
+| Feature | What it does |
+|---------|--------------|
+| **Pre-fill / default** | Pre-populate a question from a URL parameter, an earlier answer, or the signed-in user's profile |
+| **Pipe value** | Inject `{{q3.label}}` into a later question's title, description, or options |
+| **Carry-forward** | Only show options in Q5 that were picked in Q4, or exclude them (the inverse) |
+| **Randomize** | Shuffle options or question order per respondent, with optional "always last" pins for "Other" |
+| **Quota / cap** | Once N respondents have picked option X, hide it for everyone else |
+
+### Routing [(details)](./rules-routing)
+
+| Feature | What it does |
+|---------|--------------|
+| **Skip to page** | Jump to a specific page number |
+| **Skip to named section** | Jump to a page by stable slug, which survives reorder |
+| **Loop / repeat** | Repeat a block once per item the respondent listed earlier. Authoring is complete; full canvas rendering is on the roadmap. |
+| **Random A/B path** | Split respondents 50/50 (or 33/33/33) deterministically into A, B, or C |
+| **Disqualify with reason** | End early with a stored reason that surfaces in reports and exports |
+
+### Scoring & calculated fields [(details)](./rules-scoring)
+
+| Feature | What it does |
+|---------|--------------|
+| **Hidden variables** | Compute a named score from a structured formula (refs to answers, literals, arithmetic, references to other scores) |
+| **Buckets / segments** | Classify respondents into named segments based on score ranges ("detractor", "promoter") |
+| **Conditional required** | Make a question required only when a prior answer matches |
+
+### Validation & guards [(details)](./rules-validation)
+
+| Feature | What it does |
+|---------|--------------|
+| **Cross-field validation** | "End date must be after start date"; "sum of allocations must equal 100" |
+| **Sanity check** | Flag speeders and straight-liners using a server-side bitmask and react via `$quality.*` conditions |
+| **Anti-spam** | Honeypot field rendered off-screen, IP throttling, per-survey minimum completion time |
+
+### Side-effects [(details)](./rules-side-effects)
+
+| Feature | What it does |
+|---------|--------------|
+| **Notify** | Email, Slack, or webhook when a condition matches ("if NPS is 3 or lower, alert #cs-escalations") |
+| **Add to contact list** | Push respondent into an AcyMailing list |
+| **Tag response** | Auto-apply tags like `churn-risk` or `vip` for filtering in Results |
+| **Open follow-up survey** | Queue a one-shot invitation to a different survey, branded as a follow-up |
+| **Auto-close** | Stop accepting responses once a goal is met |
+
+### Time, locale, device, and synthetic context [(details)](./rules-context-fields)
+
+| Feature | What it does |
+|---------|--------------|
+| **Schedule-based** | `$hour`, `$weekday`, `$dom`, `$month`, `$year`, `$now`. Gate questions to business hours or before a deadline. |
+| **Locale-based** | `$locale` and `$lang`. Show different options by language or country. |
+| **Device-based** | `$device` (mobile/tablet/desktop), `$viewport_w` |
+| **Quality** | `$quality.speeder`, `$quality.honeypot`, `$quality.straight_lining`, `$quality.ip_throttle`, `$quality.any` |
+| **A/B variant** | `$ab` (A/B), `$variant3` (A/B/C). Stable per-respondent assignment. |
+| **Loop count** | `$loop.count`. Number of items the loop's source question collected. |
+
+---
+
+## Where to author rules
+
+Every rule type is editable from **two surfaces**:
+
+1. **Survey Builder → Flow tab**. Visual graph where each question's outgoing rules render as a fan of labelled exits. Click any exit to open the inline editor.
+2. **Survey Builder → Logic tab on a selected question**. Compact list editor for power users who prefer to scroll through rules quickly.
+
+Both editors save to the same backing data, so you can switch between them freely.
+
+:::tip "WHEN" is the same everywhere
+Every rule shares the same condition shape: a tree of AND / OR groups of leaves. A leaf compares one field (question answer, score variable, or `$context` field) against a value using one of `=`, `!=`, `>`, `>=`, `<`, `<=`, `contains`, `not_contains`, `empty`, `filled`. The catalogue above only varies the **THEN** half.
 :::
 
 ---
 
-## Supported Question Types
+## Anatomy of a rule
 
-Conditional rules can be configured on:
+Authored rules persist in this canonical shape:
 
-| Question Type | Supported |
-|---------------|-----------|
-| Radio Button | ✅ |
-| Checkbox | ✅ |
-| Dropdown | ✅ |
-| Grid (Radio) | ✅ |
-| Grid (Checkbox) | ✅ |
-| Image Choice | ✅ |
-| NPS | ✅ |
-| Likert Scale | ✅ |
-| Slider | ✅ |
-| Text Questions | ❌ |
-| Special Questions | ❌ |
-
----
-
-## Trigger Conditions
-
-Rules are triggered based on how respondents answer questions:
-
-### Answer-Based Conditions
-
-| Condition | Description | Use Case |
-|-----------|-------------|----------|
-| **If user answers this question** | Any answer selected | Show follow-up for engaged users |
-| **If user does not answer** | Question skipped (non-mandatory) | Handle opt-outs |
-| **If user selects [specific answer]** | Exact answer match | Branch based on specific choice |
-| **If user does not select [specific answer]** | Answer not chosen | Exclude specific segments |
-
-### Grid Question Conditions
-
-For grid questions, you can trigger rules based on:
-
-- Selection in a specific **row**
-- Selection of a specific **column** value
-- Combination of row and column
-
----
-
-## Available Actions
-
-When a condition is met, you can trigger these actions:
-
-### Skip to Page
-
-Jump directly to a specific page in the survey.
-
-**Use cases:**
-- Skip irrelevant sections
-- Create different paths for different audiences
-- Jump to specific question groups
-
-**Example:**
-> If user selects "No" on "Do you own a car?", skip to Page 5 (Public Transport section)
-
-### Show Question
-
-Reveal a hidden question on the same page when conditions are met.
-
-**Use cases:**
-- Follow-up questions ("Please explain...")
-- Conditional detail fields
-- Progressive disclosure
-
-**Example:**
-> If user selects "Other" on preferences, show "Please specify" text field
-
-### Finalize Response
-
-End the survey immediately and show the completion message.
-
-**Use cases:**
-- Screening/qualification questions
-- Early exit for ineligible respondents
-- Conditional survey completion
-
-**Example:**
-> If user selects "Under 18" for age, finalize response (with appropriate message)
-
----
-
-## Creating Conditional Rules
-
-### Step-by-Step Guide
-
-1. Navigate to **Components → Community Surveys → Surveys**
-2. Click **Edit Questions** on your survey
-3. Add or select a question that will trigger the rule
-4. Click the **Conditional Rules** tab on the question
-5. Configure your rule:
-
-### Rule Configuration
-
-#### Basic Rule Setup
-
-```
-IF [condition] THEN [action]
+```js
+{
+  question_id: 12,                 // the source question whose answers trigger evaluation
+  conditions: {                    // boolean tree; null means "always match"
+    all: [
+      { field: 'nps_score',  op: '<=', value: '6' },
+      { field: '$quality.speeder', op: '=', value: '0' }
+    ]
+  },
+  action_data: {                   // discriminated union, the THEN payload
+    type: 'notify',
+    integration_id: 7,
+    message: 'NPS detractor, see response #{{response.id}}'
+  },
+  published: true,                 // unpublished rules don't fire
+  sort_order: 0                    // see "rule ordering" below
+}
 ```
 
-**Condition options:**
-- User answers this question
-- User does not answer this question
-- User selects [specific answer]
-- User does not select [specific answer]
+The two halves are documented in the per-category pages:
 
-**Action options:**
-- Skip to page [number]
-- Show question [select question]
-- Finalize response
-
-### Adding Multiple Rules
-
-You can add multiple rules to a single question:
-
-1. Click **Add Rule** to create additional rules
-2. Configure each rule independently
-3. Click the **red delete icon** to remove a rule
-
-:::warning Rule Priority
-Rules are evaluated in order from top to bottom. **The first matching rule wins** — subsequent rules are ignored once a match is found.
-:::
+- **WHEN** semantics, operators, and `$`-context fields: see [rules-context-fields](./rules-context-fields).
+- **THEN** action payloads: see the category page that owns the action type.
 
 ---
 
-## Rule Examples
+## Client vs. server evaluation
 
-### Example 1: Screening Question
+The engine runs in two places:
 
-**Scenario:** Only allow respondents who are customers to continue.
+| Concern | Where it runs |
+|---------|---------------|
+| Show/hide questions, skip-to navigation, end-survey, conditional require | **Client**, for instant UI feedback |
+| Cross-field validation | **Both**: client for UX, server for security |
+| Tag, quota, auto-close, notify, followup | **Server only**. These are authoritative side-effects. |
+| Score & segment | **Client** engine emits to `scoreVariables` and `segments`; the server uses the persisted values |
+| Honeypot, speeder, IP throttle | **Server**. Surfaced to rules via `$quality.*` context fields. |
 
-**Question:** "Are you a current customer?"
-- Option A: Yes
-- Option B: No
-
-**Rule:**
-- Condition: If user selects "No"
-- Action: Finalize response
-
-**Result:** Non-customers see the thank you message immediately.
+The server is always the source of truth for anything that writes data, so a tampered client cannot bypass a quota cap or sneak past a validation rule.
 
 ---
 
-### Example 2: Conditional Follow-up
+## Rule ordering
 
-**Scenario:** Ask for details only when user reports a problem.
+Rules are pre-sorted by `sort_order` (lowest first) before evaluation. For jump-style actions (`skipto`, `end`) that target the same source question, **the last matching rule wins**: each match overwrites the previous entry in the engine's jump map. If you want a specific rule to take precedence, give it a higher `sort_order` than the others on that question.
 
-**Question:** "How satisfied are you with our service?"
-- Very Satisfied
-- Satisfied
-- Neutral
-- Dissatisfied
-- Very Dissatisfied
+Show / hide / require accumulate across all matching rules; a question is hidden if any `hide` rule matched, shown if any `show` rule fired, required if any `require` rule matched.
 
-**Rules:**
-1. If user selects "Dissatisfied" → Show question "What went wrong?"
-2. If user selects "Very Dissatisfied" → Show question "What went wrong?"
-
-**Result:** The "What went wrong?" question only appears for unhappy customers.
+Side-effect actions (`tag`, `quota`, `auto_close`, `notify`, `followup`) all fire when their conditions match; they do not compete with each other.
 
 ---
 
-### Example 3: Branching Paths
+## Best practices
 
-**Scenario:** Different question paths for different user types.
-
-**Question:** "What is your role?"
-- Student
-- Professional
-- Educator
-
-**Rules:**
-1. If user selects "Student" → Skip to Page 2 (Student Questions)
-2. If user selects "Professional" → Skip to Page 3 (Professional Questions)
-3. If user selects "Educator" → Skip to Page 4 (Educator Questions)
-
-**Result:** Each user type sees only relevant questions.
-
----
-
-### Example 4: Multi-Select Logic
-
-**Scenario:** Show follow-up based on checkbox selections.
-
-**Question:** "Which features do you use?" (Checkbox)
-- Feature A
-- Feature B
-- Feature C
-- None of the above
-
-**Rules:**
-1. If user selects "None of the above" → Skip to Page 5 (Why not using features?)
-2. If user selects "Feature A" → Show question "Rate Feature A"
-3. If user selects "Feature B" → Show question "Rate Feature B"
-
-**Result:** Users only rate features they actually use.
-
----
-
-## Best Practices
-
-### Design Tips
-
-1. **Plan your flow first** — Sketch the branching logic before building
-2. **Keep it simple** — Complex logic is hard to maintain and debug
-3. **Test thoroughly** — Walk through all possible paths
-4. **Use page breaks strategically** — Group related conditional questions
-
-### Common Patterns
-
-| Pattern | Implementation |
-|---------|----------------|
-| **Screening** | Qualification question → Finalize if not qualified |
-| **Progressive Detail** | High-level question → Show detailed follow-ups |
-| **User Segmentation** | Role/type question → Skip to segment-specific pages |
-| **Optional Sections** | Interest question → Skip section if not interested |
-
-### Avoiding Pitfalls
-
-:::danger Common Mistakes
-- **Circular logic** — Rules that skip to pages that skip back
-- **Orphaned questions** — Questions only reachable through broken rules
-- **Conflicting rules** — Multiple rules that contradict each other
-- **Missing paths** — Answer options without corresponding rules
-:::
-
----
-
-## Testing Conditional Logic
-
-### Preview Mode
-
-1. Save all questions and rules
-2. Click **Preview** to test the survey
-3. Select different answers to verify each path
-4. Document the expected flow for each scenario
-
-### Checklist
-
-- [ ] All answer options have appropriate rules
-- [ ] No circular references between pages
-- [ ] Finalize actions show appropriate end messages
-- [ ] Hidden questions appear when expected
-- [ ] All paths lead to survey completion
+1. **Plan flow first.** Sketch the branching on paper before clicking. The Flow tab is for verifying, not designing from scratch.
+2. **Use named sections, not page numbers.** `skipto → section: thank-you` survives a page reorder; `skipto → page 4` does not. See [rules-routing](./rules-routing#skip-to-named-section).
+3. **Compose, do not duplicate.** A "VIP detractor" segment is a `score` rule plus a `tag` rule, not two parallel `notify` rules with hard-coded conditions.
+4. **Leave failed evaluations safe.** Empty conditions evaluate as "always match", never as "never match". Unfinished rules with blank fields are inert by design (`tag = ''` is a no-op, `integration_id = 0` doesn't dispatch).
+5. **Mind rule order for jumps.** When multiple `skipto` or `end` rules could fire on the same question, the highest `sort_order` wins. Order rules in the canvas with this in mind.
 
 ---
 
 ## Troubleshooting
 
-### Rule Not Triggering
-
-- Verify the question is a supported type (choice/grid)
-- Check that the correct answer option is selected in the rule
-- Ensure rules are saved (click Save on the question)
-
-### Wrong Page Displayed
-
-- Check rule order — first match wins
-- Verify page numbers are correct
-- Look for conflicting rules on the same question
-
-### Hidden Question Not Showing
-
-- Ensure the target question is on the same page
-- Verify the trigger condition is correct
-- Check that the target question exists and is saved
+| Symptom | Likely cause |
+|---------|--------------|
+| Rule shows in the editor but never fires | Check `published`. Disabled rules render greyed-out. |
+| Section-target rule does nothing | The destination page's `slug` is blank. Set it on the page divider in the canvas. |
+| `notify` action does nothing | Picked integration does not list `rule.notified` in its events. Check the Integrations marketplace card. |
+| `quota` never hides the option | Cap is 0 (always full) or the option_key changed since the rule was authored. Look for the orange "stale" pill. |
+| Quality-flag rule fires for everyone | Conditions write the operator backwards: `$quality.speeder = 1` matches speeders, `= 0` matches non-speeders. |
 
 ---
 
-## Related Documentation
+## Related documentation
 
-- [User Guide](./community-surveys-end-user-documentation)
-- [Question Types](./community-surveys-end-user-documentation#question-types)
-- [Survey Types Explained](./survey-types-explained)
+- [Survey Builder](./survey-builder), where the rule editors live
+- [Survey Types Explained](./survey-types-explained). Choice-family questions are the most common rule sources.
+- [Integrations Overview](./integrations-overview). `notify` actions delegate here.
+- [Email Templates](./email-templates). The `followup` rule renders `survey_followup_invitation`.
+- [Analytics & Reports](./analytics-and-reports). Score variables and segment tags surface as facets.
+
+---
+
+## Category deep-dives
+
+- **[Answer manipulation](./rules-answer-manipulation)**: pre-fill, pipe, carry-forward, randomize, quota
+- **[Routing](./rules-routing)**: section jumps, loops, A/B paths, disqualify
+- **[Scoring & calculated fields](./rules-scoring)**: score formula, segment buckets, conditional required
+- **[Validation & guards](./rules-validation)**: cross-field, sanity, anti-spam
+- **[Side-effects](./rules-side-effects)**: notify, contact list, tag, follow-up, auto-close
+- **[Context fields](./rules-context-fields)**: schedule, locale, device, quality, variant, loop

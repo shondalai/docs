@@ -11,6 +11,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'email-templates',
         'ai-helpers',
+        'weighted-voting',
         'display-polls-in-joomla-articles',
         'custom-module-positions-in-community-polls',
       ],
