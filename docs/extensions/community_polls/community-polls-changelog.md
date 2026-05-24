@@ -20,6 +20,37 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.1.0] - 2026-05-24
+
+### 🚀 Added
+- Added support for Joomla editor for description field
+- Improve poll options creation easier with keyboard support
+- Allow saving on each step of the wizard when creating new poll
+- Weighted (proxy) voting (Thanks to Luca for sponsoring this feature)
+
+### 🐛 Fixed
+- The action buttons on the poll options are not visible
+- Fixed UX of the toggle buttons in admin
+
+## [7.1.0] - 2026-05-23
+
+### ✨ Added
+- **Weighted (proxy) voting** — assign each member 0 to N proxies so their single ballot is counted with a weight of `1 + proxies`. See [Weighted voting](./weighted-voting.md).
+- New **Voting weights** step in the poll editor wizard: proxy assignment, CSV import (preview + commit), and a per-poll **Maximum proxies per member** control.
+- Weighted results section on the Results page: weighted tally per option (primary figure) with the raw ballot count alongside.
+- Administrative **audit report** — member / proxies / weight / voted Y/N — with CSV export. The chosen option is never disclosed.
+- Mechanical lock on proxy assignments once the poll goes Live: the panel becomes a read-only mirror, and the server refuses every weight-mutation request.
+- Each ballot snapshots the weight it was cast at, so later changes to a member's proxy count never silently rewrite a recorded tally.
+- Post-vote confirmation card on the site: when "Show results after vote" is off, voters see the poll's End message (or a generic acknowledgement) and no tally.
+
+### 🛠 Changed
+- Poll editor: status (Draft / Live / Closed) is now editable directly from the Publish step's Visibility card. The two save buttons collapsed into a single **Save** that persists whichever status the poll currently carries.
+- Answer-options editor: Tab and Enter navigate to the next option's title input; Tab on the last option auto-creates a new row.
+- Option-row action buttons (move, delete, image) are visible at rest instead of hover-to-reveal.
+
+### 🐛 Fixed
+- Toggle component lost its on-state colour in the Joomla admin (Bootstrap `.bg-primary !important` collision) and the thumb landed in the wrong place when checked. The track now uses a numbered shade and the thumb is absolutely positioned with deterministic offsets.
+
 ## [7.0.2] - 2026-05-21
 
 ### 🐛 Fixed
