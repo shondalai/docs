@@ -6,6 +6,7 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+
 ## [1.0.1] - 2026-05-25
 
 ### 🚀 Added
@@ -24,7 +25,6 @@ All notable changes to EasyCommerce will be documented in this file.
 - Fixed security issue with webhook
 - Fixed issues
 - Fixed bugs
-- Bug fixes
 
 ## [1.0.1] - 2026-05-24
 
