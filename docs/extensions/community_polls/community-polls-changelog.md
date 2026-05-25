@@ -20,6 +20,11 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.1.1] - 2026-05-25
+
+### 🐛 Fixed
+- Editor is not saving description when cache enabled
+
 ## [7.1.0] - 2026-05-24
 
 ### 🚀 Added
