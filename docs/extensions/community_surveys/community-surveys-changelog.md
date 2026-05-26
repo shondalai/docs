@@ -13,6 +13,71 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.0.1] - 2026-05-26
+
+### 🚀 Added
+- Show instructions when the user do not have permission to access the page
+- Add surveyform, surveyresults modules
+- New license management wizard
+- Add a button to bulk assign contacts to a group
+- Adding advanced filters to filter reports by questions
+- New option to force light/dark mode
+- Added new button to view all text responses in the reports page
+- Survey response form pushing sidebar down
+- Reports are not loading on few servers
+- Latest surveys module shows error
+
+### 🐛 Fixed
+- Final fixes
+- Fixed bugs
+- Security issues part 4
+- Security issues part 4
+- Security issues phase 3
+- Issue with sending emails after survey
+- Unable to delete multiple unique keys from admin
+- Fixed the file-attachment download link on the Result view going to the template's home page.
+- Fixed completion/thank-you emails never being sent for guest respondents.
+- Fixed file-upload answers showing only a filename on the result page.
+- Relaxed access checks on the consolidated report to honor the `core.results` ("View Results") permission
+- Fixed `mod_surveyresults` always reporting zero responses by populating `$data->responseCount` from the model.
+- Fixed `mod_surveyresults` template referencing the unimported `SurveyHelper` class and the wrong layout path
+- Fixed `mod_surveyresults` ("Community Surveys Consolidated Report") module producing a fatal error by adding the method to the site `ReportModel`
+- Tighten security for the download folders with IIS hosts
+- Fixed update sites URLs
+- Unable to delete survey invitations
+- Add missing language strings
+- Dark mode enhancements
+- Fixed untranslated strings
+- Conditional rules broken after JSON import
+- Conditional rules show answer IDs instead of text on page reload
+- Contact groups menu on left navigation shows 0 contact groups
+- When editing a contact, the selected contact group is not assigned to the contact
+- Contacts list shows empty group name
+- Conditional rule shows id instead of the title of the answer
+- Contact id is not saved with the response when inviting contact groups
+- Unable to add Google Sheets integration on certain webhosts
+- Fixed hardcoded language strings
+- Fixed issue with starting survey when intro is enabled
+- Unable to create private survey from frontend
+- Unable to edit survey from frontend
+- Emails are not being sent after responding to the survey
+- Expiry date is not set in email invitations
+- Error when opening survey form from the frontend
+- Show continue button when intro page is disabled
+- Response count not updated after deleting the responses
+- First page responses are not saved when intro is disabled
+- Unable to edit survey after previous update
+- Error saving checkout value to database when mysql null dates are disabled
+- Unable to load survey when intro page is disabled
+- Duplicate cancel button showing on View Response page
+- Cancel button does not work on View response page
+- Single survey menu item shows error when intro is disabled
+- Fixed PHP notice/warning messages on the survey page
+- URL Parameter question response is not saved
+- Survey response failed when rules are enabled
+- Added missing language strings
+- Unable to load survey after upgrade
+
 ## [8.0.0] - 2026-05-24
 
 **Major Release: New Survey Builder, Smarter Rules, Friendlier Admin**
