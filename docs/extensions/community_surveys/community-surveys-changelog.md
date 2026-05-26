@@ -13,6 +13,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.0.3] - 2026-05-26
+
+### 🚀 Added
+- Add an option to enable/disable the survey header with title and survey progress
+
+### 🐛 Fixed
+- Unable to hide progress ring with the option
+- License manager window is not showing
+- Survey next button is transperant on hover
+- Install failed when mysql strict mode is enabled
+- Split the site language strings from admin language file
+
 ## [8.0.2] - 2026-05-26
 
 ### 🐛 Fixed
