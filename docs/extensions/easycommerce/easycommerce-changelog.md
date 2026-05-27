@@ -6,6 +6,11 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.0.3] - 2026-05-27
+
+### 🐛 Fixed
+- Downloads page shows empty results
+
 ## [1.0.2] - 2026-05-27
 
 ### 🚀 Added
