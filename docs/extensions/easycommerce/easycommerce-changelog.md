@@ -6,6 +6,19 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.0.4] - 2026-05-29
+
+### 🚀 Added
+- Automatically create required scheduled tasks when installing first time
+- Generate product thumbnails when uploading product image
+
+### 🐛 Fixed
+- Support all webhook events from PayPal
+- All time filter is applied as YTD filter
+- Export report is not creating jobs to download selected report
+- Search box on admin toolbar do not show search results
+- Subscription pause/cancel toggles not  enforced
+
 ## [1.0.3] - 2026-05-27
 
 ### 🐛 Fixed
