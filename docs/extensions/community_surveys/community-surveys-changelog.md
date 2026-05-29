@@ -13,6 +13,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.0.5] - 2026-05-29
+
+### 🚀 Added
+- Add survey selection modal for single survey menu
+- Added new Generate Links button to create unique survey URLs
+- Added mass delete functionality in Responses page
+- Add new gradient progress bar
+
+### 🐛 Fixed
+- Unable to create new page in the survey builder
+- Unable to delete responses from analytics page
+
 ## [8.0.4] - 2026-05-28
 
 ### 🚀 Added
