@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [8.0.7] - 2026-05-30
 
 ### 🚀 Added
+- Add allowed file and mime types in upload settings
+- Show images uploaded in file upload question as a gallery
+- Highlight the invalid question on response form when validation fails
+- Collapsible email preview in email templates editor
+- Insert a page anywhere in the survey builder
+- Drag questions across pages
 - Add component version to the dashboard.
 
 ### 🐛 Fixed
