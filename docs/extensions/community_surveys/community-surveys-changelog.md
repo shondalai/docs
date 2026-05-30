@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [8.0.7] - 2026-05-30
 
 ### 🚀 Added
+- Replace delete confirmation alert with a better dialog box
 - Add allowed file and mime types in upload settings
 - Show images uploaded in file upload question as a gallery
 - Highlight the invalid question on response form when validation fails
@@ -25,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add component version to the dashboard.
 
 ### 🐛 Fixed
+- Rename radio grid to Matrix and remove duplicate type
+- Add debounce to survey description editor to stop multiple saves
+- Incorect icon showing for likertscale type
+- Name and address question types are not showing on the rail
 - Invalid urls in the order confirmation emails
 
 ## [8.0.6] - 2026-05-29
