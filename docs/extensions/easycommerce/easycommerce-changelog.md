@@ -6,6 +6,23 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.0.5] - 2026-06-01
+
+### 🚀 Added
+- Show customer downloads on customer details page
+- Add support to attach an order to a subscription
+- Show plugin integration title on the header instead of body
+- Show production variation on orders/subscriptions
+- Add subscription details to activation details modal
+- Add global refresh button to refresh admin pages
+- Improve new subscription modal UX
+
+### 🐛 Fixed
+- Subscription with failed order showing as active
+- Subscription paid with paypal is marked as renewal
+- Subscription shows pending activation when there exists a previous pending order
+- Invalid urls in the order confirmation emails
+
 ## [1.0.4] - 2026-05-29
 
 ### 🚀 Added
