@@ -13,6 +13,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.0.8] - 2026-06-02
+
+### 🚀 Added
+- Include user response details into the admin email notifications
+- Add new centralized settings page to configure points/activity settings
+- Allow enable/disable email templates
+- Add an option to set custom redirect URL for a survey
+- New button to add an option in between existing options
+- Allow reordering pages
+- Move license activation button to admin sidebar
+- Allow switching Match the Following question to Grid/Matrix type
+- Replace delete confirmation alert with a better dialog box
+- Add allowed file and mime types in upload settings
+- Show images uploaded in file upload question as a gallery
+- Highlight the invalid question on response form when validation fails
+- Collapsible email preview in email templates editor
+- Insert a page anywhere in the survey builder
+- Drag questions across pages
+
+### 🐛 Fixed
+- Notification emails are not sent when responding to survey
+- Survey description editor does not allow relative URLs
+- Deleted responses should not be counted to response count
+- Insert page at top button is failing
+- Remove duplicate matrix type in question type switcher
+- Rename radio grid to Matrix and remove duplicate type
+- Add debounce to survey description editor to stop multiple saves
+- Incorect icon showing for likertscale type
+- Name and address question types are not showing on the rail
+
 ## [8.0.7] - 2026-05-30
 
 ### 🚀 Added
