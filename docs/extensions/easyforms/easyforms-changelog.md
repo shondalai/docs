@@ -10,6 +10,17 @@ All notable changes to EasyForms will be documented in this file.
 
 ---
 
+## [1.1.3] - 2026-06-03
+
+### 🚀 Added
+- Implement code chunking for scripts to optimize page load performance
+- Integrate new AI Assistant service
+
+### 🐛 Fixed
+- No emails sent to form author
+- Remove redundant buttons in email notifications
+- User attachments are not attached to email notifications
+
 ## [1.1.2] - 2026-05-18
 
 ### 🐛 Fixed
