@@ -20,6 +20,12 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.1.2] - 2026-06-03
+
+### 🚀 Added
+- Enhanced AI services using new AI assistant
+- Show weight count of the user votes
+
 ## [7.1.1] - 2026-05-25
 
 ### 🐛 Fixed
