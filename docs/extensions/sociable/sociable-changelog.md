@@ -13,6 +13,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.1.6] - 2026-06-03
+
+### 🚀 Added
+- Enhanced AI services using new AI assistant
+
+### 🐛 Fixed
+- Fix untranslated language strings
+- Accept only safe urls when creating events
+- Unable to ban users from sociable admin
+- Email notifications are not sent when someone registers using Sociable registration
+- Enforce event feature flags and invite-only group semantics server-side
+- Harden OAuth (Apple signature, verified-email linking, same-origin redirect)
+- Add SSRF guard and response-size cap to URL preview endpoint
+- Make admin CSRF protection fail-closed and cover all mutating endpoints
+- Sanitize event descriptions and escape SPA data-config attributes
+- Block path traversal and unsafe upload extensions in media handling
+
 ## [3.1.5] - 2026-05-18
 
 ### 🐛 Fixed
