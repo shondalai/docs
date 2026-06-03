@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.0.9] - 2026-06-03
+
+### 🚀 Added
+- Implement AI services with new AI assistant
+
+### 🐛 Fixed
+- Thank you page shows empty bar when all fields are disabled
+- Characters lost when typing the page slug fast
+- Section slug didn't move with its page
+- Preview button do not show the survey page
+- Email invitation description shows html tags
+- Validation errors shown after installing the package
+- Surveys list on admin dashboard is not responsive
+- Grid question crosstab report rows are showing above header
+
 ## [8.0.8] - 2026-06-02
 
 ### 🚀 Added
