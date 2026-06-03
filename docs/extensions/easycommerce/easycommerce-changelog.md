@@ -6,6 +6,17 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.0.6] - 2026-06-03
+
+### 🚀 Added
+- Enhanced AI services using new AI assistant
+
+### 🐛 Fixed
+- Language selector styling is distorted in the translation modal
+- Stripe payment is not recorded when autorenewed the order
+- Downloads shows as expired after a trial subscription is activated manually
+- Refunded orders are not consired in the consolidated sales report
+
 ## [1.0.5] - 2026-06-01
 
 ### 🚀 Added
