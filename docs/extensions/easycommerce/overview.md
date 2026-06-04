@@ -99,7 +99,6 @@ It is built as a modern Joomla component with a React admin and storefront, and 
 ## Getting Help
 
 - Documentation: browse this user guide
-- Support email: support@shondalai.com
 - Website: [shondalai.com](https://shondalai.com)
 
 *EasyCommerce by BulaSikku Technologies Private Limited.*
