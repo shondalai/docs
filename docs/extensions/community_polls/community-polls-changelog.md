@@ -23,6 +23,14 @@ Each release lists changes under one or more of the following sections:
 ## [7.1.3] - 2026-06-08
 
 ### 🚀 Added
+- Added an option to show results without voting
+
+### 🐛 Fixed
+- Fixed false positives on database checks
+
+## [7.1.3] - 2026-06-08
+
+### 🚀 Added
 - Added option to display results without voting
 
 ### 🐛 Fixed
