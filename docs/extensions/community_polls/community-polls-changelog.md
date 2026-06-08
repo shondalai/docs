@@ -20,6 +20,14 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.1.3] - 2026-06-08
+
+### 🚀 Added
+- Added option to display results without voting
+
+### 🐛 Fixed
+- Fixed false positives in database checks
+
 ## [7.1.2] - 2026-06-03
 
 ### 🚀 Added
