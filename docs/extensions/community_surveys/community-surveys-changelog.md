@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.1.0] - 2026-06-08
+
+### 🚀 Added
+- Replaced standalone editor with Joomla editor
+- Allowed changing survey alias
+- Generated SEF URLs when sending invitations
+
+### 🐛 Fixed
+- Included grid answers in new response email
+- Fixed validation failures on non-required questions
+- Showed error messages at respondent-facing position, not DB id
+- Skipped readonly question types in validation
+- Prevented setting empty title to the survey
+- Fixed invitations page header overlapping with rows
+
 ## [8.0.10] - 2026-06-04
 
 ### 🚀 Added
