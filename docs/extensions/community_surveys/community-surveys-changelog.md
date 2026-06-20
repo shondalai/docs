@@ -13,6 +13,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.1.1] - 2026-06-20
+
+### 🚀 Added
+- Added a button to duplicate questions
+- Added filters and pagination to surveys selection modal in single survey menu
+- Improved the licensing process wizard
+
 ## [8.1.0] - 2026-06-08
 
 ### 🚀 Added
