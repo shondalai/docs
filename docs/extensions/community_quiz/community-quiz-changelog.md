@@ -12,6 +12,80 @@ All notable changes to Community Quiz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.0] - 2026-06-21
+
+### 🐛 Fixed
+- Resolved migration issues
+- Corrected update sites URLs
+
+## [8.0.0] - 2026-06-20
+
+Community Quiz 8 is a complete, ground-up rewrite for Joomla 6. It introduces a new React-based administration and front-end, a redesigned assessment engine, full learning-management features, and a modern certification and commerce stack. Existing v7 installations can bring their data across with the built-in migration tool.
+
+### ⚠️ Breaking changes
+
+- Rebuilt on a new database schema (`#__cq_` tables). Run the built-in v7 to v8 migration to import your quizzes, question banks, courses, certificates and responses.
+- Requires Joomla 6 and PHP 8.1 or later.
+- The administration and front-end are now single-page applications. Custom template overrides written for v7 layouts no longer apply.
+- Permissions are expanded: alongside the standard Joomla access actions, optional scoped assessment roles can restrict authors and graders to specific quizzes or courses.
+
+### 🚀 Added
+
+**Assessment engine**
+
+- 32 question types, including single and multiple choice, true/false, matching, ordering, classify, matrix, cloze, dropdown, drag and drop, drag-to-image, hotspot, numeric, calculated, short answer, essay, code, confidence-based marking, and clinical observation and OSCE items.
+- Visual exam builder with sections, question pools, blueprints and per-section rules.
+- Immutable attempt snapshots: every sitting freezes its own copy of the questions, so later edits never change an already-graded result.
+- Flexible scoring: partial credit, negative marking, per-question overrides and configurable pass marks.
+- Delivery and integrity controls: timing, availability windows, accommodations (extra time), question and answer shuffling, navigation modes and resume-after-disconnect.
+
+**Courses and learning**
+
+- Course catalog, course detail page and a distraction-free lesson player.
+- Enrollment with progress tracking, drip release, prerequisites and graded assignments.
+
+**Grading**
+
+- Manual grading queue for essays, file uploads, spoken responses and observation or OSCE items.
+- Per-attempt grading, rubric scoring and second-review flagging.
+- Scoped grading roles: assign a grader to specific quizzes or courses.
+
+**Certificates and credentials**
+
+- Designer-built certificate templates rendered to PDF on any host, with no external service required.
+- Public credential verification page with a scannable QR code.
+- Open Badge 3.0 download and an Add to LinkedIn profile action.
+
+**Selling quizzes and courses**
+
+- Sell quizzes and courses through the EasyCommerce integration, with access granted automatically on purchase.
+- Free preview sections and inline unlock for paid content.
+
+**Reports, analytics and automation**
+
+- Reports and analytics hub covering quiz, course, enrollment, credential, revenue, performance, compliance, item-bank and integrity reporting.
+- Scheduled reports.
+- Gamification (points and activity), email notifications with customizable templates, and AI-assisted features through the shared Shondalai core library.
+
+**Modules and plugins**
+
+- Featured, Leaderboard and My Learning modules, plus task, user, content, privacy and finder plugins.
+- Portable question-bank export and import.
+
+### 🔒 Security
+
+- All database access uses parameterized queries, and question and answer content is sanitized on save.
+- Scores are computed and enforced entirely on the server; attempts cannot be altered from the browser.
+- Optional per-entity scoped grading roles, so a grader only ever reaches the quizzes and courses they are assigned.
+- Public certificate verification uses unguessable credential ids and is rate limited, and the holder's exact score is kept private by default.
+- File uploads are restricted by extension and content inspection, and stored behind execution and directory-listing guards.
+- Privacy retention runs automatically on a configurable schedule.
+
+### 🔄 Changed
+
+- Front-end and administration completely redesigned with a consistent, themeable interface (color modes, density and accent options).
+- Email delivery and PDF generation now run through the shared Shondalai core library.
+
 ## [7.5.1] - 2026-04-02
 
 ### 🐛 Fixed
