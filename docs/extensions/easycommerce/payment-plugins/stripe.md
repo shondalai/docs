@@ -93,17 +93,40 @@ The plugin also cross-checks the PaymentIntent's `amount` and `currency` against
 2. Go to **Developers → Webhooks**.
 3. Click **Add endpoint**.
 4. Enter the Webhook URL above.
-5. Select these events:
+5. Select these events (full list — see the legend below for which are critical):
+
+   **One-off payments:**
    - `payment_intent.succeeded`
    - `payment_intent.payment_failed`
+   - `payment_intent.canceled`
+   - `charge.succeeded`
+   - `charge.failed`
    - `charge.refunded`
+
+   **Subscriptions (CRITICAL for recurring billing):**
+   - `invoice.payment_succeeded` ★
+   - `invoice.payment_failed` ★
    - `customer.subscription.created`
    - `customer.subscription.updated`
    - `customer.subscription.deleted`
-   - `invoice.payment_succeeded`
-   - `invoice.payment_failed`
+   - `customer.subscription.trial_will_end`
+
 6. Click **Add endpoint**.
 7. Copy the endpoint's **Signing secret** back into the plugin's `webhook_secret` field.
+
+:::danger Critical events for subscription renewals
+The ★ events (`invoice.payment_succeeded` and `invoice.payment_failed`) are the only signal Stripe sends that carries the subscription context for a recurring charge. If your endpoint isn't subscribed to them, **every renewal payment will be collected by Stripe but never recorded locally** — your customer is billed but their access doesn't extend, and your admin panel shows no renewal order.
+
+`payment_intent.succeeded` and `charge.succeeded` also fire on each renewal, but they don't carry the subscription ID. The plugin tries a defensive Stripe-customer-id fallback when it sees these without an invoice linkage, but the canonical path is `invoice.payment_succeeded`. If you ever see this log line, the dashboard config is wrong:
+
+```
+[Stripe Webhook] payment_intent.succeeded fallback: FALLBACK recovered renewal via Stripe-customer match...
+```
+:::
+
+:::tip Stripe API version
+The plugin handles both legacy (`invoice.subscription`) and the March 2025 Stripe API (`invoice.parent.subscription_details.subscription`) shapes for locating the gateway subscription id. No action required when Stripe migrates your account to a new API version — the handler probes both locations.
+:::
 
 ### 5. Advanced
 
@@ -176,6 +199,46 @@ Test card details:
 2. Confirm `webhook_secret` is set; without it the plugin refuses all webhook requests.
 3. Open **Stripe Dashboard → Webhooks → your endpoint → Recent deliveries** and inspect the response body for the rejection reason.
 4. Confirm your server returns 2xx within 30 seconds.
+
+### Subscription Renewals Not Updating the Local Subscription
+
+Symptom: Stripe charges the customer's card successfully on the renewal cycle, but the EasyCommerce subscription doesn't advance, no renewal order appears in admin, the customer's downloads expire. The plugin log shows entries like:
+
+```
+[Stripe Webhook] No order ID in payment intent metadata
+[Stripe Webhook] No order found for payment intent: pi_xxx
+```
+
+This happens when the webhook endpoint is **not subscribed to `invoice.payment_succeeded`**. Stripe delivers only the lower-level `payment_intent.succeeded` and `charge.succeeded` events, neither of which carries the subscription ID — the plugin has no way to know which local subscription the payment belongs to.
+
+**To fix:**
+
+1. **Stripe Dashboard → Developers → Webhooks → your endpoint → "Listen to events"** and add `invoice.payment_succeeded` AND `invoice.payment_failed`. Save.
+2. To verify, return to the endpoint view and confirm both events appear in the "Listening to" list.
+3. **Recover any already-affected customers** using the manual flow: **EasyCommerce → Subscriptions → open the affected subscription → "Create Renewal Order"**, then on that new pending order use **3-dot menu → "Mark as Paid"** and paste the Stripe `pi_xxx` from the failed event as the transaction id. This produces the same end-state as a successful webhook would have.
+
+After fixing the dashboard config, subsequent renewals will deliver the canonical event. To confirm the healthy path is running, look for this log line on the next renewal:
+
+```
+[Stripe Webhook] Processing webhook event: invoice.payment_succeeded
+Subscription renewal recorded from Stripe invoice webhook (subscription_id=X, ...)
+```
+
+### Subscription Renewal Logs Show "FALLBACK recovered renewal via Stripe-customer match"
+
+The defensive fallback fired because `invoice.payment_succeeded` did not reach the handler. The renewal was recovered (the customer got their access), but the dashboard config is still wrong. Re-check the events list as above. The fallback is a safety net, not the canonical path.
+
+### Migrated Subscription Renewals Are Dropped
+
+If a subscription was created outside EasyCommerce (e.g. migrated from WooCommerce) and never had its Stripe subscription ID pasted in locally, `invoice.payment_succeeded` arrives but the gateway-id lookup fails. The log shows:
+
+```
+invoice.payment_succeeded received but no local subscription matches its gateway ID.
+For migrated subscriptions, paste the Stripe subscription ID (sub_xxx) into the
+subscription's gateway_subscription_id field via the admin UI to enable auto-renewal.
+```
+
+**To fix:** open the local subscription in admin, find the Stripe subscription ID (`sub_xxx`) in your Stripe Dashboard, and paste it into the subscription's `gateway_subscription_id` field. The Stripe-customer-id fallback will catch the *current* renewal if the customer mapping is intact, but future renewals deserve the proper linkage.
 
 ### Apple Pay Not Showing
 

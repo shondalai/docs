@@ -2,452 +2,123 @@
 id: getting-started-with-community-quiz
 title: Getting Started with Community Quiz
 sidebar_label: Getting Started
-sidebar_position: 3
 ---
 
-This step-by-step guide walks you through setting up Community Quiz from installation to your first fully functional quiz.
+# Getting Started with Community Quiz
 
-## Step 1: Install the Package
+This guide takes you from a fresh install to your first published quiz that learners can take on your site. It assumes no prior knowledge of the component.
 
-### Download and Install
+> **Audience:** Joomla administrators and content authors setting up Community Quiz for the first time.
 
-1. Download the `pkg_communityquiz.zip` package file from your account
-2. Log in to your Joomla Administrator panel
-3. Navigate to **System → Install → Extensions**
-4. Click the **Upload Package File** tab
-5. Drag and drop the package file, or click **Browse** to select it
-6. Click **Upload & Install**
-7. Wait for the success message confirming all extensions installed
+[← Back to Overview](./overview.md)
 
-### Verify Installation
-
-After installation, verify everything is working:
-
-1. Go to **Components** menu
-2. Confirm **Community Quiz** appears in the list
-3. Click on it to open the dashboard
-
-> [!TIP]
-> If the menu doesn't appear, go to **Menus → Manage** and click the **Rebuild** button in the toolbar.
+For full installation detail and the complete settings reference, see [Installation & Configuration](./installing-and-configuring-community-quiz.md). This page is the quick, guided path.
 
 ---
 
-## Step 2: Create Categories for Organizing Quizzes
+## Step 1: Install the package
 
-Categories help organize your quizzes into logical groups.
+1. Download `pkg_communityquiz.zip` from your account.
+2. In the Joomla administrator, go to **System → Install → Extensions**.
+3. Drag the package onto the **Upload Package File** tab.
+4. Wait for the success message. The installer adds the component, its modules and plugins, and the shared Shondalai core library.
 
-### Create Your First Category
+To confirm it installed, open **Components → Community Quiz**. You should land on the Community Quiz dashboard.
 
-1. Go to **Components → Community Quiz**
-2. Click **Categories** in the submenu (or sidebar)
-3. Click the **New** button in the toolbar
-4. Fill in the category details:
-   - **Title**: Enter a descriptive name (e.g., "General Knowledge")
-   - **Alias**: Leave blank to auto-generate from title
-   - **Description**: Optional description shown on category pages
-   - **Parent**: Select "No parent" for top-level, or choose a parent for subcategories
-   - **Status**: Set to **Published**
-   - **Access**: Choose who can view (usually "Public")
-   - **Language**: Select language or "All" for multilingual sites
-5. Click **Save & Close**
-
-### Suggested Category Structure
-
-```
-├── Academic
-│   ├── Mathematics
-│   ├── Science
-│   └── History
-├── Training
-│   ├── Onboarding
-│   └── Compliance
-└── Fun & Trivia
-    ├── Pop Culture
-    └── Sports
-```
-
-### Create Multiple Categories
-
-Repeat the process to create additional categories. You can:
-
-- Create **nested categories** by selecting a parent
-- Set **category images** in the Options tab
-- Configure **category permissions** for restricted access
+> **Tip:** if the Components menu entry does not appear, go to **System → Manage → Extensions**, check that Community Quiz is enabled, and reload the administrator.
 
 ---
 
-## Step 3: Configure Global Options
+## Step 2: Get to know the dashboard
 
-Set up component-wide settings before creating quizzes.
+Community Quiz runs as a single app inside your administrator. The left navigation groups everything by what you are doing:
 
-### Access Global Options
+- **Author** - Quizzes, Exam builder, Question banks.
+- **Learn** - Courses, Enrolments.
+- **Deliver** - Scheduling, Attempts, Grading, Certificates.
+- **Organisation** - Users and roles, Email templates, Commerce, Settings.
 
-1. Go to **Components → Community Quiz**
-2. Click the **Options** button in the toolbar
-
-### Essential Settings to Configure
-
-#### Quiz Settings Tab
-
-| Setting | Recommended Value | Why |
-|---------|-------------------|-----|
-| Enable Ratings | Yes | Let users rate quizzes |
-| Allow Multiple Responses | Based on need | For practice quizzes: Yes |
-| Allow Retry | Yes | Users can retake quizzes |
-| Max Retries | 3 | Limit retakes if needed |
-| Show Progress Bar | Yes | Users see completion progress |
-| Show Answers | Yes | Display results after completion |
-
-#### Shared Settings Tab
-
-| Setting | Recommended Value | Why |
-|---------|-------------------|-----|
-| Default Editor | TinyMCE | Best for rich content |
-| Show Toolbar | Yes | Enable frontend toolbar |
-| Load Math Library | Yes (if needed) | For mathematical formulas |
-| User Display Name | Name | Show full names |
-
-#### Integration Tab
-
-| Setting | Recommended Value | Why |
-|---------|-------------------|-----|
-| UI Layout | Bootstrap 5 | For Joomla 4/5 templates |
-| Profile Component | Gravatar or your choice | User avatars |
-
-### Save Your Settings
-
-1. Review all tabs and adjust as needed
-2. Click **Save & Close**
+You do not need all of these on day one. To publish a first quiz you only need the builder.
 
 ---
 
-## Step 4: Set Up Permissions for User Groups
+## Step 3: Set your basics in Settings
 
-Configure who can do what with your quizzes.
+Open **Settings** from the navigation and review a few things before you build:
 
-### Access Permissions
+- **General** - your platform name, support email, and default timezone.
+- **Appearance** - the theme colour, light/dark mode, and density of the admin and player.
+- **Assessment** - sensible defaults applied to new quizzes (pass mark, attempts, navigation, integrity level). You can override these per quiz later.
 
-1. Go to **Components → Community Quiz → Options**
-2. Click the **Permissions** tab
+All Community Quiz options live here in Settings, not in Joomla's component **Options** button (which only holds the access-control rules). Save when you are done.
 
-### Recommended Permission Setup
-
-#### For Registered Users
-
-| Permission | Setting |
-|------------|---------|
-| Access Administration Interface | Denied |
-| Create | Denied (unless user-submitted quizzes) |
-| Edit | Denied |
-| Edit Own | Allowed (if users create quizzes) |
-| Delete | Denied |
-| Respond | **Allowed** |
-| View Results | **Allowed** |
-
-#### For Authors/Editors (Quiz Creators)
-
-| Permission | Setting |
-|------------|---------|
-| Access Administration Interface | Allowed |
-| Create | **Allowed** |
-| Edit | Denied |
-| Edit Own | **Allowed** |
-| Edit State Own | **Allowed** |
-| Delete Own | Allowed |
-| Respond | Allowed |
-| View Results | Allowed |
-
-#### For Administrators/Super Users
-
-| Permission | Setting |
-|------------|---------|
-| Configure ACL & Options | **Allowed** |
-| All other permissions | **Allowed** |
-
-### Category-Level Permissions (Optional)
-
-For more granular control:
-
-1. Go to **Components → Community Quiz → Categories**
-2. Edit a category
-3. Click the **Permissions** tab
-4. Override component permissions as needed
+> **Tip:** the Assessment defaults are a real time-saver. Set them once to match how your organisation usually assesses, and every new quiz starts that way.
 
 ---
 
-## Step 5: Create Menu Items for Frontend Access
+## Step 4: Set up who can do what (permissions)
 
-Menu items provide frontend URLs and navigation.
+Community Quiz uses Joomla's access control plus a few roles of its own. Open the component **Options** (the Joomla toolbar button) → **Permissions** tab to set the standard actions (create, edit, delete, manage), and use **Users and roles** inside the app to grant specialised roles such as **author**, **reviewer**, **grader**, and **certificate issuer**. See [Installation & Configuration](./installing-and-configuring-community-quiz.md#permissions-and-roles) for the full list.
 
-### Create Main Quizzes Page
-
-1. Go to **Menus → [Your Main Menu] → Add New Menu Item**
-2. Click **Select** next to Menu Item Type
-3. Choose **Community Quiz → Quizzes Layout**
-4. Configure:
-   - **Menu Title**: "Quizzes" or "Take a Quiz"
-   - **Alias**: quizzes
-   - **Status**: Published
-5. Click **Save & Close**
-
-### Create Category Menu Items (Recommended)
-
-For each top-level category:
-
-1. Add a new menu item
-2. Select **Community Quiz → Category**
-3. In **Required Settings**, choose the category
-4. Set parent to your main Quizzes menu item (for submenu)
-5. Save
-
-### Additional Useful Menu Items
-
-| Menu Item Type | Purpose | Suggested Title |
-|----------------|---------|----------------|
-| Categories List | Browse all categories | "Quiz Categories" |
-| Quiz Search | Advanced search page | "Search Quizzes" |
-| My Quizzes | User's created quizzes | "My Quizzes" |
-| My Responses | User's quiz history | "My Results" |
-
-### Example Menu Structure
-
-```
-Quizzes (Quizzes Layout)
-├── Quiz Categories (Categories List)
-├── Academic (Category)
-│   ├── Mathematics (Category)
-│   └── Science (Category)
-├── My Results (My Responses)
-└── Search Quizzes (Quiz Search)
-```
+For a first quiz as a Super User you can skip ahead; you already have full access.
 
 ---
 
-## Step 6: Enable and Configure the Quizzes Plugin
+## Step 5: (Optional) Create a category
 
-The core plugin handles notifications, points, and activity streams.
-
-### Enable the Plugin
-
-1. Go to **System → Manage → Plugins**
-2. Search for "Community Quiz"
-3. Find **Community Quiz - Quizzes**
-4. Click on it to open settings
-5. Set **Status** to **Enabled**
-
-### Configure Plugin Settings
-
-#### Activity Stream Tab
-
-Enable/disable activity notifications for:
-
-- ✅ New Quiz Posted
-- ✅ New Response Submitted
-- ✅ Quiz Passed
-- ✅ Quiz Failed
-
-#### Emails Tab
-
-1. **Admin User Groups**: Select groups to receive admin notifications
-2. Enable/disable email notifications for:
-   - ✅ New Quiz notification to admins
-   - ✅ New Response to quiz author
-   - ✅ Passed Quiz notification
-   - ✅ Failed Quiz notification
-
-#### Points System Tab
-
-If using a points system, enable:
-
-- ✅ Points for creating quizzes
-- ✅ Points for quiz responses
-- ✅ Bonus points for passing
-- ✅ Points deduction for failing (optional)
-
-### Save Plugin Settings
-
-1. Click **Save & Close**
-2. Enable other Community Quiz plugins as needed:
-   - **Smart Search - Quizzes**: For search integration
-   - **Content - Quizzes**: For embedding in articles
-   - **Maths Editor**: For mathematical formulas
+Categories help you organise quizzes and courses and power browsing on the site. Community Quiz uses Joomla's own categories. Create them under **Components → Categories** (choose the Community Quiz context), or just leave a quiz uncategorised for now.
 
 ---
 
-## Step 7: Create Your First Quiz
+## Step 6: Build your first quiz
 
-Now let's create a fully functional quiz!
+1. Go to **Quizzes** and create a new assessment, or open the **Exam builder**.
+2. Choose the **kind** (Exam, Quiz, or Survey), give it a **title**, and optionally a category.
+3. In the **Structure** tab, add a section and add a few questions to it. Start with a couple of **Single choice** questions to keep it simple.
+4. Set a **pass mark** on the **Scoring** tab (or accept your Assessment default).
+5. Click **Save draft** as you go.
 
-### Start Creating
-
-1. Go to **Components → Community Quiz → Quizzes**
-2. Click **New**
-
-### Basic Information
-
-Fill in the main details:
-
-| Field | Example Value |
-|-------|---------------|
-| Title | "General Knowledge Quiz" |
-| Alias | general-knowledge-quiz |
-| Category | Select your category |
-| Status | Published |
-| Description | Brief quiz introduction |
-
-### Quiz Options
-
-Configure quiz behavior:
-
-| Setting | Recommended for First Quiz |
-|---------|---------------------------|
-| Duration | 0 (no time limit) or 10 (minutes) |
-| Cutoff | 60 (passing score percentage) |
-| Cutoff Type | Percentage |
-| Difficulty Level | Easy |
-
-### Save the Quiz
-
-1. Click **Save** (not Save & Close)
-2. The quiz is created but has no questions yet
-
-### Add Questions
-
-After saving, the question editor appears:
-
-1. Click **Add Page** to create the first page
-2. Give the page a title (e.g., "Round 1") or leave blank
-3. Click **Add Question**
-4. Choose a question type (start with **Multiple Choice - Radio**)
-
-### Create a Multiple Choice Question
-
-1. **Question Text**: "What is the capital of France?"
-2. Click **Add Answer** to add choices:
-   - "London" - Mark as incorrect
-   - "Paris" - Mark as **correct** ✓
-   - "Berlin" - Mark as incorrect
-   - "Madrid" - Mark as incorrect
-3. Set **Marks**: 1
-4. Optional: Add **Answer Explanation**
-5. Click **Save Question**
-
-### Add More Questions
-
-Repeat to add 5-10 questions for a good first quiz:
-
-1. Mix different question types
-2. Add multiple pages for organization
-3. Set appropriate marks for each question
-
-### Configure Score Messages (Optional)
-
-1. In quiz settings, find **Scorewise Messages**
-2. Add custom messages:
-   - 0-40%: "Keep practicing! Try again soon."
-   - 41-70%: "Good effort! You're getting there."
-   - 71-100%: "Excellent work! You're a quiz master!"
-
-### Finalize and Publish
-
-1. Review all questions
-2. Set **Status** to **Published**
-3. Ensure **Publish Up** date is current or past
-4. Click **Save & Close**
+The builder has seven tabs (Structure, Blueprint, Scoring, Delivery, Integrity, Certificate, Review & publish). You do not need them all for a first quiz. The full walkthrough is in the [Quiz & Exam Builder](./quiz-builder.md) guide, and the writing of individual questions is covered in [Question Types](./question-types-supported-by-community-quiz.md).
 
 ---
 
-## Step 8: Test Quiz Taking as a Frontend User
+## Step 7: Publish
 
-Verify everything works from a user's perspective.
-
-### Test as Guest (If Allowed)
-
-1. Open a new browser or incognito window
-2. Navigate to your Quizzes menu item
-3. Find and click your quiz
-4. Verify:
-   - ✅ Quiz introduction displays correctly
-   - ✅ Questions render properly
-   - ✅ All answer options are clickable
-   - ✅ Navigation between pages works
-
-### Test as Registered User
-
-1. Create a test user account (or use existing)
-2. Log in to the frontend
-3. Take the quiz completely:
-   - Answer all questions
-   - Click **Submit** or **Finish**
-4. Verify results page:
-   - ✅ Score displays correctly
-   - ✅ Correct/incorrect answers shown
-   - ✅ Scorewise message appears
-   - ✅ Certificate offered (if configured)
-
-### Check Admin Reports
-
-1. Go back to **Components → Community Quiz → Responses**
-2. Verify your test response appears
-3. Click to view details:
-   - ✅ Response recorded correctly
-   - ✅ Score calculated properly
-   - ✅ Individual answers saved
-
-### Test Edge Cases
-
-- ⬜ Incomplete quiz (leave and return)
-- ⬜ Timer expiration (if enabled)
-- ⬜ Retry functionality
-- ⬜ Multiple response restrictions
+Open the **Review & publish** tab. It shows a readiness checklist (a saved draft, at least one section, enough approved questions, a scoring scheme, and an integrity level). When the checks pass, click **Publish**. Publishing creates a frozen version that learners take; your later edits stay in a draft until you publish again.
 
 ---
 
-## Troubleshooting Common Issues
+## Step 8: Add a site menu item
 
-### Quiz Not Appearing on Frontend
+Learners reach your quizzes through a Joomla menu item.
 
-1. Check quiz is **Published**
-2. Verify **Publish Up** date is in the past
-3. Ensure category is published
-4. Check **Access** level permissions
-
-### Questions Not Saving
-
-1. Ensure you clicked **Save** before adding questions
-2. Verify quiz type supports direct question adding
-3. Check for JavaScript errors in browser console
-
-### Users Can't Take Quiz
-
-1. Verify **Respond** permission is allowed for user group
-2. Check category-level permissions
-3. Ensure quiz access level includes the user
-
-### Results Not Displaying
-
-1. Check **Show Answers** is enabled in options
-2. Verify **Show Report** is enabled
-3. Ensure user has **View Results** permission
+1. Go to **Menus → [your menu] → Add New Menu Item**.
+2. For **Menu Item Type**, choose **Community Quiz**, then pick one of its types:
+   - **Quizzes** - a list of available quizzes.
+   - **Courses** - a list of courses.
+   - **Community Quiz app** - the default app home.
+   - **Verify a credential** - the public certificate verification page.
+3. Give it a title and save.
 
 ---
 
-## Next Steps
+## Step 9: Take it as a learner
 
-🎉 **Congratulations!** Your Community Quiz is now fully set up and working!
+1. Open your site in a private/incognito window (or log in as a test user).
+2. Navigate to the menu item you created and open your quiz.
+3. Answer the questions and submit.
+4. Confirm the result and, if you set one up, the certificate.
 
-### Explore More Features
+Back in the administrator, check **Attempts** to see the recorded attempt and its score.
 
-- **[Question Types](./question-types-supported-by-community-quiz.md)**: Learn all 15 question types
-- **[Certificates](./shortcodes-supported-by-community-quiz-certificates.md)**: Create completion certificates
-- **[Email Templates](./customizing-emails-sent-from-community-quiz.md)**: Customize notifications
-- **[Embedding Quizzes](./display-quiz-in-joomla-article.md)**: Add quizzes to articles
-- **[Math Formulas](./adding-mathematical-formulas-in-quizzes.md)**: Add equations
-- **[Plugin Events](./extending-community-quiz-using-plugin-events.md)**: Extend functionality
+---
 
-### Build More Quizzes
+## Next steps
 
-- Create quizzes for different categories
-- Experiment with different question types
-- Set up courses with learning paths
-- Build question banks for randomized tests
+- **Score it your way:** [Scoring Guide](./scoring-guide.md)
+- **Mark essays and uploads:** [Grading & Review](./grading.md)
+- **Award credentials:** [Certificates](./certificates.md)
+- **Build a course:** [Course Builder](./course-builder.md) and [Courses & Enrollment](./courses.md)
+- **Charge for access:** [Selling Quizzes & Courses](./selling-quizzes-and-courses.md)
+- **Embed a quiz in an article:** [Display in Articles](./display-quiz-in-joomla-article.md)
+- **Show widgets on your site:** [Modules](./community-quiz-modules.md)

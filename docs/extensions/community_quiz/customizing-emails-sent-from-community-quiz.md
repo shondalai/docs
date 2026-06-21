@@ -1,68 +1,121 @@
 ---
 id: customizing-emails-sent-from-community-quiz
-title: Customizing Email Templates
+title: Customizing Email Notifications
 sidebar_label: Email Customization
-sidebar_position: 2
 ---
 
-Community Quiz sends various automated email notifications to users and administrators. You can fully customize these emails using the built-in template system, which supports dynamic placeholders for personalized content.
+# Customizing Email Notifications
 
----
+Community Quiz sends branded, automated emails for the key moments in an assessment or course: an exam is assigned, a result is ready, a certificate is issued, a learner enrols, and more. Every one of these is an editable template. This guide explains where to edit them, how to brand them, and how the personalisation works.
 
-## Where to Find Email Templates
+> **Audience:** Administrators who want emails to match their organisation's wording and brand. No coding needed.
 
-To manage your email notifications:
-
-1. Go to **Components** → **Community Quiz** → **Email Templates**.
-2. Here you will see a list of templates for different events (e.g., Quiz Passed, Quiz Failed, New Quiz Notification).
-3. Click on any template to edit its subject and body.
+[← Back to Overview](./overview.md)
 
 ---
 
-## Supported Placeholders (Shortcodes)
+## Where emails are managed
 
-Placeholders are special tags wrapped in curly braces that are automatically replaced with real data when the email is sent.
+Open **Email templates** from the admin navigation (under Organisation). You see every template the component can send, grouped by area. For each one you can edit the **subject**, the **HTML body**, the **plain-text body**, turn it **on or off**, and **reset** it to the shipped default. You can also **preview** a template before saving.
 
-| Placeholder | Description | Example Replacement |
-|-------------|-------------|---------------------|
-| `{QUIZ_TITLE}`| The title of the quiz. | `Geography 101` |
-| `{SITENAME}` | The name of your website. | `My Education Portal` |
-| `{QUIZ_URL}` | A direct link to the quiz page. | `https://site.com/quiz/1...` |
-| `{CATEGORY}` | The title of the quiz category. | `Science` |
-| `{AUTHOR_NAME}`| The name of the person who created the quiz. | `Admin` |
-| `{NAME}` | The name of the email recipient. | `Jane Doe` |
-| `{MARKS}` | Total marks scored by the student. | `95` |
+Templates ship with sensible defaults, so emails work out of the box. You only need to edit the ones you want to change.
 
 ---
 
-## Available Template Types
+## The emails Community Quiz sends
 
-Community Quiz uses specific templates for different scenarios. You can create multiple versions of these templates for different languages.
+| Area | Emails |
+|------|--------|
+| **Assessments** | Exam assigned, Exam reminder, Attempt submitted. |
+| **Results** | Result available, Grade released. |
+| **Grading** | Manual grading required (to the grader). |
+| **Scheduling** | Exam schedule changed, Proctor assigned. |
+| **Credentials** | Certificate issued, Certificate expiring, Certificate revoked. |
+| **Courses** | Enrolment welcome, Course completion, Access extended, Unenrolled, Learner message. |
+| **Publishing** | Reviewer approval requested. |
+| **Question banks** | Question review requested. |
+| **Users and roles** | User invitation, Team invitation. |
 
-1. **Results Email**: Sent when a user explicitly requests to email their results.
-2. **Quiz Passed Notification**: Sent automatically when a user achieves the cutoff score.
-3. **Quiz Failed Notification**: Sent automatically when a user fails to reach the cutoff score.
-4. **Admin Notification**: Sent to administrators when a new quiz is submitted or a user completes a quiz.
+Each template can be switched off if you do not want that notification sent.
+
+> **Tip:** the result, certificate, and enrolment emails are the ones most worth personalising first, since learners see them most.
 
 ---
 
-## Advanced Customization Tips
+## Personalising with placeholders
 
-### HTML in Emails
+Templates use **double-curly placeholders** that are filled in when the email is sent:
 
-The email editor supports standard HTML. You can use it to add branding, colors, and structured layouts to your emails.
+```
+Hello {{name}}, your result for {{exam}} is ready.
+```
 
-### Language-Specific Templates
+### Placeholders available everywhere
 
-If your site is multilingual, you can create separate templates for each language. Community Quiz will automatically select the template that matches the recipient's language site tag (e.g., `en-GB`, `fr-FR`).
+These are added to every template automatically:
 
-### Attachment Support
+| Placeholder | Becomes |
+|-------------|---------|
+| `{{site_name}}` | Your site name |
+| `{{site_url}}` | Your site address |
+| `{{support_email}}` | Your support address |
+| `{{brand_color}}` | Your brand colour |
+| `{{notification_preferences_url}}` | The link learners use to manage notifications |
 
-For certain results-based emails, Community Quiz can automatically attach a PDF copy of the user's response or certificate. This is controlled in the **Global Configuration** settings.
+### Placeholders specific to each template
+
+Each template also has its own placeholders for its context. For example:
+
+- **Certificate issued:** `{{name}}`, `{{exam}}`, `{{credential_id}}`, `{{issued_at}}`, `{{verify_url}}`, `{{download_url}}`.
+- **Learner message:** `{{name}}`, `{{course}}`, `{{sender_name}}`, `{{message_body}}`, `{{course_url}}`.
+
+The editor lists the placeholders that apply to the template you are editing, so you always know what you can use.
+
+> **Note:** placeholders are case-sensitive and use double braces. `{{name}}` works; `{NAME}` or `{{Name}}` will not.
+
+---
+
+## Branding every email
+
+Rather than editing branding into each template, you set it once in **Settings → Emails**, and it applies to all of them:
+
+| Setting | Controls |
+|---------|----------|
+| **Header title / subtitle / logo** | The masthead at the top of every email. |
+| **Brand colour** | The accent colour used in the email styling. |
+| **Footer text** | The footer line (for example your company and address). |
+| **From name / From email / Reply-to** | Who the email appears to come from. |
+| **Admin alert email** | The address copied on staff-facing emails (grading, review, proctor). |
+| **Support email / Notification preferences URL** | Used in the shared placeholders above. |
+
+Because branding is centralised, your templates stay focused on wording, and a logo or colour change updates every email at once.
+
+---
+
+## Languages
+
+Each template can have a version per site language. When an email is sent, Community Quiz picks the version matching the recipient's language (for example `en-GB` or `fr-FR`) and falls back to the default if there is no match. To localise, edit the template with the relevant language selected.
+
+---
+
+## Delivery
+
+Emails are queued and sent through Joomla's mail system by default, which keeps the site responsive when many emails go out at once (for example a result release to a whole cohort). Staff notifications are copied to the admin alert address you set in Settings.
 
 ---
 
 ## Troubleshooting
 
-- **Placeholders not working?** Ensure you are using uppercase letters and that the placeholders are appropriate for the template type (e.g., `{MARKS}` only works for result-related emails).
-- **Emails not sending?** Ensure your Joomla! mail settings are correctly configured and check if **Skip Email Queue** is enabled in the Community Quiz options if you want immediate delivery.
+- **A placeholder shows literally in the email.** Check the spelling and the double braces, and that the placeholder belongs to that template (the editor lists the valid ones).
+- **An email did not arrive.** Confirm Joomla's own mail settings work (Global Configuration → Server → Mail), check the template is enabled, and look in your spam folder.
+- **Branding did not change.** Branding comes from Settings → Emails, not the individual template. Update it there and resend.
+- **The wrong sender address appears.** Set From name / From email in Settings → Emails; if left blank, Joomla's global mail-from is used.
+
+---
+
+## Related
+
+- [Certificates](./certificates.md) - the certificate issued, expiring, and revoked emails.
+- [Courses & Enrollment](./courses.md) - enrolment, completion, and learner-message emails.
+- [Grading & Review](./grading.md) - the grading and result-release emails.
+- [Installation & Configuration](./installing-and-configuring-community-quiz.md) - where the email settings live.

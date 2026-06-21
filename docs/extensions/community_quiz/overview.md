@@ -1,4 +1,4 @@
-﻿---
+---
 id: overview
 title: Community Quiz
 sidebar_label: Overview
@@ -6,47 +6,62 @@ sidebar_label: Overview
 
 # Community Quiz
 
-**Create, manage, and deliver professional assessments on your Joomla! website with ease.**
+**Build, deliver, grade, and certify professional assessments and online courses on your Joomla! website.**
 
-Community Quiz is a comprehensive, feature-rich assessment engine that empowers educators, marketers, and businesses to create engaging quizzes, certifications, and surveys. From simple classroom tests to complex professional certifications, Community Quiz provides all the tools you need to assess knowledge and reward achievement.
-
----
-
-## 🚀 Key Features
-
-| Feature | Description |
-|---------|-------------|
-| **Powerful Builder** | Create quizzes with 15+ question types including Hotspots, Matching, and Grids. |
-| **Instant Feedback** | Provide automated scoring and detailed answer explanations to your students. |
-| **Certifications** | Automatically award professional PDF certificates based on user performance. |
-| **Rich Media** | Embed images, videos, and even mathematical formulas (KaTeX) into your questions. |
-| **Advanced Scheduling** | Run batch reports to generate responses and certificates on a set schedule. |
-| **Deep Integrations** | Works seamlessly with Joomla Privacy, Search, and popular profile extensions. |
+Community Quiz is a complete assessment and learning platform for Joomla 6. It combines a powerful exam builder, an online course system, automatic and human grading, verifiable certificates, and built-in selling through EasyCommerce. From a quick classroom quiz to a high-stakes certification or a full online course, Community Quiz handles the structure, scoring, security, and credentials so you can focus on your content.
 
 ---
 
-## 🛠️ Built for Customization
+## 🚀 What you can do
 
-Community Quiz is designed to fit your brand and workflow:
-
-- **Responsive Design**: Quizzes look stunning on desktops, tablets, and mobile devices.
-- **Email Automation**: Highly customizable email templates for results and notifications.
-- **Developer Friendly**: Extensive set of plugin events for custom integrations.
-- **Content Embedding**: Easily place quizzes inside any Joomla! article using shortcodes.
-
----
-
-## 📚 Getting Started
-
-Are you new to Community Quiz? Follow these steps to get your first quiz online in minutes:
-
-1. **[Installation & Setup](./installing-and-configuring-community-quiz.md)**: Install the component and configure your global settings.
-2. **[Getting Started Guide](./getting-started-with-community-quiz.md)**: Follow our step-by-step checklist for your first quiz.
-3. **[Question Types](./question-types-supported-by-community-quiz.md)**: Explore the visual guide to all available question types.
-4. **[Certificates](./shortcodes-supported-by-community-quiz-certificates.md)**: Learn how to design and automate your certification process.
+| Area | What it gives you |
+|------|-------------------|
+| **Exam & quiz builder** | A visual builder with 32 question types, sections, random question pools, and exam blueprints. |
+| **Online courses** | Modules and lessons (video, reading, quiz, assignment, resource), enrolment, drip release, and progress tracking. |
+| **Flexible scoring** | Partial credit, negative marking, grade bands, weighting, and per-question overrides. |
+| **Human grading** | A grading queue for essays, uploads, recordings, and assessor checklists, with rubrics and blind marking. |
+| **Verifiable certificates** | Designed PDF credentials with a public verification page, QR code, and Open Badge support. |
+| **Sell your content** | Charge for quizzes and courses through EasyCommerce, with memberships, bundles, and coupons. |
+| **Reports & analytics** | Dashboards and reports on attempts, results, enrolments, and revenue. |
+| **Exam integrity** | Security postures from open practice quizzes up to locked-down, proctored exams. |
 
 ---
 
-## 🌟 Why Choose Community Quiz?
+## 🧭 How it is organised
 
-Unlike simple form builders, Community Quiz is built specifically for **assessment**. It handles the complex logic of scoring, randomized questions, time limits, and weighted answers, allowing you to focus on creating great content while the component handles the technical heavy lifting.
+Community Quiz runs as a modern single-page app inside your Joomla administrator. Open **Components → Community Quiz** and you land on a dashboard with everything in one place:
+
+- **Author** - quizzes, the exam builder, and question banks.
+- **Learn** - courses and learner enrolments.
+- **Deliver** - scheduling, attempts, grading, and certificates.
+- **Organisation** - users and roles, email templates, commerce, and settings.
+
+Learners take quizzes and courses on your site through a fast, responsive front-end that works on phones, tablets, and desktops.
+
+---
+
+## 📚 Getting started
+
+New to Community Quiz? These guides get you from install to your first live assessment:
+
+1. **[Installation & Configuration](./installing-and-configuring-community-quiz.md)** - install the package and learn where everything lives.
+2. **[Getting Started](./getting-started-with-community-quiz.md)** - a step-by-step path to your first published quiz.
+3. **[Quiz & Exam Builder](./quiz-builder.md)** - the full tour of the builder and every setting.
+4. **[Question Types](./question-types-supported-by-community-quiz.md)** - the visual guide to all 32 question types.
+5. **[Certificates](./certificates.md)** - design and automate verifiable credentials.
+
+---
+
+## 🌟 Built for serious assessment
+
+Community Quiz is not a form builder with a score on the end. It is purpose-built for assessment and learning: immutable attempt snapshots so results stay fair when you edit, blueprints for balanced exams, manual grading workflows for written work, course versioning so learners are never disrupted mid-course, and credentials anyone can verify. Everything integrates with Joomla's categories, access levels, privacy tools, and search, and with the wider Shondalai suite for payments, points, and activity streams.
+
+---
+
+## Where to next
+
+- **Sell access:** [Selling Quizzes & Courses](./selling-quizzes-and-courses.md)
+- **Run courses:** [Course Builder](./course-builder.md) and [Courses & Enrollment](./courses.md)
+- **Mark written work:** [Grading & Review](./grading.md)
+- **Understand scoring:** [Scoring Guide](./scoring-guide.md)
+- **Embed and extend:** [Display in Articles](./display-quiz-in-joomla-article.md) and [Integrating & Extending](./extending-community-quiz-using-plugin-events.md)

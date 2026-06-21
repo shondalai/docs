@@ -95,16 +95,53 @@ The plugin refuses to process any webhook payload unless `webhook_id` is set and
 2. Go to **Apps & Credentials → your app → Webhooks**.
 3. Click **Add Webhook**.
 4. Enter the Webhook URL above.
-5. Select these events:
-   - `PAYMENT.CAPTURE.COMPLETED`
-   - `PAYMENT.CAPTURE.REFUNDED`
+5. Select these events (full list — see the legend below for which are critical):
+
+   **One-off orders and captures:**
    - `CHECKOUT.ORDER.APPROVED`
+   - `CHECKOUT.ORDER.COMPLETED`
+   - `PAYMENT.CAPTURE.COMPLETED`
+   - `PAYMENT.CAPTURE.DENIED`
+   - `PAYMENT.CAPTURE.DECLINED`
+   - `PAYMENT.CAPTURE.REFUNDED`
+   - `PAYMENT.CAPTURE.REVERSED`
+   - `PAYMENT.CAPTURE.PENDING`
+
+   **Subscriptions (CRITICAL for recurring billing):**
+   - `BILLING.SUBSCRIPTION.PAYMENT.COMPLETED` ★
+   - `PAYMENT.SALE.COMPLETED` ★ (legacy v1 alias — keep both)
+   - `BILLING.SUBSCRIPTION.PAYMENT.FAILED` ★
+   - `BILLING.SUBSCRIPTION.CREATED`
    - `BILLING.SUBSCRIPTION.ACTIVATED`
    - `BILLING.SUBSCRIPTION.CANCELLED`
+   - `BILLING.SUBSCRIPTION.EXPIRED`
    - `BILLING.SUBSCRIPTION.SUSPENDED`
-   - `BILLING.SUBSCRIPTION.PAYMENT.FAILED`
    - `BILLING.SUBSCRIPTION.RE-ACTIVATED`
+
+   **Disputes (optional but recommended):**
+   - `CUSTOMER.DISPUTE.CREATED`
+   - `CUSTOMER.DISPUTE.UPDATED`
+   - `CUSTOMER.DISPUTE.RESOLVED`
+
 6. Copy the generated **Webhook ID** back into the plugin settings.
+
+:::danger Critical events for subscription renewals
+The ★ events are the only signal PayPal sends that tells the plugin a recurring charge succeeded or failed. Without them subscribed:
+
+- **`BILLING.SUBSCRIPTION.PAYMENT.COMPLETED`** missing → every renewal is collected on PayPal's side but no local renewal order materialises, the subscription doesn't advance, the customer's access doesn't extend.
+- **`PAYMENT.SALE.COMPLETED`** missing → the legacy v1 webhook shape for the same event isn't caught. PayPal merchants on older Billing API contracts only receive this shape; modern merchants receive both. Subscribe to BOTH so the plugin works regardless of which shape PayPal sends.
+- **`BILLING.SUBSCRIPTION.PAYMENT.FAILED`** missing → dunning never starts for failed renewal attempts; failed subscriptions stay in "active" status silently.
+
+If you ever see this log line for an active subscription, the dashboard config is wrong:
+
+```
+PayPal subscription payment received but no event handler matched.
+```
+:::
+
+:::tip v1 vs v2 PayPal Billing
+PayPal has two parallel subscription billing shapes — the legacy v1 (Payouts/Billing Agreements, sends `PAYMENT.SALE.COMPLETED`) and v2 (Subscriptions API, sends `BILLING.SUBSCRIPTION.PAYMENT.COMPLETED`). The plugin handles both with the same handler; you should subscribe to both events so older billing-agreement subscriptions on the same merchant account continue to renew correctly.
+:::
 
 ### 5. Advanced
 
@@ -156,6 +193,30 @@ Create personal (buyer) and business (merchant) accounts at [developer.paypal.co
 2. Confirm `webhook_id` is set; without it the plugin refuses all webhook requests.
 3. Confirm the event subscription list above matches the dashboard.
 4. Check the EasyCommerce logs for `signature verification failed` entries.
+
+### Subscription Renewals Not Updating the Local Subscription
+
+Symptom: PayPal charges the customer's billing agreement on the renewal cycle, the money lands in your PayPal balance, but the EasyCommerce subscription doesn't advance, no renewal order appears in admin, the customer's downloads expire.
+
+This happens when the webhook endpoint is **not subscribed to `BILLING.SUBSCRIPTION.PAYMENT.COMPLETED`** (v2) and/or **`PAYMENT.SALE.COMPLETED`** (v1). PayPal sent the renewal payment notification but the plugin never received the event that would have created the local renewal order.
+
+**To fix:**
+
+1. **PayPal Developer Dashboard → Apps & Credentials → your app → Webhooks → Edit** and add both `BILLING.SUBSCRIPTION.PAYMENT.COMPLETED` and `PAYMENT.SALE.COMPLETED` (subscribe to both regardless of which Billing API version your account uses — PayPal sometimes switches between them silently).
+2. Save.
+3. **Recover any already-affected customers** using the manual flow: **EasyCommerce → Subscriptions → open the affected subscription → "Create Renewal Order"**, then on that new pending order use **3-dot menu → "Mark as Paid"** and paste the PayPal transaction id from the original payment as the transaction reference. This produces the same end-state as a successful webhook would have.
+
+### Migrated Subscription Renewals Are Dropped
+
+If a subscription was migrated from an external platform (WooCommerce, manually re-keyed on PayPal, etc.) and never had its PayPal billing-agreement ID pasted in locally, the renewal webhook arrives but the gateway-id lookup fails. The log shows:
+
+```
+Recurring payment webhook received but no local subscription matches its gateway ID.
+For migrated subscriptions, paste the PayPal billing-agreement ID into the
+subscription's gateway_subscription_id field via the admin UI to enable auto-renewal.
+```
+
+**To fix:** open the local subscription in admin, find the PayPal billing-agreement ID (`I-xxx` for v1 or `sub_xxx` for v2) on the PayPal dashboard for that customer, and paste it into the subscription's `gateway_subscription_id` field. Future renewals will then auto-match and advance correctly.
 
 ### Manual Capture from Admin
 

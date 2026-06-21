@@ -183,6 +183,23 @@ const config: Config = {
             from: '/community_quiz',
             to: '/community-quiz/overview',
           },
+          // Community Quiz: retired legacy docs (component rebuilt for Joomla 6)
+          {
+            from: '/community-quiz/configuring-pdf-renderers-for-community-quiz',
+            to: '/community-quiz/certificates',
+          },
+          {
+            from: '/community-quiz/shortcodes-supported-by-community-quiz-certificates',
+            to: '/community-quiz/certificates',
+          },
+          {
+            from: '/community-quiz/adding-mathematical-formulas-in-quizzes',
+            to: '/community-quiz/quiz-builder',
+          },
+          {
+            from: '/community-quiz/community-quiz-built-in-module-positions',
+            to: '/community-quiz/community-quiz-modules',
+          },
           {
             from: '/community_answers',
             to: '/community-answers/overview',

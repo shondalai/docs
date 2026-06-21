@@ -16,11 +16,24 @@ const sidebars: SidebarsConfig = {
 
     {
       type: 'category',
-      label: 'Creating Quizzes',
+      label: 'Building Quizzes & Courses',
       items: [
+        'quiz-builder',
         'question-types-supported-by-community-quiz',
-        'adding-mathematical-formulas-in-quizzes',
+        'scoring-guide',
+        'grading',
+        'course-builder',
+        'courses',
         'display-quiz-in-joomla-article',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Certificates & Selling',
+      items: [
+        'certificates',
+        'selling-quizzes-and-courses',
       ],
     },
 
@@ -28,10 +41,8 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Configuration',
       items: [
-        'configuring-pdf-renderers-for-community-quiz',
         'customizing-emails-sent-from-community-quiz',
-        'shortcodes-supported-by-community-quiz-certificates',
-        'community-quiz-built-in-module-positions',
+        'community-quiz-modules',
       ],
     },
 
@@ -40,6 +51,15 @@ const sidebars: SidebarsConfig = {
       label: 'Advanced',
       items: [
         'extending-community-quiz-using-plugin-events',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Developer Reference',
+      items: [
+        'question-types',
+        'scoring',
       ],
     },
 

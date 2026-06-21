@@ -2,499 +2,183 @@
 id: installing-and-configuring-community-quiz
 title: Installing and Configuring Community Quiz
 sidebar_label: Installation & Configuration
-sidebar_position: 4
 ---
 
-This comprehensive guide covers everything you need to know to install, configure, and get started with Community Quiz for Joomla 5.
+# Installing and Configuring Community Quiz
 
-## Package Contents
+This is the reference for installing Community Quiz, understanding what ships in the package, and configuring the component. For a guided first run, start with [Getting Started](./getting-started-with-community-quiz.md).
 
-The Community Quiz package includes:
+> **Audience:** Joomla administrators. No coding required.
 
-| Extension | Type | Description |
-|-----------|------|-------------|
-| `com_communityquiz` | Component | Main quiz component |
-| `mod_communityquiz` | Module | Display quizzes in module positions |
-| `mod_cqcategories` | Module | Display quiz categories |
-| `mod_quizform` | Module | Display quiz submission form |
-| `mod_topscorers` | Module | Display top quiz scorers |
-| `plg_communityquiz_quizzes` | Plugin | Core plugin for notifications, points & activity streams |
-| `plg_finder_quizzes` | Plugin | Smart Search integration |
-| `plg_user_quizzes` | Plugin | User event handling |
-| `plg_content_quizzes` | Plugin | Content plugin for embedding quizzes |
-| `plg_content_quizfields` | Plugin | Quiz fields in content |
-| `plg_privacy_quizzes` | Plugin | GDPR/Privacy compliance |
-| `plg_editor_maths` | Plugin | Mathematical formula editor button |
+[← Back to Overview](./overview.md)
 
-## System Requirements
+---
 
-- **Joomla**: 4.0 or later (including Joomla 5.x)
-- **PHP**: 8.0 or later
-- **Database**: MySQL 5.7+ or MariaDB 10.2+
+## What is in the package
+
+The installable package (`pkg_communityquiz.zip`) installs everything in one step:
+
+| Extension | Type | What it does |
+|-----------|------|--------------|
+| `com_communityquiz` | Component | The main app: builder, courses, grading, certificates, commerce, reports. |
+| `lib_shondalai_core` | Library | Shared Shondalai library (email, storage, PDF, payments, integrations). |
+| `plg_system_licensing` | System plugin | Handles license activation across the Shondalai suite. |
+| `plg_easycommerce_communityquiz` | Plugin | Grants access when a quiz or course is purchased through EasyCommerce. |
+| `plg_task_communityquiz` | Plugin | Scheduled tasks (reminders, scheduled reports) via Joomla's task scheduler. |
+| `plg_user_communityquiz` | Plugin | Handles learner data when a Joomla user account is deleted. |
+| `plg_content_communityquiz` | Plugin | Embeds a quiz launch card in articles. See [Display in Articles](./display-quiz-in-joomla-article.md). |
+| `plg_privacy_communityquiz` | Plugin | GDPR export and removal of learner data. |
+| `plg_finder_communityquiz` | Plugin | Smart Search indexing of quizzes and courses. |
+| `mod_communityquiz_featured` | Module | A widget listing featured, popular, or recent quizzes. |
+| `mod_communityquiz_leaderboard` | Module | A leaderboard of top performers. |
+| `mod_communityquiz_mylearning` | Module | A learner's in-progress attempts and enrolled courses. |
+
+The modules are documented in [Modules](./community-quiz-modules.md).
+
+---
+
+## System requirements
+
+- **Joomla:** 6 (built for Joomla 6; the codebase also targets 4 and 5).
+- **PHP:** 8.1 or later.
+- **Database:** MySQL (UTF-8).
+
+The PHP image library (GD) is recommended so certificate backgrounds render fully, but the component degrades gracefully without it.
+
+---
 
 ## Installation
 
-Installing Community Quiz follows the standard Joomla extension installation process:
+1. Download `pkg_communityquiz.zip` from your account.
+2. In the administrator, go to **System → Install → Extensions**.
+3. Drag the package onto the **Upload Package File** tab (or browse to it).
+4. Wait for the success message confirming the component, plugins, modules, and library installed.
+5. Open **Components → Community Quiz** to launch the dashboard.
 
-1. Download the package file (`pkg_communityquiz.zip`)
-2. Go to **System → Install → Extensions**
-3. Upload and install the package file
-4. The component menu will appear under **Components → Community Quiz**
+> **Tip:** the plugins ship disabled or with safe defaults. Enable the ones you need under **System → Manage → Plugins** (search for "communityquiz"). The EasyCommerce, content, finder, and privacy plugins only do their job once enabled.
 
-> [!TIP]
-> If menu items don't appear after installation, go to **Menus → Menu Manager** and click **Rebuild**. If issues persist, execute this database query (replace `xxx` with your table prefix):
->
-> ```sql
-> DELETE FROM xxx_menu WHERE link LIKE '%com_communityquiz%';
-> ```
->
-> Then rebuild menus and reinstall the component.
+### Activating your license
 
-## Admin Dashboard Overview
+Community Quiz uses the shared Shondalai licensing system. Open the **License** panel from the dashboard sidebar, enter your key (or sign in to your Shondalai account), and activate this site. An active license enables one-click updates. Licensing is handled by the shared `plg_system_licensing` plugin, so the same key activation works across the suite.
 
-After installation, navigate to **Components → Community Quiz** to access these areas:
+---
 
-| Section | Description |
-|---------|-------------|
-| **Dashboard** | Overview and quick access to all features |
-| **Quizzes** | Create and manage quizzes |
-| **Courses** | Group quizzes into learning paths |
-| **Question Banks** | Reusable question pools |
-| **Difficulty Levels** | Categorize quiz/question difficulty |
-| **Certificates** | Design completion certificates |
-| **Categories** | Organize quizzes hierarchically |
-| **Responses** | View and manage user responses |
-| **Email Templates** | Customize notification emails |
-| **Migrate** | Import from other quiz components |
+## The admin dashboard
 
-## Quiz Types
+Open **Components → Community Quiz** and you are in the app. The left navigation is grouped by task:
 
-Community Quiz supports three quiz types:
+| Group | Areas |
+|-------|-------|
+| **Overview** | Dashboard, Reports and analytics. |
+| **Author** | Quizzes, Exam builder, Question banks. |
+| **Learn** | Courses, Enrolments. |
+| **Deliver** | Scheduling, Attempts, Grading, Certificates. |
+| **Organisation** | Users and roles, Email templates, Commerce, Migration, Settings. |
 
-### Standard Quiz
-
-The traditional quiz format where you create pages and add questions directly to each page. Best for structured exams with a fixed question set.
+Everything happens inside this app; you rarely return to Joomla's classic list views.
 
-### Category Quiz
+---
 
-Questions are pulled dynamically from Joomla categories. Configure:
+## Settings
 
-- **Max Questions**: Limit total questions displayed
-- **Questions Per Page**: Control pagination
-- **Question Ordering**: Sequential or random
+All component options live in the **Settings** area of the app (stored internally and edited through the SPA), **not** in Joomla's component **Options** button. The Options button holds only the access-control rules.
 
-### Question Bank Quiz
+Settings are organised into groups:
 
-Draw questions from one or more question banks. Perfect for:
+| Group | What you control |
+|-------|------------------|
+| **General** | Platform name, support email, default timezone and language, guest access to quizzes. |
+| **Appearance** | Theme colour preset, light/dark/auto mode, soft or sharp style, density, and custom theme tokens. |
+| **Assessment** | Default pass mark, time limit, attempts, negative marking, partial credit, navigation mode, integrity level, autosave, and answer-release timing applied to new quizzes. |
+| **Question bank** | Approval workflow, second-reviewer requirement, lock-after-publish, and exposure control. |
+| **Certificates** | Issue-on-pass, default validity period, the public verification page and its domain, and Open Badge support. See [Certificates](./certificates.md). |
+| **Courses** | Enable courses, enrolment model, content drip, ratings, and default completion rule. See [Courses & Enrollment](./courses.md). |
+| **Leaderboards** | Enable leaderboards, how names are displayed, default period, and minimum participants. |
+| **Commerce** | Show the store, enable selling, default currency, and the EasyCommerce store. See [Selling Quizzes & Courses](./selling-quizzes-and-courses.md). |
+| **Privacy** | Retention periods for attempts, audit logs, and proctoring media. |
+| **Emails** | Sender addresses, branding (header, logo, colour, footer), the admin alert address, and a notification-preferences link. See [Email Customization](./customizing-emails-sent-from-community-quiz.md). |
+| **Storage** | Where uploaded files live (local or S3), the upload size limit, and S3 credentials. |
+| **Developer** | Developer mode and the dev server URL (for building the front-end). Leave off in production. |
 
-- Randomized assessments
-- Large question pools
-- Reusing questions across multiple quizzes
-
-## Question Types
-
-Community Quiz supports 15 question types organized into categories:
-
-### Multiple Choice
-
-| Type | Description |
-|------|-------------|
-| **Radio** | Single answer selection |
-| **Checkbox** | Multiple answer selection |
-| **Select** | Dropdown single selection |
-
-### Grid Questions
-
-| Type | Description |
-|------|-------------|
-| **Grid Radio** | Matrix with single selection per row |
-| **Grid Checkbox** | Matrix with multiple selections per row |
-| **Matching** | Connect items from two columns |
-
-### Free Text
-
-| Type | Description |
-|------|-------------|
-| **Single Line** | Short text answer |
-| **Multiline** | Paragraph text answer |
-| **Password** | Hidden input (for codes/passwords) |
-| **Rich Text** | Formatted text with editor |
-
-### Image-Based
-
-| Type | Description |
-|------|-------------|
-| **Image Choice (Single)** | Select one image |
-| **Image Choice (Multiple)** | Select multiple images |
-| **Hotspots** | Click on image hotspot areas |
-
-### Other
-
-| Type | Description |
-|------|-------------|
-| **File Upload** | Submit file attachments |
-| **Page Header** | Section divider (not a question) |
-
-## Component Configuration
-
-Access global settings via **Components → Community Quiz → Options**.
-
-### Quiz Settings
-
-| Setting | Description | Default |
-|---------|-------------|---------|
-| Theme | Color theme (Default, Primary, Success, Info, Warning, Danger) | Default |
-| Enable Captcha | Spam protection on quiz forms | No |
-| Enable Ratings | Allow users to rate quizzes | Yes |
-| Randomize Pages | Shuffle page order | No |
-| Randomize Answers | Shuffle answer choices | No |
-| Allow Multiple Responses | Users can retake quizzes | No |
-| Max Responses | Limit total attempts (0 = unlimited) | 0 |
-| Allow Retry | Permit retaking after completion | Yes |
-| Max Retries | Maximum retry attempts | 3 |
-| Attach PDF Report | Email PDF results to users | No |
-| PDF Engine | Auto Detect, Chrome / Browsershot, or DomPDF | Auto Detect |
-| PDF Font Name | Default font used in generated PDFs | DejaVu Sans |
-| PDF Date Format | Date format used in PDF output | `F j, Y, g:i a` |
-| Show Progress Bar | Display completion progress | Yes |
-| Show Answers | Display correct answers after completion | Yes |
-| Show Answers Early | Show answers immediately after each question | No |
-
-For a complete renderer setup guide, see [Configuring PDF Renderers](./configuring-pdf-renderers-for-community-quiz).
-
-### Results Display
-
-| Setting | Description |
-|---------|-------------|
-| Show Report | Display results summary |
-| Score Report Location | Above/below questions or both |
-| Report Fields | Select which metrics to display (total marks, correct questions, percentage, etc.) |
-| Scorewise Messages | Custom messages based on score ranges |
-| Show Chart Labels | Display data labels on charts |
-| Allow Export | Let users export their responses |
-
-### PDF Output Controls
-
-| Setting | Description |
-|---------|-------------|
-| PDF Response Header | Show or hide the header in response PDFs |
-| PDF Response Footer | Show or hide the footer in response PDFs |
-| PDF Certificate Header | Show or hide the header in certificate PDFs |
-| PDF Certificate Footer | Show or hide the footer in certificate PDFs |
-
-### Category Settings
-
-| Setting | Description |
-|---------|-------------|
-| Category Layout | Choose display template |
-| Show Category Title | Display category name |
-| Show Description | Display category description |
-| Show Image | Display category image |
-| Maximum Category Levels | Subcategory depth (-1 = all) |
-| Show Empty Categories | Include categories with no quizzes |
-
-### List Layout Options
-
-| Setting | Description | Default |
-|---------|-------------|---------|
-| Layout Style | Modern or Classic | Modern |
-| Avatar Size | User avatar dimensions | 40px |
-| List Limit | Items per page | 20 |
-| Show Filter | Enable search/filter | Hide |
-| Show Difficulty Level | Display quiz difficulty | Yes |
-| Show Response Status | User's progress indicator | No |
-
-### Shared Settings
-
-| Setting | Description |
-|---------|-------------|
-| Cookie Key | Encryption key for session cookies (32 chars) |
-| Default Editor | WYSIWYG editor for quiz creation |
-| Show Toolbar | Display component toolbar |
-| Load Math Library | Enable KaTeX for mathematical formulas |
-| Capture User IP | Store respondent IP addresses |
-| Skip Email Queue | Send emails immediately vs. queue |
-| Allowed File Types | Permitted upload extensions |
-| Max Attachment Size | Upload file size limit (KB) |
-
-### Integration Settings
-
-| Setting | Description |
-|---------|-------------|
-| SEF Remove IDs | Hide database IDs from URLs |
-| Load Bootstrap CSS | For templates without Bootstrap |
-| UI Layout | Bootstrap version (2, 3, 4, or 5) |
-| Google Sheets | Enable spreadsheet integration |
-| Show Feed Link | Display RSS feed |
-| Profile Component | User profile integration source |
-| Avatar Component | Avatar image source |
-| Points Component | Gamification points source |
-| Stream Component | Activity stream integration |
-
-## Third-Party Integrations
-
-Community Quiz integrates with these extensions:
-
-### Profile & Avatar Sources
-
-- Sociable
-- CjForum / CjBlog
-- JomSocial
-- EasySocial
-- Community Builder
-- Kunena
-- Alpha User Points
-- Gravatar
-
-### Points Systems
-
-- Rewardify
-- Sociable
-- CjForum / CjBlog
-- JomSocial
-- EasySocial
-- AltaUserPoints
-- Alpha User Points
-
-### Activity Streams
+> **Tip:** the **Assessment** group sets the defaults for *new* quizzes. Changing a default does not alter quizzes you already built; each quiz keeps its own settings.
 
-- Sociable
-- CjForum
-- JomSocial
-- EasySocial
-- Community Builder
+---
 
-## Courses & Learning Paths
+## Permissions and roles
 
-Courses group multiple quizzes into structured learning paths.
+Community Quiz combines Joomla's standard access control with a set of specialised roles.
 
-### Creating a Course
+### Standard permissions
 
-1. Go to **Components → Community Quiz → Courses**
-2. Click **New**
-3. Configure:
-   - **Title & Alias**: Course name and URL slug
-   - **Intro Text**: Brief description shown in listings
-   - **Description**: Full course content
-   - **Quizzes**: Add quizzes to the course
-   - **Learning Path**: Require sequential completion
+Set these under the component **Options → Permissions** tab (per user group, and overridable per category):
 
-### Learning Path Mode
+| Permission | Allows |
+|------------|--------|
+| **Configure ACL & Options** | Full administrative control. |
+| **Access Administration Interface** | Open the component in the administrator. |
+| **Create** | Create quizzes, courses, and questions. |
+| **Delete** | Delete items. |
+| **Edit** / **Edit Own** | Edit any / only own items. |
+| **Edit State** | Publish, unpublish, archive, and trash. |
 
-When enabled, users must:
+### Specialised roles
 
-- Complete quizzes in order
-- Pass each quiz before accessing the next
-- Progress is tracked per user
+Beyond the standard actions, Community Quiz defines roles for assessment work, granted under **Users and roles** in the app:
 
-### Course Certificates
+| Role | Purpose |
+|------|---------|
+| **Author** | Create and edit quizzes and questions. |
+| **Reviewer** | Approve items in the review/approval workflow. |
+| **Grader** | Mark essays, uploads, recordings, and assessor checklists. See [Grading & Review](./grading.md). |
+| **Proctor** | Monitor proctored exams. |
+| **Exam manager** | Manage scheduling, attempts, and results release. |
+| **Course manager** | Manage course structure and enrolments. |
+| **Commerce manager** | Manage pricing, plans, and bundles. |
+| **Certificate issuer** | Issue and revoke credentials. |
 
-Like quizzes, courses support:
+> **Tip:** roles can be scoped, for example a grader for one set of exams only. Combine them with the assignment tools in Grading and Enrolments so each person sees just their work.
 
-- Score-based certificate rules
-- Custom messages based on overall performance
+---
 
-## Question Banks
+## Categories
 
-Question banks allow you to create reusable question pools.
+Community Quiz uses Joomla's own category system, so categories behave exactly as they do elsewhere in Joomla (nesting, access levels, language). There are separate category contexts for **quizzes**, **courses**, and **questions**. Manage them under **Components → Categories**, and assign a category when you build a quiz or course.
 
-### Creating a Question Bank
+---
 
-1. Go to **Components → Community Quiz → Question Banks**
-2. Click **New**
-3. Add a title and description
-4. Save, then add questions
+## Site menu items
 
-### Using Banks in Quizzes
+Create menu items so learners can reach your content. Under **Menus → Add New Menu Item → Community Quiz**, the available types are:
 
-1. When creating/editing a quiz, select **Question Bank Quiz** type
-2. Choose one or more question banks
-3. Set **Max Questions** to limit how many are pulled
-4. Configure **Question Ordering** (sequential or random)
-
-### Benefits
-
-- Reuse questions across multiple quizzes
-- Randomize assessments for each user
-- Maintain a central question repository
+| Menu type | Shows |
+|-----------|-------|
+| **Community Quiz app** | The default app home (the front-end SPA). |
+| **Quizzes** | A list of available quizzes. |
+| **Courses** | A list of courses. |
+| **Categories** | A browsable list of categories. |
+| **Category** | The contents of one category. |
+| **Store** | The commerce catalog (plans and bundles). |
+| **Verify a credential** | The public certificate verification page. |
 
-## Certificates
+---
 
-Create custom completion certificates with dynamic content.
+## Keeping it updated
 
-### Creating a Certificate Template
+With an active license, updates appear under **System → Update → Extensions**, the same as any Joomla extension. Always back up before a major update.
 
-1. Go to **Components → Community Quiz → Certificates**
-2. Click **New**
-3. Design using the HTML editor
-4. Use placeholders for dynamic content:
+---
 
-| Placeholder | Description |
-|-------------|-------------|
-| `{USER_NAME}` | Respondent's name |
-| `{QUIZ_TITLE}` | Quiz name |
-| `{SCORE}` | Achieved score |
-| `{DATE}` | Completion date |
-| `{SITENAME}` | Website name |
+## Getting help
 
-### Assigning Certificates to Quizzes
+- **Documentation:** the other guides in this section.
+- **Support:** [Get Support](https://shondalai.com/get-support/).
+- **Updates:** **System → Update → Extensions**.
 
-1. Edit a quiz
-2. In **Certificate Rules**, add conditions:
-   - **Min Score**: Minimum required percentage
-   - **Max Score**: Maximum percentage threshold
-   - **Certificate**: Template to award
+---
 
-## Difficulty Levels
+## Related
 
-Categorize quizzes by difficulty for better organization.
-
-### Default Levels
-
-The component comes with three preset levels:
-
-- Easy
-- Medium
-- Hard
-
-### Managing Levels
-
-1. Go to **Components → Community Quiz → Difficulty Levels**
-2. Add, edit, or remove levels
-3. Assign levels when creating quizzes
-
-## Email Templates
-
-Customize all notification emails sent by Community Quiz.
-
-### Available Templates
-
-| Template | Trigger |
-|----------|---------|
-| New Quiz | When a quiz is published |
-| New Response | When someone completes a quiz |
-| Passed Quiz | When user passes (meets cutoff) |
-| Failed Quiz | When user fails (below cutoff) |
-| Email Results | Quiz results sent to respondent |
-
-### Template Variables
-
-Use these placeholders in email templates:
-
-| Variable | Description |
-|----------|-------------|
-| `{NAME}` | Recipient's name |
-| `{AUTHOR_NAME}` | Quiz creator's name |
-| `{QUIZ_TITLE}` | Quiz title |
-| `{QUIZ_URL}` | Link to the quiz |
-| `{SITENAME}` | Website name |
-
-## Access Control & Permissions
-
-Community Quiz uses Joomla's ACL at three levels:
-
-### Component Permissions
-
-Set in **Options → Permissions**:
-
-| Permission | Description |
-|------------|-------------|
-| Configure ACL | Full administrative access |
-| Access Administration | Access backend |
-| Create | Create new quizzes |
-| Edit | Edit any quiz |
-| Edit Own | Edit own quizzes only |
-| Edit State | Publish/unpublish quizzes |
-| Edit Own State | Publish/unpublish own quizzes |
-| Delete | Delete any quiz |
-| Delete Own | Delete own quizzes only |
-| Auto-Approve | Quizzes publish without moderation |
-| Respond | Take quizzes |
-| View Results | See quiz results/reports |
-| Use WYSIWYG | Access rich text editor |
-| Rate | Rate quizzes |
-| Subscribe to Category | Get category notifications |
-
-### Category Permissions
-
-Override component permissions per category for granular control.
-
-### Quiz Permissions
-
-Individual quizzes can have specific permission overrides.
-
-## Plugin Configuration
-
-The core plugin (**Community Quiz - Quizzes**) manages notifications:
-
-### Activity Stream Events
-
-- New Quiz Posted
-- New Response Submitted
-- Quiz Passed
-- Quiz Failed
-
-### Email Notifications
-
-- Admin group selection for notifications
-- Toggle each email type on/off
-
-### Points Integration
-
-- Award points for new quizzes
-- Award points for responses
-- Bonus points for passing
-- Penalty for failing (optional)
-
-## Creating Menu Items
-
-For SEF URLs and better navigation, create menu items:
-
-| Menu Item Type | Purpose |
-|----------------|---------|
-| **Quizzes Layout** | Display quiz listings with categories |
-| **Categories List** | Show category hierarchy |
-| **Category** | List quizzes in a specific category |
-| **Quiz Search** | Advanced search page |
-| **Quiz Form** | Quiz creation/submission form |
-| **Single Quiz** | Direct link to a specific quiz |
-| **Courses** | Display course listings |
-| **Single Course** | Direct link to a specific course |
-| **My Quizzes** | User's created quizzes |
-| **My Responses** | User's quiz responses |
-
-## Migration Tools
-
-Import quizzes from other components:
-
-### Supported Sources
-
-- **BFQuiz**: Migrate quizzes and questions
-- **JQuizDeluxe**: Full import with responses
-
-### Migration Process
-
-1. Go to **Components → Community Quiz → Migrate**
-2. Select source component
-3. Follow the migration wizard
-4. Review imported content
-
-> [!WARNING]
-> Always backup your database before migration. Test imported quizzes thoroughly.
-
-## Quick Start Checklist
-
-1. ✅ Install the package
-2. ✅ Create categories for organizing quizzes
-3. ✅ Configure global options
-4. ✅ Set up permissions for user groups
-5. ✅ Create menu items for frontend access
-6. ✅ Enable and configure the Quizzes plugin
-7. ✅ Create your first quiz
-8. ✅ Test quiz taking as a frontend user
-
-## Getting Help
-
-- **Documentation**: Browse other articles in this section
-- **Support**: [Get Support](https://shondalai.com/get-support/)
-- **Updates**: Check for updates in **System → Update → Extensions**
+- [Getting Started](./getting-started-with-community-quiz.md) - the guided first run.
+- [Quiz & Exam Builder](./quiz-builder.md) - building assessments.
+- [Modules](./community-quiz-modules.md) - the site widgets in the package.
+- [Email Customization](./customizing-emails-sent-from-community-quiz.md) - the notifications it sends.
