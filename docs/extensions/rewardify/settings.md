@@ -206,7 +206,7 @@ Buttons and links use the primary colour. The background colours frame the email
 
 | Field | What it does | Default | Example |
 |-------|--------------|---------|---------|
-| **Footer signature** | The small print under every email. Blank shows "Sent by {site_name}". You may use the `{site_name}` token. | empty | `Acme Rewards Member rewards` |
+| **Footer signature** | The small print under every email. Blank shows "Sent by `{site_name}`". You may use the `{site_name}` token. | empty | `Acme Rewards Member rewards` |
 
 ---
 
