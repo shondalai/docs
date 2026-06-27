@@ -1,492 +1,99 @@
 ---
 id: troubleshooting
-title: Troubleshooting Guide
+title: Troubleshooting
 sidebar_label: Troubleshooting
-sidebar_position: 8
+sidebar_position: 18
 ---
 
-# Troubleshooting Guide
+# Troubleshooting
 
-Common issues and solutions for Rewardify.
+This page lists the setup problems that come up most often, each shown as a symptom followed by numbered checks to work through in order. If none of these solve it, see the [FAQ](faq.md).
 
-## Installation Issues
+## Points are not being awarded
 
-### Package Won't Install
+A member did something that should earn points, but nothing appears in their wallet or the [Transaction ledger](members-and-ledger.md). Work through these checks in order. The fastest way to see where an event stopped is to open **Components -> Rewardify -> Event inbox** and find the event: the **Decision trace** panel on the right tells you exactly what happened.
 
-**Error:** "Unable to install package"
+1. **Is the adapter enabled?** Go to **Adapters**. Find the integration that reports this activity (for example the core adapter for logins and articles, or the Kunena adapter for forum posts). If its button reads **Disable**, it is already enabled. If it reads **Enable**, click it. If the card shows **Host not installed**, see the next section.
+2. **Did the event actually arrive?** Open the **Event inbox**. If the event is not in the list at all, the adapter never reported it. Confirm the adapter is enabled and that the action really happened (the right member, the right object).
+3. **Does a Published rule match the trigger?** Open **Rules**. A rule is only evaluated when its status is **Published**. The rule's **Trigger** must match the event type exactly. You can confirm the event's type in the **Event inbox** (it is shown on each row and in the normalized event panel).
+4. **Do the rule's conditions pass?** If the rule has **Conditions**, every one of them must be true (they are all ANDed). The **Decision trace** in the Event inbox shows whether conditions matched. To test a payload without changing anything, use **Simulate & trace**.
+5. **Is the member inside the rule's limits?** A rule's **Limits** (throttles) can stop a repeat award: once ever, once per day, per user per day, per user lifetime, a cooldown, or a streak that needs several consecutive days first. If the member has already hit a limit, the rule will not pay again until the window resets.
+6. **Was the event held for trust?** If the event shows the **Held** status, a rule required a higher trust level than the event carried, so the award is waiting for an admin. See [Events are sitting in held](#events-are-sitting-in-held) below.
+7. **Is evaluation queued but the drain task not running?** If **Settings -> Evaluation** is set to **Queued**, events wait in `received` until the **drain** task processes them. See [Events are stuck in received status](#events-are-stuck-in-received-status) below.
 
-**Solutions:**
-1. Check Joomla version (requires 6.0+)
-2. Check PHP version (requires 8.1+)
-3. Verify zip file is not corrupted
-4. Check file permissions (uploads directory)
-5. Increase PHP memory limit (min 128MB)
-6. Check for database connection issues
+> If the event type starts with `manual.`, it bypasses rules entirely and always evaluates instantly. Manual admin grants and SDK calls use this, so they are not affected by rule status, conditions, or limits.
 
-### Missing Tables After Install
+## An adapter is missing or shows "Host not installed"
 
-**Error:** Database tables not created
+You expected an integration on the **Adapters** screen but it is absent, or its card carries a **Host not installed** tag.
 
-**Solutions:**
-1. Check database user permissions
-2. Manually run SQL files from `admin/sql/install.mysql.utf8.sql`
-3. Check Joomla error logs
-4. Verify database collation (utf8mb4)
+1. **Is the adapter plugin installed and enabled in Joomla?** Adapters are Joomla plugins. Check **Extensions -> Plugins** and confirm the relevant plugin is installed and enabled. Adapters live in the `rewards`, `kunena`, and `hikashop` plugin groups.
+2. **"Host not installed" means the host component is missing.** The Kunena adapter needs Kunena, the HikaShop adapter needs HikaShop, and the Community Builder adapter needs Community Builder. Until the host is present, the adapter stays inert and shows this tag. Install the host component and the adapter activates.
+3. **Community Builder needs its companion plugin too.** `plg_rewards_communitybuilder` declares the adapter, but the actual events are emitted by a separate companion plugin that is installed inside Community Builder. Both pieces must be in place.
+4. **Did you just update Rewardify?** A newly added adapter only appears after its plugin is installed. Reinstall the Rewardify package if an expected adapter never shows.
 
----
+See [Integrations & Adapters](integrations.md) for the full list of bundled adapters and the events each one reports.
 
-## Points Not Being Awarded
+## Events are stuck in "received" status
 
-### General Points Issues
-
-**Checklist:**
-- [ ] Plugin is enabled (System → Plugins)
-- [ ] Point rule is published
-- [ ] Point value is not zero
-- [ ] User has correct access level
-- [ ] Rate limit not preventing award
-- [ ] Action actually triggers the event
-- [ ] No PHP errors in log
+Events appear in the **Event inbox** but never move past `received`. They are not awarded, held, or marked no match.
 
-### Specific Scenarios
+1. **Check your Evaluation mode.** Open **Settings -> Evaluation**. If it is set to **Instant**, events should evaluate on the spot, so a stuck queue points to a different problem (re-check the rule itself). If it is set to **Queued**, events are stored and wait for a scheduled task to process them.
+2. **Confirm the drain task is scheduled and running.** In **Queued** mode the **drain** routine processes the backlog. Go to **System -> Scheduled Tasks** and confirm the Rewardify drain task exists and is enabled, and that your Joomla scheduler is actually firing (web cron or a real cron hitting the scheduler). See [Scheduled Tasks](scheduled-tasks.md).
+3. **Process the queue manually to confirm.** On the **Event inbox** toolbar, click **Process queue**. This runs the drain immediately. If the events clear, your scheduler is the issue, not Rewardify.
+4. **Consider switching to Instant.** Instant evaluation is the recommended mode for most sites and removes the dependency on the drain task entirely.
 
-#### Registration Points Not Working
-
-1. Check User - Rewardify plugin is enabled
-2. Check `com_users.register` rule is published
-3. Verify point value is not 0
-4. Check access level includes registered users
-5. Test with new account
+> Events whose type starts with `manual.` always evaluate instantly, even in Queued mode, so they will never sit in `received`.
 
-#### Login Points Not Working
+## Events are sitting in "held"
 
-1. Check `com_users.login` rule is published
-2. Verify rate limit allows daily awards (1 day)
-3. Check if user already earned today
-4. Clear Joomla cache
-5. Check point history for existing entry
+The **Event inbox** shows events with the **Held** status, and the matching points were never credited.
 
-#### Article Points Not Working
+1. **Held means a trust gate stopped an automatic award.** A rule required a minimum trust level (`server_verified`, `trusted_source`, `client_reported`, or `unverified`), and the event's trust was below it. Rather than pay out, Rewardify holds the event for an admin to decide.
+2. **Approve or reject from the Event inbox.** Select the held event. In its **Decision trace** panel use **Approve & credit** to post the award, or **Reject** to discard it.
+3. **Check the Anti-abuse setting.** **Settings -> Anti-abuse** has a **hold client-reported events for review** option. If that is on, client-reported events are held by design until you approve them. Turn it off if you trust that source, or leave it on and approve events as they arrive.
+4. **Server-side adapters should not be held.** The Joomla core adapter and other server-side sources report `server_verified`, which clears any trust gate. If events from a server-side adapter are being held, double-check the rule's required trust level.
 
-1. Check Content - Rewardify plugin is enabled
-2. Verify article created from frontend (not backend)
-3. Check `com_content.article.create` rule
-4. Confirm article is actually new (not edit)
-5. Check article is published
+See [Events & Evaluation](events-and-evaluation.md) for more on trust levels and holding.
 
-#### Streak Bonus Not Working
+## The leaderboard is empty or missing members
 
-**Requirements for 7-day streak:**
-- User must login exactly 7 consecutive days
-- No gaps in login history
-- Check rule `com_users.login.streak_7`
-- Verify points not already awarded for this streak
+The member leaderboard, or the `mod_rewardify_leaderboard` site module, shows no one or leaves out members you expected.
 
-**Debug steps:**
-1. Go to Components → Rewardify → Points
-2. Filter by user
-3. Check for `com_users.login` entries
-4. Verify 7 consecutive dates
-5. Look for existing streak award
+1. **Members must opt in.** Only members who gave consent (`on_leaderboard`) appear. A member who has not opted in is hidden, even with a high balance. Members manage this in their **Privacy** tab; you can review consent under **Privacy & data**.
+2. **Check the module's Currency parameter.** The module ranks by a chosen currency balance. Its **Currency** parameter defaults to `reputation`. If you set it to a currency that members have not earned yet, the list will look empty. For most sites `reputation` or `points` is the right choice.
+3. **Reinstall the module after updating Rewardify.** If you recently updated and the module renders blank or out of date, reinstall the Rewardify package so the module's assets are refreshed.
+4. **Public visibility is a separate setting.** Whether logged-out visitors can see the leaderboard is controlled by **Settings -> Appearance -> Public leaderboard** (`appearance.public_leaderboard`). If non-members see nothing, check this first.
+5. **Aliases are expected.** Members who chose an alias appear by that alias instead of their real name. That is correct behaviour, not a fault.
 
----
+See [Leaderboard](leaderboard.md) for the full setup.
 
-## Leaderboard Issues
+## Points never expire, or expire when they should not
 
-### Module Not Appearing
+1. **Check the master switch.** Open **Settings -> Point expiration**. **Points expire** must be on for any expiry to happen. If it is off, points are kept for life and nothing expires.
+2. **Check the lot lifetime.** The **default lot lifetime (days)** sets how long a points lot lives (365 days by default). A very long value can look like points never expiring; a short value can expire them sooner than you intended.
+3. **The expire task must run.** Expiry is applied by the **expire** scheduled task, which also notifies members ahead of expiry. If the task is not scheduled, or your Joomla scheduler is not firing, due lots are never expired. Check **System -> Scheduled Tasks** and see [Scheduled Tasks](scheduled-tasks.md).
+4. **Reputation never expires.** This is by design. Reputation is lifetime standing and is always kept, regardless of any expiration setting.
+5. **The `event` currency uses its own lots.** Campaign `event` currency has its own lot life (90 days by default). If a seasonal balance vanished, it likely reached the end of its lot, which is expected for a time-boxed currency.
 
-**Checklist:**
-- [ ] Module is published
-- [ ] Module assigned to menu items
-- [ ] Module position exists in template
-- [ ] Access level allows viewing
-- [ ] Template displays that position
+## A member's balance looks wrong
 
-**Debug steps:**
-1. Extensions → Modules → Find module
-2. Check Status (must be Published)
-3. Check Menu Assignment tab
-4. Verify Position exists (compare with template)
-5. Try different position temporarily
+A wallet total does not match what you expect from the [Transaction ledger](members-and-ledger.md).
 
-### No Users Showing in Leaderboard
+1. **The ledger is the source of truth, not the balance.** Every balance is a cache projected from the append-only ledger. If the two disagree, the cache has drifted and can be rebuilt.
+2. **Rebuild projections.** Run the **reconcile** routine, which rebuilds projections and repairs any balance cache drift. You can trigger a rebuild from the **Danger zone** bulk operations in **Settings**, and the reconcile task also runs on the Joomla scheduler. See [Scheduled Tasks](scheduled-tasks.md).
+3. **Post a Manual adjustment only if the ledger itself is wrong.** If the ledger is correct but a one-off correction is genuinely needed, use **Manual adjustments** to grant, deduct, or adjust the member. This writes an audited `adjustment` row rather than editing history.
+4. **Remember holds and reservations.** A pending redemption reserves its cost (a `reserve` hold), so the spendable balance can be lower than the raw total until the redemption is confirmed or released. That is correct, not drift.
 
-**Possible causes:**
-- No users have earned points yet
-- Time period filter too restrictive
-- Database query issue
-- Cache showing old data
+## The member app page is blank
 
-**Solutions:**
-1. Check if ANY users have points (Components → Rewardify → User Points)
-2. Change time period to "All Time"
-3. Clear Joomla cache
-4. Clear module cache
-5. Check for PHP errors
+A site visitor opens the menu item for the Rewardify member app and sees an empty page, or nothing renders.
 
-### Avatars Not Displaying
+1. **Check the menu item target.** The member experience is a single React app shown by a Joomla menu item that points at the Rewardify component (the **app** view). Confirm the menu item is set to the correct Rewardify view.
+2. **Confirm the front-end assets are built and present.** A blank page usually means the SPA bundle did not load. Reinstall the Rewardify package so the member app assets are deployed.
+3. **Developer mode should be off in production.** **Settings -> Developer** has a dev server mode and a Vite dev server URL used only while building the SPAs. If dev server mode is on but no dev server is running, the page will not load. Turn it off for production.
+4. **Check which tabs are enabled.** If specific tabs are missing rather than the whole page, the optional tabs (Campaigns, Catalogue, Leaderboard, How to earn, Privacy) can be hidden in **Settings -> Navigation**. A hidden tab is expected, not a fault.
 
-**Causes:**
-- Avatar component not configured
-- Users don't have avatars set
-- Image permissions issue
-- Gravatar not working
-
-**Solutions:**
-1. Components → Rewardify → Options
-2. Check Avatar Component setting
-3. For Gravatar: verify emails are valid
-4. Check image directory permissions (755)
-5. Test with users who have avatars
-
-### Rankings Not Updating
+## Still stuck?
 
-**Causes:**
-- Cache is stale
-- Points not being awarded
-- Cron job not running
-
-**Solutions:**
-1. Clear Joomla cache (System → Clear Cache)
-2. Clear specific module cache
-3. Disable module caching temporarily
-4. Award test points and refresh
-5. Check database for new entries
-
----
-
-## Performance Issues
-
-### Slow Page Load
-
-**Symptoms:** Pages load slowly with Rewardify enabled
-
-**Solutions:**
-
-1. **Enable Caching:**
-   - Components → Rewardify → Options
-   - Enable Joomla caching
-   - Set module cache to 30 minutes
-
-2. **Optimize Database:**
-   ```sql
-   OPTIMIZE TABLE #__rewardify_points;
-   OPTIMIZE TABLE #__rewardify_users;
-   OPTIMIZE TABLE #__rewardify_points_rules;
-   ```
-
-3. **Limit Leaderboard Users:**
-   - Show fewer users (5-10 instead of 20+)
-   - Increase module cache time
-
-4. **Check Database Indexes:**
-   - Verify indexes on large tables
-   - Run database maintenance
-
-5. **Reduce Plugin Load:**
-   - Disable unused plugins
-   - Use rate limiting to reduce database writes
-
-### High Database Usage
-
-**Symptoms:** Database queries increasing
-
-**Solutions:**
-1. Enable rate limiting on frequently triggered rules
-2. Archive old point entries
-3. Use database query caching
-4. Optimize database tables regularly
-5. Consider moving to dedicated database server
-
----
-
-## Display Issues
-
-### Points Not Showing on Profile
-
-**Causes:**
-- Profile component not configured
-- Template override issue
-- Access permissions
-
-**Solutions:**
-1. Components → Rewardify → Options
-2. Set Profile Component correctly
-3. Check if profile template supports points
-4. Verify user has permission to view
-5. Check for template override conflicts
-
-### Incorrect Point Totals
-
-**Symptoms:** User points don't match history
-
-**Possible causes:**
-- Expired points
-- Unpublished points
-- Pending approval points
-- Calculation error
-
-**Solutions:**
-1. Components → Rewardify → Points
-2. Filter by specific user
-3. Check Status column (only Published count)
-4. Check Publish Up/Down dates
-5. Manually recalculate if needed
-
-### Styling Problems
-
-**Issues:**
-- Module looks broken
-- CSS conflicts
-- Responsive issues
-
-**Solutions:**
-1. Check browser console for CSS errors
-2. Clear template cache
-3. Check for template CSS conflicts
-4. Use module class suffix for isolation
-5. Create template override
-
----
-
-## Error Messages
-
-### "There is no 'com_rewardify.styles' asset"
-
-**Cause:** Asset loading issue in frontend
-
-**Solution:**
-1. This is typically a development notice
-2. Can be safely ignored if functionality works
-3. Or clear Joomla cache
-4. Reinstall component if persistent
-
-### "Call to undefined method getUserPoints()"
-
-**Cause:** Plugin trying to access component method incorrectly
-
-**Solutions:**
-1. Update plugins to latest version
-2. Check if using Joomla 6 compatible version
-3. Disable problematic plugin temporarily
-4. Check plugin code for instanceof checks
-
-### "Duplicate entry for key 'rule_name'"
-
-**Cause:** Trying to create point rule with existing rule name
-
-**Solution:**
-1. Use unique rule name
-2. Check existing rules for duplicates
-3. Edit existing rule instead of creating new
-
-### Database Errors
-
-**Error:** "Table '#__rewardify_points' doesn't exist"
-
-**Solutions:**
-1. Reinstall component
-2. Manually run install.mysql.utf8.sql
-3. Check database prefix is correct
-4. Verify database user permissions
-
----
-
-## Plugin-Specific Issues
-
-### User Plugin
-
-**Problem:** Streak bonus awarded multiple times
-
-**Solution:**
-- Check for duplicate prevention in code
-- Verify reference ID is unique per streak
-- Review point history for duplicates
-- Update to latest plugin version
-
-### Content Plugin
-
-**Problem:** Points awarded for backend articles
-
-**Solution:**
-- Plugin is designed for frontend only
-- Use point rules to restrict
-- Or modify plugin to exclude backend
-
-### Community Builder Plugin
-
-**Problem:** Connection points not working
-
-**Solution:**
-- Verify CB events are firing
-- Check CB version compatibility
-- Update Rewardify CB plugin
-- Test CB functionality independently
-
-### HikaShop Plugins
-
-**Problem:** Purchase points not deducting
-
-**Solution:**
-- Check payment plugin order status trigger
-- Verify sufficient points exist
-- Check point conversion rate setting
-- Review HikaShop order status workflow
-
----
-
-## Developer Issues
-
-### API Not Working
-
-**Problem:** Points not awarded via API
-
-**Solutions:**
-1. Check component is properly booted
-2. Verify instanceof checks
-3. Use proper rule names
-4. Check error logs for exceptions
-5. Review API documentation
-
-### Custom Plugin Not Triggering
-
-**Checklist:**
-- [ ] Plugin is enabled
-- [ ] Event name is correct
-- [ ] SubscriberInterface implemented
-- [ ] getSubscribedEvents() returns array
-- [ ] Method exists in plugin class
-- [ ] No PHP errors
-
-**Debug:**
-```php
-// Add to plugin method
-$this->getApplication()->getLogger()->debug('My plugin triggered');
-```
-
----
-
-## Data Issues
-
-### Lost Point History
-
-**Causes:**
-- Database corruption
-- Accidental deletion
-- Incomplete backup restore
-
-**Solutions:**
-1. Restore from backup if available
-2. Check database trash/archive
-3. Review point audit logs
-4. Contact support for data recovery options
-
-### Duplicate Points
-
-**Problem:** Users have duplicate point entries
-
-**Solutions:**
-1. Check for rate limit settings
-2. Enable duplicate prevention on rules
-3. Use database query to find duplicates:
-   ```sql
-   SELECT awarded_to, rule_id, ref_id, COUNT(*) as count
-   FROM #__rewardify_points
-   WHERE published = 1
-   GROUP BY awarded_to, rule_id, ref_id
-   HAVING count > 1;
-   ```
-4. Manually remove duplicates
-
-### Point Synchronization
-
-**Problem:** Points out of sync between components
-
-**Solutions:**
-1. Recalculate point totals
-2. Check for integration plugin issues
-3. Verify all plugins are latest version
-4. Run synchronization script if available
-
----
-
-## Getting Help
-
-If you can't resolve your issue:
-
-### Before Contacting Support
-
-Gather this information:
-1. **Joomla version**
-2. **PHP version**
-3. **Rewardify version**
-4. **Exact error message**
-5. **Steps to reproduce**
-6. **Enabled plugins list**
-7. **Point rule configuration**
-8. **Browser console errors**
-9. **PHP error log**
-
-### Support Channels
-
-- 📖 **Documentation:** [Read full docs](overview.md)
-- 💬 **Forum:** https://shondalai.com/support
-- 📧 **Email:** support@shondalai.com
-- 🐛 **Bug Reports:** Include detailed steps to reproduce
-
-### Providing Debug Information
-
-Enable debugging:
-1. System → Global Configuration
-2. System tab → Debug System: Yes
-3. Reproduce the issue
-4. Check error log: `/administrator/logs/`
-5. Provide relevant log entries to support
-
-### Temporary Workarounds
-
-While waiting for support:
-- Disable specific problematic plugin
-- Use manual point awards
-- Adjust point rule settings
-- Clear cache frequently
-
----
-
-## Preventive Maintenance
-
-### Regular Tasks
-
-**Weekly:**
-- Check for PHP errors in logs
-- Review point activity for anomalies
-- Test critical functionality
-
-**Monthly:**
-- Backup database
-- Clean up expired points
-- Review and optimize point rules
-- Check for extension updates
-
-**Quarterly:**
-- Database optimization
-- Review user feedback
-- Adjust point economy
-- Update documentation
-
-### Best Practices
-
-1. **Always backup** before making changes
-2. **Test on staging** site first
-3. **Document customizations**
-4. **Keep extensions updated**
-5. **Monitor performance regularly**
-
----
-
-**Related Documentation:**
-- [Getting Started](getting-started.md)
-- [Point Rules](point-rules.md)
-- [Plugin Configuration](plugins.md)
-- [Developer API](rewardify-points-system-api.md)
-
+If your problem is not listed here, the [FAQ](faq.md) covers common questions about how Rewardify behaves. For anything involving the pipeline, the [Events & Evaluation](events-and-evaluation.md) page explains how each event reaches a verdict.

@@ -10,36 +10,71 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'getting-started',
-        'point-rules',
-        'managing-points',
+        'how-rewardify-works',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Rewards & Rules',
+      collapsed: false,
+      items: [
+        'rules',
+        'badges',
+        'levels',
+        'currencies',
+        'redemptions',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Operations',
+      items: [
+        'members-and-ledger',
+        'events-and-evaluation',
+        'scheduled-tasks',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Integrations',
+      items: [
+        'integrations',
+        'leaderboard',
       ],
     },
 
     {
       type: 'category',
       label: 'Configuration',
-      collapsed: false,
       items: [
-        'leaderboard',
-        'plugins',
+        'settings',
+        'emails',
+        'privacy',
       ],
     },
 
     {
       type: 'category',
-      label: 'API Reference',
+      label: 'Upgrading & Help',
       items: [
-        'rewardify-points-system-api',
-      ],
-    },
-
-    {
-      type: 'category',
-      label: 'Help & Support',
-      items: [
+        'migrating-from-v1',
         'troubleshooting',
         'faq',
         'rewardify-changelog',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Developer Guide',
+      items: [
+        'developer/overview',
+        'developer/concepts',
+        'developer/sdk',
+        'developer/adapters',
       ],
     },
   ],

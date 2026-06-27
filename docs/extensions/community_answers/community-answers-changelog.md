@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [7.0.1] - 2026-06-27
+
+### 🚀 Added
+- Added Rewardify adapter plugin
+
 ## [7.0.0] - 2026-06-07
 
 ### Added

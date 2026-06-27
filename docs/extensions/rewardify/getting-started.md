@@ -2,190 +2,135 @@
 id: getting-started
 title: Getting Started with Rewardify
 sidebar_label: Getting Started
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Getting Started with Rewardify
 
-Welcome to Rewardify! This guide will help you install and set up the gamification system on your Joomla website.
+This page walks you through installing the Rewardify package, checking that the first-run defaults are in place, and putting the member-facing rewards page on your site. By the end you will have a working rewards engine with a few starter rules and a member page your visitors can open.
 
-## What is Rewardify?
+## Before you install
 
-Rewardify is a comprehensive gamification extension for Joomla that rewards your users with points for various activities on your website. It helps increase user engagement, loyalty, and interaction by providing a points-based reward system.
+- Joomla 5 or 6.
+- PHP 8.1 or later. The installer checks this and stops if your server is below 8.1.
+- Administrator access to your Joomla site.
 
-## Key Features
+## Install the package
 
-- **Points System** - Award points for user activities like registration, login, posting content, and more
-- **Point Rules** - Flexible rule engine to define when and how points are awarded
-- **User Profiles** - Display user points and activity history
-- **Leaderboard** - Show top contributors on your site
-- **Rate Limiting** - Prevent abuse with configurable rate limits
-- **Streak Bonuses** - Reward consistent user behavior (e.g., 7-day login streak)
-- **Multiple Integrations** - Works with Community Builder, HikaShop, Kunena, and more
-- **Developer API** - Integrate points into your custom extensions
+Rewardify ships as a single installable package. You install that one file and Joomla unpacks everything inside it.
 
-## System Requirements
+1. Download the Rewardify package ZIP from your account.
+2. In the Joomla administrator, go to **System -> Install -> Extensions**.
+3. Open the **Upload Package File** tab.
+4. Drag the package ZIP onto the upload area, or click to browse and select it.
+5. Wait for the success message. You should see "Rewardify package installed successfully."
 
-- **Joomla:** 5.3 or higher
-- **PHP:** 8.1 or higher
-- **MySQL:** 5.7 or higher / MariaDB 10.3 or higher
-- **Web Server:** Apache 2.4+ or Nginx 1.18+
+> Do not unzip the package yourself and upload the inner files one by one. Always install the single package file. It carries the correct install order and the post-install steps that seed your defaults.
 
-## Installation
+### What gets installed
 
-### Step 1: Download the Package
+The package installs the component, the shared library, several plugins, and one site module:
 
-Download the latest Rewardify package (`pkg_rewardify.zip`) from your downloads area.
+| Item | Type | Notes |
+|------|------|-------|
+| `com_rewardify` | Component | The admin screens and the member app. |
+| `lib_shondalai_core` | Library | Shared Shondalai library (email, storage, PDF, and more). Required. |
+| `plg_system_rewardify` | System plugin | Boots the engine. Keep it enabled. |
+| `plg_task_rewardify` | Task plugin | Provides the scheduled task routines. The installer enables this for you. |
+| `plg_privacy_rewardify` | Privacy plugin | Wires Rewardify into Joomla data export and erasure requests. |
+| `plg_rewards_joomla` | Rewards adapter | Reports Joomla core activity (`user.login`, `user.registered`, `content.article.published`). |
+| `plg_rewards_communitybuilder` | Rewards adapter | Declares the Community Builder adapter. |
+| `plg_kunena_rewardify` | Kunena adapter | Reports Kunena forum activity. Inert until Kunena is installed. |
+| `plg_hikashop_rewardify` | HikaShop adapter | Reports HikaShop orders and refunds. Inert until HikaShop is installed. |
+| `mod_rewardify_leaderboard` | Site module | A leaderboard you can place in any module position. |
 
-### Step 2: Install via Joomla
+A licensing system plugin is also installed as part of every Shondalai package.
 
-1. Log into your Joomla administrator panel
-2. Navigate to **System → Install → Extensions**
-3. Click the **Upload Package File** tab
-4. Click **Browse** and select the `pkg_rewardify.zip` file
-5. Click **Upload & Install**
+### What the installer sets up for you
 
-### Step 3: Verify Installation
+During installation Rewardify prepares your defaults so the engine works out of the box:
 
-After installation, you should see a success message. The following will be installed:
+- **Scheduled tasks** are created and enabled. Four maintenance routines (drain, expire, reconcile, prune) are added under **System -> Scheduled Tasks**. You will see a message telling you how many were created. See [Scheduled Tasks](scheduled-tasks.md) for what each one does.
+- **Default currencies** are seeded: `points` (Community Points, the everyday spendable currency) and `reputation` (lifetime standing). A third currency, `event` (Event Credits), is also seeded as a seasonal currency, but it is planned for a later release. Today you work with Community Points and Reputation.
+- **A default level ladder** is seeded: Newcomer, Contributor, Regular, Veteran, and Luminary, derived from lifetime reputation.
 
-- **Component:** Rewardify (com_rewardify)
-- **Plugins:**
-  - User - Rewardify (awards points for registration and login)
-  - Content - Rewardify (awards points for article activities)
-  - Community Builder - Rewardify (optional, if you use CB)
-  - Privacy - Rewardify (GDPR compliance)
-- **Module:**
-  - Leaderboard (mod_rewardify_leaderboard)
+If you are upgrading from Rewardify v1, the installer also removes the old v1 plugins that the new version replaces. See [Upgrading from v1](migrating-from-v1.md) for the full upgrade path.
 
-## Initial Configuration
+## First-run checklist
 
-### Step 1: Configure the Component
+Work through these steps once, in order, right after installing.
 
-1. Go to **Components → Rewardify → Dashboard**
-2. Click **Options** (top-right corner)
-3. Configure the basic settings:
+1. **Open the dashboard.** Go to **Components -> Rewardify**. You land on the **Reward economy** dashboard. This confirms the component installed and loaded correctly.
+2. **Enable the adapters you need.** Open the **Adapters** screen (under Integrations in the left nav), or go to **System -> Manage -> Plugins**. Each adapter is a plugin that reports a host's activity to the engine. Enable the ones for the systems you actually run. The Adapters screen flags "Host not installed" for an adapter whose host component (Kunena, HikaShop, or Community Builder) is missing, so you know which ones will sit idle. See [Integrations & Adapters](integrations.md) for the full list and what each one reports.
+3. **Choose your evaluation mode.** Open **Settings**, then the **Evaluation** section in the left-hand nav. On a fresh install **Evaluation mode** is seeded to **Queued**, which holds awarded events until the `drain` scheduled task processes them. For most sites the simplest choice is to switch it to **Instant** so rewards post the moment each event arrives and no cron is needed. If you keep **Queued**, you **must** enable the `drain` scheduled task or awarded events never post. (Note that `manual.*` events always evaluate instantly regardless of mode.) See [Events & Evaluation](events-and-evaluation.md), [Scheduled Tasks](scheduled-tasks.md), and [Settings Reference](settings.md).
+4. **Review the seeded Rules, Levels and Currencies.** Open **Rules**, **Levels** and **Currencies** under "Rules & rewards" and look over the defaults. Nothing earns anything until a Published rule matches an event, so the Rules screen is where you decide what your community actually gets rewarded for. See [Rules](rules.md).
 
-#### Profile Component
-Choose which component to use for user profiles:
-- **None** - Use standard Joomla profiles
-- **Sociable** - If you use Sociable extension
-- **CjForum** - If you use CjForum
-- **Community Builder** - If you use Community Builder
-- **JomSocial** - If you use JomSocial
-- **Kunena** - If you use Kunena forum
+> Only **Published** rules are evaluated. A rule left in Draft never awards anything. After installing, plan to publish or create at least one rule before you expect members to earn.
 
-#### Avatar Component
-Choose which component provides user avatars:
-- **Gravatar** - Use Gravatar service (recommended for most sites)
-- **Sociable** - If you use Sociable extension
-- **Community Builder** - If you use Community Builder
-- Or any other supported extension
+> On a brand-new install the dashboard, the Members list, and the ledger are empty until the first event is awarded. This is normal. Figures appear once a Published rule matches an event and a member earns.
 
-4. Click **Save & Close**
+## Add the member page
 
-### Step 2: Enable Required Plugins
+Members see their rewards through a single page that you add as a Joomla menu item. The page is a tabbed app with up to eight tabs: Overview, My rewards, Badges, Campaigns, Catalogue, Leaderboard, How to earn, and Privacy.
 
-1. Go to **System → Plugins**
-2. Search for "rewardify"
-3. Enable the following plugins:
-   - ✅ **User - Rewardify** (required for registration/login points)
-   - ✅ **Content - Rewardify** (required for article points)
-   - ✅ **Privacy - Rewardify** (required for GDPR compliance)
-4. Enable optional plugins based on your needs:
-   - Community Builder - Rewardify (if you use CB)
-   - HikaShop - Rewardify (if you use HikaShop)
-   - Kunena - Rewardify (if you use Kunena)
+1. Go to **Menus** and choose the menu you want the link to appear in (for example Main Menu).
+2. Click **New** to create a menu item.
+3. Next to **Menu Item Type** click **Select**, choose the **Rewardify** component, then pick the menu item type labelled **Rewardify** (described as "The member-facing Rewardify experience: balances, badges, campaigns, catalogue and leaderboard.").
+4. Give the item a title, for example "Rewards" or "My Points".
+5. Set the access level and any other menu options as you would for any menu item.
+6. **Save** the item.
 
-### Step 3: Review Default Point Rules
+Open the new menu item on the front end to confirm the app loads.
 
-1. Go to **Components → Rewardify → Point Rules**
-2. Review the pre-configured rules:
-   - **Joined the site** - 1 point (enabled by default)
-   - **Daily login** - 1 point (enabled by default)
-   - **7-day login streak** - 10 points (enabled by default)
-   - **Posting an article** - 5 points (disabled by default)
-   - And many more...
+### Choosing which tabs appear
 
-3. Enable or disable rules based on your needs
-4. Adjust point values as desired
+Three tabs are always shown: Overview, My rewards, and Badges. The other five (Campaigns, Catalogue, Leaderboard, How to earn, Privacy) are optional and can be turned off. To control them, open **Settings -> Navigation** and toggle each tab. Hide the tabs for features you are not using yet, then show them later when you are ready.
 
-## Quick Setup Guide
+## Publish the leaderboard module
 
-### For a Basic Blog/Magazine Site
+The package includes a site module, `mod_rewardify_leaderboard`, that ranks members by a chosen currency. This is separate from the Leaderboard tab inside the member app, so you can show a leaderboard anywhere on your site.
 
-**Enable these rules:**
-- ✅ Joined the site (1 point)
-- ✅ Daily login (1 point)
-- ✅ 7-day login streak (10 points)
-- ✅ Posting an article (5 points)
-- ✅ Reading an article (1 point)
+1. Go to **Content -> Site Modules**.
+2. Click **New** and choose **Rewardify Leaderboard**.
+3. Set the module **Position** to wherever you want it (a sidebar, for example).
+4. In the module options, set the **Currency** parameter (it defaults to `reputation`). You can also set how many members to show, whether to show avatars, and whether to show usernames.
+5. Set the menu assignment, then **Save** and publish the module.
 
-**Plugins to enable:**
-- User - Rewardify
-- Content - Rewardify
+The module only lists members who opted in to the leaderboard, and shows an alias for members who chose one. For the full set of options and the privacy behaviour, see [Leaderboard](leaderboard.md).
 
-### For a Community Forum Site
+## Starter recipes
 
-**Enable these rules:**
-- ✅ Joined the site (1 point)
-- ✅ Daily login (1 point)
-- ✅ 7-day login streak (10 points)
-- ✅ Community Builder/Kunena specific rules
+Pick the recipe that matches your site. Each one lists the adapter to enable and a couple of rules to get you started. Build the rules on the [Rules](rules.md) screen.
 
-**Plugins to enable:**
-- User - Rewardify
-- Content - Rewardify
-- Community Builder/Kunena - Rewardify
+### Community or blog
 
-### For an E-commerce Site
+1. Enable the **plg_rewards_joomla** adapter.
+2. Create a rule on the `user.registered` trigger that grants a small amount of `points` to the new member.
+3. Create a rule on the `content.article.published` trigger that grants `reputation` to the article author, so contributors climb the level ladder.
 
-**Enable these rules:**
-- ✅ Joined the site (1 point)
-- ✅ Daily login (1 point)
-- ✅ HikaShop purchase rules
+### Forum
 
-**Plugins to enable:**
-- User - Rewardify
-- HikaShop - Rewardify
-- HikaShop Payment - Rewardify
+1. Install Kunena, then enable the **plg_kunena_rewardify** adapter.
+2. Create a rule that grants `reputation` when a member posts, so active members rise through Levels over time.
+3. Add a daily limit (a throttle) to the rule so a member cannot farm points by posting repeatedly. See the Limits section in [Rules](rules.md).
 
-## Next Steps
+### Store
 
-Now that you have Rewardify installed and configured:
+1. Install EasyCommerce, then enable the **plg_rewards_easycommerce** adapter or install HikaShop, then enable the **plg_hikashop_rewardify** adapter.
+2. Create a rule on the order-completed trigger that grants `points` to the purchaser, so customers earn spendable points on each order.
+3. Set up your redemption store on the **Catalogue** screen so members can spend those points. See [Catalogue & Campaigns](redemptions.md).
 
-1. **[Configure Point Rules](point-rules.md)** - Fine-tune when and how points are awarded
-2. **[Set Up the Leaderboard](leaderboard.md)** - Display top users on your site
-3. **[Manage User Points](managing-points.md)** - Award or deduct points manually
-4. **[Customize Display](customization.md)** - Customize how points appear on your site
+> The triggers you can select in the Rules and Badges editors come from the adapters you have enabled. If a trigger you expect is missing, the matching adapter is probably disabled or its host is not installed. Enable the adapter first, then build the rule.
 
-## Getting Help
+## A note on developer mode
 
-If you need assistance:
+In **Settings -> Developer** there is a **Dev server mode** option (`developer.dev_mode`) and a Vite dev server URL. These exist only for building the member and admin React apps during development. They tell the page to load assets from a local Vite server instead of the installed files.
 
-- 📖 **Documentation:** [Complete Rewardify docs](overview.md)
-- 💬 **Forum:** https://shondalai.com/forums/
-- 📧 **Email:** https://shondalai.com/get-support/
+> Keep developer mode **off** on a production site. As a safeguard, dev server mode is honoured only on local hostnames (such as `localhost`, `.test`, `.local`, and similar), so a setting left on cannot point a live site at someone's local server. Even so, leave it off in production.
 
-## Troubleshooting
+## Where to go next
 
-### Points Not Being Awarded
-
-**Check these items:**
-1. ✅ Plugins are enabled (System → Plugins)
-2. ✅ Point rules are published (Components → Rewardify → Point Rules)
-3. ✅ Point values are not zero
-4. ✅ User has proper access level
-5. ✅ Rate limiting is not preventing the award
-
-### Leaderboard Not Showing
-
-1. ✅ Module is published
-2. ✅ Module is assigned to correct menu items
-3. ✅ Module position exists in your template
-4. ✅ Users have earned points
-
----
-
-**Next:** [Understanding Point Rules →](point-rules.md)
-
+- [How Rewardify Works](how-rewardify-works.md) for the event-to-ledger pipeline.
+- [Rules](rules.md) to decide what members earn.
+- [Settings Reference](settings.md) for every configuration option.
+- [Integrations & Adapters](integrations.md) for connecting other extensions.

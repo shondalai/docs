@@ -2,517 +2,111 @@
 id: faq
 title: Frequently Asked Questions
 sidebar_label: FAQ
-sidebar_position: 9
+sidebar_position: 19
 ---
 
 # Frequently Asked Questions
 
-Common questions and answers about Rewardify.
+Short answers to the questions admins ask most often when setting up Rewardify. Each answer links to the page with the full detail.
 
-## General Questions
+## General
 
-### What is Rewardify?
+### What is the difference between points and reputation?
 
-Rewardify is a comprehensive gamification extension for Joomla that rewards users with points for various activities on your website. It helps increase user engagement, loyalty, and interaction.
+`points` (Community Points) are the default spendable currency: members earn them, and they can be deducted and redeemed in the Catalogue. `reputation` is lifetime standing that is never spent or deducted and never expires, and it is what drives a member's Level. See [Currencies](currencies.md) and [Levels](levels.md).
 
-### Which Joomla versions are supported?
+### Do points expire?
 
-Rewardify supports Joomla 5.3 and higher. For older Joomla versions (3.x, 4.x), we do not have supported extension.
+They can. Points are issued in lots, and by default a lot lives for 365 days. You can change that lifetime, or turn expiry off completely for lifetime points, under Settings -> Point expiration. Reputation never expires. See [Currencies](currencies.md) and [Settings Reference](settings.md).
 
-### Is Rewardify free?
+### Can I have more than one currency?
 
-Rewardify is a commercial extension. A license is required for production use. 
+Yes. The two currencies in use today are `points` (Community Points) and `reputation` (Reputation). A third currency, `event` (Event Credits), is a seasonal currency that is seeded but planned for a later release. Each currency declares whether it is spendable, whether it expires, how many decimals it uses, and its default lot length. See [Currencies](currencies.md).
 
-### Can I try before buying?
+### Where do members see their rewards?
 
-Please contact support@shondalai.com for demo site access or visit our website https://demo.shondalai.com
+In the member site app, which a Joomla menu item points at the Rewardify component. It has tabs for Overview, My rewards, Badges, Campaigns, Catalogue, Leaderboard, How to earn and Privacy. The optional tabs can be hidden under Settings -> Navigation. See [Settings Reference](settings.md).
 
----
+## Rules and badges
 
-## Installation & Setup
+### How do I stop a rule paying twice?
 
-### How do I install Rewardify?
+Use the Limits (throttles) part of the rule. You can cap a rule with `perObject` (once ever or once per day), `perUserPerDay`, `perUserLifetime`, or a `cooldown` between fires. See [Rules](rules.md).
 
-1. Download the package file
-2. Go to System → Install → Extensions
-3. Upload the pkg_rewardify.zip file
-4. Enable required plugins
-5. Configure point rules
+### Why did my rule not fire?
 
-**[Full installation guide →](getting-started.md)**
+Check these first: the rule is Published (only Published rules are evaluated), its Trigger exactly matches the event type, every Condition passes, the Schedule window is open, and no Limit has already been hit. Higher-priority rules win first, so another rule may have matched before it. You can confirm with Simulate and trace, and inspect what arrived in the Event inbox. See [Rules](rules.md) and [Events and Evaluation](events-and-evaluation.md).
 
-### Which plugins must I enable?
+### What is the difference between a rule reward and a badge?
 
-**Required:**
-- User - Rewardify (for registration/login)
-- Privacy - Rewardify (for GDPR compliance)
+A rule reacts to a single event and decides what to award right then (currency or a badge). A badge can also be earned by its own criteria: counted, windowed steps that accumulate over time (for example "publish 10 articles in 30 days"). Use a rule for "this event pays X", and a badge's own criteria for "reach a milestone". See [Rules](rules.md) and [Badges](badges.md).
 
-**Optional but recommended:**
-- Content - Rewardify (for article points)
-- Integration plugins (only if you use those extensions)
+### What is a streak?
 
-### Do I need to configure anything after installation?
+A streak counts consecutive calendar days. On a rule it is a Limit that requires a set number of days in a row before the rule pays, with an optional repeat at each milestone. On a badge step it is a window measured as the longest run of consecutive days. See [Rules](rules.md) and [Badges](badges.md).
 
-Yes, recommended steps:
-1. Review and enable point rules
-2. Adjust point values
-3. Configure profile/avatar settings
-4. Publish leaderboard module
-5. Test with a test user account
+### A rule is held instead of awarding. Why?
 
----
+The event arrived with a trust level below the rule's minimum, so the decision is held for an admin to approve rather than paid automatically. Server-side adapters (such as the Joomla core adapter) report `server_verified` and clear that gate. Approve held events in the Event inbox. See [Events and Evaluation](events-and-evaluation.md).
 
-## Point Rules
+### Why did my award go to the wrong member, or not at all?
 
-### How do point rules work?
+An award names its recipient: `subject`, `actor`, `author`, `purchaser`, or `referrer`. The payload-keyed roles (author, purchaser, referrer) never fall back to the subject, so if the key is missing the award is dropped rather than paid to the wrong person. See [Rules](rules.md).
 
-Point rules define when and how points are awarded. Each rule has:
-- **Title** - Display name
-- **Rule Name** - Unique identifier
-- **Points** - Amount to award
-- **Published** - Active or not
-- **Access Level** - Who can earn
-- **Rate Limit** - Prevention of duplicates
+## Integrations
 
-**[Complete guide to point rules →](point-rules.md)**
+### Which extensions are supported out of the box?
 
-### Can I create custom point rules?
+The package ships adapters for Joomla core (login, registration, article published), Community Builder, Kunena and HikaShop. Installed adapters are listed on the Adapters screen, where each can be enabled or disabled. See [Integrations and Adapters](integrations.md).
 
-Yes! You can create custom rules for any activity:
-1. Components → Rewardify → Point Rules
-2. Click New
-3. Configure the rule
-4. Use Developer API to trigger it
+### Why does Community Builder need a second plugin?
 
-### How do I award negative points?
+`plg_rewards_communitybuilder` declares the adapter to Rewardify, but the actual events are emitted by a companion plugin that you install inside Community Builder itself. You need both for Community Builder events to reach the engine. See [Integrations and Adapters](integrations.md).
 
-To deduct points, enter a negative number:
-- Example: `-5` will deduct 5 points
-- Useful for penalties or corrections
-- Common for deleted content
+### Do I need Kunena or HikaShop installed?
 
-### What is rate limiting?
+Only if you want to reward their activity. The Kunena and HikaShop adapters are inert without their host component, and the Adapters screen flags "Host not installed" when the host is missing. See [Integrations and Adapters](integrations.md).
 
-Rate limiting prevents users from earning points repeatedly for the same action:
-- Set in days (0 = no limit)
-- Example: Login once per day = 1 day limit
-- Prevents abuse and spam
+### Why can't I select a trigger in the Rules editor?
 
-### Can points expire?
+Triggers come from installed adapters: each adapter declares the event types it reports, and those are what become selectable in the Rules and Badges editors. If a trigger is missing, install and enable the adapter (and its host) that provides it. See [Integrations and Adapters](integrations.md).
 
-Yes, points can expire:
-- **Rule-based:** Set "Expires In" days on rule
-- **Individual:** Set "Publish Down" date on point entry
-- **Permanent:** Leave expiration empty
+## Members and data
 
----
+### Can members hide from the leaderboard?
 
-## Managing Points
+Yes. Only members who opted in (consent `on_leaderboard`) appear, and they can be shown by an alias instead of their real name. The setting Appearance -> Public leaderboard controls whether non-members can see top earners at all. See [Leaderboard](leaderboard.md) and [Privacy and Member Data](privacy.md).
 
-### How do I award points manually?
+### How do I manually give a member points?
 
-Two methods:
+Use Manual adjustments to post a grant, deduct or adjust against a member. Every manual change is written to the append-only ledger as an audited row. See [Members, Balances and the Ledger](members-and-ledger.md).
 
-**Method 1:** Components → Rewardify → Points → New
-**Method 2:** Components → Rewardify → User Points → Select user → Award Points
+### How does GDPR erasure work?
 
-**[Full guide →](managing-points.md)**
+`plg_privacy_rewardify` wires Rewardify into Joomla's data export and "right to be forgotten" requests, and member consent is stored in `#__rewardify_consent`. You manage this from the Privacy and data screen alongside Joomla's own privacy tools. See [Privacy and Member Data](privacy.md).
 
-### Can I deduct points from users?
+### What emails does Rewardify send, and can I change them?
 
-Yes:
-- Award negative points (-25 deducts 25 points)
-- Or delete specific point entries
-- Add reason in title/description
+It sends member emails such as points awarded, badge earned, level up and points expiring, from a catalogue of templates you can override and toggle on the Email templates screen. Settings -> Email branding sets the sender, header, brand colours and footer. See [Email Notifications](emails.md).
 
-### How do I view a user's point history?
+## Operations
 
-1. Components → Rewardify → Points
-2. Filter by specific user
-3. View complete history with dates and reasons
+### Do I need cron?
 
-### Can I export point data?
+The installer seeds four scheduled tasks (drain, expire, reconcile, prune) that run on the Joomla scheduler. For these to run on time you need the scheduler triggered, either by web cron or a real cron job hitting the scheduler. The `drain` task is only needed when Evaluation mode is Queued. See [Scheduled Tasks](scheduled-tasks.md).
 
-Yes:
-- Use Joomla's built-in export features
-- Or third-party export extensions
-- Privacy plugin also exports on user request
+### Instant or Queued evaluation, which should I use?
 
-### What happens to points when user is deleted?
+The seeded default on a fresh install is Queued. Queued (asynchronous) stores events for the `drain` scheduled task to evaluate later, so in Queued mode that task must run or awarded events never post. Instant (synchronous) evaluates each event on the spot and posts rewards immediately with no cron required, which is what we recommend for most sites. Switch under Settings -> Evaluation. Events whose type starts with `manual.` always evaluate instantly, regardless of the mode. See [Events and Evaluation](events-and-evaluation.md) and [Settings Reference](settings.md).
 
-The Privacy plugin automatically removes:
-- All point entries
-- User point totals
-- Related data
+### A member's balance looks wrong. How do I fix it?
 
-This ensures GDPR compliance.
+Balances are a cache projected from the ledger, so they are always rebuildable. Run the reconcile task or use the rebuild projections operation in the Settings Danger zone to repair any drift, and post a Manual adjustment if a genuine correction is needed. See [Members, Balances and the Ledger](members-and-ledger.md).
 
----
+### Can I edit a rule after it has paid awards?
 
-## Leaderboard
+Yes. Editing a rule bumps its version and snapshots the old definition, and any award already made never changes. Only Published rules are evaluated, and a rule with no trigger is forced to Draft. See [Rules](rules.md).
 
-### How do I display the leaderboard?
+### How do I test a rule without affecting anyone?
 
-1. Extensions → Modules
-2. Find "Rewardify - Leaderboard"
-3. Publish the module
-4. Assign to menu items
-5. Select position
-
-**[Complete leaderboard guide →](leaderboard.md)**
-
-### Can I have multiple leaderboards?
-
-Yes! Create multiple instances:
-- Duplicate the module
-- Configure each differently
-- Example: All-time + Monthly + Weekly
-
-### How often does leaderboard update?
-
-Updates depend on cache settings:
-- **No cache:** Real-time updates
-- **Cached:** Updates when cache expires
-- Recommended: 30-minute cache for performance
-
-### Can users opt-out of leaderboard?
-
-Currently not built-in. This is a feature request for future versions.
-
-### Can I exclude certain users?
-
-Not built-in, but you can:
-- Use access levels
-- Create template override
-- Custom development
-
----
-
-## Plugins
-
-### Which plugins do I need?
-
-**Core plugins (enable always):**
-- User - Rewardify
-- Privacy - Rewardify
-
-**Integration plugins (enable if you use them):**
-- Content - Rewardify
-- Community Builder - Rewardify
-- HikaShop - Rewardify
-- Kunena - Rewardify
-- Others as needed
-
-**[Plugin configuration guide →](plugins.md)**
-
-### Why aren't my plugins working?
-
-Check:
-1. ✅ Plugin is enabled
-2. ✅ Point rule is published
-3. ✅ Point value is not zero
-4. ✅ Access level is correct
-5. ✅ Rate limit allows awards
-
-**[Troubleshooting guide →](troubleshooting.md)**
-
-### Can I create custom plugins?
-
-Yes! Developers can create custom plugins:
-- Use SubscriberInterface pattern
-- Access Rewardify API
-- Trigger point rules
-
-**[Developer API →](rewardify-points-system-api.md)**
-
----
-
-## Integration Questions
-
-### Does Rewardify work with Community Builder?
-
-Yes! Enable the Community Builder - Rewardify plugin to award points for:
-- Profile updates
-- Avatar uploads
-- User connections
-- Wall posts
-
-### Can I integrate with HikaShop?
-
-Yes! Two plugins available:
-- **HikaShop - Rewardify:** Award points for purchases
-- **HikaShop Payment - Rewardify:** Pay with points
-
-### Does it work with Kunena forum?
-
-Yes! Enable Kunena - Rewardify plugin for:
-- Topic creation
-- Post replies
-- Best answers
-
-### What about JomSocial?
-
-Yes, JomSocial - Rewardify plugin is included.
-
-### Can I integrate my custom extension?
-
-Yes! Use the Developer API:
-```php
-$component = $app->bootComponent('com_rewardify');
-if ($component instanceof UserPointsFactoryInterface) {
-    $component->getUserPoints()->assign([
-        'rule' => 'com_myextension.action',
-        'userid' => $userId,
-        'points' => 10,
-        'title' => 'Custom Action',
-    ]);
-}
-```
-
----
-
-## Point Economy
-
-### How many points should I award?
-
-Start conservative and adjust:
-- **Registration:** 1-5 points
-- **Daily login:** 1-2 points
-- **Article post:** 5-10 points
-- **Comment:** 1-3 points
-- **Streak bonus:** 10-20 points
-
-Monitor user behavior and adjust.
-
-### What's a good points-to-currency ratio?
-
-For e-commerce sites:
-- **Conservative:** 100 points = $1
-- **Moderate:** 50 points = $1
-- **Generous:** 20 points = $1
-
-Test and adjust based on your profit margins.
-
-### How do I prevent point inflation?
-
-1. Use rate limiting
-2. Set reasonable point values
-3. Enable point expiration
-4. Monitor and adjust regularly
-5. Require approval for high-value actions
-
-### Should points expire?
-
-Depends on your goals:
-- **No expiration:** Build long-term loyalty
-- **Annual expiration:** Encourage active use
-- **Quarterly expiration:** Drive urgent engagement
-
----
-
-## Technical Questions
-
-### What PHP version is required?
-
-PHP 8.1 or higher is required for Joomla 6 compatibility.
-
-### Does Rewardify affect performance?
-
-Minimal impact if configured properly:
-- Enable caching
-- Use rate limiting
-- Optimize database regularly
-- Limit leaderboard size
-
-### Is it compatible with caching?
-
-Yes! Rewardify works with Joomla caching:
-- Page cache: Compatible
-- Module cache: Recommended
-- Conservative cache: Best for leaderboard
-
-### Can I use with CDN?
-
-Yes, Rewardify is CDN-compatible. Static assets can be cached.
-
-### How do I backup point data?
-
-Regular Joomla database backups include:
-- `#__rewardify_points`
-- `#__rewardify_users`
-- `#__rewardify_points_rules`
-
-Use Akeeba Backup or similar tools.
-
----
-
-## Security & Privacy
-
-### Is Rewardify GDPR compliant?
-
-Yes! The Privacy plugin provides:
-- Data export on request
-- Data deletion on account removal
-- Transparency in data collection
-- User consent mechanisms
-
-### Can users cheat the system?
-
-Protection measures included:
-- Rate limiting
-- Duplicate prevention
-- Admin approval option
-- Audit trail logging
-- Access level restrictions
-
-### How is point data secured?
-
-- Stored in Joomla database
-- Subject to Joomla ACL
-- Protected by user permissions
-- Encrypted if using HTTPS
-- Regular security updates
-
----
-
-## Troubleshooting
-
-### Points not being awarded?
-
-**Quick checklist:**
-- [ ] Plugin enabled
-- [ ] Rule published
-- [ ] Points not zero
-- [ ] Correct access level
-- [ ] Rate limit allows
-- [ ] Cache cleared
-
-**[Full troubleshooting guide →](troubleshooting.md)**
-
-### Leaderboard not showing?
-
-- Check module is published
-- Verify position exists
-- Ensure users have points
-- Clear cache
-
-### Getting error messages?
-
-Check:
-1. Joomla error log
-2. PHP error log
-3. Database connectivity
-4. Extension updates available
-
-**[Common errors and solutions →](troubleshooting.md)**
-
----
-
-## Upgrading & Updates
-
-### How do I update Rewardify?
-
-1. Backup your site and database
-2. Download latest version
-3. Install via extension manager
-4. Joomla handles the update
-5. Test functionality
-
-### Will updates affect my data?
-
-No, updates preserve:
-- Existing points
-- User data
-- Point rules
-- Configuration
-
-Always backup before updating!
-
-### Can I downgrade if needed?
-
-Not recommended, but possible:
-- Restore from backup
-- Manual database rollback
-- Contact support for assistance
-
-### How do I check my version?
-
-Extensions → Manage → Components → Rewardify
-
----
-
-## Support
-
-### How do I get support?
-
-1. **Documentation:** Read the guides first
-2. **Forum:** https://shondalai.com/support
-3. **Email:** support@shondalai.com
-4. **Emergency:** Contact for priority support options
-
-### What information should I provide?
-
-When requesting support, include:
-- Joomla version
-- PHP version
-- Rewardify version
-- Error messages
-- Steps to reproduce
-- Screenshots if relevant
-
-### Is there a support forum?
-
-Yes! Visit https://shondalai.com/support for:
-- Community discussions
-- Feature requests
-- Bug reports
-- Tips and tricks
-
-### Can I request features?
-
-Absolutely! We welcome feature requests:
-- Submit via support forum
-- Email detailed requirements
-- Consider custom development for urgent needs
-
----
-
-## Licensing & Commercial
-
-### Do I need a license for each site?
-
-License terms vary. Check your purchase agreement or contact sales.
-
-### Can I use on localhost?
-
-Yes, testing on localhost is typically allowed.
-
-### Is white-labeling available?
-
-For white-label and OEM options, contact sales@shondalai.com.
-
-### Do you offer refunds?
-
-Refund policy varies by purchase agreement. Contact support.
-
----
-
-## Still Have Questions?
-
-**Can't find your answer?**
-
-- 📖 **Documentation:** [Complete Rewardify docs](overview.md)
-- 💬 **Forum:** https://shondalai.com/forums/
-- 📧 **Email:** https://shondalai.com/get-support/
-
-**Found a bug?**
-Please report it with detailed steps to reproduce.
-
-**Have a feature idea?**
-We'd love to hear it! Submit your suggestions.
-
----
-
-**Last Updated:** December 2025  
-**Documentation Version:** 1.2.0
-
+Use Simulate and trace to dry-run a rule against a hypothetical payload. It has no side effects: nothing is awarded and nothing is written to the ledger. See [Events and Evaluation](events-and-evaluation.md).
