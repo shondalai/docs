@@ -13,6 +13,16 @@ All notable changes to Community Answers will be documented in this file.
 - Added Rewardify adapter plugin
 
 ### 🐛 Fixed
+- Fixed issue preventing bulk delete of trashed questions
+- Fixed error when permanently deleting questions
+- Fixed issue where package did not remove modules and plugins
+
+## [7.0.1] - 2026-06-27
+
+### 🚀 Added
+- Added Rewardify adapter plugin
+
+### 🐛 Fixed
 - Fixed bulk delete trashed questions issue
 - Fixed error on permanent question deletion
 - Fixed package unable to remove modules and plugins
