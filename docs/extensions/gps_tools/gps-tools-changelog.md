@@ -18,6 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.2.4] - 2026-06-27
+
+### 🚀 Added
+- Added Rewardify adapter plugin
+
 ## [7.2.3] - 2026-06-03
 
 ### 🚀 Added
