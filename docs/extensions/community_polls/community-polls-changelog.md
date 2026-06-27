@@ -20,6 +20,11 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.1.4] - 2026-06-27
+
+### 🚀 Added
+- Added Rewardify adapter plugin
+
 ## [7.1.3] - 2026-06-08
 
 ### 🚀 Added
