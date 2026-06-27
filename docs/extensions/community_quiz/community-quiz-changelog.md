@@ -12,6 +12,11 @@ All notable changes to Community Quiz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.1] - 2026-06-27
+
+### 🚀 Added
+- Added Rewardify adapter plugin
+
 ## [8.0.0] - 2026-06-20
 
 Community Quiz 8 is a complete, ground-up rewrite for Joomla 6. It introduces a new React-based administration and front-end, a redesigned assessment engine, full learning-management features, and a modern certification and commerce stack. Existing v7 installations can bring their data across with the built-in migration tool.
