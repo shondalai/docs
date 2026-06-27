@@ -13,6 +13,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [3.2.0] - 2026-06-27
+
+### 🚀 Added
+- Added new Rewardify plugin
+- Added quiz access search bar on the admin dashboard
+- Added option to disable custom theme on admin UI
+- Added admin toolbar with breadcrumbs
+- Improved sidebar and settings menus
+- Added email templates to override Joomla registration emails
+- Added new options to customize email notification sender details
+- Moved license dialog to sidebar and made sidebar fixed
+
+### 🐛 Fixed
+- Fixed 2FA auth not working
+- Fixed issue with fresh install on some MySQL installations
+- Fixed registration form options not stacked properly on mobile view
+- Fixed cosmetic display issues on mobile view
+- Localized ProfileCard buttons
+- Added missing language strings
+- Fixed inability to translate notification messages
+- Added translation entries for hardcoded language strings
+
 ## [3.1.6] - 2026-06-03
 
 ### 🚀 Added
