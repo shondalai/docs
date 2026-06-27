@@ -7,6 +7,14 @@ sidebar_position: 100
 All notable changes to Community Answers will be documented in this file.
 
 
+## [7.0.1] - 2026-06-27
+
+### 🚀 Added
+- Added Rewardify adapter plugin
+
+### 🐛 Fixed
+- Fixed package unable to remove modules and plugins
+
 ## [7.0.0] - 2026-06-08
 
 ### 🚀 Added
