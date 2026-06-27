@@ -25,67 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added email templates to override Joomla registration emails
 - Added new options to customize email notification sender details
 - Moved license dialog to sidebar and made sidebar fixed
-- Enhanced AI services using new AI assistant
-- Added new activity rule for user signup
-- Added new page to customize Sociable activity rules
-- Bundled React code source in the package
-- Added new configuration options for notification settings
-- Standardized email templates architecture with customization options
-- Added new license management wizard
-- Showed inline validation messages on registration form
-- Supported disabling selected emails at global level
-- Added AI translation support
-- Added multilingual email templates support
-- Added multilingual email templates support
 
 ### 🐛 Fixed
-- Fixed 2FA auth not working
+- Fixed issue where 2fa auth was not working
 - Fixed issue with fresh install on some MySQL installations
-- Fixed registration form options stacking on mobile view
+- Fixed registration form options not stacked properly on mobile view
 - Fixed cosmetic display issues on mobile view
 - Localized ProfileCard buttons
 - Added missing language strings
 - Fixed inability to translate notification messages
 - Added translation entries for hardcoded language strings
-- Fixed untranslated language strings
-- Accepted only safe URLs when creating events
-- Fixed inability to ban users from Sociable admin
-- Fixed email notifications not sent for Sociable registration
-- Enforced event feature flags and invite-only group semantics server-side
-- Hardened OAuth (Apple signature, verified-email linking, same-origin redirect)
-- Added SSRF guard and response-size cap to URL preview endpoint
-- Made admin CSRF protection fail-closed and cover all mutating endpoints
-- Sanitized event descriptions and escaped SPA data-config attributes
-- Blocked path traversal and unsafe upload extensions in media handling
-- Did not surface internal messages to the UI
-- Fixed user-menu dropdown layout
-- Fixed sidebar "Friends" label translation
-- Fixed installation issue
-- Added recipient name placeholder when messaging a non-friend
-- Fixed installation issue
-- Fixed minor display issues
-- Fixed translations not showing on frontend
-- Fixed mobile user menu issues
-- Handled error responses in private messaging
-- Fixed error shown when viewing user reports
-- Fixed inability to reindex data using smart search plugin
-- Surfaced actual error messages on frontend
-- Fixed notifications not sent when messages are posted
-- Added unread_messages_count to main install schema
-- Resolved referral FK incompatibility on strict MySQL
-- Gated private SPA routes behind authentication
-- Standardized `currentProfile` as the auth-user key in Site views
-- Fixed toolbar and sidebar treating viewed profile as logged-in user
-- Surfaced specific reason when a direct message can't be sent
-- Messaging treated “connections” correctly on backend and showed clear inline modal
-- Header showed pending friendship requests with badge and direct link to requests tab
-- Group modal created first, then uploaded images using proper image API
-- Backend group creation honored publish intent
-- Fixed update sites URLs
-- Fixed profile avatars created with too low resolution
-- Fixed buttons not following theme colors
-- Group categories showed only 3, changed to show all
-- Fixed error when deleting category
 
 ## [3.1.6] - 2026-06-03
 
