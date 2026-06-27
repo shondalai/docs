@@ -6,6 +6,16 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.0.7] - 2026-06-27
+
+### 🚀 Added
+- Added Rewardify adapter plugin
+
+### 🐛 Fixed
+- Handled invoice events from Stripe
+- Fixed plugins manifest not showing on account page after payment until refresh
+- Recovered payment succeeded event from migrated custom subscription orders
+
 ## [1.0.6] - 2026-06-03
 
 ### 🚀 Added
