@@ -160,6 +160,15 @@ const config: Config = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        id: 'quillthreads',
+        path: 'docs/extensions/quillthreads',
+        routeBasePath: 'quillthreads',
+        sidebarPath: './sidebars-quillthreads.ts',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
         id: 'general',
         path: 'docs/extensions/general',
         routeBasePath: 'general',
@@ -255,6 +264,10 @@ const config: Config = {
           {
             from: '/easycommerce',
             to: '/easycommerce/overview',
+          },
+          {
+            from: '/quillthreads',
+            to: '/quillthreads/overview',
           },
         ],
         createRedirects(existingPath) {
@@ -381,6 +394,12 @@ const config: Config = {
             },
             {
               type: 'doc',
+              docId: 'overview',
+              docsPluginId: 'quillthreads',
+              label: 'QuillThreads',
+            },
+            {
+              type: 'doc',
               docId: 'frequently-asked-questions',
               docsPluginId: 'general',
               label: 'General Documentation',
@@ -450,6 +469,12 @@ const config: Config = {
         {
           label: 'EasyCommerce',
           to: '/easycommerce/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'QuillThreads',
+          to: '/quillthreads/overview',
           position: 'left',
           className: 'extensions-mobile',
         },
