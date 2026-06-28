@@ -6,6 +6,20 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.0.8] - 2026-06-28
+
+### 🚀 Added
+- Supported listing of free products
+- Supported 1x1, 4x3, 16x9 layouts for product hero image frame
+- Enabled export and import of product layouts
+
+### 🐛 Fixed
+- Resolved error in product view menu item form
+- Stretched wide feature images to fit store product listing thumbnails
+- Fixed UI issues in several product layout blocks
+- Allowed manual discount application from admin
+- Prevented select media modal header from being clipped by Joomla toolbar
+
 ## [1.0.7] - 2026-06-27
 
 ### 🚀 Added
