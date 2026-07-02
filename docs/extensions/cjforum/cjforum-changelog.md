@@ -12,6 +12,19 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.0] - 2026-07-02
+
+### 🚀 Added
+- Added new Pulse template
+- Added Rewardify integration
+- Added new Community and Ledger site templates
+- Added site templates support with new additional templates
+- Introduced single page app (SPA) experience on frontend
+- Redesigned admin interface with React SPA
+
+### 🐛 Fixed
+- Fixed avatar and user profile integrations
+
 ## [6.1.14] - 2026-06-27
 
 ### 🚀 Added
