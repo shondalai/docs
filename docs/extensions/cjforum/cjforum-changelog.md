@@ -17,8 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🚀 Added
 - Added new Pulse template
 - Added Rewardify integration
-- Added new community and ledger site templates
-- Added site templates support with new additional templates
+- Added new Community and Ledger site templates
+- Introduced site templates support with additional templates
 - Introduced single page app (SPA) experience on frontend
 - Redesigned admin interface with React SPA
 
