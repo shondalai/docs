@@ -18,6 +18,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.3.0] - 2026-07-03
+
+### 🚀 Added
+- Added a global GPS Tools option for track thumbnail source
+- Scoped dark theme skeleton styles for explicit component or theme dark mode use
+- Updated tracks module thumbnail handling to use static route thumbnails only
+- Added avatar display on public user profile and leaderboard pages
+- Improved JomSocial/Core Library integration for user names, profile links, and avatars
+- Made thumbnails route-map-only by using static map URL for track and module thumbnails
+
+### 🐛 Fixed
+- Fixed distance markers and gradient track rendering to respect route segment boundaries
+- Fixed map route rendering so multi-segment tracks are not connected by straight lines
+- Improved public user display handling with configurable name or username display mode
+- Added missing Joomla menu language strings for leaderboard and user profile menu items
+- Fixed translation loading so GPS Tools loads all registered language keys
+- Fixed activity stream titles to use display name linked to profile URL, not URL as name
+- Scoped GPS Tools CSS away from global rules and changed skeleton dark styling to theme
+- Added missing admin/sys menu language keys and filled missing public site language keys
+- Fixed splits table and waypoints options so they can be toggled
+
 ## [7.2.4] - 2026-06-27
 
 ### 🚀 Added
