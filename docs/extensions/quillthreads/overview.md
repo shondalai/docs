@@ -19,6 +19,7 @@ This page is a short tour of what the extension does and where to find each feat
 - **Optional AI help.** Connect a shondalai.com account and QuillThreads can score new comments for spam and toxicity, hold the risky ones, and summarise long threads. It is entirely optional and pay-as-you-go.
 - **Privacy you can defend.** Consent prompts, encrypted commenter emails, IP handling you control, and a privacy plugin that answers Joomla data export and removal requests.
 - **A move that keeps your history.** Import from JComments, Akeeba Engage, and CSV or JSON files, with a dry-run preview and safe, repeatable runs.
+- **Comments beyond articles.** Other extensions can put a QuillThreads discussion on their own items, a quote, a GPS track, a product, through a small integration plugin. Community Quotes and GPS Tools do this today.
 
 ## What is in the package
 
@@ -48,4 +49,5 @@ The admin is a single-page React application too. The dashboard, comment lists, 
 - Keep the conversation clean: [Moderation](./moderation.md) and [Anti-spam](./anti-spam.md).
 - Let AI do the boring part: [AI moderation](./ai-moderation.md).
 - Move from JComments or Akeeba Engage: [Migrating comments](./migrating-comments.md).
+- Add comments to your own extension: [Embedding comments in your extension](./embedding-comments.md).
 - Hit a snag: [Troubleshooting](./troubleshooting.md).

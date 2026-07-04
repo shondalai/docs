@@ -30,6 +30,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'modules',
         'content-plugin',
+        'quillthreads-comments',
       ],
     },
 

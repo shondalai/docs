@@ -49,6 +49,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Developer',
       items: [
+        'embedding-comments',
         'custom-import-adapters',
       ],
     },
