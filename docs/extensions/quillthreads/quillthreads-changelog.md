@@ -9,6 +9,16 @@ sidebar_position: 17
 
 Release notes for QuillThreads. The newest version is always at the top. You can update from within Joomla at **System → Update → Extensions** whenever a new release appears.
 
+## [1.0.2] - 2026-07-06
+
+### 🚀 Added
+- Added import from GPS Tools comments system
+- Added SDK for third-party components to integrate comments support
+- Showed source type on comments page
+- Added device detection support
+- Improved admin dashboard
+- Added initial project files
+
 ## [1.0.0] - 2026-06-28
 
 The first public release. QuillThreads launches as a complete, modern comments system for Joomla 5 and 6 articles.
