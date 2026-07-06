@@ -19,6 +19,18 @@ All notable changes to Community Quotes will be documented in this file.
 - Resolved issue with Joomla 6 installation
 - Corrected margin of batch button on admin toolbar
 
+## [6.0.0] - 2026-07-06
+
+### 🚀 Added
+- Introduced AI quote attribution verification service
+- Released Community Quotes v6 rewrite
+- Enabled support for Rewardify Points
+- Enabled support for Joomla 5
+
+### 🐛 Fixed
+- Resolved issue with Joomla 6 installation
+- Corrected margin of batch button on admin toolbar
+
 ## [7.0.0] - 2026-07-06
 
 ### 🚀 Added
