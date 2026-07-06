@@ -17,6 +17,7 @@ The importer lives at **Components → QuillThreads → Import**. Running it nee
 | --- | --- | --- |
 | **JComments** | Database | Reads your `#__jcomments` table directly. |
 | **Akeeba Engage** | Database | Reads your `#__engage_comments` table directly. |
+| **GPS Tools** | Database | Moves the built-in GPS Tools track comments into QuillThreads. |
 | **CSV** | File | A comma-separated file with a header row. |
 | **JSON** | File | A JSON array, or `{ "comments": [...] }`. Round-trips the QuillThreads export. |
 
@@ -61,6 +62,13 @@ After a database import on a large site, it is worth running the **Rebuild count
 
 - Each Engage comment is tied to a Joomla article through its asset, which the importer resolves back to the article id.
 - Engage's enabled flag maps to published or unpublished.
+
+### GPS Tools
+
+- Moves the native GPS Tools track comments into QuillThreads, keeping each comment attached to its track and preserving reply threads.
+- States map across as follows: spam-flagged comments become spam, published comments stay published, and unpublished comments land in your moderation queue as pending.
+- The move is one-way and non-destructive. Your existing GPS Tools comments are left exactly as they are, and re-running the import brings in nothing new.
+- To show the migrated threads on your track pages, set the comment engine to QuillThreads. See [QuillThreads comments](/gps-tools/quillthreads-comments) in the GPS Tools documentation.
 
 ### CSV and JSON
 
