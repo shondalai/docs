@@ -6,6 +6,18 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.0.9] - 2026-07-07
+
+### 🚀 Added
+- Added mobile app pairing card to admin settings
+- Displayed one-time token and QR pairing code in admin settings
+- Added mobile app companion API with bearer token authentication
+- Allowed generating invoice only for paid orders
+- Removed Joomla toolbar in admin and moved permissions button to settings page
+
+### 🐛 Fixed
+- Fixed issue with page returned from cancelled payment in PayPal
+
 ## [1.0.8] - 2026-06-28
 
 ### 🚀 Added
