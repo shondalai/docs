@@ -18,6 +18,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.3.1] - 2026-07-07
+
+### 🚀 Added
+- Enhanced license manager support
+- Added permissions button to settings page and removed toolbar
+- Supported QuillThreads comment system
+
+### 🐛 Fixed
+- Switching color scheme to light adopted light background across the page
+- Toggling off "Show Splits Table" or "Show Waypoints" hid respective sections
+- Added missing language strings from settings page
+- Settings page displayed multiselect dropdown and checkboxes
+
 ## [7.3.0] - 2026-07-03
 
 ### 🚀 Added
