@@ -7,6 +7,11 @@ sidebar_position: 100
 All notable changes to Community Quotes will be documented in this file.
 
 
+## [6.0.1] - 2026-07-08
+
+### 🔧 Changed
+- Minor updates and improvements
+
 ## [6.0.0] - 2026-07-06
 
 ### 🚀 Added
