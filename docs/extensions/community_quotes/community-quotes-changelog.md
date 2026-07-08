@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [6.0.1] - 2026-07-08
+
+### 🔧 Changed
+- Minor updates and improvements
+
 ## [6.0.0] - 2026-07-03
 
 Community Quotes 6.0.0 is a complete, ground-up rewrite for Joomla 5 and Joomla 6.
