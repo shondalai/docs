@@ -13,6 +13,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.1.4] - 2026-07-08
+
+### 🚀 Added
+- Introduced global options to hide surveys from listing and display in full screen
+
+### 🐛 Fixed
+- Resolved issue preventing image uploads in image type questions on Joomla 6
+
 ## [8.1.3] - 2026-07-07
 
 ### 🚀 Added
