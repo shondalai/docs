@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.3.2] - 2026-07-08
+
+### 🐛 Fixed
+- Resolved conflicts with site CSS
+- Corrected integration adapters not displaying proper message on connection failure
+
 ## [7.3.1] - 2026-07-07
 
 ### 🚀 Added
