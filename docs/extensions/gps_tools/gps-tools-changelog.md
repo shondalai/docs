@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.3.3] - 2026-07-09
+
+### 🐛 Fixed
+- Moved language files from component folder to global language folder
+- Removed unnecessary background color on container
+
 ## [7.3.2] - 2026-07-08
 
 ### 🐛 Fixed
