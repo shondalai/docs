@@ -90,6 +90,15 @@ const sidebars: SidebarsConfig = {
         'downloads-plugin/update-server',
       ],
     },
+
+    {
+      type: 'category',
+      label: 'Help & Support',
+      collapsed: true,
+      items: [
+        'easycommerce-changelog',
+      ],
+    },
   ],
 };
 
