@@ -169,6 +169,15 @@ const config: Config = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        id: 'templates',
+        path: 'docs/extensions/templates',
+        routeBasePath: 'templates',
+        sidebarPath: './sidebars-templates.ts',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
         id: 'general',
         path: 'docs/extensions/general',
         routeBasePath: 'general',
@@ -268,6 +277,10 @@ const config: Config = {
           {
             from: '/quillthreads',
             to: '/quillthreads/overview',
+          },
+          {
+            from: '/templates',
+            to: '/templates/overview',
           },
         ],
         createRedirects(existingPath) {
@@ -400,6 +413,12 @@ const config: Config = {
             },
             {
               type: 'doc',
+              docId: 'overview',
+              docsPluginId: 'templates',
+              label: 'Templates',
+            },
+            {
+              type: 'doc',
               docId: 'frequently-asked-questions',
               docsPluginId: 'general',
               label: 'General Documentation',
@@ -475,6 +494,12 @@ const config: Config = {
         {
           label: 'QuillThreads',
           to: '/quillthreads/overview',
+          position: 'left',
+          className: 'extensions-mobile',
+        },
+        {
+          label: 'Templates',
+          to: '/templates/overview',
           position: 'left',
           className: 'extensions-mobile',
         },
