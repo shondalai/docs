@@ -6,6 +6,52 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.1.0] - 2026-07-14
+
+### 🚀 Added
+- Enabled production selection modal in single product menu
+- Allowed bundling child products in variable subscriptions
+- Enabled full-product portability for lossless export/import bundles
+- Enabled full-product portability for lossless export/import bundles
+- Re-pointed to new IDs on import
+- Routed Products list Export/Import buttons via new process
+- Enabled multipackage download support
+- Supported subdirectory Joomla installs
+- Enabled demo category featured images
+- Made storefront SPA native to the component
+- Enabled load to skip checkout view's server-side redirect with `spa_storefront`
+- Added named `z-overlay` (10000) for all required surfaces
+- Enabled skeleton loader for product page
+- Enabled skeleton loader for product grids
+- Allowed host chrome to route storefront through SPA
+- Added host-navigation contract for chrome outside React tree
+- Enabled client-side checkout flow and fixed storefront "Home" breadcrumb
+- Enabled clean-URL BrowserRouter storefront SPA with flag
+- Enabled add-to-cart/buy-now controls and separate pricing-purchase card
+- Supported EasyCommerce Store Manager mobile app
+
+### 🐛 Fixed
+- Resolved product layout issues
+- Ensured target resolves or creates by natural key and cross-product
+- Prevented shop search icon from overlaying template mega menu
+- Redirected category page to shop page
+- Resolved issue with multi-level nested categories display
+- Enabled toggle under Layout and Appearance tab for unresolved cases
+- Improved floating cart button contrast in dark mode
+- Corrected foreground reading for both light and dark modes
+- Ensured modal overlays render above site header
+- Made checkout controls follow active template theme
+- Resolved token-backed utilities everywhere and retained `!`
+- StoreRoot rendered SEF views from resolved storefront
+- Routed Shopping / Go Home through storefront resolver in browser
+- Corrected storefront "Home" breadcrumb to use shop route as home URL
+- StoreRoot resolved active view from history state on client navigation
+- Addressed issues from SPA fetch path rendering views
+- Removed duplicate pricing block from default product layout
+- Returned 404-not-500 for missing items and improved category menu picker
+- Prevented Stripe plugin from applying discount on final checkout
+- Fixed failing subscription renewal reminder task
+
 ## [1.0.9] - 2026-07-07
 
 ### 🚀 Added
