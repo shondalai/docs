@@ -9,6 +9,11 @@ sidebar_position: 17
 
 Release notes for QuillThreads. The newest version is always at the top. You can update from within Joomla at **System → Update → Extensions** whenever a new release appears.
 
+## [1.0.4] - 2026-07-15
+
+### 🚀 Added
+- Provided templates for importing comments from CSV and JSON files
+
 ## [1.0.3] - 2026-07-15
 
 ### 🚀 Added
