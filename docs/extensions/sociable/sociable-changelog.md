@@ -14,6 +14,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.2.1] - 2026-07-15
+
+### 🐛 Fixed
+- Replaced hardcoded language strings with Joomla language strings
+- Blocked uninstall of dependencies if other extensions used them
+- Added Joomla article events to activity
+- Awarded points when reading article
+- Awarded user points when article was posted
+- Fixed issue with profile redirect in SDK integrations
+
 ## [3.2.0] - 2026-06-27
 
 ### 🚀 Added
