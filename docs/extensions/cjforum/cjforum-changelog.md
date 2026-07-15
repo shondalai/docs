@@ -12,6 +12,20 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.2] - 2026-07-15
+
+### 🚀 Added
+- Added subscript checkbox to topic form
+
+### 🐛 Fixed
+- Fixed mobile responsiveness issues
+- Made topic form use the menu item itemId
+- Fixed Tinymce overlapping elements on reply form
+- Blocked uninstall of dependencies if other extensions use them
+- Fixed subscript topic button not working
+- Updated build package id for proper uninstall support
+- Stored post creation date in UTC and displayed in user timezone
+
 ## [6.2.1] - 2026-07-03
 
 ### 🚀 Added
