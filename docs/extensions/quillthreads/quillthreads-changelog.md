@@ -9,6 +9,21 @@ sidebar_position: 17
 
 Release notes for QuillThreads. The newest version is always at the top. You can update from within Joomla at **System → Update → Extensions** whenever a new release appears.
 
+## [1.0.3] - 2026-07-15
+
+### 🚀 Added
+- Enabled editing comments from admin comments section
+- Introduced feature to archive comments
+- Provided CSS class hooks on all elements for UI customization
+- Included option to hide user avatars in comment threads
+- Supported importing Komento comments
+
+### 🐛 Fixed
+- Supplied missing language strings
+- Resolved issues with dark mode in admin area
+- Prevented uninstall of dependencies if other extensions use them
+- Updated build package id for proper uninstall support
+
 ## [1.0.2] - 2026-07-06
 
 ### 🚀 Added
