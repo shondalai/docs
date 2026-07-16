@@ -6,6 +6,11 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.1.1] - 2026-07-16
+
+### 🐛 Fixed
+- Hardened security and authorization checks
+
 ## [1.1.0] - 2026-07-14
 
 ### 🚀 Added
