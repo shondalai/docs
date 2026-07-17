@@ -18,6 +18,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.3.4] - 2026-07-17
+
+### 🚀 Added
+- Enabled streaming for AI service calls
+- Supported KML and GeoJSON overlays
+
+### 🐛 Fixed
+- Prevented uninstall of dependencies used by other extensions
+- Added missing language strings
+
 ## [7.3.3] - 2026-07-09
 
 ### 🐛 Fixed
