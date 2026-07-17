@@ -12,6 +12,18 @@ All notable changes to Community Quiz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.3] - 2026-07-17
+
+### 🚀 Added
+- Added new access rules to assign users to groups on an event
+- Added Rewardify adapter plugin
+
+### 🐛 Fixed
+- Hardened security, response, and file upload limits
+- Blocked uninstall of dependencies if other extensions used them
+- Updated build package id for proper uninstall support
+- Fixed migration
+
 ## [8.0.1] - 2026-06-27
 
 ### 🚀 Added
