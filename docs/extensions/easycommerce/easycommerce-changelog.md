@@ -6,6 +6,11 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.1.2] - 2026-07-18
+
+### 🐛 Fixed
+- Resolved issue where subscription renewal URLs did not display the form
+
 ## [1.1.1] - 2026-07-16
 
 ### 🐛 Fixed
