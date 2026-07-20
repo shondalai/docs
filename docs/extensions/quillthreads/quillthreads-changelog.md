@@ -9,6 +9,11 @@ sidebar_position: 17
 
 Release notes for QuillThreads. The newest version is always at the top. You can update from within Joomla at **System → Update → Extensions** whenever a new release appears.
 
+## [1.0.5] - 2026-07-20
+
+### 🚀 Added
+- Introduced captcha plugin to enable guest comments
+
 ## [1.0.4] - 2026-07-15
 
 ### 🚀 Added
