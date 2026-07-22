@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.3.5] - 2026-07-22
+
+### 🐛 Fixed
+- Track page flickered when Google Maps quota was exceeded
+- Error appeared when upgrading from legacy version
+
 ## [7.3.4] - 2026-07-17
 
 ### 🚀 Added
