@@ -12,6 +12,18 @@ All notable changes to Community Quiz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.4] - 2026-07-22
+
+### 🚀 Added
+- Introduced feature flag for quizzes and courses
+- Enabled single quiz and course menu items
+- Supported publishing up and down at specified dates
+- Supported Joomla access levels
+
+### 🐛 Fixed
+- Restored "Show N questions per page" in the builder
+- Fixed featured quizzes module not displaying quiz list
+
 ## [8.0.3] - 2026-07-17
 
 ### 🚀 Added
