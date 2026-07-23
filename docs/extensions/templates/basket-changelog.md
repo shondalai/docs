@@ -7,6 +7,11 @@ sidebar_position: 100
 All notable changes to Basket Template will be documented in this file.
 
 
+## [1.0.2] - 2026-07-23
+
+### 🔧 Changed
+- Minor updates and improvements
+
 ## [1.0.1] - 2026-07-23
 
 ### 🚀 Added
