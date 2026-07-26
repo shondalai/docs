@@ -12,6 +12,32 @@ All notable changes to Community Quiz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.1.0] - 2026-07-26
+
+### 🚀 Added
+- Enabled opt-in staff quiz preview
+- Displayed quiz strengths and improvement areas to learners and admins
+- Provided ARI Quiz migration service
+- Migrated ARI Quiz content and learner history
+- Translated AriQuiz questions and answers
+- Supported reusable component migration sources
+- Released updated builder and result experience
+- Organized learner delivery and report settings
+- Restored plugin support for custom grading and quiz workflows
+
+### 🐛 Fixed
+- Secured student previews for staff testing
+- Kept failed migrations ready for retry
+- Preserved AriQuiz question point values
+- Rebuilt Community Quiz media assets
+- Embedded Unicode certificate fonts
+- Required quiz passes for course completion
+- Shuffled ordering questions per attempt
+- Restored authored quiz and reading content
+- Completed React translation catalogs
+- Downloaded learner result PDFs correctly
+- Released updated quiz builder and learner screens
+
 ## [8.0.4] - 2026-07-22
 
 ### 🚀 Added
