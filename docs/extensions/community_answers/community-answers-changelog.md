@@ -19,6 +19,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🚀 Added
 - Added Rewardify adapter plugin
 
+### 🐛 Fixed
+- Fixed issue preventing bulk delete of trashed questions
+- Fixed error when permanently deleting questions
+- Fixed issue where package did not remove modules and plugins
+
 ## [7.0.0] - 2026-06-07
 
 ### Added
