@@ -18,6 +18,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.4.0] - 2026-07-28
+
+### 🚀 Added
+- Added option to customize number of track thumbnails per row in list view
+- Bulk thumbnail generation processed up to 5,000 tracks and migrated legacy points automatically
+- Breadcrumbs displayed full ancestry and track count
+- Made grid/list default and page size configurable
+- Allowed track image to show above or below content
+- Enabled show/hide for breadcrumbs, statistics, and search
+- Improved categories page display
+- Added easy track selection modal for single track menu
+- Added options to customize sidebar blocks on track details page
+- Introduced page to create and manage activity types
+- Showed subcategories with stats on category page
+
+### 🐛 Fixed
+- Improved user experience on mobile devices
+- Fixed legacy tracks with empty aliases so search opens track, rejects wrong parent
+- API thumbnails respected map/photo preference with fallback
+- Corrected pagination state, category ACL, units, and legacy activity/difficulty data
+- List mode became text-first and restored description summaries
+- Removed empty category artwork and redundant “Explore this category” link
+- Search appeared before subcategories, searched descendants, enforced two characters, handled races
+- Joomla database page no longer showed false positive errors
+- Increased tracks list size dropdown in admin dashboard
+- Localized missing languages in admin
+- Removed duplicate language strings
+
 ## [7.3.5] - 2026-07-22
 
 ### 🐛 Fixed
