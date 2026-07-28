@@ -6,6 +6,15 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.1.3] - 2026-07-28
+
+### 🚀 Added
+- Added page-size selector to orders page
+
+### 🐛 Fixed
+- Displayed correct validation message when mixing products in cart
+- Displayed product reviews form in product layout
+
 ## [1.1.2] - 2026-07-18
 
 ### 🐛 Fixed
