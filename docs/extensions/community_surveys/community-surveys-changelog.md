@@ -13,6 +13,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.3.0] - 2026-08-06
+
+### 🚀 Added
+- Improved survey analytics with new UX and charts
+- Add support for single option selection in Match the following field
+- Adding support for new multiresponse restriction using email address
+- Adding per-survey restriction options for multiple responses
+- Add new dropdown progress type to switch between the pages
+- Added global options to hide the survey from listing and show it in full screen.
+- Add an option to hide the public survey from showing on survey listing page
+
+### 🐛 Fixed
+- Make database updates parser-safe
+- Translate the secondary address field
+- Survey form module is not loading on non-CS pages
+- Fixed survey field styles in dark mode
+- Block uninstall of dependencies if other extensions use them
+- Unable to reconnect Google Sheets or Slack adapters
+- Unable to add images in the images type question on J6
+- Image choice questions are not showing images correctly
+- Save the date field only after user leave the field
+
 ## [8.1.5] - 2026-07-16
 
 ### 🚀 Added
