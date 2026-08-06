@@ -13,6 +13,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.2.0] - 2026-08-06
+
+### 🚀 Added
+- Improved survey analytics with new UX and charts
+- Add support for single option selection in Match the following field
+- Adding support for new multiresponse restriction using email address
+- Adding per-survey restriction options for multiple responses
+
+### 🐛 Fixed
+- Make database updates parser-safe
+- Translate the secondary address field
+- Survey form module is not loading on non-CS pages
+
 ## [8.3.0] - 2026-08-06
 
 ### 🚀 Added
