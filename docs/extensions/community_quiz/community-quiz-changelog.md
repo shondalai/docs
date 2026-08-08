@@ -12,6 +12,22 @@ All notable changes to Community Quiz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.1.1] - 2026-08-08
+
+### 🚀 Added
+- Added header and footer configuration settings
+- Add options to customize the difficulty badge and scores
+- Improved pagination in Question Banks page
+- Add settings to show/hide navigator
+- Add setting to skip intro page
+- Add setting to customize number of quizzes shown per page
+
+### 🐛 Fixed
+- Discard changes button is not working
+- Quizzes page do not show pagination
+- Quizzes list page do not show the pagination numbers
+- Question studio does not show the editoor for description and feedback
+
 ## [8.1.0] - 2026-07-26
 
 ### 🚀 Added
