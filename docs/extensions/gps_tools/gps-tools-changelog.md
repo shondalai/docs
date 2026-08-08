@@ -18,6 +18,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.4.1] - 2026-08-08
+
+### 🚀 Added
+- Redesigned settings page for better user experience
+
+### 🐛 Fixed
+- Add missing language strings
+- Fixed the activity mismatch when editing the track with a different activity type
+- Hardened OSM rendering against partially disabled GD functions
+- Missing OSM requirements now explicitly identify PHP GD or cURL
+- Static maps provider failures are isolated per track and reported accurately.
+- Removed the hard-coded “Check Mapbox configuration” message.
+- Zoom buttons are not showing when they are aligned to the right of the map
+- Align category tracks count beside title on parent category
+
 ## [7.4.0] - 2026-07-28
 
 ### 🚀 Added
