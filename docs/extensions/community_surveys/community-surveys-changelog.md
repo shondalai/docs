@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add support for title and description of the pages
 
 ### 🐛 Fixed
+- Export button now export selected surveys CSV
+- Reports now show global database ids instead of serial numbers of questions
+- Survey duplication now copies all content
 - The anonymous surveys asking for login for guest users
 - Responses are not saved for likert questions
 
