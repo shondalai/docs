@@ -10,6 +10,18 @@ All notable changes to EasyForms will be documented in this file.
 
 ---
 
+## [1.2.0] - 2026-08-15
+
+### 🚀 Added
+- Improved UX for analytics pages
+- Integrated layouts page into the dashboard
+- Redesigned dashboard for easy navigation
+- New unified submissions page
+
+### 🐛 Fixed
+- Make dashboard fully compatible with dark mode
+- Fixed integration adapters which are not showing right message when failed to connect
+
 ## [1.1.3] - 2026-06-03
 
 ### 🚀 Added
