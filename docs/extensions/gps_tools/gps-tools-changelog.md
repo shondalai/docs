@@ -18,6 +18,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.4.2] - 2026-08-15
+
+### 🐛 Fixed
+- When batch processing thumbnails the process is getting timedout when many tracks are present
+- After processing thumbnails tracks shows as checked out
+- Blank page after upgrade on j5.x
+
 ## [7.4.1] - 2026-08-08
 
 ### 🚀 Added
