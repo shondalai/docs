@@ -6,6 +6,31 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.1.5] - 2026-08-15
+
+### 🚀 Added
+- Mobile API v2 is added
+- Added page-size selector on orders page
+- Added production selection modal in single product menu
+- Allow bundling child products in variable subscriptions
+- Add full-product portability: lossless export/import bundles
+- Add full-product portability: lossless export/import bundles
+- re-pointed to the new ids on import.
+- Wired through the existing Products list Export/Import buttons via new
+- Add multipackage download support
+
+### 🐛 Fixed
+- Export products should export only selected products
+- Do not show bundle products with visibility not set to public
+- Show correct validation message when mixing products in cart
+- Product Reviews section in product layout does not show the form
+- Fixed issue with subscription renewal URLs not showing form
+- Harden security and authorization checks
+- Fixed product layout issues
+- the target resolves or creates them by natural key, and cross-product
+- Shop search icon no longer overlays the template mega menu
+- Category page is redirected to the shop page
+
 ## [1.1.3] - 2026-07-28
 
 ### 🚀 Added
