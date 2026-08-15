@@ -12,6 +12,18 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.7] - 2026-08-15
+
+### 🚀 Added
+- Add subscribe to topic checkbox when replying to topics
+- Add subscribe to forum button to follow entire form
+- Make user display name consistent across all pages
+
+### 🐛 Fixed
+- Keep database updates visible to Joomla
+- Honor the selected avatar provider everywhere
+- Deliver every forum translation to the site
+
 ## [6.2.6] - 2026-07-23
 
 ### 🐛 Fixed
