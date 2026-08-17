@@ -20,6 +20,15 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.1.5] - 2026-08-17
+
+### 🐛 Fixed
+- Unable to vote on migrated polls
+- Make database updates parser-safe
+- Complete React translation delivery
+- Block uninstall of dependencies if other extensions use them
+- Update build package id for proper uninstall support
+
 ## [7.1.4] - 2026-06-27
 
 ### 🚀 Added
