@@ -13,6 +13,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.2.2] - 2026-08-17
+
+### 🚀 Added
+- Show full HTML editor to edit question description
+
+### 🐛 Fixed
+- Export button now export selected surveys CSV
+- Reports now show global database ids instead of serial numbers of questions
+- Survey duplication now copies all content
+
 ## [8.2.1] - 2026-08-12
 
 ### 🚀 Added
