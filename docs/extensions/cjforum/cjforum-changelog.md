@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rename trending to last replied in sort order
 
 ### 🐛 Fixed
+- Users are unable to delete their own replies
 - Subscribed users do not get new topic notifications
 - Unable to reply to topics due to old forum migration
 
