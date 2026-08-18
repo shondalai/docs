@@ -10,6 +10,11 @@ All notable changes to EasyForms will be documented in this file.
 
 ---
 
+## [1.2.1] - 2026-08-18
+
+### 🐛 Fixed
+- Fixed issues with light background shown on dashboard when using dark mode
+
 ## [1.2.0] - 2026-08-15
 
 ### 🚀 Added
