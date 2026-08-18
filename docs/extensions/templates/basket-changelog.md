@@ -17,6 +17,11 @@ All notable changes to Basket Template will be documented in this file.
 ### 🔧 Changed
 - Minor updates and improvements
 
+## [1.0.3] - 2026-08-18
+
+### 🔧 Changed
+- Minor updates and improvements
+
 ## [1.0.2] - 2026-08-18
 
 ### 🔧 Changed
