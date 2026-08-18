@@ -9,6 +9,14 @@ sidebar_position: 17
 
 Release notes for QuillThreads. The newest version is always at the top. You can update from within Joomla at **System → Update → Extensions** whenever a new release appears.
 
+## [1.0.6] - 2026-08-18
+
+### 🚀 Added
+- Move permissions button to settings page
+
+### 🐛 Fixed
+- Fixes for dark mode compatibility
+
 ## [1.0.5] - 2026-07-20
 
 ### 🚀 Added
