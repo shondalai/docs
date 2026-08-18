@@ -7,6 +7,11 @@ sidebar_position: 100
 All notable changes to Kaffa Template will be documented in this file.
 
 
+## [1.0.2] - 2026-08-18
+
+### 🐛 Fixed
+- Fixes for dark mode support
+
 ## [1.0.1] - 2026-07-23
 
 ### 🚀 Added
