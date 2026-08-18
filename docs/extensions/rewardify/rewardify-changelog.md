@@ -13,6 +13,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.0.1] - 2026-08-18
+
+### 🚀 Added
+- Moved options/permissions button to settings page
+
+### 🐛 Fixed
+- Fixes for dark mode in admin and site pages
+- Block uninstall of dependencies if other extensions use them
+- Update build package id for proper uninstall support
+
 ## [2.0.0] - 2026-04-28
 
 **A complete rebuild.** v1 kept a single points balance on each member and changed it in place, with no record of how it got there. v2 is built on an append-only ledger: every grant, deduction, redemption, and expiry is one permanent row, and balances, levels, and badges are projections rebuilt from that record. On top of it sit the things v1 could not reach, all configured from the dashboard rather than fixed in code: multiple currencies, a no-code rules engine, badges, levels, campaigns, and a redemption store with real fulfilment.
