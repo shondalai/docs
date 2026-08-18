@@ -12,6 +12,15 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.9] - 2026-08-18
+
+### 🚀 Added
+- New gallery feature to show image attachments
+
+### 🐛 Fixed
+- Site and admin pages are not rendering properly on dark mode
+- Users are unable to delete their own replies
+
 ## [6.2.8] - 2026-08-17
 
 ### 🚀 Added
