@@ -1,0 +1,14 @@
+{
+  "date": "2026-08-20",
+  "framework": "Docusaurus 3.9.2 with React 19",
+  "fontStack": "system sans and system mono",
+  "palette": "EasyForms-era Apple-like blue and grey tokens",
+  "motion": "motion-cut; no motion library",
+  "spacing": "existing 4-point scale",
+  "preserve": [
+    "Docusaurus architecture",
+    "all documentation routes and redirects",
+    "all sidebars and Markdown content",
+    "light and dark modes"
+  ]
+}

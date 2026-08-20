@@ -1,0 +1,11 @@
+[
+  {
+    "date": "2026-08-20",
+    "scope": "app",
+    "macrostructure": "Index-First home / Workbench docs",
+    "theme": "custom",
+    "theme_axes": "light / grotesk-sans / green",
+    "enrichment": "none",
+    "brief": "Refresh the multi-product Shondalai Docusaurus documentation portal"
+  }
+]

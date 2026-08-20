@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Joomla Extensions Documentation',
-  tagline: 'Comprehensive documentation for EasyForms, and more',
+  title: 'Shondalai Documentation',
+  tagline: 'Guides, configuration, and developer references for the complete Shondalai Joomla extension suite',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -60,7 +60,7 @@ const config: Config = {
         },
         blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: './src/css/portal.css',
         },
       } satisfies Preset.Options,
     ],
@@ -319,24 +319,61 @@ const config: Config = {
     ],
   ],
 
+  themes: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: 'filename',
+        language: ['en'],
+        indexBlog: false,
+        indexPages: true,
+        docsRouteBasePath: [
+          'easyforms',
+          'community-surveys',
+          'community-polls',
+          'community-quiz',
+          'community-answers',
+          'cjforum',
+          'sociable',
+          'gps-tools',
+          'community-quotes',
+          'rewardify',
+          'easycommerce',
+          'quillthreads',
+          'templates',
+          'general',
+        ],
+        highlightSearchTermsOnTargetPage: true,
+        searchBarShortcut: true,
+        searchBarShortcutHint: true,
+        searchBarShortcutKeymap: 'mod+k',
+      },
+    ],
+  ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    metadata: [
+      {
+        name: 'description',
+        content: 'Product guides, configuration help, and developer references for Shondalai Joomla extensions.',
+      },
+      {
+        name: 'keywords',
+        content: 'Shondalai, Joomla extensions, EasyForms, EasyCommerce, Community Surveys, CjForum, Sociable, documentation',
+      },
+    ],
     colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
       respectPrefersColorScheme: true,
     },
     navbar: {
       title: 'Shondalai Docs',
-      logo: {
-        alt: 'Shondalai',
-        src: 'img/logo.svg',
-      },
       hideOnScroll: true,
       items: [
         {
           type: 'dropdown',
-          label: 'Extensions',
+          label: 'Documentation',
           className: 'extensions-desktop',
           position: 'left',
           items: [
@@ -426,90 +463,6 @@ const config: Config = {
           ],
         },
         {
-          label: 'EasyForms',
-          to: '/easyforms/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'Community Surveys',
-          to: '/community-surveys/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'Community Polls',
-          to: '/community-polls/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'Community Quiz',
-          to: '/community-quiz/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'Community Answers',
-          to: '/community-answers/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'CjForum',
-          to: '/cjforum/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'Sociable',
-          to: '/sociable/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'GPS Tools',
-          to: '/gps-tools/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'Community Quotes',
-          to: '/community-quotes/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'Rewardify',
-          to: '/rewardify/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'EasyCommerce',
-          to: '/easycommerce/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'QuillThreads',
-          to: '/quillthreads/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'Templates',
-          to: '/templates/overview',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
-          label: 'General Documentation',
-          to: '/general/frequently-asked-questions',
-          position: 'left',
-          className: 'extensions-mobile',
-        },
-        {
           type: 'search',
           position: 'right',
         },
@@ -519,49 +472,57 @@ const config: Config = {
       style: 'light',
       links: [
         {
-          title: 'EasyForms',
+          title: 'Explore',
           items: [
             {
-              label: 'Getting Started',
+              label: 'Docs home',
+              to: '/',
+            },
+            {
+              label: 'General guides',
+              to: '/general/frequently-asked-questions',
+            },
+            {
+              label: 'Templates',
+              to: '/templates/overview',
+            },
+          ],
+        },
+        {
+          title: 'Products',
+          items: [
+            {
+              label: 'EasyForms',
               to: '/easyforms/overview',
             },
             {
-              label: 'Form Builder',
-              to: '/easyforms/form-builder',
+              label: 'EasyCommerce',
+              to: '/easycommerce/overview',
             },
             {
-              label: 'AI Features',
-              to: '/easyforms/ai-form-builder',
+              label: 'Community Surveys',
+              to: '/community-surveys/overview',
+            },
+            {
+              label: 'CjForum',
+              to: '/cjforum/overview',
             },
           ],
         },
         {
-          title: 'Features',
+          title: 'Resources',
           items: [
             {
-              label: 'Analytics',
-              to: '/easyforms/form-analytics',
+              label: 'Sociable',
+              to: '/sociable/overview',
             },
             {
-              label: 'Integrations',
-              to: '/easyforms/integrations',
+              label: 'GPS Tools',
+              to: '/gps-tools/overview',
             },
-            {
-              label: 'Security',
-              to: '/easyforms/security-and-permissions',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
             {
               label: 'Main Site',
-              href: 'https://bulasikku.com',
-            },
-            {
-              label: 'Support',
-              to: '/easyforms/troubleshooting-guide',
+              href: 'https://shondalai.com',
             },
           ],
         },
