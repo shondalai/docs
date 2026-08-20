@@ -20,6 +20,12 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.1.6] - 2026-08-20
+
+### 🐛 Fixed
+- Fixed issue with embedding polls
+- Backend dashboard background color is too light
+
 ## [7.1.5] - 2026-08-17
 
 ### 🐛 Fixed
