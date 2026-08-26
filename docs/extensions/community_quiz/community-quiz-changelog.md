@@ -12,6 +12,19 @@ All notable changes to Community Quiz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.2.0] - 2026-08-26
+
+### 🚀 Added
+- Make publish update button save changes automatically
+- New block to inject content from a Joomla article
+- Edit instructions block with Joomla editor
+
+### 🐛 Fixed
+- Fixes for auto dark mode rendering
+- Questions are displayed in random order even when shuffle flag is disabled
+- Question title is not displayed on the response page
+- URLs with unicode alias produces 404 error
+
 ## [8.1.7] - 2026-08-22
 
 ### 🐛 Fixed
