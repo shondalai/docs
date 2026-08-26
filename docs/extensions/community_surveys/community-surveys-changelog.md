@@ -13,6 +13,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.2.3] - 2026-08-26
+
+### 🚀 Added
+- EasyCommerce smart contact groups plugin
+- Joomla user smart contact groups plugin
+- New smart contact groups
+
+### 🐛 Fixed
+- Custom answer checkbox is not showing on response form
+- Fixes for auto dark mode rendering
+
 ## [8.2.2] - 2026-08-17
 
 ### 🚀 Added
