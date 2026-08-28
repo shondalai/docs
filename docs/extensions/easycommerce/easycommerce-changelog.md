@@ -6,6 +6,27 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.2.1] - 2026-08-28
+
+### 🚀 Added
+- Stripe payment did not activate previously failed order
+- Mobile API v2 is added
+- Added page-size selector on orders page
+- Added production selection modal in single product menu
+- Allow bundling child products in variable subscriptions
+
+### 🐛 Fixed
+- Migrated orders are not accepting renewals when payment method is changed
+- Fixes for auto dark mode rendering
+- Related products layout block is not working
+- Export products should export only selected products
+- Do not show bundle products with visibility not set to public
+- Show correct validation message when mixing products in cart
+- Product Reviews section in product layout does not show the form
+- Fixed issue with subscription renewal URLs not showing form
+- Harden security and authorization checks
+- Fixed product layout issues
+
 ## [1.1.5] - 2026-08-15
 
 ### 🚀 Added
