@@ -165,7 +165,7 @@ Five checks are shown with a Pass/Review status and a readiness percentage:
 - **Version history** — a list of every published version with its status and date.
 - **Release summary** — a quick overview of lesson count, module count, access model, and catalog visibility for the version you're about to publish.
 
-Press **Publish** to make the course live. To change a published course, edit the draft and **publish a new version**.
+Press **Publish** to make the course live. To change a published course, edit its working copy and select **Publish update**. Any unsaved browser changes are saved first, then Community Quiz creates the new published version.
 
 ---
 
