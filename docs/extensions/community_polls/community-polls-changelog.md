@@ -20,6 +20,17 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.2.0] - 2026-09-01
+
+### 🚀 Added
+- Allow deleting votes from the poll results page
+- Show vote count on results page polls list
+
+### 🐛 Fixed
+- Grid/matrix questions do not show columns
+- Grid/matrix shows unrelated chart types
+- Fixes for auto dark mode rendering
+
 ## [7.1.6] - 2026-08-20
 
 ### 🐛 Fixed
