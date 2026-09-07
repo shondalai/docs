@@ -12,6 +12,16 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.15] - 2026-09-07
+
+### 🚀 Added
+- Add relative human datetime helpers to standardize
+- Add flood control options to limit max characters in topics/replies
+
+### 🐛 Fixed
+- Unauthorised users should not see form page
+- Fixed dark mode issue in classic template
+
 ## [6.2.14] - 2026-08-29
 
 ### 🐛 Fixed
