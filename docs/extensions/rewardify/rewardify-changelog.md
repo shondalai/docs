@@ -13,6 +13,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.0.2] - 2026-09-07
+
+### 🚀 Added
+- Make admin dashboard sidebar mobile responsive
+- Add individual flags in the plugins to enable/disabe Rewardify events
+
+### 🐛 Fixed
+- Leaderboard do not show updated results when changing duration
+
 ## [2.0.1] - 2026-08-18
 
 ### 🚀 Added
