@@ -15,6 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [6.0.2] - 2026-09-07
+
+### 🐛 Fixed
+- Fixes for auto dark mode rendering
+- Admin dashboard shows in light color when in dark mode
+- Clear legacy schema parser errors
+- Block uninstall of dependencies if other extensions use them
+
 ## [6.0.1] - 2026-07-08
 
 ### 🔧 Changed
