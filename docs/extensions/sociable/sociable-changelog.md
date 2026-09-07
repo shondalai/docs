@@ -14,6 +14,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.3.0] - 2026-09-07
+
+### 🚀 Added
+- Improved frontend user experience
+- New people you may know block
+- New suggested groups sidebar block
+- New upcoming events sidebar block
+- New sidebar blocks support
+- New meridian theme
+- Add postcss-prefix-selector for CSS isolation and update styles
+
+### 🐛 Fixed
+- Site name option from settings is not showing on frontend toolbar
+- Profile page shows error when it is not yet synced with sociable
+- Fixes for auto dark mode rendering
+
 ## [3.2.1] - 2026-07-15
 
 ### 🐛 Fixed
