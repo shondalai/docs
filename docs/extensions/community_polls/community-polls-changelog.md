@@ -20,6 +20,14 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.2.1] - 2026-09-12
+
+### 🚀 Added
+- Adding German language files
+
+### 🐛 Fixed
+- View results button shows incorrect voting status
+
 ## [7.2.0] - 2026-09-01
 
 ### 🚀 Added
