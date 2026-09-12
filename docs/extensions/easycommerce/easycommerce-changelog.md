@@ -6,6 +6,16 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.2.2] - 2026-09-12
+
+### 🚀 Added
+- Add an option to hide search bar on home page
+- Enhanced push notifications from EC mobile
+
+### 🐛 Fixed
+- Duplicate push notification sent when new subscription order recieved
+- Error showing when refreshing cart page
+
 ## [1.2.1] - 2026-08-28
 
 ### 🚀 Added
