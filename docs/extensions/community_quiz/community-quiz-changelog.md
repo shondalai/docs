@@ -12,6 +12,26 @@ All notable changes to Community Quiz will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.3.0] - 2026-09-17
+
+### 🚀 Added
+- Add new option to enable/disable hero quiz/course on catalog page
+- Allow quick editing course from dashboard
+- New AI Service - Translation
+- New AI Service - Course outline and lesson summaries
+- New AI Service - Plain-language questions
+- New AI Service - Study plan for learners
+- New AI Service - Item analysis in plain words
+- New AI Service - Assisted grading
+- New AI Service - Question generation
+- Show quiz builder directly when clicking a quiz
+
+### 🐛 Fixed
+- Quiz/course unpublish button not visible
+- The font size of the admin dashboard is little bigger on few pages
+- Second editor in question builder do not show toolbar
+- Delete quiz button is not showing on dashboard
+
 ## [8.2.3] - 2026-09-07
 
 ### 🐛 Fixed
