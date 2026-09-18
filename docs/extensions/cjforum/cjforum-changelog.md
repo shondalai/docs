@@ -12,6 +12,26 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.4.1] - 2026-09-18
+
+### 🚀 Added
+- Allow adding new topics from admin dashboard
+- Allow editing topic from admin dashboard
+- Add relative human datetime helpers to standardize
+- Add flood control options to limit max characters in topics/replies
+
+### 🐛 Fixed
+- Do not show user name on apis
+- False positives in database checker
+- Editing a topic changes author name
+- Bullet points are not showing on the topics/replies
+- Fixed issue when opening legacy topics with invalid publish dates
+- Unauthorised users should not see form page
+- Fixed dark mode issue in classic template
+- Save topic is not updating the description when editing as an admin
+- Fixes for dark mode in pulse and broadsheet templates
+- Unable to edit topic in classic template
+
 ## [6.3.0] - 2026-09-12
 
 ### 🚀 Added
