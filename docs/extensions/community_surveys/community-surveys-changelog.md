@@ -13,6 +13,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.4.0] - 2026-09-18
+
+### 🚀 Added
+- Removed Joomla toolbar to make space available for dashboard
+- Move options button to settings in dashboard
+- Add an option to enable full screen survey
+- Adding an option to show welcome page
+- Add support to define allowed distribute points in multislider question
+- New AI service - Follow-up question
+- New AI service - Response quality screening
+- New AI service - Narrative in the PDF report
+- New AI service - Insight finder
+- New AI service - Design review before publishing
+- New AI service - Open-text analysis and executive summary
+- Allow exporting contacts to CSV
+- Add footer text placeholder below survey form
+- EasyCommerce smart contact groups plugin
+- Joomla user smart contact groups plugin
+- New smart contact groups
+- Show full HTML editor to edit question description
+- Add support for title and description of the pages
+
+### 🐛 Fixed
+- Multislider max value validation fails
+- Recognize browser autofill before validation and submission
+- Prevent prefill source inputs from closing immediately
+- Stabilize page reordering and show save progress
+- Allow replacing images on existing answer options
+- Language translations are not loading on the public pages
+- Batch send campaign stops after 500 contacts
+- Unable to submit the form when certain question types present in the form
+- Custom answer checkbox is not showing on response form
+- Fixes for auto dark mode rendering
+- Export button now export selected surveys CSV
+- Reports now show global database ids instead of serial numbers of questions
+- Survey duplication now copies all content
+- The anonymous surveys asking for login for guest users
+- Responses are not saved for likert questions
+
 ## [8.3.0] - 2026-09-11
 
 ### 🐛 Fixed
