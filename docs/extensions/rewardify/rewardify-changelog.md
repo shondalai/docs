@@ -13,6 +13,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.1.0] - 2026-09-18
+
+### 🚀 Added
+- New AI service - Economy narrative
+- New AI service - Abuse review
+- New AI service - Balance explainer (members)
+- New AI service - Balance explainer (admin)
+- New AI service - Copy and translation
+- New AI service - Rule drafting Describe a rule in plain language and get a draft
+
 ## [2.0.2] - 2026-09-07
 
 ### 🚀 Added
