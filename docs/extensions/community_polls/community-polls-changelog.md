@@ -153,7 +153,7 @@ Each release lists changes under one or more of the following sections:
 
 - Complete admin rebuild as a React 19 single-page application.
 - Unified admin shell — dashboard, polls list, results, audience view, settings, and email templates manager all share the same shell.
-- New poll types: ranked-choice and grid (multi-question).
+- New poll types: multiple-choice/grid (multi-question).
 - AI helpers in the poll editor: suggest answer options, summarise live results, and cluster custom answers.
 - Single Shondalai AI subscription unlocks the helpers across every Shondalai component on the site.
 - Bulk publish, feature, and delete from the polls list with keyboard shortcuts.

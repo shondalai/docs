@@ -14,12 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [6.4.1] - 2026-09-18
 
-### 🚀 Added
-- Allow adding new topics from admin dashboard
-- Allow editing topic from admin dashboard
-- Add relative human datetime helpers to standardize
-- Add flood control options to limit max characters in topics/replies
-
 ### 🐛 Fixed
 - Do not show user name on apis
 - False positives in database checker
@@ -31,6 +25,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Save topic is not updating the description when editing as an admin
 - Fixes for dark mode in pulse and broadsheet templates
 - Unable to edit topic in classic template
+
+## [6.4.0] - 2026-09-17
+
+### 🚀 Added
+- Allow adding new topics from admin dashboard
+- Allow editing topic from admin dashboard
+- Add relative human datetime helpers to standardize
+- Add flood control options to limit max characters in topics/replies
+- New AI services - Catch-up summary, Related topics, Meaning-based search, Similar topics while writing
+- New AI services - Post screening, Composer helper, Category and tag suggestions, Weekly digest text, Email translation
 
 ## [6.3.0] - 2026-09-12
 
