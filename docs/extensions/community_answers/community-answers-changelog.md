@@ -13,6 +13,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.1.0] - 2026-09-18
+
+### 🚀 Added
+- New AI service - Email template translation
+- New AI service - Expert routing
+- New AI service - Thread summary
+- New AI service - Flag triage
+- New AI service - Draft answer
+- New AI service - Question assistant
+- New AI service - Duplicate detection
+
+### 🐛 Fixed
+- Edit email template layout is distorted
+
 ## [7.0.2] - 2026-09-07
 
 ### 🐛 Fixed
