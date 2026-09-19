@@ -15,6 +15,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [6.2.0] - 2026-09-19
+
+### 🚀 Added
+- New AI service - "Build a collection on resilience" from your verified quotes
+- New AI service - Author biography drafts
+- New AI service - A quote translated into a linked quote in the "translation" state
+- New AI service - Submissions and comments scored for spam and abuse before they reach the queue
+- New AI service - Classification at submission
+- New AI service - Near-duplicate quote detection
+- Add AI quote attribution verification service
+- Community Quotes v6 Rewrite
+
+### 🐛 Fixed
+- Fixes for auto dark mode rendering
+- Admin dashboard shows in light color when in dark mode
+- Clear legacy schema parser errors
+- Block uninstall of dependencies if other extensions use them
+
 ## [6.0.2] - 2026-09-07
 
 ### 🐛 Fixed
