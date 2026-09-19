@@ -9,6 +9,17 @@ sidebar_position: 17
 
 Release notes for QuillThreads. The newest version is always at the top. You can update from within Joomla at **System → Update → Extensions** whenever a new release appears.
 
+## [1.1.0] - 2026-09-19
+
+### 🚀 Added
+- New AI feature - On-demand translation
+- New AI feature - Reply drafts and highlights
+- New AI feature - Discussion insights
+- New AI feature - Two-tier comment screening
+
+### 🐛 Fixed
+- Adding missing language strings
+
 ## [1.0.6] - 2026-08-18
 
 ### 🚀 Added
