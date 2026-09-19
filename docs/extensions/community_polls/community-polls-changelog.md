@@ -28,6 +28,18 @@ Each release lists changes under one or more of the following sections:
 - New AI feature - Screen polls before publishing
 - New AI feature - Poll translation
 - New AI feature - Suggest polls for this article
+- Adding German language files
+- Allow deleting votes from the poll results page
+- Show vote count on results page polls list
+
+### 🐛 Fixed
+- View results button shows incorrect voting status
+- Grid/matrix questions do not show columns
+- Grid/matrix shows unrelated chart types
+- Fixes for auto dark mode rendering
+- Fixed issue with embedding polls
+- Backend dashboard background color is too light
+- Unable to vote on migrated polls
 
 ## [7.2.1] - 2026-09-12
 
