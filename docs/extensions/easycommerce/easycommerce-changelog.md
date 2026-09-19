@@ -6,6 +6,23 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.3.0] - 2026-09-19
+
+### 🚀 Added
+- Subscription updates and downgrades
+- Add support to void duplicate orders (Stripe only)
+- New AI Service - Storefront assistant
+- New AI Service - Import clean-up
+- New AI Service - Weekly store read-out
+- New AI Service - Support reply drafts
+- New AI Service - Meaning-based search and similar products
+- New AI Service - Review summaries and screening
+- New AI Service - Product copy in one click
+- Adding AuthorizeNet payment plugin
+- Adding Razorpay payment plugin
+- Adding eWay payment plugin
+- Adding square payment plugin
+
 ## [1.2.2] - 2026-09-12
 
 ### 🚀 Added
