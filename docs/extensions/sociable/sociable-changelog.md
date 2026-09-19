@@ -14,6 +14,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.3.1] - 2026-09-19
+
+### 🚀 Added
+- New AI service - Profile rules from a sentence
+- New AI service - Rewrite, shorten, suggest hashtags or change tone in the post box
+- New AI service - Member and group matching
+- New AI service - "What you missed" digests
+- New AI service - Host copilot, monthly theme, re-engagement
+- New AI service - Report triage - Every report gets a category, a severity and a recommended action
+- New AI service - Feed screening - Posts and comments get a risk score and reason in moderation views
+
+### 🐛 Fixed
+- Points are showing 0 on site sidebar
+- Sidebar blocks are hidden on casseiopia template
+
 ## [3.3.0] - 2026-09-07
 
 ### 🚀 Added
