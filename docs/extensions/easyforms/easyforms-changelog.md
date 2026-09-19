@@ -10,6 +10,19 @@ All notable changes to EasyForms will be documented in this file.
 
 ---
 
+## [1.3.0] - 2026-09-19
+
+### 🚀 Added
+- New AI feature - Conversational form mode
+- New AI feature - Validation rules from a description
+- New AI feature - Form optimisation advice
+- New AI feature - Spam and quality scoring
+- New AI feature - Submission triage and reply drafts
+- New AI feature - Conditional logic from a sentence
+
+### 🐛 Fixed
+- Email template editor is showing behind Joomla sidebar
+
 ## [1.2.1] - 2026-08-18
 
 ### 🐛 Fixed
