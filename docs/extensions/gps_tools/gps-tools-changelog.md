@@ -18,6 +18,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.5.0] - 2026-09-19
+
+### 🚀 Added
+- New AI feature - Comment screening and story translation
+- New AI feature - Similar tracks and smart search
+- New AI feature - Turn-by-turn instructions and named waypoints, accepted one by one
+- New AI feature - Read this activity's pace, climbing and heart rate back in plain language
+- New AI feature - Suggest a title, description, SEO description, tags and a difficulty from this track's own numbers.
+
 ## [7.4.3] - 2026-09-02
 
 ### 🚀 Added
