@@ -6,6 +6,12 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.3.1] - 2026-09-20
+
+### 🐛 Fixed
+- Empty details sent in renewal failed notification
+- Database false positive errors
+
 ## [1.3.0] - 2026-09-19
 
 ### 🚀 Added
