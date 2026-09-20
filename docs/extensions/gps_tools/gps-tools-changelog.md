@@ -18,6 +18,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.5.1] - 2026-09-20
+
+### 🚀 Added
+- Allow selecting multiple categories in tracks map module
+
+### 🐛 Fixed
+- Unable to delete track from admin
+
 ## [7.5.0] - 2026-09-19
 
 ### 🚀 Added
