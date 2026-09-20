@@ -9,6 +9,11 @@ sidebar_position: 17
 
 Release notes for QuillThreads. The newest version is always at the top. You can update from within Joomla at **System → Update → Extensions** whenever a new release appears.
 
+## [1.1.1] - 2026-09-20
+
+### 🐛 Fixed
+- Email notifications are not sent even they are in queue
+
 ## [1.1.0] - 2026-09-19
 
 ### 🚀 Added
