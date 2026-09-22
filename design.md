@@ -16,9 +16,9 @@ Modern-minimal, with a technical but welcoming documentation voice.
 
 ## Theme
 
-- Paper: cool green-tinted near-white in light mode; deep evergreen-charcoal in dark mode.
-- Ink: cool evergreen charcoal, never pure black or white.
-- Accent: a restrained Shondalai green used for links, active state, and focus support.
+- Paper: neutral near-white in light mode; neutral charcoal in dark mode. Surfaces carry no green tint.
+- Ink: neutral charcoal in light mode, near-white in dark mode.
+- Accent: Shondalai green, used for links, active indicators (edge bars, TOC and tab highlights), and focus support. It is never used as a text background; selected rows use a neutral tint with dark ink.
 - Secondary signal: warm yellow is reserved for the focus ring.
 - All colour values are defined as OKLCH tokens in `tokens.css`.
 
@@ -82,16 +82,16 @@ The canonical CSS export is the root `tokens.css` file.
 
 ```css
 @theme {
-  --color-paper: oklch(98.5% 0.008 150);
-  --color-paper-2: oklch(96.2% 0.012 150);
-  --color-paper-3: oklch(92.5% 0.016 150);
-  --color-ink: oklch(21% 0.025 155);
-  --color-ink-2: oklch(31% 0.022 155);
-  --color-muted: oklch(44% 0.02 155);
-  --color-rule: oklch(84% 0.018 150);
-  --color-rule-strong: oklch(70% 0.024 150);
-  --color-accent: oklch(46% 0.145 145);
-  --color-accent-ink: oklch(98.5% 0.008 150);
+  --color-paper: oklch(99.4% 0.002 250);
+  --color-paper-2: oklch(97.2% 0.003 250);
+  --color-paper-3: oklch(93.8% 0.004 250);
+  --color-ink: oklch(21% 0.012 260);
+  --color-ink-2: oklch(31% 0.012 260);
+  --color-muted: oklch(42% 0.014 260);
+  --color-rule: oklch(88.5% 0.005 250);
+  --color-rule-strong: oklch(76% 0.008 250);
+  --color-accent: oklch(45% 0.14 145);
+  --color-accent-ink: oklch(99.4% 0.002 250);
   --color-focus: oklch(52% 0.14 95);
   --font-display: "Space Grotesk Variable", sans-serif;
   --font-body: "IBM Plex Sans Variable", sans-serif;
@@ -130,16 +130,16 @@ The canonical CSS export is the root `tokens.css` file.
 {
   "$schema": "https://design-tokens.github.io/community-group/format/",
   "color": {
-    "paper": {"$value": "oklch(98.5% 0.008 150)", "$type": "color"},
-    "paper-2": {"$value": "oklch(96.2% 0.012 150)", "$type": "color"},
-    "paper-3": {"$value": "oklch(92.5% 0.016 150)", "$type": "color"},
-    "ink": {"$value": "oklch(21% 0.025 155)", "$type": "color"},
-    "ink-2": {"$value": "oklch(31% 0.022 155)", "$type": "color"},
-    "muted": {"$value": "oklch(44% 0.02 155)", "$type": "color"},
-    "rule": {"$value": "oklch(84% 0.018 150)", "$type": "color"},
-    "rule-strong": {"$value": "oklch(70% 0.024 150)", "$type": "color"},
-    "accent": {"$value": "oklch(46% 0.145 145)", "$type": "color"},
-    "accent-ink": {"$value": "oklch(98.5% 0.008 150)", "$type": "color"},
+    "paper": {"$value": "oklch(99.4% 0.002 250)", "$type": "color"},
+    "paper-2": {"$value": "oklch(97.2% 0.003 250)", "$type": "color"},
+    "paper-3": {"$value": "oklch(93.8% 0.004 250)", "$type": "color"},
+    "ink": {"$value": "oklch(21% 0.012 260)", "$type": "color"},
+    "ink-2": {"$value": "oklch(31% 0.012 260)", "$type": "color"},
+    "muted": {"$value": "oklch(42% 0.014 260)", "$type": "color"},
+    "rule": {"$value": "oklch(88.5% 0.005 250)", "$type": "color"},
+    "rule-strong": {"$value": "oklch(76% 0.008 250)", "$type": "color"},
+    "accent": {"$value": "oklch(45% 0.14 145)", "$type": "color"},
+    "accent-ink": {"$value": "oklch(99.4% 0.002 250)", "$type": "color"},
     "focus": {"$value": "oklch(52% 0.14 95)", "$type": "color"}
   },
   "font": {
@@ -182,24 +182,24 @@ The canonical CSS export is the root `tokens.css` file.
 
 ```css
 :root {
-  --background: 98.5% 0.008 150;
-  --foreground: 21% 0.025 155;
-  --card: 99.2% 0.006 150;
-  --card-foreground: 21% 0.025 155;
-  --popover: 99.2% 0.006 150;
-  --popover-foreground: 21% 0.025 155;
-  --primary: 46% 0.145 145;
-  --primary-foreground: 98.5% 0.008 150;
-  --secondary: 92.5% 0.016 150;
-  --secondary-foreground: 31% 0.022 155;
-  --muted: 84% 0.018 150;
-  --muted-foreground: 44% 0.02 155;
-  --accent: 46% 0.145 145;
-  --accent-foreground: 98.5% 0.008 150;
+  --background: 99.4% 0.002 250;
+  --foreground: 21% 0.012 260;
+  --card: 100% 0 0;
+  --card-foreground: 21% 0.012 260;
+  --popover: 100% 0 0;
+  --popover-foreground: 21% 0.012 260;
+  --primary: 45% 0.14 145;
+  --primary-foreground: 99.4% 0.002 250;
+  --secondary: 93.8% 0.004 250;
+  --secondary-foreground: 31% 0.012 260;
+  --muted: 88.5% 0.005 250;
+  --muted-foreground: 42% 0.014 260;
+  --accent: 45% 0.14 145;
+  --accent-foreground: 99.4% 0.002 250;
   --destructive: 52% 0.18 28;
-  --destructive-foreground: 98.5% 0.008 150;
-  --border: 84% 0.018 150;
-  --input: 84% 0.018 150;
+  --destructive-foreground: 99.4% 0.002 250;
+  --border: 88.5% 0.005 250;
+  --input: 88.5% 0.005 250;
   --ring: 52% 0.14 95;
   --radius: 0.625rem;
 }

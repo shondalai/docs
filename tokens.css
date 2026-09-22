@@ -1,20 +1,20 @@
-/* Hallmark · macrostructure: Index-First · tone: technical-welcoming · anchor hue: Shondalai green */
+/* Hallmark · macrostructure: Index-First · tone: technical-welcoming · anchor hue: Shondalai green (accent only; surfaces and ink are neutral) */
 /* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V5 */
 
 :root {
-  --color-paper: oklch(98.5% 0.008 150);
-  --color-paper-raised: oklch(99.2% 0.006 150);
-  --color-paper-2: oklch(96.2% 0.012 150);
-  --color-paper-3: oklch(92.5% 0.016 150);
-  --color-ink: oklch(21% 0.025 155);
-  --color-ink-2: oklch(31% 0.022 155);
-  --color-muted: oklch(44% 0.02 155);
-  --color-rule: oklch(84% 0.018 150);
-  --color-rule-strong: oklch(70% 0.024 150);
-  --color-brand-accent: oklch(46% 0.145 145);
-  --color-brand-accent-hover: oklch(40% 0.14 145);
-  --color-brand-accent-soft: oklch(93% 0.045 145);
-  --color-brand-accent-ink: oklch(98.5% 0.008 150);
+  --color-paper: oklch(99.4% 0.002 250);
+  --color-paper-raised: oklch(100% 0 0);
+  --color-paper-2: oklch(97.2% 0.003 250);
+  --color-paper-3: oklch(93.8% 0.004 250);
+  --color-ink: oklch(21% 0.012 260);
+  --color-ink-2: oklch(31% 0.012 260);
+  --color-muted: oklch(42% 0.014 260);
+  --color-rule: oklch(88.5% 0.005 250);
+  --color-rule-strong: oklch(76% 0.008 250);
+  --color-brand-accent: oklch(45% 0.14 145);
+  --color-brand-accent-hover: oklch(38% 0.13 145);
+  --color-brand-accent-soft: oklch(95.5% 0.035 145);
+  --color-brand-accent-ink: oklch(99.4% 0.002 250);
   --color-brand-focus: oklch(52% 0.14 95);
   --color-state-success: oklch(49% 0.13 145);
   --color-state-warning: oklch(66% 0.15 75);
@@ -27,11 +27,11 @@
   --color-success: var(--color-state-success);
   --color-warning: var(--color-state-warning);
   --color-error: var(--color-state-error);
-  --color-code: oklch(20% 0.025 155);
-  --color-code-ink: oklch(92% 0.018 150);
-  --color-footer: oklch(19% 0.035 155);
-  --color-footer-ink: oklch(94% 0.012 150);
-  --color-footer-muted: oklch(74% 0.018 150);
+  --color-code: oklch(97.2% 0.003 250);
+  --color-code-ink: oklch(21% 0.012 260);
+  --color-footer: oklch(18% 0.01 260);
+  --color-footer-ink: oklch(96% 0.002 250);
+  --color-footer-muted: oklch(74% 0.006 250);
 
   --font-display: "Space Grotesk Variable", "Arial Narrow", sans-serif;
   --font-body: "IBM Plex Sans Variable", "Segoe UI", sans-serif;
@@ -84,23 +84,23 @@
   --z-modal: 400;
   --z-tooltip: 600;
 
-  --shadow-whisper: 0 1px 2px oklch(20% 0.02 155 / 0.06);
+  --shadow-whisper: 0 1px 2px oklch(20% 0.01 260 / 0.06);
 }
 
 [data-theme='dark'] {
-  --color-paper: oklch(15% 0.018 155);
-  --color-paper-raised: oklch(18% 0.02 155);
-  --color-paper-2: oklch(20.5% 0.022 155);
-  --color-paper-3: oklch(25% 0.024 155);
-  --color-ink: oklch(94% 0.012 150);
-  --color-ink-2: oklch(86% 0.015 150);
-  --color-muted: oklch(72% 0.018 150);
-  --color-rule: oklch(31% 0.025 155);
-  --color-rule-strong: oklch(44% 0.032 150);
-  --color-brand-accent: oklch(73% 0.14 145);
-  --color-brand-accent-hover: oklch(79% 0.13 145);
-  --color-brand-accent-soft: oklch(25% 0.055 145);
-  --color-brand-accent-ink: oklch(16% 0.025 155);
+  --color-paper: oklch(16.5% 0.008 260);
+  --color-paper-raised: oklch(19.5% 0.009 260);
+  --color-paper-2: oklch(22% 0.01 260);
+  --color-paper-3: oklch(27% 0.011 260);
+  --color-ink: oklch(95% 0.003 250);
+  --color-ink-2: oklch(87% 0.004 250);
+  --color-muted: oklch(72% 0.006 250);
+  --color-rule: oklch(30% 0.009 260);
+  --color-rule-strong: oklch(42% 0.011 260);
+  --color-brand-accent: oklch(76% 0.15 145);
+  --color-brand-accent-hover: oklch(82% 0.14 145);
+  --color-brand-accent-soft: oklch(28% 0.05 145);
+  --color-brand-accent-ink: oklch(15% 0.02 150);
   --color-brand-focus: oklch(79% 0.16 95);
   --color-state-success: oklch(73% 0.12 145);
   --color-state-warning: oklch(78% 0.13 75);
@@ -113,10 +113,10 @@
   --color-success: var(--color-state-success);
   --color-warning: var(--color-state-warning);
   --color-error: var(--color-state-error);
-  --color-code: oklch(11% 0.016 155);
-  --color-code-ink: oklch(91% 0.015 150);
-  --color-footer: oklch(10.5% 0.016 155);
-  --color-footer-ink: oklch(94% 0.012 150);
-  --color-footer-muted: oklch(72% 0.018 150);
-  --shadow-whisper: 0 1px 2px oklch(5% 0.02 155 / 0.4);
+  --color-code: oklch(13% 0.008 260);
+  --color-code-ink: oklch(92% 0.004 250);
+  --color-footer: oklch(11% 0.008 260);
+  --color-footer-ink: oklch(95% 0.003 250);
+  --color-footer-muted: oklch(72% 0.006 250);
+  --shadow-whisper: 0 1px 2px oklch(5% 0.01 260 / 0.4);
 }
