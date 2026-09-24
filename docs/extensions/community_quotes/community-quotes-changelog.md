@@ -15,6 +15,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [6.2.1] - 2026-09-24
+
+### 🚀 Added
+- Improve category navigation with searchable tree browser
+- Restrict menu sections to category branches
+
+### 🐛 Fixed
+- Normalize speech locales and select matching voices
+- Respect category publication, access and language
+- Render categories as a navigable tree
+- Use author categories in the authors directory
+- Include descendants in category filters and counts
+- Preserve author images when omitted from updates
+- Display author portraits in quote cards and profiles
+- Export all component language strings to React
+- Database false positive errors
+
 ## [6.2.0] - 2026-09-19
 
 ### 🚀 Added
