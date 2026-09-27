@@ -20,6 +20,18 @@ Each release lists changes under one or more of the following sections:
 - **Fixed** — bug fixes.
 - **Security** — fixes for security vulnerabilities.
 
+## [7.3.1] - 2026-09-27
+
+### 🚀 Added
+- Add AI credit balances to all component admin dashboards
+- Add support for the Shondalai Connect app
+- New installs, and upgrades from sites that never set these
+
+### 🐛 Fixed
+- Fixed Polls permissions, privacy, voting, and save reliability
+- Enforce the Vote and View Results permissions
+- Security and privacy fixes for poll data, voting and reports
+
 ## [7.3.0] - 2026-09-19
 
 ### 🚀 Added
