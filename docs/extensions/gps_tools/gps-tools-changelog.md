@@ -18,6 +18,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.6.0] - 2026-09-27
+
+### 🚀 Added
+- Add AI credit balances to all component admin dashboards
+- use, and the featured option needs Edit State in both the frontend and
+- no longer resets it to Public or removes the featured flag.
+- visitor, including the uploader's email and IP address, the private note,
+
+### 🐛 Fixed
+- Fix GPS Tools permissions, publishing schedules, track deletion, image handling, ratings, and AI regeneration. Add upgrade repairs and regression tests.
+- Npm run lint works again and the React app passes it cleanly
+- The existing lint errors are fixed with real types instead of any, dead
+- Saving a track from the frontend form keeps its state, language, publish dates and note
+- Track forms only offer the access levels and featured option a member can actually set
+- Prevent stale administrator track lists after deletion by sending uncached API responses
+- Invalid speeds are discarded without losing track points
+- Concurrent migrations are coordinated to prevent duplicate writes
+- Empty-file regeneration preserves existing data and returns a clear error
+- Missing ratings table is repaired during installation, resolving the deletion failure
+- Stabilize track ordering and pagination for matching dates
+- Preserve Pending and Not Featured filter selections
+- Show underlying track deletion errors in admin
+
+### 🔒 Security
+- Members can only delete their own tracks and cannot self-feature or pick restricted access levels
+- Keep personal and internal track fields out of public API responses
+
 ## [7.5.1] - 2026-09-20
 
 ### 🚀 Added
