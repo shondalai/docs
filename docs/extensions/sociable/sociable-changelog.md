@@ -14,6 +14,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.3.2] - 2026-09-27
+
+### 🚀 Added
+- Move Permissions to Settings and remove the unused Joomla admin toolbar
+- Add AI credit balances to all component admin dashboards
+
+### 🐛 Fixed
+- Fixed the UI of the events list page
+- Fix minor security, privacy, and reliability issues with regression tests
+- Fixed issue with login redirect urls on connected apps
+- Fix blocking, group reports, group invites and report actions
+- Add access checks to group members api
+- Add missing language strings
+- Fixed UX of the messages page
+
 ## [3.3.1] - 2026-09-19
 
 ### 🚀 Added
