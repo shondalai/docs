@@ -6,6 +6,17 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.3.2] - 2026-09-27
+
+### 🚀 Added
+- Add AI credit balances to all component admin dashboards
+- Enhanced pagination support on admin dashboard lists
+
+### 🐛 Fixed
+- Fix minor security issues in access controls, checkout, AI limits, and payment handling
+- Store notice is not displaying
+- Adding missing language strings in menu config
+
 ## [1.3.1] - 2026-09-20
 
 ### 🐛 Fixed
