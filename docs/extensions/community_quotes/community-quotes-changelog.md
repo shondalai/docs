@@ -15,6 +15,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [6.2.3] - 2026-09-27
+
+### 🚀 Added
+- Add AI credit balances to all component admin dashboards
+- Add quote recordings with playback independent of browser voices
+- Improve category navigation with searchable tree browser
+- Restrict menu sections to category branches
+- New AI service - "Build a collection on resilience" from your verified quotes
+- New AI service - Author biography drafts
+
+### 🐛 Fixed
+- Fix minor security issues in permissions, quote visibility, emails, and submissions
+- Use the correct quote language when switching translations
+- Respect the site’s language and script when formatting Quote of the Day dates
+- Normalize speech locales and select matching voices
+- Respect category publication, access and language
+- Render categories as a navigable tree
+- Use author categories in the authors directory
+- Include descendants in category filters and counts
+- Preserve author images when omitted from updates
+- Display author portraits in quote cards and profiles
+- Export all component language strings to React
+- Database false positive errors
+
 ## [6.2.1] - 2026-09-24
 
 ### 🚀 Added
