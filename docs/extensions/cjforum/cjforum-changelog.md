@@ -12,6 +12,23 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.5.0] - 2026-09-27
+
+### 🚀 Added
+- Organize profile settings in easy to use tabs
+- New permission to allow using forum signature at the user group level
+- New setting to restrict max length of the signature field
+- Add AI credit balances to all component admin dashboards
+- New option to make sidebar sticky
+- Add an option to configure max length of profile about field
+- Show inline images in topic/replies in a lightbox
+
+### 🐛 Fixed
+- Fix minor security issues across permissions, content visibility, profiles, attachments, and moderation; add regression tests.
+- Pinned topics are not showing at the top of the category topics page
+- Fixed issue with editor state after editing a reply
+- Adding missing language strings
+
 ## [6.4.4] - 2026-09-20
 
 ### 🚀 Added
