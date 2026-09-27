@@ -9,6 +9,32 @@ sidebar_position: 17
 
 Release notes for QuillThreads. The newest version is always at the top. You can update from within Joomla at **System → Update → Extensions** whenever a new release appears.
 
+## [1.1.3] - 2026-09-27
+
+### 🚀 Added
+- Add AI credit balances to all component admin dashboards
+- signed up for new-comment emails. Now the comment is still posted, the
+- does, so a member can no longer sign up for new-comment emails on an item
+- New AI feature - On-demand translation
+- New AI feature - Reply drafts and highlights
+- New AI feature - Discussion insights
+- New AI feature - Two-tier comment screening
+- Move permissions button to settings page
+- New captcha plugin to support guest comments
+
+### 🐛 Fixed
+- Fix minor security, notifications, storage cleanup, imports, and UI issues; add regression tests
+- reaction settings on the server and fixes author emails for non-article
+- Email notifications are not sent even they are in queue
+- Adding missing language strings
+- Fixes for dark mode compatibility
+
+### 🔒 Security
+- Only subscribe commenters who are allowed to subscribe
+- Show comments under the item they belong to
+- Only allow subscribing to discussions the member can see
+- Close abuse and permission gaps in the comments API
+
 ## [1.1.1] - 2026-09-20
 
 ### 🐛 Fixed
