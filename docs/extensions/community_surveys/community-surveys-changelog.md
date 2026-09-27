@@ -13,6 +13,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.5.0] - 2026-09-27
+
+### 🚀 Added
+- Add support for the Shondalai Connect app
+- login names and addresses. It is no longer built, and updating switches off
+- Their email address is included only when the author is an administrator
+- addresses or IP addresses in the response list, search or CSV, and the
+- New section heading question type
+- Add access level field in survey settings page
+
+### 🐛 Fixed
+- Fix minor security issues in survey permissions, responses, uploads, and integrations
+- Delete a survey's answers, files, tags and counters with it
+- Carry respondents' picks into carry-forward questions
+- Make the website follow survey rules the way the server does
+- Remove the unused legacy Surveys plugin
+- Show front-end members results for their own surveys only
+- Stop emailing respondents' account details to survey authors
+- Show survey authors only their respondents' display names
+- Stop showing survey authors' login usernames to visitors
+- Check that admin API errors and license replies send real headers
+- Only the admin who started a Google connection can finish it, once
+- Stop rewriting survey rules every time a survey loads
+- Require POST and a security token for every admin API change
+- Stop "Edit Own" from editing every survey in the administrator
+- Close security gaps in survey publishing, search and the public API
+- Do not fire too many save and cancel calls when editing survey questions
+- Database false positive errors
+- Thank you page do not hide the fields hidden in settings
+
 ## [8.4.0] - 2026-09-18
 
 ### 🚀 Added
