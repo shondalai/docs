@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.2.0] - 2026-09-27
+
+### 🚀 Added
+- Add AI credit balances to all component admin dashboards
+- Add support for the Shondalai Connect app
+- Batched cleanup: indexed queries with batch and time limits
+- Retention settings: defaults are 7 days for article reads, 90 for other events, and 30 for dead letters.
+- Cached capture check to skip unnecessary article-read events
+- Compact events to preserves duplicate protection, streaks, and historical totals.
+
+### 🐛 Fixed
+- Fix Rewardify permissions, reward accounting, event recovery, and AI cooldowns
+- Secure API writes, protect leaderboard privacy and add moderation
+- Database false positive errors
+
 ## [2.1.0] - 2026-09-18
 
 ### 🚀 Added
