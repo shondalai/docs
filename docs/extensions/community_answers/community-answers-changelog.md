@@ -13,6 +13,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.1.1] - 2026-09-27
+
+### 🚀 Added
+- Move Permissions to Settings and remove the unused Joomla admin toolbar
+- Add AI credit balances to all component admin dashboards
+- Add support for the Shondalai Connect app
+- Moderators are emailed about new reports, at most once per alert interval
+- New report reasons: hate speech, sexual content, violence or threats
+- New privacy and user plugins export and remove a member's data
+
+### 🐛 Fixed
+- Fix permissions, privacy leaks, bounty accounting, and admin UI issues
+- Accepting an answer no longer waits on AI indexing
+- Report alert emails had broken links on sites installed in a subfolder
+- Remove leftover pre-release 7.0.x version numbers
+- Saving AI drafts fails on sites upgraded from pre-release 7.1 builds
+- Moderation and privacy fixes for Community Answers
+- Database false positive errors
+
 ## [7.1.0] - 2026-09-18
 
 ### 🚀 Added
