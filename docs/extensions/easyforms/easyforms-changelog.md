@@ -10,6 +10,23 @@ All notable changes to EasyForms will be documented in this file.
 
 ---
 
+## [1.4.0] - 2026-09-27
+
+### 🚀 Added
+- Adding support for bulk delete submissions
+- Enhanced form submissions dashboard with quick reply support
+- Add AI credit balances to all component admin dashboards
+- Add support for the Shondalai Connect app
+- answer key points at the new values. Also fixes true or false template
+
+### 🐛 Fixed
+- Fix minor security issues and keep development tools out of release packages
+- AI translate modal do not show on tranlsations page
+- Quiz templates no longer reveal the right answer in option values
+- Form access rules now also cover translations, drafts and the AI chat
+- Quiz answers no longer leak and form access rules are enforced
+- Database false positive errors
+
 ## [1.3.0] - 2026-09-19
 
 ### 🚀 Added
