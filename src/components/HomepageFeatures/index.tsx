@@ -39,6 +39,7 @@ const productGroups: ProductGroup[] = [
     title: 'Build and collect',
     description: 'Forms, surveys, polls, quizzes, courses, and responses.',
     products: [
+      {code: 'VL', name: 'VidyaLMS', description: 'Courses, assessments, learner support, organizations, and shop access on Joomla and WordPress.', to: '/vidyalms/overview'},
       {code: 'EF', name: 'EasyForms', description: 'Forms, surveys, quizzes, payments, and workflows.', to: '/easyforms/overview'},
       {code: 'CS', name: 'Community Surveys', description: 'Survey building, distribution, responses, reports, and integrations.', to: '/community-surveys/overview'},
       {code: 'CP', name: 'Community Polls', description: 'Poll creation, voting, email templates, and advanced concepts.', to: '/community-polls/overview'},

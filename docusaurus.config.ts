@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Shondalai Documentation',
-  tagline: 'Guides, configuration, and developer references for the complete Shondalai Joomla extension suite',
+  tagline: 'Guides, configuration, and developer references for Shondalai extensions for Joomla and WordPress',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -67,6 +67,15 @@ const config: Config = {
   ],
 
   plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'vidyalms',
+        path: 'docs/extensions/vidyalms',
+        routeBasePath: 'vidyalms',
+        sidebarPath: './sidebars-vidyalms.ts',
+      },
+    ],
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -188,6 +197,10 @@ const config: Config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          {
+            from: '/vidyalms',
+            to: '/vidyalms/overview',
+          },
           // Redirect extension root paths to overview pages
           {
             from: '/community_surveys',
@@ -328,6 +341,7 @@ const config: Config = {
         indexBlog: false,
         indexPages: true,
         docsRouteBasePath: [
+          'vidyalms',
           'easyforms',
           'community-surveys',
           'community-polls',
@@ -355,11 +369,11 @@ const config: Config = {
     metadata: [
       {
         name: 'description',
-        content: 'Product guides, configuration help, and developer references for Shondalai Joomla extensions.',
+        content: 'Product guides, configuration help, and developer references for Shondalai extensions for Joomla and WordPress.',
       },
       {
         name: 'keywords',
-        content: 'Shondalai, Joomla extensions, EasyForms, EasyCommerce, Community Surveys, CjForum, Sociable, documentation',
+        content: 'Shondalai, Joomla extensions, WordPress, VidyaLMS, EasyForms, EasyCommerce, Community Surveys, CjForum, Sociable, documentation',
       },
     ],
     colorMode: {
@@ -377,6 +391,12 @@ const config: Config = {
           className: 'extensions-desktop',
           position: 'left',
           items: [
+            {
+              type: 'doc',
+              docId: 'overview',
+              docsPluginId: 'vidyalms',
+              label: 'VidyaLMS',
+            },
             {
               type: 'docSidebar',
               sidebarId: 'tutorialSidebar',
@@ -491,6 +511,10 @@ const config: Config = {
         {
           title: 'Products',
           items: [
+            {
+              label: 'VidyaLMS',
+              to: '/vidyalms/overview',
+            },
             {
               label: 'EasyForms',
               to: '/easyforms/overview',

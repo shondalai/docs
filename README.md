@@ -4,12 +4,14 @@ This is the user documentation portal for Shondalai Extensions Documentation, bu
 
 ## 📦 What's Included
 
-Complete end-user documentation for EasyForms covering:
+End-user documentation for the Shondalai product suite, including EasyForms and VidyaLMS, covering:
 - Form building and design
 - AI-powered features
 - Analytics and reporting
 - Integrations with third-party services
 - And much more
+
+VidyaLMS has dedicated guides for Joomla and WordPress at `/vidyalms/overview`. They cover setup, teaching, assessment, organization learning, EasyCommerce/WooCommerce access, communication, AI, reports, and maintenance. The source lives in `docs/extensions/vidyalms/`; see [the VidyaLMS maintenance notes](VIDYALMS-DOCS.md) before updating these guides.
 
 ## 🚀 Quick Start
 
@@ -42,7 +44,7 @@ This command generates static content into the `build` directory, which can be s
 
 ## 📝 Syncing Documentation
 
-Documentation is sourced from the EasyForms extension folder. To sync the latest docs:
+The EasyForms documentation is sourced from its extension folder. To sync those guides:
 
 ```powershell
 .\scripts\sync-docs.ps1
@@ -51,6 +53,8 @@ Documentation is sourced from the EasyForms extension folder. To sync the latest
 This script copies `easyforms/docs/end-user/*.md` → `docs/extensions/easyforms/`
 
 Run this script whenever you update documentation in the EasyForms repository.
+
+The VidyaLMS user guides are maintained directly in this portal. Do not overwrite them with the LMS's technical design documents or older feature plans.
 
 ## 🗂️ Project Structure
 

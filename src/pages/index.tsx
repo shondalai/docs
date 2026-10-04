@@ -23,9 +23,9 @@ function HomepageHeader() {
           </Heading>
           <p className={styles.heroDescription}>
             Setup, configuration, day-to-day operations, and developer
-            references for Shondalai’s Joomla extensions.
+            references for Shondalai’s Joomla and WordPress extensions.
           </p>
-          <p className={styles.heroMeta}>14 active documentation areas</p>
+          <p className={styles.heroMeta}>15 active documentation areas</p>
         </div>
 
         <div className={styles.heroUtility}>
@@ -61,8 +61,8 @@ function HomepageHeader() {
 export default function Home(): ReactNode {
   return (
     <Layout
-      title="Joomla extension guides"
-      description="Documentation for Shondalai Joomla extensions, including setup, configuration, operations, and developer guides.">
+      title="Joomla and WordPress extension guides"
+      description="Documentation for Shondalai Joomla and WordPress extensions, including setup, configuration, operations, and developer guides.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
