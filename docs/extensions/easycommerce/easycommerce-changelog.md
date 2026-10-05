@@ -6,6 +6,17 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.3.3] - 2026-10-05
+
+### 🚀 Added
+- Add sortable created date column on admin products listing page
+- Adding custom html section support in product layouts
+- Improved orders and subscription screens on mobile app
+- Allow partial refund on mobile app
+
+### 🐛 Fixed
+- Stripe currency handling with UGX and ISK
+
 ## [1.3.2] - 2026-09-27
 
 ### 🚀 Added
