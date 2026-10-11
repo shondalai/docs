@@ -14,6 +14,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.3.3] - 2026-10-11
+
+### 🚀 Added
+- Added edit and delete for Super Users on members' visible posts with server-side checks
+- Added enhancements to the dashboard user experience
+- Changed group button text from Joined to Leave on hover
+
+### 🐛 Fixed
+- Showed Comments closed on locked posts, kept comments readable and disabled new comments
+- Bypassed Sociable's login overrides on Joomla logout
+- Stopped group title from overlapping the cover image
+- Corrected logout button failure when Joomla ran in a subdirectory
+
 ## [3.3.2] - 2026-09-27
 
 ### 🚀 Added
