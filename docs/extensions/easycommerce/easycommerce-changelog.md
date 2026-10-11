@@ -6,6 +6,20 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.3.4] - 2026-10-11
+
+### 🚀 Added
+- Enhanced dashboard user experience
+- Added logging functionality to licensing plugin with configurable log levels
+- Enhanced licensing plugin with API endpoint validation and security headers
+
+### 🐛 Fixed
+- Fixed digital products being wrongly identified as variable subscription and blocking checkout
+- Hid SKU and stock for digital products
+- Showed shop page when no menu configuration was found
+- Fixed boot issue when core library is missing
+- Closed the recovery channel automatically for recovered subscriptions
+
 ## [1.3.3] - 2026-10-05
 
 ### 🚀 Added
