@@ -6,6 +6,18 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.3.5] - 2026-10-13
+
+### 🚀 Added
+- Added Required and Hidden checkboxes for checkout fields, making hidden fields optional
+- Automatically selected the only payment method
+
+### 🐛 Fixed
+- Fixed unable to download files when stored in local path
+- Fixed coupon limits and expiry dates not saving, and enforced percentage discount caps
+- Fixed some coupon settings being cleared after save
+- Fixed wrong message shown when backend cannot delete invoiced orders
+
 ## [1.3.4] - 2026-10-11
 
 ### 🚀 Added
