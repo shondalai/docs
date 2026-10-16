@@ -6,6 +6,12 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.3.7] - 2026-10-16
+
+### 🚀 Added
+- Allowed customers to download digital products without enabling software licensing
+- Claimed purchases made as guest with same email
+
 ## [1.3.6] - 2026-10-16
 
 ### 🚀 Added
