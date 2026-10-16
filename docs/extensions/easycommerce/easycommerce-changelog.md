@@ -6,6 +6,14 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.3.6] - 2026-10-16
+
+### 🚀 Added
+- Used Shondalai email queue service for sending emails
+
+### 🐛 Fixed
+- Guest checkout failing
+
 ## [1.3.5] - 2026-10-13
 
 ### 🚀 Added
