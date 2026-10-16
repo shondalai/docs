@@ -41,7 +41,7 @@ const sidebars: SidebarsConfig = {
     ]},
     'learner-guide',
     {type: 'category', label: 'Help and reference', items: [
-      'help/troubleshooting', 'help/feature-reference', 'help/glossary',
+      'help/free-pro', 'help/troubleshooting', 'help/feature-reference', 'help/glossary',
       'vidyalms-changelog',
     ]},
   ],

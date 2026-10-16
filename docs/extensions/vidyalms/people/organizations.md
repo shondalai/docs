@@ -3,6 +3,8 @@ title: Set up organizations and their teams
 description: Create organizations, manage members and units, and delegate administration safely.
 ---
 
+> **Requires Pro.** This guide covers features supplied by the VidyaLMS Pro add-on. See the [Free and Pro comparison](../help/free-pro.md).
+
 An organization keeps a company's or team's people and learning together. Several organizations can share your academy while keeping their administration and reports separate.
 
 ## Create an organization

@@ -45,7 +45,7 @@ If someone else edits settings while your form is open, reload the latest values
 | How messages are delivered | **Notifications → Channels** |
 | Email wording and branding | **Email templates** |
 | The sender address or SMTP connection | Joomla mail settings or your WordPress mail plugin |
-| A certificate design | **Certificates → Templates & customization** |
+| A certificate design | **Certificates → Templates & customization** in Pro; Free uses a standard printable certificate |
 | A teaching permission | Joomla permissions or WordPress user roles, plus the course teaching team |
 
 </div>

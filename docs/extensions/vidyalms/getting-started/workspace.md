@@ -25,7 +25,7 @@ In **Courses**, search by title, filter by category or publication state, choose
 
 Open the course to edit it. Publication and trash actions affect learner access, so read their confirmation before using them. The [course builder guide](../courses/course-builder.md) explains draft, published, archived, and trashed states.
 
-Question banks have their own search, status, ownership, and editing tools. Course ownership and site-wide sharing determine where a bank can be used. See [question banks](../courses/question-banks.md).
+With Pro, question banks have their own search, status, ownership, and editing tools. Course ownership and site-wide sharing determine where a bank can be used. See [question banks](../courses/question-banks.md). In Free, author quiz questions inside the course.
 
 ## Choose the right workspace for a task
 
@@ -37,8 +37,9 @@ Question banks have their own search, status, ownership, and editing tools. Cour
 | Assess a learner's submission | Course Gradebook or the teaching assessment queue |
 | Find a person and their learning | Learners |
 | Add or review course membership | Enrolments |
-| Manage a company or department | Organizations |
-| Review outcomes or export evidence | Reports |
+| Manage a company or department | Organizations (Pro) |
+| Review course progress | Dashboard and the course Gradebook |
+| Run advanced reports or export evidence | Reports (Pro) |
 | Change what learners receive | Notifications and Email templates |
 | Investigate background processing | System health |
 | Change academy configuration | Settings |

@@ -3,6 +3,8 @@ title: Manage seats and invitations
 description: Allocate limited learning places, handle pending allocations, and understand seat return policies.
 ---
 
+> **Requires Pro.** This guide covers features supplied by the VidyaLMS Pro add-on. See the [Free and Pro comparison](../help/free-pro.md).
+
 A **seat** is a training place in a course. A **seat pool** records how many places an organization can allocate. The shop may fund those places, but VidyaLMS manages who uses them.
 
 Seat-management features depend on the installed organization package and your permissions.

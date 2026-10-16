@@ -7,7 +7,9 @@ Open **Certificates** to work with issued certificates and their templates. A te
 
 ## Create a template
 
-Start with a supplied design or create one from scratch. Add the academy name, learner name, course title, issue date, and any verification information needed for your programme.
+Free issues a standard HTML completion certificate with a verification code. Learners can download it and print it from their browser. You can manage issued certificates and revoke them when needed.
+
+The design and template instructions below require **Pro**. With Pro, start with a supplied design or create one from scratch. Add the academy name, learner name, course title, issue date, and any verification information needed for your programme. Pro also supplies PDF generation and correction/reissue tools.
 
 Use the designer's content fields for values that change for each learner. Review the design, content, and settings sections. Where the full designer is available, check page size, elements, and layers before publishing.
 

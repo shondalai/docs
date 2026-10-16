@@ -45,6 +45,6 @@ An administrator preview helps with content, but it does not prove that a learne
 
 ## 5. Add the next feature
 
-Once the simple course works, add an [assignment](../courses/assignments.md), select a [certificate template](../credentials/certificates.md), or connect a [paid shop product](../commerce/overview.md). Change one part at a time so you can tell which setting produced the result.
+Once the simple course works, add an [assignment](../courses/assignments.md), enable a [completion certificate](../credentials/certificates.md), or connect a [paid shop product](../commerce/overview.md). Free issues a standard printable HTML certificate; custom certificate templates require Pro. Change one part at a time so you can tell which setting produced the result.
 
 Check the learner record and [reports](../reports/reports.md) to see the evidence from your test. Keep test accounts clearly named so they do not get confused with real learners.

@@ -25,7 +25,7 @@ The learner pages use an open layout inside your site's content area. Your CMS t
 
 </div>
 
-When hiding the header, first add working links to the catalogue, My learning, achievements, organizations, and preferences elsewhere on your site. The focused course player keeps its own learning controls.
+When hiding the header, first add working links to the catalogue, My learning, achievements, and preferences elsewhere on your site. Add organizations and AI activity links only when Pro supplies those pages. The focused course player keeps its own learning controls. Guest navigation shows the public learning entry point; personal learning and account links appear after sign-in.
 
 ## Add your branding
 

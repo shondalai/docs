@@ -5,6 +5,8 @@ description: A practical end-to-end checklist for a Joomla or WordPress learning
 
 Run these checks with the same theme, email service, shop, and permissions you will use for real learners. A site that works for an administrator may still have a broken learner menu or a missing instructor permission.
 
+Skip the organization, report-export and custom-automation checks on Free; those features require Pro. Free still supports the teaching, sales, email and standard-certificate checks below. See [Free and Pro compared](../help/free-pro.md).
+
 ## Website and navigation
 
 - Open the catalogue, My learning, achievements, organizations, and notification preferences from the public navigation.

@@ -32,7 +32,7 @@ For a frontend instructor page, both its menu access level and the person's teac
 
 In **Users**, assign the **VidyaLMS Instructor** role for teaching work. The plugin supplies teaching, grading, enrolment, and reporting capabilities for this role. Add the person to the relevant course's teaching team.
 
-The **VidyaLMS Organisation Administrator** role opens the delegated organization area. It does not make the user a site administrator or give them authority over every organization. Their organization role and unit assignments still determine what they can manage.
+With Pro, the **VidyaLMS Organisation Administrator** role opens the delegated organization area. It does not make the user a site administrator or give them authority over every organization. Their organization role and unit assignments still determine what they can manage. Free does not provide organization management.
 
 An existing custom role can be configured by your site administrator if it needs only selected VidyaLMS capabilities. Avoid granting WordPress Administrator just to make one missing course button appear.
 

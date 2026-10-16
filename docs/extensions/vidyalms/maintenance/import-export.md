@@ -3,6 +3,8 @@ title: Import courses, questions, and rosters
 description: Plan a transfer, preview supported content, and review import results before publishing.
 ---
 
+> **Requires Pro.** This guide covers features supplied by the VidyaLMS Pro add-on. See the [Free and Pro comparison](../help/free-pro.md).
+
 Open **Import and transfer** for the importers installed on your site. Importing learning content, importing people, and exporting a report are different tasks. Choose the tool that matches the information you are moving.
 
 ## Prepare a small transfer first

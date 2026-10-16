@@ -3,6 +3,8 @@ title: Configure AI assistants
 description: Connect AI services, enable helpers, set data-use boundaries, and review generated work.
 ---
 
+> **Requires Pro.** This guide covers features supplied by the VidyaLMS Pro add-on. See the [Free and Pro comparison](../help/free-pro.md).
+
 Open **AI** for the academy's AI controls. AI can help draft learning material, suggest feedback, explain mistakes, or summarize reports. People remain responsible for reviewing the result.
 
 ## Understand the four controls

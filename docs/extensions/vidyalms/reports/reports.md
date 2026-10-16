@@ -3,6 +3,8 @@ title: Review progress and export reports
 description: Find learner, course, organization, assessment, and evidence reports and export the right scope.
 ---
 
+Free includes the dashboard, course progress, gradebook and scoped learner activity. The reporting workspace, organization reports, exports and schedules described below require **Pro**. See the [edition comparison](../help/free-pro.md).
+
 Open **Reports** and choose a report from the catalogue. Start with the question you need to answer, then choose the smallest useful scope.
 
 ## Choose a report

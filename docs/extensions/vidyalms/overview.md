@@ -8,6 +8,8 @@ VidyaLMS helps you turn what you know into courses people can follow, practise, 
 
 These guides are for the people who run the academy, teach its courses, and support its learners. You do not need to be a developer to follow the everyday setup instructions.
 
+Free includes courses, quizzes, assignments, enrolment, progress, printable HTML certificates and shop integration. Pro adds organization training, advanced assessment, certificate design, automation, reporting exports, migration and AI tools. See the [Free and Pro comparison](help/free-pro.md) before following a guide for one of those areas.
+
 ## Start with your platform
 
 <div className="table-wrapper" tabIndex={0} role="region" aria-label="Scrollable reference table">
@@ -42,7 +44,7 @@ Your CMS continues to manage website accounts and sign-in. For paid courses, **E
 
 ## Why your screen may look different
 
-The available controls depend on your permissions and the extensions installed on your site. Pro and Business features add assessment tools, organization services, report formats, and integrations. A feature listed as optional in these guides requires its supporting package or connected service; installing VidyaLMS alone does not configure that service.
+The available controls depend on your permissions and the extensions installed on your site. Pro adds assessment tools, organization services, report formats, and integrations. A feature listed as optional in these guides requires its supporting package or connected service; installing VidyaLMS alone does not configure that service.
 
 The [feature reference](help/feature-reference.md) points to the right guide for each area and explains these dependencies. If a button is missing, check that reference before changing permissions or reinstalling anything.
 

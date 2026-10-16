@@ -5,6 +5,8 @@ description: Configure Joomla and WordPress scheduled processing for notificatio
 
 Some actions finish in the background so a person does not have to leave a browser page open. Notifications, larger reports, certificate work, and shop reconciliation depend on reliable scheduled processing.
 
+Free needs scheduled processing for learning progress, notifications, standard certificates and shop access. Pro adds work for reports, imports, organizations, AI and automations. Configure the tasks offered by the packages installed on your site.
+
 ## Joomla setup
 
 Enable the installed VidyaLMS task plugin, then open **System → Manage → Scheduled Tasks**. Configure the supplied task types appropriate to your site.

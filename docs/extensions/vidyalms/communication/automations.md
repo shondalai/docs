@@ -3,6 +3,8 @@ title: Build and run automations
 description: Create event-based workflows, rehearse them, and review their activity before enabling them for learners.
 ---
 
+> **Requires Pro.** This guide covers features supplied by the VidyaLMS Pro add-on. See the [Free and Pro comparison](../help/free-pro.md).
+
 Open **Automations** to connect an event with one or more actions. For example, you might follow a course completion with a message, or remind a particular audience after a delay.
 
 The available actions depend on installed features and your permissions. An automation cannot grant its owner rights they do not already have.

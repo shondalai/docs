@@ -3,6 +3,8 @@ title: Use credits, badges, and digital credentials
 description: Configure available recognition options and understand the dependencies of signed credential formats.
 ---
 
+> **Requires Pro.** This guide covers features supplied by the VidyaLMS Pro add-on. See the [Free and Pro comparison](../help/free-pro.md).
+
 Certificates, continuing-education credit, and badges recognize different things. Choose the form that matches what your academy is actually authorized to award.
 
 ## Continuing-education credit

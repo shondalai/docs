@@ -3,6 +3,8 @@ title: Connect an organization directory or single sign-on
 description: Understand domain verification, directory-managed membership, and the responsibilities of your sign-in provider.
 ---
 
+> **Requires Pro.** This guide covers features supplied by the VidyaLMS Pro add-on. See the [Free and Pro comparison](../help/free-pro.md).
+
 Your CMS remains responsible for signing people in. VidyaLMS can use installed identity and directory integrations to connect those people with the right organization and learning context.
 
 These are optional organization services. Their setup normally involves your website administrator and the person who manages your company's identity provider.

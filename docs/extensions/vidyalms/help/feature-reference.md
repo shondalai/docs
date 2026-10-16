@@ -5,6 +5,8 @@ description: Find configuration help for every major area and understand platfor
 
 This reference describes the current implementation used for these guides. Your permissions, installed packages, and configured services determine which controls appear. A capability listed by the system is not necessarily a fully configured external connection.
 
+Start with the [Free and Pro comparison](free-pro.md). Free includes the complete basic course workflow. Organization management, custom automations, migration tools, the AI workspace, certificate design and reporting exports require Pro; their screens appear only when the supporting package is installed.
+
 ## Installation and site configuration
 
 <div className="table-wrapper" tabIndex={0} role="region" aria-label="Scrollable reference table">

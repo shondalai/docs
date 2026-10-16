@@ -3,6 +3,8 @@ title: Offer and assign organization learning
 description: Release courses, assign required training, and help learners find their organization's courses.
 ---
 
+> **Requires Pro.** This guide covers features supplied by the VidyaLMS Pro add-on. See the [Free and Pro comparison](../help/free-pro.md).
+
 An organization needs to know which courses it may offer. A member then needs an appropriate assignment or seat to take the training. This prevents joining an organization from accidentally unlocking your entire catalogue.
 
 ## Release a course
