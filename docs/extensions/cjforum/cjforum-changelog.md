@@ -12,6 +12,24 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.5.2] - 2026-10-23
+
+### 🚀 Added
+- Standardized common features across Shondalai products
+- Added support for Joomla's typed removal and export events
+- Enhanced dashboard user experience
+- Updated sorting labels and added test for sort definitions
+
+### 🐛 Fixed
+- Fixed New Topic button text not being visible in mobile view
+- Preserved language and menu context across API requests, topic creation, editing, navigation, and reloads
+- Fixed multilingual category filtering and duplicate Create Topic breadcrumbs
+- Fixed flagged reports not carrying the correct reported content ID
+- Fixed missing Process Email Queue scheduled task
+- Approving a pending reply, individually or in bulk, now triggers notifications
+- Classic template now saves the reply notification checkbox correctly
+- Fixed uninstalling CjForum removing shared libraries
+
 ## [6.5.1] - 2026-10-03
 
 ### 🚀 Added
