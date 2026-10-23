@@ -5,6 +5,8 @@ description: Blend VidyaLMS into your Joomla template or WordPress theme using o
 
 Open **Settings → Learner experience**. These choices apply to all learners. Learners do not choose their own navigation position.
 
+For colors, typography, card and button shapes, reusable presets and template integration, open **Settings → Appearance**. See [Design your learning area](branding.md).
+
 ## Choose a navigation layout
 
 **Top navigation** places the learning links beside your academy name. It suits a course area that forms part of a larger Joomla or WordPress website.
@@ -40,7 +42,7 @@ The header logo is separate from the default issuer logo used by certificates an
 
 ## Dark mode and page loading
 
-The learner interface responds to supported site-theme and browser color-scheme signals. If part of the page stays light, compare the course area with the surrounding template; a custom template may need to expose its chosen mode consistently. Embedded videos and external tools control their own appearance.
+Under **Settings → Appearance**, choose whether the learner interface follows the site template, follows the browser preference, or stays light or dark. If part of the page uses a different palette, compare the course area with the surrounding template and check the [template integration contract](template-integration.md). Embedded videos and external tools control their own appearance.
 
 Learning navigation uses an app-like transition where supported, with skeleton placeholders while content loads. Links to a separate shop or another CMS component can perform an ordinary page navigation. That is expected: the destination is outside the learning workspace.
 

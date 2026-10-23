@@ -10,6 +10,7 @@ const sidebars: SidebarsConfig = {
     ]},
     {type: 'category', label: 'Configure your academy', items: [
       'configuration/settings', 'configuration/learner-experience',
+      'configuration/branding', 'configuration/template-integration',
       'configuration/users-permissions', 'configuration/files-storage', 'configuration/languages',
     ]},
     {type: 'category', label: 'Build and teach courses', items: [

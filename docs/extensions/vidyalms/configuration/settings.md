@@ -20,7 +20,7 @@ Open **VidyaLMS → Settings** on either platform. Use **Find a setting** when y
 | **Network & security** | External hosts integrations may contact and request timeout | Add only the service hosts your configured integrations need. |
 | **Shop integrations** | Shop setup, course mappings where supported, and background enrolment account | Follow the guide for [EasyCommerce](../commerce/easycommerce.md) or [WooCommerce](../commerce/woocommerce.md). |
 | **Learning activity** | Progress heartbeat and background-service information | Treat this as an operational summary; open System health to investigate work that is not running. |
-| **Appearance** | Workspace appearance controls offered by the installed dashboard | Check the result in the actual admin workspace. Learner-header settings live under Learner experience. |
+| **Appearance** | Learner colors, typography, spacing, template integration and reusable presets | Start with a preset, check the live preview and save. See [Design your learning area](branding.md). Header content remains under Learner experience. |
 
 </div>
 

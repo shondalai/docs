@@ -24,6 +24,7 @@ The feature split is the same on Joomla and WordPress. Their shop integrations d
 | Importing from another learning system | Not included | Migration tools, roster imports and question interchange |
 | AI tools | Not included | AI workspace and optional model connections |
 | Privacy and accessibility | Included | Included for Pro features too |
+| Learner branding | Visual editor, live previews, light/dark palettes, template integration, presets and import/export | Included |
 
 </div>
 
