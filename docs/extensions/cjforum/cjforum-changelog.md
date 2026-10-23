@@ -12,6 +12,14 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.5.3] - 2026-10-23
+
+### 🚀 Added
+- Added a setting to customize the number of replies shown per page
+
+### 🐛 Fixed
+- Fixed reply pagination across forum templates
+
 ## [6.5.2] - 2026-10-23
 
 ### 🚀 Added
