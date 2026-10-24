@@ -9,6 +9,20 @@ sidebar_position: 17
 
 Release notes for QuillThreads. The newest version is always at the top. You can update from within Joomla at **System → Update → Extensions** whenever a new release appears.
 
+## [1.1.4] - 2026-10-24
+
+### 🚀 Added
+- Used Shondalai email queue service for sending emails
+- Enhanced dashboard user experience
+- Added native comment tools, videos and avatars
+
+### 🐛 Fixed
+- Fixed Captcha plugin so reCaptcha no longer shows on registration page
+- Fixed missing Process email queue schedule task
+- Replaced hardcoded admin text with Joomla translations
+- Improved emoji picker layout and feature settings
+- Fixed hardcoded language strings in admin dashboard
+
 ## [1.1.3] - 2026-09-27
 
 ### 🚀 Added
