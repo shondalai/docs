@@ -7,6 +7,11 @@ You can build and teach a complete course with VidyaLMS Free. There is no learne
 
 The feature split is the same on Joomla and WordPress. Their shop integrations differ: Joomla uses EasyCommerce and WordPress uses WooCommerce.
 
+The WordPress Free download includes the code needed for its own features. Organization tools,
+course cohorts, assessment analysis, certificate design, imports and AI tools come with the
+separate Pro package. Install matching versions of Free and Pro when you upgrade; your existing
+courses and learner progress stay in place.
+
 <div className="table-wrapper" tabIndex={0} role="region" aria-label="Free and Pro feature comparison">
 
 | What you need | Free | With Pro |
@@ -21,6 +26,7 @@ The feature split is the same on Joomla and WordPress. Their shop integrations d
 | Reporting exports | Not included | CSV, JSON, Excel and PDF, with schedules |
 | Email | Essential notifications, editable templates and learner preferences | Custom automation rules and additional channel integrations |
 | Organization training | Not included | Organizations, units, members, seats and organization learning pages |
+| Course cohorts | Not included | Group learners into cohorts within a course |
 | Importing from another learning system | Not included | Migration tools, roster imports and question interchange |
 | AI tools | Not included | AI workspace and optional model connections |
 | Privacy and accessibility | Included | Included for Pro features too |
