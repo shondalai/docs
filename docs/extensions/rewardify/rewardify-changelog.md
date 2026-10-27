@@ -13,6 +13,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.2.1] - 2026-10-27
+
+### 🚀 Added
+- Integrated shondalai email queue service for sending emails
+- Enhanced dashboard user experience
+
+### 🐛 Fixed
+- Corrected leaderboard module listing nobody as its helper never received the database
+
 ## [2.2.0] - 2026-09-27
 
 ### 🚀 Added
