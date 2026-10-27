@@ -18,6 +18,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.6.1] - 2026-10-27
+
+### 🚀 Added
+- Added regression tests
+- Added use of the shondalai email queue service for sending emails
+- Enhanced dashboard user experience
+
+### 🐛 Fixed
+- Corrected URL encoding in track, category and profile links
+- Fixed route playback, pause, reset and endpoint handling
+- Scoped CSS resets to prevent site logo distortion
+- Fixed JomSocial avatars and profile links
+- Moved UI translations to Joomla language files and preserved customised email templates during upgrades
+
 ## [7.6.0] - 2026-09-27
 
 ### 🚀 Added
