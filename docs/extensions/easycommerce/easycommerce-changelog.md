@@ -6,6 +6,20 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.4.0] - 2026-10-27
+
+### 🚀 Added
+- Captured gateway fees on Stripe renewals, including delayed fees
+- Showed gateway fees and net sales on sales report and sales overview
+- Added Bugfix and Security release labels to version settings, shop cards, and My Downloads
+
+### 🐛 Fixed
+- Corrected payment gateway fee currency detection and recording
+- Safely reconciled overdue subscriptions and validated linked Stripe renewal orders
+- Fixed overdue subscription handling
+- Fixed AI assistant order date filtering and prevented incorrect payment status claims
+- Fixed logout failure on the account page
+
 ## [1.3.7] - 2026-10-16
 
 ### 🚀 Added
