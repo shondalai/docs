@@ -14,6 +14,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.3.4] - 2026-10-28
+
+### 🚀 Added
+- Added browser-history routing for smooth Sociable navigation without page reloads
+- Standardized the common features across shondalai products
+- Added shondalai email queue service for sending emails
+
+### 🐛 Fixed
+- Read the typed user events so new accounts get their Sociable profile
+- Skipped the article activity for an author without a Sociable profile
+- Showed a pointer cursor on the app's enabled buttons
+- Named icon-only comment and toolbar controls and raised avatar initials contrast
+- Read API timestamps as UTC so recent posts displayed their real age
+- Carried the author's verified flag on feed items and the native profile page
+- Returned the reaction summary from the SDK ActivityApi::react()
+- Served notification and suggestion avatars through the profile avatar URL
+- Answered "My groups" instead of a 500 for signed-in members
+- Named icon-only comment and toolbar controls and raised avatar initials contrast
+- Read API timestamps as UTC so recent posts displayed their real age
+- Carried the author's verified flag on feed items and the native profile page
+- Returned the reaction summary from the SDK ActivityApi::react()
+- Served notification and suggestion avatars through the profile avatar URL
+- Answered "My groups" instead of a 500 for signed-in members
+- Fixed Site Name flashing as "Sociable" on initial page load
+
 ## [3.3.3] - 2026-10-11
 
 ### 🚀 Added
