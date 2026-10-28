@@ -15,6 +15,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [6.2.4] - 2026-10-28
+
+### 🚀 Added
+- Used Shondalai email queue service for sending emails
+- Enhanced dashboard user experience
+- Added sr-YU language translations (thanks Subotic for your contribution)
+
+### 🐛 Fixed
+- Fixed the "discussed" sort when there are no comment counts
+- Ordered quotes created at the same time by ID so the wall stays stable
+
 ## [6.2.3] - 2026-09-27
 
 ### 🚀 Added
