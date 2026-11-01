@@ -18,6 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.7.0] - 2026-11-01
+
+### 🚀 Added
+- Added route video creator with smooth animations, custom styles, and optional music
+
 ## [7.6.1] - 2026-10-27
 
 ### 🚀 Added
