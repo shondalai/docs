@@ -16,26 +16,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [8.6.0] - 2026-11-02
 
 ### 🚀 Added
+- Keep survey-wide AI summaries out of filtered reports.
+- Preserve language filters when opening the full report.
+- Apply the selected language to charts, totals and CSV/PDF exports.
+- Include Unknown and previously used languages in filter choices.
+- Add response language filters to reports and survey results.
 - Make source language selection clearer and protect edits from delayed AI updates.
 - Preserve translations when editing, copying, reordering and importing surveys.
 - Enhance matching question type with weight assignment and persistence for unique-answer rules
 - Weighted scoring - Add configurable column weights with total or average scoring, ranked results, and CSV/PDF exports.
 - Customizable header names in CSV report
 - Use shondalai email queue service for sending emails
-- Add a field to change the owner of the survey
-- Enhanced dashboard user experience
-- Adding Italian language translation
-- Support for global survey keys
 
 ### 🐛 Fixed
+- Fix missing respondent details in notification emails and add a username placeholder
+- Clear stale selections when filters change.
 - Keep survey listings, modules and counts consistent across languages.
 - Fix integration retries without losing delivery details.
 - Use the selected language consistently in invitations and emails.
 - Keep the selected language and correct page when resuming surveys.
 - Survey modules print nothing while the component is disabled
 - Create the response on the first answer, not on every survey page view
-- Do not show export button when user have no permissions
-- Enhance multi-rating and slider answer handling in PDF reports
 
 ## [8.5.1] - 2026-10-09
 
