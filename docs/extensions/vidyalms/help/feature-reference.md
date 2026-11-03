@@ -21,6 +21,7 @@ Start with the [Free and Pro comparison](free-pro.md). Free includes the complet
 | Instructors, organization administrators, and course permissions | [Users and permissions](../configuration/users-permissions.md) |
 | Upload limits, private PDFs, submission photos, and signed downloads | [Files and storage](../configuration/files-storage.md) |
 | French, Joomla overrides, WordPress translations, and React text | [Languages](../configuration/languages.md) |
+| Content languages, scoped Joomla catalogues, course associations, routing, and Smart Search | [Multilingual courses](../configuration/multilingual-courses.md) |
 
 </div>
 

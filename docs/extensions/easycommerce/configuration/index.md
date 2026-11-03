@@ -27,6 +27,10 @@ EasyCommerce settings are organized into logical sections. The settings UI is re
 | [SEO](seo-settings.md) | Breadcrumbs, schema, sitemap, canonical URLs |
 | [Advanced](advanced-settings.md) | REST API, webhooks, logging, geolocation, security |
 
+## Multilingual Stores
+
+Use Joomla's language configuration together with EasyCommerce's product and category **Content language** fields. Follow [Multilingual Support](multilingual-support.md) to configure languages, menus, translations, emails and invoices.
+
 ## Saving Settings
 
 - Click **Save** to persist changes; a dot indicator appears beside the save button while there are unsaved edits.

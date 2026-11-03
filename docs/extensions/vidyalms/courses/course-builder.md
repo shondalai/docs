@@ -30,6 +30,8 @@ Choose a category learners will recognize. Categories organize discovery; they d
 
 Set language and level accurately. Add the teaching team if more than one person will prepare or assess the course. Their account permissions still determine what they can do.
 
+On Joomla, choose from enabled Content Languages and use a matching language-specific category or an All Languages category. Separate language versions can be linked without sharing enrolments or progress. The [multilingual courses guide](../configuration/multilingual-courses.md) covers language selection, catalogue menus, and counterparts.
+
 ## Publish with confidence
 
 Complete the curriculum, review access and completion settings, then open **Publishing**. Resolve the readiness issues shown and publish. Use **Preview course** to review presentation, followed by a normal learner account to check actual access and progression.

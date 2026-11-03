@@ -12,6 +12,7 @@ const sidebars: SidebarsConfig = {
       'configuration/settings', 'configuration/learner-experience',
       'configuration/branding', 'configuration/template-integration',
       'configuration/users-permissions', 'configuration/files-storage', 'configuration/languages',
+      'configuration/multilingual-courses',
     ]},
     {type: 'category', label: 'Build and teach courses', items: [
       'courses/course-builder', 'courses/lessons', 'courses/access-progression',

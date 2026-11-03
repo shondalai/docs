@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="easycommerce" method="upgrade">
+    <name>PLG_EASYCOMMERCE_ACMECATALOG</name>
+    <author>Example Developer</author>
+    <version>1.0.0</version>
+    <description>PLG_EASYCOMMERCE_ACMECATALOG_DESCRIPTION</description>
+    <namespace path="src">Acme\Plugin\EasyCommerce\AcmeCatalog</namespace>
+    <files>
+        <folder plugin="acmecatalog">services</folder>
+        <folder>src</folder>
+        <folder>language</folder>
+    </files>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/plg_easycommerce_acmecatalog.ini</language>
+        <language tag="en-GB">en-GB/plg_easycommerce_acmecatalog.sys.ini</language>
+    </languages>
+</extension>

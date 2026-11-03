@@ -18,6 +18,7 @@ The list opens in table view by default. Use the view toggle in the header to sw
 | Control | Purpose |
 |---------|---------|
 | Search | Debounced search across name, SKU, description |
+| Content language | Show all languages, All languages (*), or a specific published language |
 | Page size | 10, 20, 50, or 100 rows per page |
 | Sort | Newest, Oldest, Name A-Z, Name Z-A, Price low/high |
 | Filters | Toggles the Advanced Filters panel |
@@ -47,7 +48,7 @@ Click **Add Product**. The editor uses a tab-based layout. You do not need to ch
 
 | Tab | Contents |
 |-----|----------|
-| General | Name, slug, short description, full description, type, category, status |
+| General | Name, slug, short description, full description, type, content language, category, status |
 | Pricing | Regular price, sale price, sale schedule, tax class |
 | Inventory | SKU, stock management toggle, quantity, backorder policy, low-stock threshold |
 | Shipping | Weight, dimensions, shipping class |
@@ -60,6 +61,10 @@ Click **Add Product**. The editor uses a tab-based layout. You do not need to ch
 | Advanced | Menu order, purchase note, custom fields |
 
 Plugin-contributed tabs can appear after the core tabs (for example, Downloads adds a Files tab on Digital products).
+
+## Product and Category Languages
+
+Set **General > Content language** to a specific storefront language, or **All languages (*)** for shared content. The category editor also has a **Content language** field, and the Categories list can be filtered by language. Product assignments and category hierarchies must use compatible languages. See [Multilingual Support](../configuration/multilingual-support.md) for setup and examples.
 
 ## Product Types
 

@@ -72,6 +72,15 @@ A help card lists the method categories the system understands:
 
 See [Shipping Plugins](../shipping-plugins/index.md) for per-plugin setup.
 
+### Limit a carrier to selected countries
+
+Each shipping plugin's **Configure** form includes **Country availability**. Choose **All countries**, **Only selected countries**, or **All except selected countries**, then select the relevant countries and save. This also applies to the Manual Shipping plugin.
+
+Shipping rules use the **delivery destination country**; payment plugins use the billing country. A restricted carrier is unavailable until a valid destination country has been supplied. Its rates are filtered out when the destination is outside its allowed countries. Checkout refreshes rates when the address changes and checks the selected rate again when creating the order.
+
+Country availability works alongside shipping zones and carrier service coverage. It does not create a rate for a destination the carrier does not serve. If every carrier is excluded, the customer must choose a supported destination or another available method; EasyCommerce does not substitute a free rate.
+
+
 ### Rate Caching
 
 Shipping plugins are responsible for their own caching strategy. Cart edits and address changes invalidate any cached rate the plugin returned for the previous state.

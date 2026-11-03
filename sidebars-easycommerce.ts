@@ -22,6 +22,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'configuration/index',
         'configuration/general-settings',
+        'configuration/multilingual-support',
         'configuration/product-settings',
         'configuration/payment-settings',
         'configuration/shipping-settings',
@@ -88,6 +89,28 @@ const sidebars: SidebarsConfig = {
         'downloads-plugin/license-management',
         'downloads-plugin/customer-portal',
         'downloads-plugin/update-server',
+      ],
+    },
+
+    {
+      type: 'category',
+      label: 'Developer Guide',
+      collapsed: true,
+      link: {type: 'doc', id: 'developer/index'},
+      items: [
+        'developer/getting-started',
+        'developer/architecture',
+        'developer/configuration',
+        'developer/events',
+        'developer/event-reference',
+        'developer/plugin-endpoints',
+        'developer/ui-extensions',
+        'developer/payment-plugins',
+        'developer/shipping-plugins',
+        'developer/downloads-and-licensing',
+        'developer/ai-and-credits',
+        'developer/automation-and-integrations',
+        'developer/security-and-testing',
       ],
     },
 

@@ -7,6 +7,8 @@ VidyaLMS has a shared English interface and supports translation through the hos
 
 You can build your own translation without editing the extension's core files. Course descriptions, lesson text, rubric criteria, and instructor feedback are content: authors must write or translate those separately.
 
+For separate courses in different languages, category-based catalogues, and links between corresponding Joomla courses, see [Courses in more than one language](multilingual-courses.md).
+
 ## Joomla language overrides
 
 1. Install and enable the language you want in Joomla.

@@ -31,6 +31,8 @@ The package supplies the component, shared learning library, and supporting plug
 
 Menu visibility alone does not grant teaching permission or course access. Follow [users and permissions](../configuration/users-permissions.md) for those settings. Test the menu as a normal signed-in learner, not only as a Super User.
 
+For a catalogue restricted to a category, its descendants, or the visitor's current site language, follow [Courses in more than one language](../configuration/multilingual-courses.md). You can link separate language versions without creating a menu item for every course.
+
 ## Make background work run
 
 In **System → Manage → Plugins**, check that the VidyaLMS system and task plugins are enabled. Use the web services plugin when the installed application requires its API routes. Keep the privacy and search plugins enabled when you use those Joomla features.

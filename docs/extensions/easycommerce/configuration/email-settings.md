@@ -87,6 +87,8 @@ Each template appears under one of five categories (Orders, Reviews, Subscriptio
 
 Templates support a wildcard `*` language tag for "default for all languages" and per-tag overrides for installed published languages.
 
+Customer order emails use the order's recorded language. See [Multilingual Support](multilingual-support.md) for template selection, translation fallback and testing instructions.
+
 ## Common Email Variables
 
 Brand variables (store name, store URL, base colors, header image, footer text) are injected automatically by the shared template wrapper. Common per-message variables include:

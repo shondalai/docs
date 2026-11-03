@@ -76,6 +76,10 @@ These fields are surfaced in the templates and stored on invoice settings:
 | `store_registration` | Business registration number |
 | `terms_and_conditions` | Free-form text rendered as the invoice footer |
 
+## Invoice Language
+
+New invoices record the order's language so that viewing or downloading them in another language does not change their language. See [Multilingual Support](multilingual-support.md) for document translations, custom templates and existing invoice behavior.
+
 ## Delivery
 
 | Field | Description | Default |

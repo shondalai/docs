@@ -660,7 +660,8 @@ mark {
   border: 0;
   background: transparent;
   color: inherit;
-  padding: 0;
+  font-size: inherit;
+  padding: var(--ifm-pre-padding);
 }
 
 .theme-code-block button {

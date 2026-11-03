@@ -40,6 +40,15 @@ It is built as a modern Joomla component with a React admin and storefront, and 
 
 ## Quick Navigation
 
+### For Developers
+
+- [Developer Guide](developer/index.md)
+- [Build Your First Plugin](developer/getting-started.md)
+- [Payment Integrations](developer/payment-plugins.md)
+- [Shipping Integrations](developer/shipping-plugins.md)
+- [Downloads, Licensing, and Account Extensions](developer/downloads-and-licensing.md)
+- [AI Services and Credits](developer/ai-and-credits.md)
+
 ### Getting Started
 
 - [Installation Guide](getting-started/installation.md)
@@ -49,6 +58,7 @@ It is built as a modern Joomla component with a React admin and storefront, and 
 ### Configuration
 
 - [Settings Overview](configuration/index.md)
+- [Multilingual Support](configuration/multilingual-support.md)
 - [General Settings](configuration/general-settings.md)
 - [Product Settings](configuration/product-settings.md)
 - [Payment Settings](configuration/payment-settings.md)

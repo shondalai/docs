@@ -48,7 +48,7 @@ At minimum, create:
 
 Click **Save & Close**.
 
-The Shop menu item also exposes layout, theme, and grid options in the **Options** panel (home vs. shop layout, hero banner, featured products, dark mode, sticky header, and custom JSON layout).
+The Shop menu item exposes layout and grid options under **Display** and **Advanced**, including home vs. shop layout, hero banner, featured products, sticky header and custom JSON layout. Choose **Page Layout → Shop Page Layout** for a product listing instead of the storefront homepage layout.
 
 ### Step 3: Create the Cart page
 
@@ -100,18 +100,11 @@ Link directly to a product. The product selector now uses a modal product picker
 
 Product View options cover breadcrumbs, related products, reviews, and the related-products count.
 
-## Link Pages in Settings
+## How Store Links Are Chosen
 
-Open **Components -> EasyCommerce -> Settings -> Products** and map your new menu items.
+EasyCommerce uses Joomla's routing system to find the published menu item for each store view and language. There is no page-mapping step in **Settings → Products**. Publish the menu items, check their language and access level, then follow the storefront's cart and checkout links to verify navigation.
 
-| Setting          | Select                            |
-|------------------|-----------------------------------|
-| Shop Page        | Your Shop menu item               |
-| Cart Page        | Your Cart menu item               |
-| Checkout Page    | Leave empty unless you route checkout through a Joomla article or wrapper |
-| My Account Page  | Your My Account menu item         |
-
-This mapping drives add-to-cart redirects, "View Cart" links, and post-login destinations.
+Product and category navigation retains a valid catalogue menu context; links to the shop, cart and account resolve their own menu context.
 
 ## Access Levels
 
@@ -129,5 +122,7 @@ Set the value in the menu item's **Access** dropdown.
 
 ## Next Steps
 
+For a store in more than one language, follow [Multilingual Support](../configuration/multilingual-support.md) to configure Joomla languages, language-specific menu items and the Language Switcher. EasyCommerce preserves the current language and valid menu context when navigating the catalogue.
+
 - [General Settings](../configuration/general-settings.md): store, currency, and checkout-field requirements.
-- [Product Settings](../configuration/product-settings.md): page links, inventory, and review options.
+- [Product Settings](../configuration/product-settings.md): display, inventory and review options.
