@@ -13,6 +13,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [7.1.2] - 2026-11-05
+
+### 🚀 Added
+- Add customizable community branding with language-specific titles and mobile-friendly display
+- Standardizing the common features across shondalai products
+- Use shondalai email queue service for sending emails
+- Enhanced dashboard user experience
+
+### 🐛 Fixed
+- Fix category browsing and language filtering while preserving permissions and Joomla navigation
+- Process email queue schedule task is missing
+- Added missing langauge strings of permissions page
+
 ## [7.1.1] - 2026-09-27
 
 ### 🚀 Added
