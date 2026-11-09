@@ -12,6 +12,21 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.6.0] - 2026-11-09
+
+### 🚀 Added
+- Added support for custom file extensions and mime types for uploads
+- Added the ability to attach custom file types
+- Added an option to show or hide the color mode toggle
+
+### 🐛 Fixed
+- Fixed subcategory navigation links in the Classic template
+- Fixed missing subcategories across all forum templates
+- Fixed attachments not showing on admin dashboard topic pages
+- Fixed tags dropdown overlapping the description editor on the topic form
+- Fixed light and dark mode switching in all forum templates, keeping text readable
+- Fixed upload failures to show clear errors and preserve existing files on failed updates
+
 ## [6.5.3] - 2026-10-23
 
 ### 🚀 Added
