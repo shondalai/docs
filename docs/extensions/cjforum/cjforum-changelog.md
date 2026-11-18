@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [6.6.1] - 2026-11-18
 
 ### 🐛 Fixed
+- Fixed blank topic editors and preserved post content when editing or changing categories
 - Fixed permanent delete button not being visible in the admin dashboard
 - Fixed Ledger category text alignment when row numbers are hidden
 
