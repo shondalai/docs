@@ -15,11 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 ## [8.6.3] - 2026-11-18
 
+### 🚀 Added
+- Included user email ID in the CSV export
+
 ### 🐛 Fixed
 - Fixed the redirect loop on the thank you page
 - Fixed results links so they work without a dedicated menu item
-- Displayed Likert and grid distributions in the Survey Results module
-- Showed multi-slider and matching breakdowns in survey results
+- Fixed Likert and grid distributions displaying in the Survey Results module
+- Fixed multi-slider and matching breakdowns showing in survey results
 
 ## [8.6.2] - 2026-11-10
 
