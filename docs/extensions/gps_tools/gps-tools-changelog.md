@@ -18,6 +18,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.7.1] - 2026-11-21
+
+### 🚀 Added
+- Added JSiteMap plugin, extracted and installed from the JSiteMap plugin import
+
+### 🐛 Fixed
+- Fixed Google Maps module to load reliably
+- Fixed download links to preserve track, language and session details
+- Fixed embedded labels and missing module descriptions to use Joomla translations
+
 ## [7.7.0] - 2026-11-01
 
 ### 🚀 Added
