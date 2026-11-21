@@ -6,6 +6,25 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.5.0] - 2026-11-21
+
+### 🚀 Added
+- Added per-currency product prices with store currency and gateway fallback
+- Added configurable USD-to-INR Razorpay payments with refunds and fee reporting
+- Added country restrictions for payment and shipping methods
+- Added language associations for products and categories to link translated pages
+- Added translation support with English fallback and Joomla language overrides
+- Added Joomla language support for products, categories and storefront navigation
+- Added setting to change frontend color theme
+
+### 🐛 Fixed
+- Fixed migrated subscriptions not triggering expiry emails
+- Fixed imported subscriptions not cancelling after expiry
+- Fixed Screenshots & Demos block content tab not showing
+- Kept cart contents unchanged when switching languages
+- Preserved language across checkout, renewals, emails, invoices and payment returns
+- Fixed product hero thumbnails to show every gallery image
+
 ## [1.4.0] - 2026-10-27
 
 ### 🚀 Added
