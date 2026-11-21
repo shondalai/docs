@@ -22,7 +22,7 @@ Earlier versions of this integration used a Google Cloud service-account JSON ke
 
 - **One-time setup** vs per-integration JSON paste.
 - **Personal Google accounts** work — service accounts can't write to a personal Drive without explicit sharing.
-- **Per-account revocation** — disconnect a single integration without affecting others.
+- **Per-integration reconnect** — update the Google connection from the integration you want to fix.
 - **Audit trail in Google's account.google.com** — users see which apps have access.
 
 The trade-off is the **one-time GCP setup**. After that, every integration is one click.
@@ -168,13 +168,11 @@ Cells use Sheets' `USER_ENTERED` input mode — Sheets parses dates and numbers 
 
 ## Disconnecting
 
-Three ways:
+Choose the action based on what you want to do:
 
-1. **In the integration configure pane** — click the "Connect Google" button to reconnect (replaces the existing connection without deleting the integration).
-2. **Delete the integration** — removes the integration row + its tokens.
-3. **In Google's account.google.com** — Security → Third-party access → revoke the "Community Surveys" app. The next sync will fail with `auth_invalid`; the admin sees the failure in the Activity tab and can reconnect.
-
-Disconnecting one integration doesn't affect others — each integration stores its own per-account tokens.
+- **Reconnect one integration:** Open that integration, click **Connect Google**, and save. Then submit a test response and confirm that its row appears in the selected worksheet.
+- **Stop using one integration:** Delete that integration in Community Surveys if you no longer need it.
+- **Remove Google access for the app:** Use your Google Account’s [third-party connections page](https://myaccount.google.com/connections) only if you intend to remove the app’s access or need the last-resort reset below. [Google revokes access for that account across the OAuth project](https://developers.google.com/identity/protocols/oauth2/web-server#tokenrevoke), not just for one survey. Other integrations using the same Google account and OAuth project may stop syncing and need to be reconnected. Verify a test row for each integration you reconnect.
 
 ---
 
@@ -205,9 +203,7 @@ Settings → Integrations → Google → finish the one-time setup. The wizard's
 
 ### "Google did not return a refresh token. Revoke prior access and try again."
 
-If you've previously connected the same Google account, Google's behaviour is to only mint a refresh token on the first consent. We force `prompt=consent` in the OAuth URL, but in rare cases Google still skips it.
-
-Fix: in `account.google.com/security` → Third-party access → revoke the app → reconnect.
+First, open the affected integration and try **Connect Google** again with the intended Google account. If Google still does not return a refresh token, remove the app’s access from that Google Account only as a last resort, then reconnect. Read [Disconnecting](#disconnecting) first: removing access may interrupt other integrations using the same Google account and OAuth project.
 
 ### "Connection successful" but rows don't appear
 
