@@ -30,7 +30,7 @@ Large jobs may need the queue worker. A failed run can have completed some work;
 
 Check module order, lesson content, images, protected resources, question answers, points, pass marks, and completion requirements. Test an actual quiz attempt and assignment submission.
 
-An unsupported source activity should not be assumed to have become a functional lesson. In particular, an imported SCORM reference does not supply a SCORM player. See [integration limits](../integrations/advanced-learning.md).
+An unsupported source activity should not be assumed to have become a functional lesson. Pro includes a [SCORM 2004 player](../integrations/scorm.md), but migration importers do not automatically transfer source SCORM packages or historical tracking. Upload the original ZIP as a SCORM lesson and plan the old attempts, scores and completion records separately.
 
 Historical enrolments, grades, and file links may have importer-specific limits. Read the preview and result rather than assuming a content import also moved every learner's history.
 

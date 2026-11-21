@@ -17,6 +17,7 @@ courses and learner progress stay in place.
 | What you need | Free | With Pro |
 | --- | --- | --- |
 | Courses, modules, reading, videos and downloads | Included | Included |
+| SCORM learning packages | Not included | SCORM 2004 single-SCO ZIP upload, built-in player, scores, interactions, attempts and resume; [scope and limits](../integrations/scorm.md) |
 | Quizzes | Six basic question types, pass marks, timing and attempt limits | Additional question types, question banks, pools and advanced scoring |
 | Assignments | File and written submissions, grading, feedback and resubmission | Additional review and rubric tools |
 | Learner access | Self-enrolment, manual enrolment and course prerequisites | Organization access, seats, invitations and delegated administration |

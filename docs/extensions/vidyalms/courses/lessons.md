@@ -30,7 +30,7 @@ Use curriculum search in a long course. Archive lessons you no longer want activ
 
 </div>
 
-These are the bundled lesson types. Do not assume that references to audio, live sessions, protected streaming, SCORM, or cmi5 in a product plan mean a corresponding player is installed. See [advanced learning integrations](../integrations/advanced-learning.md) for current availability and limitations.
+Pro also adds a **SCORM 2004 package** lesson with ZIP upload, tracking and resume. See [SCORM packages](../integrations/scorm.md) for the supported single-SCO format and setup. Live-session connectors, protected streaming and cmi5 playback are separate capabilities and are not included merely because a format appears in a product plan.
 
 ## Decide what counts as completion
 

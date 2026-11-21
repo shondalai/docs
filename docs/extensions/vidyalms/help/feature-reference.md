@@ -33,6 +33,7 @@ Start with the [Free and Pro comparison](free-pro.md). Free includes the complet
 | --- | --- |
 | Courses, categories, authoring, publication, archive, and trash | [Course builder](../courses/course-builder.md) |
 | Reading, video, resources, assignments, and quizzes | [Lessons](../courses/lessons.md); bundled types |
+| SCORM 2004 single-SCO packages | [SCORM packages](../integrations/scorm.md); Pro upload, player, tracking and resume |
 | Prerequisites, linear learning, schedules, exceptions, and completion rules | [Access and progression](../courses/access-progression.md); advanced policies depend on installed providers |
 | Quiz attempts, timing, feedback, pools, and grading policies | [Quizzes](../courses/quizzes.md) |
 | Reusable banks, folders, versions, and question selection | [Question banks](../courses/question-banks.md) |
@@ -88,7 +89,7 @@ Start with the [Free and Pro comparison](free-pro.md). Free includes the complet
 - A complete reviewed French language pack is not bundled. Host translation mechanisms are available.
 - Assignment feedback supports overall and rubric-criterion comments, not separate annotations on each photo.
 - Evidence exports include file metadata, not an archive containing every private photo. There is no dedicated combined training-dossier PDF in that workflow.
-- Bundled SCORM/cmi5 players and live-session/protected-streaming connectors are not present in the implementation reviewed here.
+- Pro includes a single-SCO SCORM 2004 player. SCORM 1.2, multi-SCO sequencing, cmi5 playback and live-session/protected-streaming connectors are not included.
 - Mobile source is not an automatically published app-store application.
 - Time tracking measures supported browser activity; it does not establish verified attendance or attention.
 

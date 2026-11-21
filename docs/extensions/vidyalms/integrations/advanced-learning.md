@@ -21,9 +21,11 @@ Caliper forwarding is another optional activity integration. Choose the format r
 
 ## SCORM, cmi5, and packaged lessons
 
-The current bundled lesson picker provides reading, video, resources, assignments, and quizzes. **A bundled SCORM or cmi5 lesson player is not present in the implementation reviewed for these guides.** References to these formats in product plans or import warnings are not setup instructions for an available player.
+Pro now includes a **SCORM 2004 package** lesson with ZIP upload and a built-in player on Joomla and WordPress. It supports a single SCO (one launchable activity), including the SCORM 2004 `API_1484_11` interface used by iSpring. Completion, pass/fail, scores, interaction records, session time, separate attempts and saved resume data are kept in VidyaLMS. No separate player extension or external LRS is required.
 
-Do not upload a SCORM ZIP as a resource and expect its score, resume state, or completion to work as an assessed lesson. If a separately installed extension adds a package player, follow that extension's supported formats and completion setup, then test its learner behaviour before using it in a required course.
+Choose the SCORM lesson type rather than uploading the ZIP as an ordinary resource. See [SCORM packages](scorm.md) for the upload steps, completion settings, limits and a compatibility checklist.
+
+This player does **not** support SCORM 1.2, multi-SCO sequencing, xAPI package playback or cmi5. The activity-record integration above is separate from package playback. The SCORM 2004 runtime has automated tracking and browser checks; this is not a claim of ADL certification or proof that every iSpring export works. Test your representative package before migrating required training.
 
 ## Live sessions and protected streaming
 
