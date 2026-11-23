@@ -13,6 +13,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.6.4] - 2026-11-23
+
+### 🚀 Added
+- Added options to hide survey details and the unanswered-question shortcut
+- Added a warning for missing weights and a Save weights button
+- Added user email ID to the CSV export
+
+### 🐛 Fixed
+- Fixed preservation of valid partial responses when checking returning voters
+- Fixed repeat-vote restriction checks so they run before questions are shown
+- Fixed fourth-preference scoring so existing votes receive the correct totals
+
 ## [8.6.3] - 2026-11-18
 
 ### 🚀 Added
