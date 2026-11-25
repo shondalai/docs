@@ -6,6 +6,11 @@ sidebar_position: 100
 
 All notable changes to EasyCommerce will be documented in this file.
 
+## [1.5.1] - 2026-11-25
+
+### 🐛 Fixed
+- Fixed PayPal subscription coupons so only the first payment is discounted and retries preserve paid access
+
 ## [1.5.0] - 2026-11-21
 
 ### 🚀 Added
