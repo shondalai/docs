@@ -12,6 +12,16 @@ All notable changes to CjForum will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.6.2] - 2026-11-26
+
+### 🚀 Added
+- Added JSiteMap plugin, extracted and installed from JSiteMap plugin import
+
+### 🐛 Fixed
+- Fixed Joomla Smart Search and CjForum results and suggestions to use public display names
+- Fixed false unsaved-change warnings after saving topics and replies across all templates
+- Fixed blank topic editors and preserved post content when editing or changing categories
+
 ## [6.6.1] - 2026-11-18
 
 ### 🐛 Fixed
