@@ -13,6 +13,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [8.6.5] - 2026-11-28
+
+### 🚀 Added
+- Enhanced CSV export data for Likert question type
+
+### 🐛 Fixed
+- Hid jump to page button when only one question shown on the page
+- Added missing labels in survey selection modal in menu
+
 ## [8.6.4] - 2026-11-23
 
 ### 🚀 Added
