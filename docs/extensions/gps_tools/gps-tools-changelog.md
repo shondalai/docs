@@ -18,6 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Version 7.x (Joomla 5/6)
 
+## [7.7.2] - 2026-11-28
+
+### 🐛 Fixed
+- Maps module did not show Google Maps in some browsers
+
 ## [7.7.1] - 2026-11-21
 
 ### 🚀 Added
