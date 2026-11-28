@@ -22,7 +22,7 @@ Earlier versions of this integration used a Google Cloud service-account JSON ke
 
 - **One-time setup** vs per-integration JSON paste.
 - **Personal Google accounts** work — service accounts can't write to a personal Drive without explicit sharing.
-- **Per-account revocation** — disconnect a single integration without affecting others.
+- **Per-integration reconnect** — update the Google connection from the integration you want to fix.
 - **Audit trail in Google's account.google.com** — users see which apps have access.
 
 The trade-off is the **one-time GCP setup**. After that, every integration is one click.
@@ -64,9 +64,11 @@ You need both:
   - `auth/spreadsheets` (read + write Sheets)
   - `auth/drive.readonly` (list user's sheets)
   - `auth/userinfo.email` (display the connected account in the admin)
-- Test users — while the app is in "Testing" mode, only the email addresses you list here can connect. Add yourself.
+- Test users — for an **External** app in **Testing**, add the Google account you’ll use to connect.
 
-You can leave the app in **Testing** mode indefinitely — that's fine for a self-hosted site. Switch to **Production** if you want anyone to connect (requires Google's verification process for sensitive scopes, which Sheets + Drive are).
+**Use External + Testing for short trials only.** With the Sheets and Drive scopes listed above, [Google expires the refresh token after seven days](https://developers.google.com/identity/protocols/oauth2#expiration). The integration can work at first and stop syncing a week later, even on a self-hosted site.
+
+For ongoing sync, use **Internal** if every account that needs to connect belongs to your Google Workspace organization. Otherwise, use **External → In production** and follow any [Google verification requirements](https://developers.google.com/identity/protocols/oauth2/production-readiness/overview) that apply to your app. If you connected while the app was in Testing, reconnect in Community Surveys after changing the status.
 
 ### Step 4 — Create OAuth credentials
 
@@ -130,11 +132,11 @@ In Community Surveys: **Integrations → Marketplace → Google Sheets**.
 
 ### 4. Test connection
 
-Click **Test connection**. The adapter fetches the sheet's metadata via the Sheets API; success means everything is wired.
+Click **Test connection**. A successful test confirms that Community Surveys can read the spreadsheet’s metadata. It does not test whether the integration can write a row.
 
 ### 5. Save
 
-Submit a test response to fire the first sync. The first row appears in your sheet within ~1 second (synchronous mode) or within a few minutes (async).
+Save the integration, then submit a test response. Open the selected spreadsheet and tab and confirm that a new row contains your test answers. If you use async dispatch, wait for the scheduled task to run. If the row does not appear, check the integration’s **Activity** tab for the result of the sync.
 
 ---
 
@@ -166,13 +168,11 @@ Cells use Sheets' `USER_ENTERED` input mode — Sheets parses dates and numbers 
 
 ## Disconnecting
 
-Three ways:
+Choose the action based on what you want to do:
 
-1. **In the integration configure pane** — click the "Connect Google" button to reconnect (replaces the existing connection without deleting the integration).
-2. **Delete the integration** — removes the integration row + its tokens.
-3. **In Google's account.google.com** — Security → Third-party access → revoke the "Community Surveys" app. The next sync will fail with `auth_invalid`; the admin sees the failure in the Activity tab and can reconnect.
-
-Disconnecting one integration doesn't affect others — each integration stores its own per-account tokens.
+- **Reconnect one integration:** Open that integration, click **Connect Google**, and save. Then submit a test response and confirm that its row appears in the selected worksheet.
+- **Stop using one integration:** Delete that integration in Community Surveys if you no longer need it.
+- **Remove Google access for the app:** Use your Google Account’s [third-party connections page](https://myaccount.google.com/connections) only if you intend to remove the app’s access or need the last-resort reset below. [Google revokes access for that account across the OAuth project](https://developers.google.com/identity/protocols/oauth2/web-server#tokenrevoke), not just for one survey. Other integrations using the same Google account and OAuth project may stop syncing and need to be reconnected. Verify a test row for each integration you reconnect.
 
 ---
 
@@ -183,13 +183,13 @@ The reason it works:
 1. Wizard's "Connect Google" calls `api.googleOauthStart` → server generates a CSRF state token and returns Google's auth URL.
 2. Wizard opens a popup to that URL. User signs in + grants scopes on Google's own page.
 3. Google redirects to your Joomla's OAuth callback URL with `?code=...&state=...`.
-4. Server validates state, exchanges the code with Google for an access token + a long-lived **refresh token**, encrypts the bundle, and stores it tied to the state token.
+4. Server validates state, exchanges the code with Google for an access token and a **refresh token**, encrypts the bundle, and stores it tied to the state token.
 5. Callback HTML closes the popup and posts the state back to the wizard via `postMessage`.
 6. Wizard now holds an opaque OAuth handle. User finishes filling the wizard and clicks Save.
 7. On save, the server swaps the handle for the actual refresh token via single-use consumption and stores it encrypted on the integration.
 8. At every sync, the adapter exchanges the refresh token for a fresh 1-hour access token (cheap) and uses it to call Sheets.
 
-The refresh token lasts until you revoke it. The access token lasts an hour and is minted per-sync — no caching, no expiry headache.
+Google can expire or invalidate refresh tokens. For example, tokens issued to External apps in Testing expire after seven days for this integration. See [Google’s refresh token guidance](https://developers.google.com/identity/protocols/oauth2#expiration) for other causes.
 
 All tokens encrypted at rest via AES-256-GCM keyed off Joomla's site secret. See [Integrations overview → Credentials and security](./integrations-overview.md#credentials-and-security).
 
@@ -203,15 +203,19 @@ Settings → Integrations → Google → finish the one-time setup. The wizard's
 
 ### "Google did not return a refresh token. Revoke prior access and try again."
 
-If you've previously connected the same Google account, Google's behaviour is to only mint a refresh token on the first consent. We force `prompt=consent` in the OAuth URL, but in rare cases Google still skips it.
-
-Fix: in `account.google.com/security` → Third-party access → revoke the app → reconnect.
+First, open the affected integration and try **Connect Google** again with the intended Google account. If Google still does not return a refresh token, remove the app’s access from that Google Account only as a last resort, then reconnect. Read [Disconnecting](#disconnecting) first: removing access may interrupt other integrations using the same Google account and OAuth project.
 
 ### "Connection successful" but rows don't appear
 
 - **Worksheet name typo** — the adapter looks for the exact tab name. Defaults to `Sheet1`; if your tab is named differently, update the config.
 - **Sheet permissions changed** — the OAuth grant covers everything the user can access. If you transferred sheet ownership or revoked the user's access, syncs fail.
 - **Async dispatch + no task scheduler** — the integration queued the sync but the **Drain Integration Retry Queue** task isn't running. See [Integrations overview → Retries](./integrations-overview.md#retries).
+
+### Rows stopped appearing about a week after connecting
+
+1. In Google Auth Platform, check whether the app’s audience is **External** and its publishing status is **Testing**. Review the integration’s **Activity** tab for an authentication failure. A failure can also have other causes, such as revoked access.
+2. If the app is in Testing, reconnect for another short test, or follow [Step 3](#step-3--configure-the-oauth-consent-screen) to configure the app for ongoing sync. After changing the publishing status, open the existing integration and click **Connect Google** again to authorize it under the new status.
+3. Save, submit a test response, and verify that the row appears in the selected worksheet. **Test connection** alone does not confirm that writes have resumed.
 
 ### "HTTP 403 — The user does not have sufficient permissions"
 
@@ -249,6 +253,6 @@ If you have many legacy integrations to migrate, the configure pane's missing-ad
 | Sheets API quota | 300 requests/min per project | Google's default |
 | Drive API quota | 1000 requests / 100 sec | Used only for the sheet picker |
 | Sync timeout | 20 seconds per attempt | Hard limit |
-| Refresh token lifetime | Until revoked | OAuth tokens don't expire unless revoked or unused for 6 months |
+| Refresh token lifetime | 7 days for External apps in Testing | Other [expiry and revocation conditions](https://developers.google.com/identity/protocols/oauth2#expiration) also apply |
 | Header row writes | Once per integration | Tick `header_row_written` after the first sync |
 | Cell content | Sheets' default (50K chars per cell) | Long answers truncate at this limit |
